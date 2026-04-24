@@ -1,0 +1,97 @@
+# =========================
+# Node / Angular
+# =========================
+node_modules/
+dist/
+.tmp/
+out-tsc/
+.angular/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# =========================
+# Angular specific
+# =========================
+# Build output
+/dist/
+/coverage/
+
+# Angular cache
+.angular/cache
+
+# SSR (Angular Universal)
+server/dist/
+
+# =========================
+# IDEs / Editors
+# =========================
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains
+.idea/
+*.iml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Package managers
+# =========================
+
+# pnpm
+.pnpm-store/
+
+# yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# =========================
+# Build tools
+# =========================
+.vercel
+.next
+.nuxt
+.svelte-kit
+
+# =========================
+# Misc
+# =========================
+*.swp
+*.swo

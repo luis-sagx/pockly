@@ -1,0 +1,119 @@
+<div
+  class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]"
+>
+  <div>
+    <h2 class="text-3xl font-semibold tracking-tight text-brand-100">
+      Currency Converter
+    </h2>
+    <p class="mt-1 text-sm text-zinc-500">
+      Convert between currencies using live exchange rates.
+    </p>
+  </div>
+
+  @if (error()) {
+  <p class="flex items-center gap-2 text-sm font-semibold text-red-400">
+    <i class="fas fa-exclamation-triangle"></i>
+    {{ error() }}
+  </p>
+  }
+
+  <!-- Converter Section -->
+  <div class="flex flex-col lg:flex-row gap-6">
+    <!-- Left: Input -->
+    <div
+      class="flex-1 flex flex-col gap-4 p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl"
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-semibold text-slate-300">From</span>
+      </div>
+
+      <select
+        [ngModel]="fromCurrency()"
+        (ngModelChange)="onFromCurrencyChange($event)"
+        class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+      >
+        @for (currency of currencies; track currency.code) {
+        <option [value]="currency.code">
+          {{ currency.code }} - {{ currency.name }} ({{ currency.country }})
+        </option>
+        }
+      </select>
+
+      <label class="flex flex-col gap-1.5 text-sm font-semibold text-slate-300">
+        Amount to convert
+        <input
+          type="number"
+          step="any"
+          min="0"
+          [value]="amount()"
+          (input)="onAmountChange(+$any($event.target).value)"
+          class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+        />
+      </label>
+    </div>
+
+    <!-- Swap Button -->
+    <div class="flex lg:flex-col items-center justify-center gap-2">
+      <button
+        (click)="swap()"
+        class="flex items-center justify-center w-10 h-10 transition border rounded-full border-zinc-700 text-zinc-400 hover:text-brand-400 hover:border-brand-500"
+      >
+        <i class="fas fa-exchange-alt"></i>
+      </button>
+    </div>
+
+    <!-- Right: Result -->
+    <div
+      class="flex-1 flex flex-col gap-4 p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl"
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-semibold text-slate-300">To</span>
+      </div>
+
+      <select
+        [ngModel]="toCurrency()"
+        (ngModelChange)="onToCurrencyChange($event)"
+        class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+      >
+        @for (currency of currencies; track currency.code) {
+        <option [value]="currency.code">
+          {{ currency.code }} - {{ currency.name }} ({{ currency.country }})
+        </option>
+        }
+      </select>
+
+      <div class="flex flex-col gap-1.5">
+        <span class="text-sm font-semibold text-slate-300">Result</span>
+        <div class="p-3 bg-zinc-950 border border-zinc-700 rounded-lg">
+          @if (loading()) {
+          <div class="flex items-center gap-2 text-zinc-400">
+            <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              ></path>
+            </svg>
+          </div>
+          } @else {
+          <span class="text-2xl font-bold text-brand-400">
+            {{ result() | number:'1.2-2' }} {{ toCurrency() }}
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (lastUpdated()) {
+  <p class="text-xs text-zinc-500">Rates from: {{ lastUpdated() }}</p>
+  }
+</div>

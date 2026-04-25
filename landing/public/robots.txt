@@ -1,0 +1,9 @@
+# https://pockly.vercel.app/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pockly.vercel.app/sitemap.xml
+
+# Disallow admin/private routes
+Disallow: /api/

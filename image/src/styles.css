@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-zinc-900;
+  }
+
+  body {
+    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    @apply bg-zinc-900 text-slate-100 antialiased;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
+  }
+
+  .page-content {
+    @apply flex flex-col gap-6 p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60;
+  }
+
+  .page-title {
+    @apply text-2xl font-semibold text-slate-100;
+  }
+}

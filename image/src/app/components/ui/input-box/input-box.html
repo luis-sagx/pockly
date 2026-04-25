@@ -1,0 +1,5 @@
+@if (multiline) {
+<textarea #textareaRef [value]="value" (input)="onInput($event)" [placeholder]="placeholder" [rows]="rows" [class]="inputClass"></textarea>
+} @else {
+<input [value]="value" (input)="onInput($event)" [placeholder]="placeholder" [type]="'text'" [class]="inputClass" />
+}

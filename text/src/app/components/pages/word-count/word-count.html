@@ -1,16 +1,21 @@
-<div class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+<div
+  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-lg"
+>
   <div>
     <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">Word Counter</h2>
     <p class="mt-1 text-sm text-olive-ink/70">Count words and characters in your text.</p>
   </div>
-  <app-input-box 
-    [value]="inputText()" 
-    (valueChange)="inputText.set($event)" 
-    [rows]="5" 
-    placeholder="Enter text here..." 
-    inputClass="w-full p-4 text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50" 
+  <app-input-box
+    [value]="inputText()"
+    (valueChange)="inputText.set($event)"
+    [rows]="5"
+    placeholder="Enter text here..."
+    inputClass="w-full p-4 text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
   />
-  <button (click)="clear()" class="self-start flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
+  <button
+    (click)="clear()"
+    class="self-start flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
+  >
     <i class="fas fa-trash"></i> Clear
   </button>
   <div class="flex flex-col gap-2">
@@ -18,11 +23,19 @@
     <div class="grid gap-4 sm:grid-cols-2">
       <div class="flex flex-col gap-1">
         <span class="text-xs font-semibold text-olive-ink/60">Word Count</span>
-        <div class="p-3 font-mono text-lg text-olive-deep bg-olive-cream border border-olive-light rounded-lg">{{ wordCount() }}</div>
+        <div
+          class="p-3 font-mono text-lg text-olive-deep bg-olive-cream border border-olive-light rounded-lg"
+        >
+          {{ wordCount() }}
+        </div>
       </div>
       <div class="flex flex-col gap-1">
         <span class="text-xs font-semibold text-olive-ink/60">Character Count</span>
-        <div class="p-3 font-mono text-lg text-olive-deep bg-olive-cream border border-olive-light rounded-lg">{{ charCount() }}</div>
+        <div
+          class="p-3 font-mono text-lg text-olive-deep bg-olive-cream border border-olive-light rounded-lg"
+        >
+          {{ charCount() }}
+        </div>
       </div>
     </div>
   </div>

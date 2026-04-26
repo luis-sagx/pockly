@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { SeoService } from '../../services/seo.service';
+import { SeoService } from '../../../services/seo.service';
 import { IconComponent } from '../../ui/icon/icon';
 
 @Component({

@@ -24,7 +24,7 @@
     <input type="file" accept="image/*" class="hidden" (change)="onFileSelected($event)" />
   </label>
   }
-  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-400"><i class="fas fa-exclamation-triangle"></i> {{ error() }}</p> }
+  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-400"><app-icon name="alert" class="w-4 h-4"></app-icon> {{ error() }}</p> }
   @if (originalPreview()) {
   <div class="grid gap-4 sm:grid-cols-2">
     <div class="flex flex-col gap-2"><p class="text-sm font-semibold text-slate-400">Original <span class="font-normal text-zinc-500">({{ originalSizeKb() }} KB)</span></p><img [src]="originalPreview()" alt="original" class="object-contain w-full border border-zinc-800 rounded-xl max-h-72 bg-zinc-900" /></div>
@@ -33,9 +33,9 @@
     </div>
   </div>
   <div class="flex flex-wrap gap-2">
-    <button (click)="process()" [disabled]="loading()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50">@if (loading()) { <i class="fas fa-spinner fa-spin"></i> Processing... } @else { <i class="fas fa-cogs"></i> Process image }</button>
+    <button (click)="process()" [disabled]="loading()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50">@if (loading()) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Processing... } @else { <app-icon name="settings" class="w-4 h-4"></app-icon> Process image }</button>
     @if (resultDataUrl()) { <button (click)="download()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"><app-icon name="download" class="w-4 h-4"></app-icon> Download</button> }
-    <label class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition border border-tomato-700 rounded-lg bg-tomato-500/80 hover:bg-tomato-600/80 cursor-pointer"><i class="fas fa-image"></i> Change Image <input type="file" accept="image/*" class="hidden" (change)="onFileSelected($event)" /></label>
+    <label class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition border border-tomato-700 rounded-lg bg-tomato-500/80 hover:bg-tomato-600/80 cursor-pointer"><app-icon name="image" class="w-4 h-4"></app-icon> Change Image <input type="file" accept="image/*" class="hidden" (change)="onFileSelected($event)" /></label>
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"><app-icon name="trash" class="w-4 h-4"></app-icon> Clear</button>
   </div>
   }

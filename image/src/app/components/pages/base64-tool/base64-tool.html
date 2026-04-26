@@ -25,10 +25,10 @@
     </div>
   </div>
   }
-  @if(hasError){ <p class="flex items-center gap-2 text-sm font-semibold text-red-300"><i class="fas fa-exclamation-triangle"></i> <span>{{ errorMessage }}</span></p> }
+  @if(hasError){ <p class="flex items-center gap-2 text-sm font-semibold text-red-300"><app-icon name="alert" class="w-4 h-4"></app-icon> <span>{{ errorMessage }}</span></p> }
   <div class="flex flex-wrap gap-2">
-    @if(mode === 'image-to-base64') { <button (click)="convertImageToBase64()" [disabled]="loading" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed">@if(loading) { <i class="fas fa-spinner fa-spin"></i> Processing... } @else { <app-icon name="image" class="w-12 h-12 text-brand-400"></app-icon> Convert to Base64 }</button> }
-    @if(mode === 'base64-to-image') { <button (click)="convertBase64ToImage()" [disabled]="loading" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed">@if(loading) { <i class="fas fa-spinner fa-spin"></i> Processing... } @else { <i class="fas fa-image"></i> Convert to Image }</button> }
+    @if(mode === 'image-to-base64') { <button (click)="convertImageToBase64()" [disabled]="loading" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed">@if(loading) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Processing... } @else { <app-icon name="image" class="w-4 h-4"></app-icon> Convert to Base64 }</button> }
+    @if(mode === 'base64-to-image') { <button (click)="convertBase64ToImage()" [disabled]="loading" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed">@if(loading) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Processing... } @else { <app-icon name="image" class="w-4 h-4"></app-icon> Convert to Image }</button> }
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"><app-icon name="trash" class="w-4 h-4"></app-icon> Clear</button>
   </div>
   @if(mode === 'image-to-base64' && base64Result) { <div class="flex flex-col gap-2"><h3 class="text-sm font-semibold text-slate-300">Base64 result:</h3><app-output-box [text]="base64Result" /></div> }

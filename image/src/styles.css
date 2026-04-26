@@ -25,4 +25,13 @@
   .page-title {
     @apply text-2xl font-semibold text-slate-100;
   }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 }

@@ -1,20 +1,34 @@
-<div class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]">
+<div class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
   <div>
-    <h2 class="text-3xl font-semibold tracking-tight text-brand-100">Uppercase and Lowercase Converter</h2>
-    <p class="mt-1 text-sm text-zinc-500">Convert text to uppercase, lowercase or capitalize.</p>
+    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">Uppercase and Lowercase Converter</h2>
+    <p class="mt-1 text-sm text-olive-ink/70">Convert text to uppercase, lowercase or capitalize.</p>
   </div>
-  <app-input-box [value]="inputText" (valueChange)="inputText = $event" [rows]="5" placeholder="Enter text here to convert..." inputClass="w-full p-4 text-slate-100 placeholder:text-zinc-600 bg-zinc-900 border resize-none border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500" />
+  <app-input-box 
+    [value]="inputText" 
+    (valueChange)="inputText = $event" 
+    [rows]="5" 
+    placeholder="Enter text here to convert..." 
+    inputClass="w-full p-4 text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50" 
+  />
   @if (hasError) {
-  <p class="flex items-center gap-2 text-sm font-semibold text-red-300"><i class="fas fa-exclamation-triangle"></i> Please enter valid text.</p>
+  <p class="flex items-center gap-2 text-sm font-semibold text-red-600"><i class="fas fa-exclamation-triangle"></i> Please enter valid text.</p>
   }
   <div class="flex flex-wrap gap-2">
-    <button (click)="toUpper()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"><i class="fas fa-arrow-up-a-z"></i> UPPERCASE</button>
-    <button (click)="toLower()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"><i class="fas fa-arrow-down-a-z"></i> lowercase</button>
-    <button (click)="toCapital()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"><i class="fas fa-a"></i> Capitalize</button>
-    <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"><i class="fas fa-trash"></i> Clear</button>
+    <button (click)="toUpper()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80">
+      <i class="fas fa-arrow-up-a-z"></i> UPPERCASE
+    </button>
+    <button (click)="toLower()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80">
+      <i class="fas fa-arrow-down-a-z"></i> lowercase
+    </button>
+    <button (click)="toCapital()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80">
+      <i class="fas fa-a"></i> Capitalize
+    </button>
+    <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
+      <i class="fas fa-trash"></i> Clear
+    </button>
   </div>
   <div class="flex flex-col gap-2">
-    <h3 class="text-sm font-semibold text-slate-300">Result:</h3>
+    <h3 class="text-sm font-bold text-olive-deep font-display">Result:</h3>
     <app-output-box [text]="outputText" />
   </div>
 </div>

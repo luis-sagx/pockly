@@ -1,19 +1,31 @@
-<div class="flex flex-col items-center justify-center min-h-[70vh] gap-8 p-6">
-  <div class="text-center">
-    <div class="flex items-center justify-center gap-3 mb-4">
-      <fa-icon [icon]="['fas', 'font']" class="fa-3x text-brand-400"></fa-icon>
+<div class="flex flex-col items-center justify-center min-h-[70vh] gap-12 px-4 py-12">
+  <!-- Hero Section -->
+  <div class="text-center max-w-2xl mx-auto">
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <div class="flex items-center justify-center w-16 h-16 bg-olive-lightSage rounded-2xl">
+        <fa-icon [icon]="['fas', 'font']" class="text-xl text-olive-deep"></fa-icon>
+      </div>
     </div>
-    <h1 class="text-4xl font-bold tracking-tight text-brand-100">Text Tools</h1>
-    <p class="mt-2 text-zinc-400">Free online text utilities — no signup, no ads.</p>
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-olive-deep font-display leading-[1.20]" style="letter-spacing: -0.75px;">
+      Text Tools
+    </h1>
+    <p class="mt-4 text-lg text-olive-ink/80 font-body leading-relaxed max-w-md mx-auto">
+      Free online text utilities — no signup, no ads, just simple tools that work.
+    </p>
   </div>
+
+  <!-- Tools Grid -->
   <div class="grid gap-4 w-full max-w-2xl sm:grid-cols-2">
     @for (tool of tools; track tool.id) {
-    <button (click)="navigate(tool.path)" class="flex flex-col items-start p-5 text-left transition border bg-zinc-950/60 border-zinc-800 rounded-2xl hover:border-brand-500 hover:bg-zinc-900/60">
+    <button 
+      (click)="navigate(tool.path)" 
+      class="group flex flex-col items-start p-5 text-left transition-all duration-200 bg-olive-parchment border border-olive-border rounded-lg hover:border-posthog-orange hover:bg-olive-cream cursor-pointer"
+    >
       <div class="flex items-center gap-3 mb-2">
-        <fa-icon [icon]="['fas', tool.icon]" class="text-brand-500"></fa-icon>
-        <span class="text-lg font-semibold text-slate-100">{{ tool.label }}</span>
+        <fa-icon [icon]="['fas', tool.icon]" class="text-lg text-olive-ink group-hover:text-posthog-orange transition-colors"></fa-icon>
+        <span class="text-lg font-bold text-olive-deep font-display">{{ tool.label }}</span>
       </div>
-      <p class="text-sm text-zinc-500">{{ tool.description }}</p>
+      <p class="text-sm text-olive-ink/70 font-body">{{ tool.description }}</p>
     </button>
     }
   </div>

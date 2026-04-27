@@ -1,44 +1,44 @@
 <div
-  class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]"
+  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-2xl bg-olive-parchment text-olive-ink shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
 >
   <div>
-    <h2 class="text-3xl font-semibold tracking-tight text-brand-100">JSON Templates</h2>
-    <p class="mt-1 text-sm text-zinc-500">Pre-built JSON structures for common use cases.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Templates</h2>
+    <p class="mt-1 text-sm text-olive-muted">Pre-built JSON structures for common use cases.</p>
   </div>
 
   <div class="flex flex-wrap gap-2">
-    <button (click)="setCategory('all')" [class]="activeCategory() === 'all' ? 'px-3 py-1.5 text-sm font-medium bg-brand-600 text-white rounded-lg' : 'px-3 py-1.5 text-sm font-medium bg-zinc-800 text-slate-300 hover:bg-zinc-700 rounded-lg'">All</button>
-    <button (click)="setCategory('simple')" [class]="activeCategory() === 'simple' ? 'px-3 py-1.5 text-sm font-medium bg-brand-600 text-white rounded-lg' : 'px-3 py-1.5 text-sm font-medium bg-zinc-800 text-slate-300 hover:bg-zinc-700 rounded-lg'">Simple</button>
-    <button (click)="setCategory('common')" [class]="activeCategory() === 'common' ? 'px-3 py-1.5 text-sm font-medium bg-brand-600 text-white rounded-lg' : 'px-3 py-1.5 text-sm font-medium bg-zinc-800 text-slate-300 hover:bg-zinc-700 rounded-lg'">Common</button>
-    <button (click)="setCategory('complex')" [class]="activeCategory() === 'complex' ? 'px-3 py-1.5 text-sm font-medium bg-brand-600 text-white rounded-lg' : 'px-3 py-1.5 text-sm font-medium bg-zinc-800 text-slate-300 hover:bg-zinc-700 rounded-lg'">Complex</button>
+    <button (click)="setCategory('all')" [class]="activeCategory() === 'all' ? 'px-3 py-1.5 text-sm font-semibold bg-olive-deep text-white rounded-lg hover:opacity-70 hover:text-posthog-amber' : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'">All</button>
+    <button (click)="setCategory('simple')" [class]="activeCategory() === 'simple' ? 'px-3 py-1.5 text-sm font-semibold bg-olive-deep text-white rounded-lg hover:opacity-70 hover:text-posthog-amber' : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'">Simple</button>
+    <button (click)="setCategory('common')" [class]="activeCategory() === 'common' ? 'px-3 py-1.5 text-sm font-semibold bg-olive-deep text-white rounded-lg hover:opacity-70 hover:text-posthog-amber' : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'">Common</button>
+    <button (click)="setCategory('complex')" [class]="activeCategory() === 'complex' ? 'px-3 py-1.5 text-sm font-semibold bg-olive-deep text-white rounded-lg hover:opacity-70 hover:text-posthog-amber' : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'">Complex</button>
   </div>
 
   <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     @for (template of filteredTemplates; track template.name) {
-    <button (click)="selectTemplate(template)" class="flex flex-col items-start p-4 text-left transition border bg-zinc-900/60 border-zinc-800 rounded-xl hover:border-brand-500 hover:bg-zinc-800/60">
+    <button (click)="selectTemplate(template)" class="flex flex-col items-start p-4 text-left transition border bg-olive-cream border-olive-border rounded-xl hover:border-posthog-orange">
       <div class="flex items-center gap-2 mb-1">
-        <i [class]="'fas ' + template.icon + ' text-brand-500'"></i>
-        <span class="font-semibold text-slate-200 text-sm">{{ template.name }}</span>
+        <i [class]="'fas ' + template.icon + ' text-posthog-orange'"></i>
+        <span class="font-semibold text-olive-deep text-sm">{{ template.name }}</span>
       </div>
-      <span class="text-xs text-zinc-500">{{ template.description }}</span>
-      <span class="mt-2 px-2 py-0.5 text-xs font-medium bg-zinc-800 text-zinc-400 rounded">{{ getCategoryLabel(template.category) }}</span>
+      <span class="text-xs text-olive-muted">{{ template.description }}</span>
+      <span class="mt-2 px-2 py-0.5 text-xs font-semibold bg-olive-lightSage text-olive-muted rounded">{{ getCategoryLabel(template.category) }}</span>
     </button>
     }
   </div>
 
   @if (selectedTemplate()) {
-  <div class="flex flex-col rounded-xl border border-zinc-800 overflow-hidden">
-    <div class="flex items-center justify-between p-3 bg-zinc-900/60 border-b border-zinc-800">
+  <div class="flex flex-col rounded-xl border border-olive-border overflow-hidden">
+    <div class="flex items-center justify-between p-3 bg-olive-cream border-b border-olive-border">
       <div class="flex items-center gap-2">
-        <i [class]="'fas ' + selectedTemplate()!.icon + ' text-brand-500'"></i>
-        <span class="font-medium text-slate-200">{{ selectedTemplate()!.name }}</span>
-        <span class="px-2 py-0.5 text-xs font-medium bg-zinc-800 text-zinc-400 rounded">{{ getCategoryLabel(selectedTemplate()!.category) }}</span>
+        <i [class]="'fas ' + selectedTemplate()!.icon + ' text-posthog-orange'"></i>
+        <span class="font-medium text-olive-deep">{{ selectedTemplate()!.name }}</span>
+        <span class="px-2 py-0.5 text-xs font-semibold bg-olive-lightSage text-olive-muted rounded">{{ getCategoryLabel(selectedTemplate()!.category) }}</span>
       </div>
-      <button (click)="clearTemplate()" class="flex items-center gap-2 px-3 py-1.5 text-sm text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-lg transition">
+      <button (click)="clearTemplate()" class="flex items-center gap-2 px-3 py-1.5 text-sm text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition">
         <app-icon name="x" class="w-4 h-4"></app-icon> Clear
       </button>
     </div>
-    <div class="flex-1 p-4 overflow-auto text-sm font-mono text-green-400 bg-zinc-900">
+    <div class="flex-1 p-4 overflow-auto text-sm font-mono text-green-600 bg-olive-parchment">
       <pre>{{ formatJson(selectedTemplate()!.content) }}</pre>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <div
-  class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]"
+  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-2xl bg-olive-parchment text-olive-ink shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
 >
   <div>
-    <h2 class="text-3xl font-semibold tracking-tight text-brand-100">
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">
       JSON Generator
     </h2>
-    <p class="mt-1 text-sm text-zinc-500">
+    <p class="mt-1 text-sm text-olive-muted">
       Build JSON objects interactively — no API needed.
     </p>
   </div>
@@ -14,28 +14,28 @@
   <div class="overflow-x-auto">
     <div class="flex flex-col gap-3 min-w-[600px]">
       @for (field of fields(); track field.id; let i = $index) {
-      <div class="flex items-center gap-2 p-3 bg-zinc-900/40 border border-zinc-800 rounded-xl">
+      <div class="flex items-center gap-2 p-3 bg-olive-cream border border-olive-border rounded-xl">
         <input
           [value]="field.key"
           (input)="onKeyChange(field.id, $event)"
           placeholder="key"
-          class="w-24 px-3 py-2 text-sm bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          class="w-24 px-3 py-2 text-sm bg-olive-parchment border border-olive-light rounded-lg text-olive-ink placeholder:text-olive-placeholder focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
         />
         <select
           [value]="field.type"
           (change)="onTypeChange(field.id, $event)"
-          class="min-w-[100px] px-3 py-2 text-sm bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          class="min-w-[100px] px-3 py-2 text-sm bg-olive-parchment border border-olive-light rounded-lg text-olive-ink focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
         >
           @for (type of fieldTypes; track type.value) {
           <option [value]="type.value">{{ type.label }}</option>
           }
         </select>
-        <span class="text-zinc-500">:</span>
+        <span class="text-olive-muted">:</span>
         @if (field.type === 'boolean') {
         <select
           [value]="field.value"
           (change)="onValueChange(field.id, $event)"
-          class="flex-1 min-w-[100px] px-3 py-2 text-sm bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          class="flex-1 min-w-[100px] px-3 py-2 text-sm bg-olive-parchment border border-olive-light rounded-lg text-olive-ink focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
         >
           <option value="true">true</option>
           <option value="false">false</option>
@@ -45,7 +45,7 @@
           type="datetime-local"
           [value]="field.value"
           (input)="onValueChange(field.id, $event)"
-          class="flex-1 min-w-[140px] px-3 py-2 text-sm bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          class="flex-1 min-w-[140px] px-3 py-2 text-sm bg-olive-parchment border border-olive-light rounded-lg text-olive-ink focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
         />
         } @else {
         <input
@@ -53,12 +53,12 @@
           (input)="onValueChange(field.id, $event)"
           [type]="field.type === 'number' ? 'number' : 'text'"
           [placeholder]="field.type === 'uuid' ? 'auto-generated' : 'value'"
-          class="flex-1 min-w-[100px] px-3 py-2 text-sm bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          class="flex-1 min-w-[100px] px-3 py-2 text-sm bg-olive-parchment border border-olive-light rounded-lg text-olive-ink placeholder:text-olive-placeholder focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
         />
         }
         <button
           (click)="removeField(field.id)"
-          class="p-2 text-red-400 hover:text-red-300"
+          class="p-2 text-olive-muted hover:text-posthog-orange transition"
         >
           <app-icon name="trash" class="w-4 h-4"></app-icon>
         </button>
@@ -70,19 +70,19 @@
   <div class="flex flex-wrap gap-2">
     <button
       (click)="addField()"
-      class="flex items-center gap-2 px-4 py-2 text-sm text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
       <app-icon name="plus" class="w-4 h-4"></app-icon> Add Field
     </button>
     <button
       (click)="generate()"
-      class="flex items-center gap-2 px-4 py-2 text-sm text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber"
     >
       <app-icon name="wand" class="w-4 h-4"></app-icon> Generate
     </button>
     <button
       (click)="clear()"
-      class="flex items-center gap-2 px-4 py-2 text-sm text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
       <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
     </button>
@@ -91,11 +91,11 @@
   <!-- Output -->
   @if (output()) {
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-slate-300">Generated JSON:</label>
+    <label class="text-sm font-semibold text-olive-ink">Generated JSON:</label>
     <app-output-box [text]="output()" />
     <button
       (click)="copyToClipboard()"
-      class="self-start flex items-center gap-2 px-4 py-2 text-sm text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"
+      class="self-start flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber"
     >
       <app-icon name="copy" class="w-4 h-4"></app-icon> Copy
     </button>

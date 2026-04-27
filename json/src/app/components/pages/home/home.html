@@ -1,23 +1,25 @@
 <div class="flex flex-col items-center justify-center min-h-[70vh] gap-8 p-6">
   <div class="text-center">
     <div class="flex items-center justify-center gap-3 mb-4">
-      <app-icon name="code" class="w-12 h-12 text-brand-400"></app-icon>
+      <app-icon name="code" class="w-12 h-12 text-posthog-orange"></app-icon>
     </div>
-    <h1 class="text-4xl font-bold tracking-tight text-brand-100">JSON Tools</h1>
-    <p class="mt-2 text-zinc-400">Free online JSON utilities — no signup, no ads.</p>
+    <h1 class="text-4xl font-display font-extrabold tracking-tight text-olive-deep" style="line-height: 1.20; letter-spacing: -0.75px;">
+      JSON Tools
+    </h1>
+    <p class="mt-2 text-olive-muted font-body">Free online JSON utilities — no signup, no ads.</p>
   </div>
 
   <div class="grid gap-4 w-full max-w-2xl sm:grid-cols-2">
     @for (tool of toolList; track tool.path) {
     <button
       (click)="navigate(tool.path)"
-      class="flex flex-col items-start p-5 text-left transition border bg-zinc-950/60 border-zinc-800 rounded-2xl hover:border-brand-500 hover:bg-zinc-900/60"
+      class="flex flex-col items-start p-5 text-left transition bg-olive-cream border border-olive-border rounded-xl hover:border-posthog-orange hover:text-posthog-orange"
     >
       <div class="flex items-center gap-3 mb-2">
-        <app-icon [name]="tool.icon" class="w-5 h-5 text-brand-500"></app-icon>
-        <span class="text-lg font-semibold text-slate-100">{{ tool.label }}</span>
+        <app-icon [name]="tool.icon" class="w-5 h-5 text-posthog-orange"></app-icon>
+        <span class="text-lg font-semibold text-olive-deep">{{ tool.label }}</span>
       </div>
-      <p class="text-sm text-zinc-500">{{ tool.description }}</p>
+      <p class="text-sm text-olive-muted">{{ tool.description }}</p>
     </button>
     }
   </div>

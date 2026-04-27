@@ -1,19 +1,25 @@
-<div class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]">
-  <div><h2 class="text-3xl font-semibold tracking-tight text-brand-100">URL Shortener</h2><p class="mt-1 text-sm text-zinc-500">Shorten your long URLs instantly.</p></div>
-  <div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-300">Enter URL to shorten</label><input type="url" [value]="inputUrl()" (input)="onInputChange($any($event.target).value)" placeholder="https://example.com/very/long/url" class="w-full px-4 py-3 text-slate-100 placeholder:text-zinc-600 bg-zinc-900 border border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500" /></div>
-  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-400"><i class="fas fa-exclamation-triangle"></i> {{ error() }}</p> }
+<div class="flex flex-col gap-6 p-4 sm:p-6 rounded-lg border border-olive-border bg-olive-parchment">
+  <div>
+    <h2 class="text-2xl font-bold tracking-tight text-olive-deep font-display">URL Shortener</h2>
+    <p class="mt-1 text-sm text-olive-ink">Shorten your long URLs instantly.</p>
+  </div>
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-olive-ink">Enter URL to shorten</label>
+    <input type="url" [value]="inputUrl()" (input)="onInputChange($any($event.target).value)" placeholder="https://example.com/very/long/url" class="input-field" />
+  </div>
+  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-600"><app-icon name="alert-circle" class="w-4 h-4"></app-icon> {{ error() }}</p> }
   <div class="flex flex-wrap gap-2">
-    <button (click)="shorten()" [disabled]="loading()" class="flex items-center gap-2 px-6 py-3 text-base font-medium text-white transition bg-brand-600 rounded-xl hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed">@if (loading()) { <i class="fas fa-spinner fa-spin"></i> Shortening... } @else { <i class="fas fa-compress-alt"></i> Shorten URL }</button>
-    <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-200 transition bg-zinc-800 rounded-lg hover:bg-zinc-700"><app-icon name="trash" class="w-4 h-4"></app-icon> Clear</button>
+    <button (click)="shorten()" [disabled]="loading()" class="btn-primary">@if (loading()) { <app-icon name="loader" class="w-4 h-4 animate-spin"></app-icon> Shortening... } @else { <app-icon name="compress"></app-icon> Shorten URL }</button>
+    <button (click)="clear()" class="btn-ghost"><app-icon name="trash-2" class="w-4 h-4"></app-icon> Clear</button>
   </div>
   @if (shortenedUrl()) {
-  <div class="flex flex-col gap-3 p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl">
-    <span class="text-sm font-semibold text-slate-300">Shortened URL:</span>
+  <div class="flex flex-col gap-3 p-4 border border-olive-border rounded-lg bg-olive-cream">
+    <span class="text-sm font-semibold text-olive-ink">Shortened URL:</span>
     <div class="flex items-center gap-2">
-      <input [value]="shortenedUrl()" readonly class="flex-1 px-3 py-2 font-mono text-brand-400 bg-zinc-950 border border-zinc-700 rounded-lg" />
+      <input [value]="shortenedUrl()" readonly class="flex-1 px-3 py-2 font-mono text-posthog-orange bg-transparent border border-olive-border rounded" />
       <app-copy-button [textToCopy]="shortenedUrl()" />
     </div>
-    <a [href]="shortenedUrl()" target="_blank" rel="noopener noreferrer" class="text-sm text-brand-400 hover:underline">Open shortened URL <app-icon name="external-link" class="w-4 h-4"></app-icon></a>
+    <a [href]="shortenedUrl()" target="_blank" rel="noopener noreferrer" class="text-sm text-posthog-orange hover:underline flex items-center gap-1">Open shortened URL <app-icon name="external-link" class="w-4 h-4"></app-icon></a>
   </div>
   }
 </div>

@@ -4,25 +4,49 @@
 
 @layer base {
   html {
-    @apply bg-zinc-900;
+    @apply bg-olive-parchment;
   }
 
   body {
-    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    @apply bg-zinc-900 text-slate-100 antialiased;
+    font-family: "IBM Plex Sans Variable", "IBM Plex Sans", -apple-system, system-ui, "Avenir Next", "Avenir", "Segoe UI", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, Arial, sans-serif;
+    @apply bg-olive-parchment text-olive-ink antialiased;
   }
 }
 
 @layer components {
   .page-shell {
-    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
+    @apply w-full max-w-3xl mx-auto px-4 sm:px-6 pt-20 pb-8;
   }
 
   .page-content {
-    @apply flex flex-col gap-6 p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60;
+    @apply flex flex-col gap-6 p-6 rounded-lg border border-olive-border bg-olive-parchment;
   }
 
   .page-title {
-    @apply text-2xl font-semibold text-slate-100;
+    @apply text-3xl font-bold tracking-tight text-olive-deep;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-base font-semibold text-white transition-all duration-150 rounded-md bg-[#1e1f23] hover:opacity-70 active:opacity-80;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition-colors duration-150 rounded bg-olive-lightSage hover:bg-[#f4f4f4] hover:text-posthog-orange;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition-colors duration-150 rounded border border-olive-border bg-olive-parchment hover:bg-olive-cream;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 text-olive-ink placeholder:text-olive-placeholder bg-olive-cream border border-olive-light rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+  }
+
+  .card {
+    @apply p-5 rounded-lg border border-olive-border bg-olive-parchment;
+  }
+
+  .card-hover {
+    @apply p-5 rounded-lg border border-olive-border bg-olive-parchment transition-colors duration-150 hover:border-posthog-orange hover:bg-olive-cream cursor-pointer;
   }
 }

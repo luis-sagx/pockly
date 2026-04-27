@@ -1,8 +1,10 @@
 import { Component, Input, signal } from '@angular/core';
+import { IconComponent } from '../icon/icon';
 
 @Component({
   selector: 'app-copy-button',
-  imports: [],
+  standalone: true,
+  imports: [IconComponent],
   templateUrl: './copy-button.html',
   styleUrl: './copy-button.css'
 })

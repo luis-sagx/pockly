@@ -1,20 +1,14 @@
-<nav
-  class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
->
-  <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
+<nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
+  <div class="flex items-center justify-between px-4 sm:px-6 py-4 mx-auto max-w-3xl">
     <a class="flex items-center gap-3 group" href="/">
-      <img src="logo.png" alt="logo" class="w-10 h-10" />
-      <span
-        class="text-xl font-bold text-olive-deep transition-colors group-hover:text-posthog-orange font-display"
-        >URL Tools</span
-      >
+      <div class="w-10 h-10 flex items-center justify-center bg-olive-deep rounded-lg">
+        <app-icon name="link" class="w-5 h-5 text-olive-parchment"></app-icon>
+      </div>
+      <span class="text-xl font-bold text-olive-deep transition-colors group-hover:text-posthog-orange font-display">URL Tools</span>
     </a>
-    <a
-      href="/"
-      class="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream font-body"
-    >
-      <app-icon name="grid" class="w-4 h-4 text-posthog-orange"></app-icon>
-      All Tools
+    <a href="/" class="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream font-body">
+      <app-icon name="grid" class="w-4 h-4"></app-icon>
+      <span class="hidden sm:inline">All Tools</span>
     </a>
   </div>
 </nav>

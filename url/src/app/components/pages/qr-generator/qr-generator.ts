@@ -1,10 +1,10 @@
 import { Component, signal, OnDestroy } from '@angular/core';
-import { CopyButton } from '../../ui/copy-button/copy-button';
+import { IconComponent } from '../../ui/icon/icon';
 
 @Component({
   selector: 'app-qr-generator',
   standalone: true,
-  imports: [CopyButton],
+  imports: [IconComponent],
   templateUrl: './qr-generator.html',
   styleUrl: './qr-generator.css',
 })

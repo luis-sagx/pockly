@@ -1,15 +1,21 @@
-<div class="flex flex-col gap-6 p-4 sm:p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60 text-slate-100 shadow-[0_24px_60px_rgba(8,10,20,0.45)]">
-  <div><h2 class="text-3xl font-semibold tracking-tight text-brand-100">QR Generator</h2><p class="mt-1 text-sm text-zinc-500">Generate QR codes from text and URLs.</p></div>
-  <div class="flex flex-wrap items-end gap-4 p-4 bg-zinc-900/60 border border-zinc-800 rounded-xl">
-    <label class="flex flex-col gap-1.5 text-sm font-semibold text-slate-300">Size<select [value]="size()" (change)="onSizeChange($any($event.target).value)" class="px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"><option value="small">Small (128px)</option><option value="medium">Medium (256px)</option><option value="large">Large (512px)</option></select></label>
-    <label class="flex flex-col gap-1.5 text-sm font-semibold text-slate-300">Color<input type="color" [value]="fgColor()" (input)="onColorChange($any($event.target).value)" class="w-10 h-10 bg-transparent border-0 cursor-pointer" /></label>
+<div class="flex flex-col gap-6 p-4 sm:p-6 rounded-lg border border-olive-border bg-olive-parchment">
+  <div>
+    <h2 class="text-2xl font-bold tracking-tight text-olive-deep font-display">QR Generator</h2>
+    <p class="mt-1 text-sm text-olive-ink">Generate QR codes from text and URLs.</p>
   </div>
-  <div class="flex flex-col gap-2"><label class="text-sm font-semibold text-slate-300">Content</label><textarea [value]="inputText()" (input)="onInputChange($any($event.target).value)" rows="3" placeholder="Enter text or URL..." class="w-full p-3 text-slate-100 placeholder:text-zinc-600 bg-zinc-900 border resize-none border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea></div>
-  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-400"><i class="fas fa-exclamation-triangle"></i> {{ error() }}</p> }
+  <div class="flex flex-wrap items-end gap-4 p-4 border border-olive-border rounded-lg bg-olive-cream">
+    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-ink">Size<select [value]="size()" (change)="onSizeChange($any($event.target).value)" class="input-field py-2"><option value="small">Small (128px)</option><option value="medium">Medium (256px)</option><option value="large">Large (512px)</option></select></label>
+    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-ink">Color<input type="color" [value]="fgColor()" (input)="onColorChange($any($event.target).value)" class="w-10 h-10 bg-transparent border-0 cursor-pointer" /></label>
+  </div>
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-olive-ink">Content</label>
+    <textarea [value]="inputText()" (input)="onInputChange($any($event.target).value)" rows="3" placeholder="Enter text or URL..." class="input-field resize-none"></textarea>
+  </div>
+  @if (error()) { <p class="flex items-center gap-2 text-sm font-semibold text-red-600"><app-icon name="alert-circle" class="w-4 h-4"></app-icon> {{ error() }}</p> }
   @if (qrDataUrl()) {
-  <div class="flex flex-col items-center gap-4">
-    <img [src]="qrDataUrl()" alt="QR Code" class="border border-zinc-700 rounded-xl" />
-    <button (click)="download()" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition bg-brand-600 rounded-lg hover:bg-brand-700"><i class="fas fa-download"></i> Download PNG</button>
+  <div class="flex flex-col items-center gap-4 p-4 border border-olive-border rounded-lg">
+    <img [src]="qrDataUrl()" alt="QR Code" class="border border-olive-border rounded-lg" />
+    <button (click)="download()" class="btn-primary"><app-icon name="download" class="w-4 h-4"></app-icon> Download PNG</button>
   </div>
   }
 </div>

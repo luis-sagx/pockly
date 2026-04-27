@@ -1,19 +1,19 @@
 <div class="flex flex-col items-center justify-center min-h-[70vh] gap-8 p-6">
   <div class="text-center">
     <div class="flex items-center justify-center gap-3 mb-4">
-      <app-icon name="image" class="w-12 h-12 text-brand-400"></app-icon>
+      <app-icon name="image" class="w-12 h-12 text-posthog-orange"></app-icon>
     </div>
-    <h1 class="text-4xl font-bold tracking-tight text-brand-100">Image Tools</h1>
-    <p class="mt-2 text-zinc-400">Free online image utilities — no signup, no ads.</p>
+    <h1 class="text-4xl font-extrabold tracking-tight text-deep-olive" style="line-height: 1.2; letter-spacing: -0.75px;">Image Tools</h1>
+    <p class="mt-2 text-muted-olive">Free online image utilities — no signup, no ads.</p>
   </div>
   <div class="grid gap-4 w-full max-w-2xl sm:grid-cols-2">
     @for (tool of toolList; track tool.path) {
-    <button (click)="navigate(tool.path)" class="flex flex-col items-start p-5 text-left transition border bg-zinc-950/60 border-zinc-800 rounded-2xl hover:border-brand-500 hover:bg-zinc-900/60">
+    <button (click)="navigate(tool.path)" class="tool-card">
       <div class="flex items-center gap-3 mb-2">
-        <app-icon [name]="tool.icon" class="w-5 h-5 text-brand-500"></app-icon>
-        <span class="text-lg font-semibold text-slate-100">{{ tool.label }}</span>
+        <app-icon [name]="tool.icon" class="w-5 h-5 text-posthog-orange"></app-icon>
+        <span class="tool-card-title">{{ tool.label }}</span>
       </div>
-      <p class="text-sm text-zinc-500">{{ tool.description }}</p>
+      <p class="tool-card-description">{{ tool.description }}</p>
     </button>
     }
   </div>

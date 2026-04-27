@@ -2,36 +2,171 @@
 @tailwind components;
 @tailwind utilities;
 
+/* PostHog-inspired warm design system */
 @layer base {
   html {
-    @apply bg-zinc-900;
+    @apply bg-parchment;
   }
 
   body {
-    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    @apply bg-zinc-900 text-slate-100 antialiased;
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    @apply bg-parchment text-olive-ink antialiased;
   }
 }
 
 @layer components {
+  /* Page container */
   .page-shell {
     @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
   }
 
-  .page-content {
-    @apply flex flex-col gap-6 p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60;
+  /* Card style - warm surface with sage border */
+  .card {
+    @apply flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-md bg-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)];
   }
 
+  /* Primary button - dark CTA */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-deep-olive rounded-md transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply opacity-70 text-amber-gold;
+  }
+
+  .btn-primary:active {
+    @apply opacity-80;
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Secondary button - sage light */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-hover-white text-posthog-orange;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink bg-transparent border border-olive-border rounded transition-all duration-200;
+  }
+
+  .btn-ghost:hover {
+    @apply text-posthog-orange;
+  }
+
+  /* Tool card for homepage */
+  .tool-card {
+    @apply flex flex-col items-start p-5 text-left transition-all duration-200 border bg-parchment border-olive-border rounded hover:border-posthog-orange;
+  }
+
+  .tool-card:hover .tool-card-title {
+    @apply text-posthog-orange;
+  }
+
+  .tool-card-title {
+    @apply text-lg font-semibold text-deep-olive transition-colors duration-200;
+  }
+
+  .tool-card-description {
+    @apply text-sm text-muted-olive;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full p-4 text-olive-ink placeholder:text-olive-placeholder bg-olive-cream border border-olive-light rounded focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+  }
+
+  /* Drop zone */
+  .drop-zone {
+    @apply flex flex-col items-center justify-center w-full h-40 transition-all duration-200 border-2 border-dashed cursor-pointer border-olive-border rounded bg-olive-cream hover:bg-olive-lightSage hover:border-posthog-orange;
+  }
+
+  .drop-zone-text {
+    @apply text-sm font-semibold text-muted-olive;
+  }
+
+  .drop-zone-subtext {
+    @apply mt-1 text-xs text-olive-placeholder;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl font-bold tracking-tight text-deep-olive;
+  }
+
+  /* Section subtitle */
+  .section-subtitle {
+    @apply mt-1 text-sm text-muted-olive;
+  }
+
+  /* Label text */
+  .label {
+    @apply text-sm font-semibold text-olive-ink;
+  }
+
+  /* Select dropdown */
+  .select-field {
+    @apply px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-ink focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+  }
+
+  /* Tab button active */
+  .tab-active {
+    @apply px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded;
+  }
+
+  /* Tab button inactive */
+  .tab-inactive {
+    @apply px-4 py-2 text-sm font-medium text-muted-olive hover:bg-olive-lightSage rounded transition-colors duration-200;
+  }
+
+  /* Image preview container */
+  .preview-container {
+    @apply flex items-center justify-center w-full p-4 overflow-hidden bg-olive-cream border border-olive-border rounded max-h-72;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply w-8 h-8 text-posthog-orange animate-spin;
+  }
+
+  /* Error message */
+  .error-message {
+    @apply flex items-center gap-2 text-sm font-semibold text-red-700;
+  }
+
+  /* Toggle button */
+  .toggle {
+    @apply flex items-center gap-2 pb-1 text-sm cursor-pointer text-muted-olive;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    @apply flex flex-wrap items-end gap-4 p-4 bg-olive-cream border border-olive-border rounded;
+  }
+
+  /* Highlight text (brand color) */
+  .text-highlight {
+    @apply text-posthog-orange;
+  }
+
+  /* Page title */
   .page-title {
-    @apply text-2xl font-semibold text-slate-100;
+    @apply text-3xl font-bold tracking-tight text-deep-olive;
+  }
+
+  /* Animations */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .animate-spin {
     animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
   }
 }

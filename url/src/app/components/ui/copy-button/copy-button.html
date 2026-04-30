@@ -1,1 +1,9 @@
-<button (click)="copyText()" class="btn-secondary">@if (!copied()) { <app-icon name="copy" class="w-4 h-4"></app-icon> Copy } @else { <app-icon name="check" class="w-4 h-4"></app-icon> Copied }</button>
+<button (click)="copyText()" class="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-sm font-medium transition-colors rounded bg-[#e5e7e0] text-[#4d4f46] hover:bg-[#eeefe9] hover:text-[#F54E00]">
+  @if (!copied()) { 
+    <fa-icon [icon]="['fas', 'copy']" class="w-3 h-3"></fa-icon>
+    Copy 
+  } @else { 
+    <fa-icon [icon]="['fas', 'check']" class="w-3 h-3"></fa-icon>
+    Copied 
+  }
+</button>

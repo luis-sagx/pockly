@@ -1,19 +1,27 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faLink, faCompressAlt, faTrashCan, faExternalLink, faCircleExclamation, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { InputBox } from '../../ui/input-box/input-box';
 import { CopyButton } from '../../ui/copy-button/copy-button';
-import { IconComponent } from '../../ui/icon/icon';
 
 @Component({
   selector: 'app-url-shortener',
   standalone: true,
-  imports: [CopyButton, IconComponent],
+  imports: [FaIconComponent, InputBox, CopyButton],
   templateUrl: './url-shortener.html',
   styleUrl: './url-shortener.css',
 })
 export class UrlShortener {
+  private library = inject(FaIconLibrary);
+
   inputUrl = signal('');
   shortenedUrl = signal('');
   loading = signal(false);
   error = signal('');
+
+  constructor() {
+    this.library.addIcons(faLink, faCompressAlt, faTrashCan, faExternalLink, faCircleExclamation, faCheck);
+  }
 
   async shorten(): Promise<void> {
     const url = this.inputUrl().trim();
@@ -28,7 +36,7 @@ export class UrlShortener {
       const text = await response.text();
       if (!text.startsWith('http')) throw new Error('Invalid response');
       this.shortenedUrl.set(text.trim());
-    } catch (e: any) { this.error.set('Failed to shorten URL. Please try again.'); }
+    } catch (e: unknown) { this.error.set('Failed to shorten URL. Please try again.'); }
     finally { this.loading.set(false); }
   }
 

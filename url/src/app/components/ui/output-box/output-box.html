@@ -1,0 +1,19 @@
+<div
+  class="relative p-4 bg-olive-cream border border-olive-light rounded-lg shadow-inner w-full min-h-[150px]"
+>
+  @if (text && text.trim().length > 0) {
+  <div class="absolute top-2 right-2">
+    <app-copy-button [textToCopy]="text" />
+  </div>
+
+  <h4 class="mb-2 font-bold text-olive-deep font-display">Text</h4>
+
+  <div class="text-sm overflow-x-auto text-olive-ink">
+    <pre class="whitespace-pre-wrap break-all">{{ text }}</pre>
+  </div>
+  } @else {
+  <div class="flex items-center justify-center h-full">
+    <p class="font-mono text-sm text-olive-placeholder">No results yet</p>
+  </div>
+  }
+</div>

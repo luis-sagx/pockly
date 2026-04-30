@@ -1,46 +1,51 @@
-<div class="page-content">
-  <!-- Header -->
+<div class="card">
   <div>
-    <h2 class="page-title">Percentage Calculator</h2>
-    <p class="mt-1 text-sm text-olive-ink/70">Calculate percentages instantly with three modes.</p>
+    <h2 class="section-heading">Percentage Calculator</h2>
+    <p class="section-subtitle">Calculate percentages instantly with three modes.</p>
   </div>
 
   <!-- Mode Tabs -->
   <div class="flex flex-wrap gap-2 p-1 bg-olive-cream border border-olive-border rounded">
-    <button (click)="setMode('percent-of')" [class]="mode() === 'percent-of' ? 'tab-btn-active' : 'tab-btn'">X% of Y</button>
-    <button (click)="setMode('what-percent')" [class]="mode() === 'what-percent' ? 'tab-btn-active' : 'tab-btn'">X is what % of Y</button>
-    <button (click)="setMode('change')" [class]="mode() === 'change' ? 'tab-btn-active' : 'tab-btn'">% Change</button>
+    <button (click)="setMode('percent-of')" [class]="mode() === 'percent-of' ? 'tab-active' : 'tab-inactive'">X% of Y</button>
+    <button (click)="setMode('what-percent')" [class]="mode() === 'what-percent' ? 'tab-active' : 'tab-inactive'">X is what % of Y</button>
+    <button (click)="setMode('change')" [class]="mode() === 'change' ? 'tab-active' : 'tab-inactive'">% Change</button>
   </div>
 
   <!-- Input Section -->
   <div class="flex flex-wrap items-end gap-4 p-4 bg-olive-cream border border-olive-border rounded">
     @switch (mode()) {
       @case ('percent-of') {
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Percentage (%)
+        <div class="flex flex-col gap-2">
+          <label class="label">Percentage (%)</label>
           <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="X" class="input-field w-32" />
-        </label>
-        <span class="pb-3 text-olive-ink">% of</span>
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Number
+        </div>
+        <span class="pb-2 text-olive-ink">% of</span>
+        <div class="flex flex-col gap-2">
+          <label class="label">Number</label>
           <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="Y" class="input-field w-32" />
-        </label>
+        </div>
       }
       @case ('what-percent') {
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Number
+        <div class="flex flex-col gap-2">
+          <label class="label">Number</label>
           <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="X" class="input-field w-32" />
-        </label>
-        <span class="pb-3 text-olive-ink">is what % of</span>
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Total
+        </div>
+        <span class="pb-2 text-olive-ink">is what % of</span>
+        <div class="flex flex-col gap-2">
+          <label class="label">Total</label>
           <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="Y" class="input-field w-32" />
-        </label>
+        </div>
       }
       @case ('change') {
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">From
+        <div class="flex flex-col gap-2">
+          <label class="label">From</label>
           <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="Original" class="input-field w-32" />
-        </label>
-        <span class="pb-3 text-olive-ink">to</span>
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">To
+        </div>
+        <span class="pb-2 text-olive-ink">to</span>
+        <div class="flex flex-col gap-2">
+          <label class="label">To</label>
           <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="New" class="input-field w-32" />
-        </label>
+        </div>
       }
     }
   </div>
@@ -48,7 +53,7 @@
   <!-- Result Display -->
   <div class="flex flex-col items-center justify-center p-6 bg-olive-cream border border-olive-border rounded">
     <p class="mb-2 text-sm font-semibold text-olive-ink">Result</p>
-    <p class="text-5xl font-bold text-olive-deep">{{ result() | number:'1.2-2' }}%</p>
+    <p class="text-4xl sm:text-5xl font-bold text-olive-deep">{{ result() | number:'1.2-2' }}%</p>
     @if (mode() === 'change' && (x() || y())) {
       <span class="mt-2 text-sm font-semibold uppercase" [class]="result() > 0 ? 'text-green-600' : result() < 0 ? 'text-red-600' : 'text-olive-ink'">{{ changeLabel() }}</span>
     }

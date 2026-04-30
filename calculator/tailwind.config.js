@@ -22,8 +22,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Arial'],
-        body: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Arial'],
+        display: ['"IBM Plex Sans"', '-apple-system', 'system-ui', '"Segoe UI"', '"Helvetica Neue"', 'Arial'],
+        body: ['"IBM Plex Sans"', '-apple-system', 'system-ui', '"Segoe UI"', '"Helvetica Neue"', 'Arial'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas'],
       },
     },

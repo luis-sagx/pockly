@@ -7,6 +7,7 @@ import {
   faMoneyBillWave,
   faRuler,
   faArrowRightArrowLeft,
+  faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
@@ -26,7 +27,8 @@ export class App {
       faPercentage,
       faMoneyBillWave,
       faRuler,
-      faArrowRightArrowLeft
+      faArrowRightArrowLeft,
+      faCircleExclamation
     );
   }
 }

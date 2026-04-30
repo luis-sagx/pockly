@@ -1,55 +1,89 @@
-<div class="page-content">
-  <!-- Header -->
+<div class="card">
   <div>
-    <h2 class="page-title">Currency Converter</h2>
-    <p class="mt-1 text-sm text-olive-ink/70">Convert between currencies using live exchange rates.</p>
+    <h2 class="section-heading">Currency Converter</h2>
+    <p class="section-subtitle">Convert between currencies using live exchange rates.</p>
   </div>
 
   <!-- Error Message -->
   @if (error()) {
-    <p class="flex items-center gap-2 text-sm font-semibold text-red-600"><fa-icon [icon]="['fas', 'exclamation-triangle']" class="w-4 h-4"></fa-icon> {{ error() }}</p>
+    <p class="error-message">
+      <fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon>
+      <span>{{ error() }}</span>
+    </p>
   }
 
   <!-- Converter Section -->
-  <div class="flex flex-col lg:flex-row gap-6">
+  <div class="flex flex-col gap-6 lg:flex-row">
     <!-- From -->
-    <div class="flex-1 flex flex-col gap-4 p-4 bg-olive-cream border border-olive-border rounded">
-      <span class="text-sm font-semibold text-olive-deep">From</span>
-      <select [ngModel]="fromCurrency()" (ngModelChange)="onFromCurrencyChange($event)" class="select-field">
+    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+      <span class="label">From</span>
+      <select
+        [ngModel]="fromCurrency()"
+        (ngModelChange)="onFromCurrencyChange($event)"
+        class="select-field"
+      >
         @for (currency of currencies; track currency.code) {
-          <option [value]="currency.code">{{ currency.code }} - {{ currency.name }} ({{ currency.country }})</option>
+          <option [value]="currency.code">
+            {{ currency.code }} - {{ currency.name }} ({{ currency.country }})
+          </option>
         }
       </select>
-      <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Amount
-        <input type="number" step="any" min="0" [value]="amount()" (input)="onAmountChange(+$any($event.target).value)" class="input-field" />
-      </label>
+      <div class="flex flex-col gap-2">
+        <label class="label">Amount</label>
+        <input
+          type="number"
+          step="any"
+          min="0"
+          [value]="amount()"
+          (input)="onAmountChange(+$any($event.target).value)"
+          class="py-4 text-xl font-bold input-field text-olive-deep"
+        />
+      </div>
     </div>
 
     <!-- Swap Button -->
-    <div class="flex lg:flex-col items-center justify-center gap-2">
-      <button (click)="swap()" class="flex items-center justify-center w-10 h-10 transition border-2 border-olive-border rounded-full text-olive-ink hover:text-posthog-orange hover:border-posthog-orange">
+    <div class="flex items-center justify-center gap-2 lg:flex-col">
+      <button
+        (click)="swap()"
+        class="flex items-center justify-center w-10 h-10 transition border-2 rounded-full border-olive-border text-olive-ink hover:text-posthog-orange hover:border-posthog-orange"
+      >
         <fa-icon [icon]="['fas', 'arrow-right-arrow-left']" class="w-4 h-4"></fa-icon>
       </button>
     </div>
 
     <!-- To -->
-    <div class="flex-1 flex flex-col gap-4 p-4 bg-olive-cream border border-olive-border rounded">
-      <span class="text-sm font-semibold text-olive-deep">To</span>
-      <select [ngModel]="toCurrency()" (ngModelChange)="onToCurrencyChange($event)" class="select-field">
+    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+      <span class="label">To</span>
+      <select
+        [ngModel]="toCurrency()"
+        (ngModelChange)="onToCurrencyChange($event)"
+        class="select-field"
+      >
         @for (currency of currencies; track currency.code) {
-          <option [value]="currency.code">{{ currency.code }} - {{ currency.name }} ({{ currency.country }})</option>
+          <option [value]="currency.code">
+            {{ currency.code }} - {{ currency.name }} ({{ currency.country }})
+          </option>
         }
       </select>
-      <div class="flex flex-col gap-1.5">
-        <span class="text-sm font-semibold text-olive-deep">Result</span>
-        <div class="result-display">
+      <div class="flex flex-col gap-2">
+        <span class="label">Result</span>
+        <div class="result-box">
           @if (loading()) {
             <svg class="w-5 h-5 animate-spin text-olive-deep" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
             </svg>
           } @else {
-            <span class="result-text">{{ result() | number:'1.2-2' }} {{ toCurrency() }}</span>
+            <span class="text-xl font-bold text-olive-deep"
+              >{{ result() | number: '1.2-2' }} {{ toCurrency() }}</span
+            >
           }
         </div>
       </div>

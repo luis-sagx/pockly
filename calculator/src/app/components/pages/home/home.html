@@ -7,7 +7,7 @@
     </div>
     <!-- Texto derecha -->
     <div class="order-1 max-w-5xl mx-auto md:order-2">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]" style="letter-spacing: -0.75px">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep leading-[1.20]" style="letter-spacing: -0.75px">
         Your calculators, all in one place
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80">
@@ -18,16 +18,16 @@
 
   <!-- Filter Tabs -->
   <div class="flex flex-wrap justify-center gap-2">
-    <button (click)="filter.set('all')" [class]="filter() === 'all' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+    <button (click)="filter.set('all')" [class]="filter() === 'all' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
       All Tools
     </button>
-    <button (click)="filter.set('math')" [class]="filter() === 'math' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+    <button (click)="filter.set('math')" [class]="filter() === 'math' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
       Math
     </button>
-    <button (click)="filter.set('finance')" [class]="filter() === 'finance' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+    <button (click)="filter.set('finance')" [class]="filter() === 'finance' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
       Finance
     </button>
-    <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+    <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
       Utilities
     </button>
   </div>
@@ -35,10 +35,10 @@
   <!-- Tools Grid -->
   <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
     @for (tool of filteredTools(); track tool.id) {
-      <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left transition-all duration-200 border rounded-lg cursor-pointer group bg-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream">
+      <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left border rounded-lg cursor-pointer transition-all hover:border-posthog-orange hover:bg-olive-cream bg-parchment border-olive-border">
         <div class="flex items-center gap-3 mb-3">
-          <div class="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-olive-lightSage group-hover:bg-posthog-orange/10">
-            <fa-icon [icon]="['fas', tool.icon]" class="text-lg transition-colors text-olive-deep group-hover:text-posthog-orange"></fa-icon>
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-olive-lightSage transition-colors group-hover:bg-posthog-orange/10">
+            <fa-icon [icon]="['fas', tool.icon]" class="text-lg text-olive-deep transition-colors"></fa-icon>
           </div>
           <span class="text-base font-bold text-olive-deep">{{ tool.label }}</span>
         </div>

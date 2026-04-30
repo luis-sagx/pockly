@@ -5,12 +5,12 @@
 /* PostHog-inspired warm design system */
 @layer base {
   html {
-    @apply bg-parchment;
+    @apply bg-olive-parchment;
   }
 
   body {
     font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    @apply bg-parchment text-olive-ink antialiased;
+    @apply bg-olive-parchment text-olive-ink antialiased;
   }
 }
 
@@ -22,16 +22,17 @@
 
   /* Card style - warm surface with sage border */
   .card {
-    @apply flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-md bg-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)];
+    @apply flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-md bg-olive-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)];
   }
 
   /* Primary button - dark CTA */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-deep-olive rounded-md transition-all duration-200;
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-olive-deep rounded transition-all duration-200;
   }
 
   .btn-primary:hover {
-    @apply opacity-70 text-amber-gold;
+    @apply opacity-70;
+    color: #F7A501;
   }
 
   .btn-primary:active {
@@ -48,7 +49,7 @@
   }
 
   .btn-secondary:hover {
-    @apply bg-hover-white text-posthog-orange;
+    @apply bg-olive-parchment text-posthog-orange;
   }
 
   /* Ghost button */
@@ -60,21 +61,13 @@
     @apply text-posthog-orange;
   }
 
-  /* Tool card for homepage */
-  .tool-card {
-    @apply flex flex-col items-start p-5 text-left transition-all duration-200 border bg-parchment border-olive-border rounded hover:border-posthog-orange;
+  /* Full button - full width variant */
+  .btn-full {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-olive-deep rounded transition-all duration-200 w-full;
   }
 
-  .tool-card:hover .tool-card-title {
-    @apply text-posthog-orange;
-  }
-
-  .tool-card-title {
-    @apply text-lg font-semibold text-deep-olive transition-colors duration-200;
-  }
-
-  .tool-card-description {
-    @apply text-sm text-muted-olive;
+  .btn-full:hover {
+    @apply opacity-70 text-amber-gold;
   }
 
   /* Input field */
@@ -88,7 +81,7 @@
   }
 
   .drop-zone-text {
-    @apply text-sm font-semibold text-muted-olive;
+    @apply text-sm font-semibold text-olive-ink;
   }
 
   .drop-zone-subtext {
@@ -97,32 +90,32 @@
 
   /* Section heading */
   .section-heading {
-    @apply text-3xl font-bold tracking-tight text-deep-olive;
+    @apply text-3xl font-extrabold tracking-tight text-olive-deep leading-[1.20];
   }
 
-  /* Section subtitle */
+  /* Section subtitle - improved contrast */
   .section-subtitle {
-    @apply mt-1 text-sm text-muted-olive;
+    @apply mt-1 text-base text-olive-ink;
   }
 
-  /* Label text */
+  /* Label text - improved contrast */
   .label {
-    @apply text-sm font-semibold text-olive-ink;
+    @apply text-sm font-semibold text-olive-deep;
   }
 
   /* Select dropdown */
   .select-field {
-    @apply px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-ink focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+    @apply px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50;
   }
 
   /* Tab button active */
   .tab-active {
-    @apply px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded;
+    @apply px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded;
   }
 
   /* Tab button inactive */
   .tab-inactive {
-    @apply px-4 py-2 text-sm font-medium text-muted-olive hover:bg-olive-lightSage rounded transition-colors duration-200;
+    @apply px-4 py-2 text-sm font-medium text-olive-ink hover:bg-olive-cream hover:text-posthog-orange rounded transition-colors duration-200;
   }
 
   /* Image preview container */
@@ -142,7 +135,7 @@
 
   /* Toggle button */
   .toggle {
-    @apply flex items-center gap-2 pb-1 text-sm cursor-pointer text-muted-olive;
+    @apply flex items-center gap-2 pb-1 text-sm cursor-pointer text-olive-ink;
   }
 
   /* Stats bar */
@@ -157,7 +150,27 @@
 
   /* Page title */
   .page-title {
-    @apply text-3xl font-bold tracking-tight text-deep-olive;
+    @apply text-3xl font-extrabold tracking-tight text-olive-deep;
+  }
+
+  /* Description text - improved contrast */
+  .description {
+    @apply text-base leading-relaxed text-olive-ink;
+  }
+
+  /* Small text - improved contrast */
+  .text-small {
+    @apply text-sm text-olive-ink;
+  }
+
+  /* Button text */
+  .btn-text {
+    @apply text-sm font-semibold text-olive-deep;
+  }
+
+  /* Stats text */
+  .stats-text {
+    @apply text-sm text-olive-ink;
   }
 
   /* Animations */

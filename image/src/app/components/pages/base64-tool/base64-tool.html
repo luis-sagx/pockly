@@ -10,7 +10,7 @@
   @if(mode === 'image-to-base64') {
   <div class="flex flex-col gap-3 p-4 bg-olive-cream border border-olive-light rounded">
     <h3 class="label">Select Image</h3>
-    <input type="file" accept="image/*" (change)="onFileSelected($event)" class="block w-full text-sm text-olive-ink file:mr-4 file:rounded file:border-0 file:bg-olive-tan file:px-4 file:py-2 file:font-semibold file:text-deep-olive hover:file:bg-amber-gold file:transition-colors file:duration-200" />
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" class="block w-full text-sm text-olive-deep file:mr-4 file:rounded file:border-0 file:bg-olive-tan file:px-4 file:py-2 file:font-semibold file:text-olive-deep hover:file:bg-amber-gold file:transition-colors file:duration-200" />
   </div>
   }
   @if(mode === 'base64-to-image') {
@@ -30,11 +30,11 @@
     </div>
   </div>
   }
-  @if(hasError){ <p class="error-message"><app-icon name="alert" class="w-4 h-4"></app-icon> <span>{{ errorMessage }}</span></p> }
+  @if(hasError){ <p class="error-message"><fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon> <span>{{ errorMessage }}</span></p> }
   <div class="flex flex-wrap gap-2">
-    @if(mode === 'image-to-base64') { <button (click)="convertImageToBase64()" [disabled]="loading" [class]="loading ? 'btn-primary disabled opacity-50 cursor-not-allowed' : 'btn-primary'">@if(loading) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Processing... } @else { <app-icon name="image" class="w-4 h-4"></app-icon> Convert to Base64 }</button> }
-    @if(mode === 'base64-to-image') { <button (click)="convertBase64ToImage()" [disabled]="loading" [class]="loading ? 'btn-primary disabled opacity-50 cursor-not-allowed' : 'btn-primary'">@if(loading) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Processing... } @else { <app-icon name="image" class="w-4 h-4"></app-icon> Convert to Image }</button> }
-    <button (click)="clear()" class="btn-ghost"><app-icon name="trash" class="w-4 h-4"></app-icon> Clear</button>
+    @if(mode === 'image-to-base64') { <button (click)="convertImageToBase64()" [disabled]="loading" [class]="loading ? 'btn-primary opacity-50 cursor-not-allowed' : 'btn-primary'">@if(loading) { <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> Processing... } @else { <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> Convert to Base64 }</button> }
+    @if(mode === 'base64-to-image') { <button (click)="convertBase64ToImage()" [disabled]="loading" [class]="loading ? 'btn-primary opacity-50 cursor-not-allowed' : 'btn-primary'">@if(loading) { <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> Processing... } @else { <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> Convert to Image }</button> }
+    <button (click)="clear()" class="btn-ghost"><fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> Clear</button>
   </div>
   @if(mode === 'image-to-base64' && base64Result) { <div class="flex flex-col gap-2"><h3 class="label">Base64 result:</h3><app-output-box [text]="base64Result" /></div> }
   @if (mode === 'base64-to-image' && resultImageDataUrl) { <div class="flex flex-col gap-2"><h3 class="label">Preview:</h3><div class="preview-container"><img [src]="resultImageDataUrl" alt="Result" class="object-contain max-w-full max-h-60" /></div></div> }

@@ -1,16 +1,21 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faRepeat, faDownload, faImage, faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-format-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, IconComponent],
+  imports: [CommonModule, FormsModule, FaIconComponent],
   templateUrl: './format-converter.html',
   styleUrl: './format-converter.css',
 })
 export class FormatConverter {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faRepeat, faDownload, faImage, faTrash, faSpinner);
+  }
+
   selectedFiles = signal<File[]>([]);
   originalPreview = signal('');
   originalSizeKb = signal(0);
@@ -143,4 +148,3 @@ export class FormatConverter {
   private blobToDataUrl(blob: Blob): Promise<string> { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve((reader.result as string) ?? ''); reader.onerror = () => reject(new Error('blob-read-error')); reader.readAsDataURL(blob); }); }
   private dataUrlToImage(dataUrl: string): Promise<HTMLImageElement> { return new Promise((resolve, reject) => { const image = new Image(); image.onload = () => resolve(image); image.onerror = () => reject(new Error('invalid-image')); image.src = dataUrl; }); }
 }
-

@@ -1,15 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faScissors, faDownload, faImage, faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-background-remover',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, FaIconComponent],
   templateUrl: './background-remover.html',
   styleUrl: './background-remover.css',
 })
 export class BackgroundRemover {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faScissors, faDownload, faImage, faTrash, faSpinner);
+  }
+
   originalPreview = signal('');
   resultDataUrl = signal('');
   originalName = signal('');

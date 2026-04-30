@@ -1,13 +1,27 @@
-<nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-cream border-olive-border">
-  <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
-    <a class="flex items-center gap-3 transition-colors duration-200 hover:text-posthog-orange" href="/">
-      <span class="font-bold text-2xl text-deep-olive tracking-tight">IMAGE</span>
-      <img src="logo.png" alt="logo" class="w-10 h-10 -m-3" />
-      <span class="font-bold text-2xl text-deep-olive tracking-tight">Tools</span>
+<nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
+  <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
+    <!-- Logo a la izquierda -->
+    <a class="flex items-center gap-3 group" href="/">
+      <img src="logo.png" alt="logo" class="w-auto h-14" />
     </a>
-    <a href="/" class="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-muted-olive transition-colors duration-200 hover:text-posthog-orange">
-      <app-icon name="grid" class="w-4 h-4 text-posthog-orange"></app-icon>
-      All Tools
-    </a>
+
+    <!-- Nav Links a la derecha -->
+    <div class="flex items-center gap-1">
+      <a href="/" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+        Home
+      </a>
+      <a href="/base64" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+        Base64
+      </a>
+      <a href="/background-remover" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+        Remove BG
+      </a>
+      <a href="/image-resize" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+        Resize
+      </a>
+      <a href="/format-converter" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+        Convert
+      </a>
+    </div>
   </div>
 </nav>

@@ -2,18 +2,23 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import imageCompression from 'browser-image-compression';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faExpand, faDownload, faImage, faTrash, faSpinner, faGear } from '@fortawesome/free-solid-svg-icons';
 
 type ResizeMode = 'dimensions' | 'weight';
 
 @Component({
   selector: 'app-image-resize',
   standalone: true,
-  imports: [CommonModule, FormsModule, IconComponent],
+  imports: [CommonModule, FormsModule, FaIconComponent],
   templateUrl: './image-resize.html',
   styleUrl: './image-resize.css',
 })
 export class ImageResize {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faExpand, faDownload, faImage, faTrash, faSpinner, faGear);
+  }
+
   mode = signal<ResizeMode>('dimensions');
   width = signal(800);
   height = signal(600);

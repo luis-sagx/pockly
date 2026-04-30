@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [IconComponent],
+  imports: [FaIconComponent],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
-export class Footer {}
+export class Footer {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faLink);
+  }
+}

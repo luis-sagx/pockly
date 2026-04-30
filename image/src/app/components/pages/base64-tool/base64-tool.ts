@@ -2,16 +2,21 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OutputBox } from '../../ui/output-box/output-box';
 import { InputBox } from '../../ui/input-box/input-box';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faImage, faTrash, faSpinner, faCircleExclamation, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-base64-tool',
   standalone: true,
-  imports: [OutputBox, InputBox, FormsModule, IconComponent],
+  imports: [OutputBox, InputBox, FormsModule, FaIconComponent],
   templateUrl: './base64-tool.html',
   styleUrl: './base64-tool.css',
 })
 export class Base64Tool {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faImage, faTrash, faSpinner, faCircleExclamation, faCheck);
+  }
+
   mode: 'image-to-base64' | 'base64-to-image' = 'image-to-base64';
   selectedFile: File | null = null;
   base64Input = '';

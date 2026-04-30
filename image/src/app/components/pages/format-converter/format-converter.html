@@ -5,9 +5,9 @@
   </div>
   @if (!originalPreview()) {
   <div class="stats-bar">
-    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-ink">Target Format<select [value]="targetFormat()" (change)="targetFormat.set($any($event.target).value)" class="select-field"><option value="png">PNG</option><option value="jpeg">JPEG</option><option value="webp">WEBP</option><option value="bmp">BMP</option><option value="svg">SVG</option><option value="pdf">PDF</option></select></label>
-    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-ink">Quality<select [value]="quality()" (change)="quality.set($any($event.target).value)" class="select-field"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></label>
-    <span class="pb-2.5 text-sm text-muted-olive">Mode:</span>
+    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Target Format<select [value]="targetFormat()" (change)="targetFormat.set($any($event.target).value)" class="select-field"><option value="png">PNG</option><option value="jpeg">JPEG</option><option value="webp">WEBP</option><option value="bmp">BMP</option><option value="svg">SVG</option><option value="pdf">PDF</option></select></label>
+    <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep">Quality<select [value]="quality()" (change)="quality.set($any($event.target).value)" class="select-field"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></label>
+    <span class="pb-2.5 text-sm text-olive-ink">Mode:</span>
     <button (click)="setFileMode('single')" [class]="fileMode() === 'single' ? 'tab-active' : 'tab-inactive'">Single</button>
     <button (click)="setFileMode('multiple')" [class]="fileMode() === 'multiple' ? 'tab-active' : 'tab-inactive'">Multiple</button>
   </div>
@@ -18,27 +18,27 @@
     <input type="file" accept="image/*" [multiple]="fileMode() === 'multiple'" class="hidden" (change)="onFileSelected($event)" />
   </label>
   }
-  @if (error()) { <p class="error-message"><app-icon name="alert" class="w-4 h-4"></app-icon> {{ error() }}</p> }
+  @if (error()) { <p class="error-message"><fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon> {{ error() }}</p> }
   @if (originalPreview()) {
   <div class="stats-bar">
-    <p class="text-sm text-muted-olive">Target: <span class="font-semibold text-posthog-orange uppercase">{{ targetFormat() }}</span> · Quality: <span class="capitalize text-posthog-orange">{{ quality() }}</span></p>
-    <p class="text-sm text-muted-olive">Selected: {{ selectedFiles().length }} image(s)</p>
+    <p class="text-sm text-olive-ink">Target: <span class="font-semibold text-posthog-orange uppercase">{{ targetFormat() }}</span> · Quality: <span class="capitalize text-posthog-orange">{{ quality() }}</span></p>
+    <p class="text-sm text-olive-ink">Selected: {{ selectedFiles().length }} image(s)</p>
   </div>
   <div class="grid gap-4 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <p class="label">Original <span class="font-normal text-muted-olive">({{ originalSizeKb() }} KB)</span></p>
+      <p class="label">Original <span class="font-normal text-olive-ink">({{ originalSizeKb() }} KB)</span></p>
       <img [src]="originalPreview()" alt="original" class="object-contain w-full border border-olive-border rounded max-h-96 bg-olive-cream" />
     </div>
     <div class="flex flex-col gap-2">
-      <p class="label">Result <span class="font-normal text-muted-olive uppercase">{{ targetFormat() }}</span></p>
-      @if (resultDataUrl()) { <img [src]="resultDataUrl()" alt="converted" class="object-contain w-full border border-olive-border rounded max-h-96 bg-olive-cream" /> } @else if (loading()) { <div class="flex flex-col items-center justify-center w-full gap-3 border h-96 rounded-xl border-olive-border bg-olive-cream text-muted-olive"><svg class="spinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" /></svg><span class="text-sm">Converting...</span></div> } @else { <div class="flex items-center justify-center w-full text-sm border border-dashed h-96 rounded-xl border-olive-light bg-olive-cream/40 text-muted-olive">The result will appear here</div> }
+      <p class="label">Result <span class="font-normal text-olive-ink uppercase">{{ targetFormat() }}</span></p>
+      @if (resultDataUrl()) { <img [src]="resultDataUrl()" alt="converted" class="object-contain w-full border border-olive-border rounded max-h-96 bg-olive-cream" /> } @else if (loading()) { <div class="flex flex-col items-center justify-center w-full gap-3 border h-96 rounded-xl border-olive-border bg-olive-cream text-olive-ink"><fa-icon [icon]="['fas', 'spinner']" class="spinner fa-spin"></fa-icon><span class="text-sm">Converting...</span></div> } @else { <div class="flex items-center justify-center w-full text-sm border border-dashed h-96 rounded-xl border-olive-light bg-olive-cream/40 text-olive-ink">The result will appear here</div> }
     </div>
   </div>
   <div class="flex flex-wrap gap-2">
-    <button (click)="convertFormat()" [disabled]="loading()" class="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">@if (loading()) { <app-icon name="spinner" class="w-4 h-4 animate-spin"></app-icon> Converting... } @else { <app-icon name="repeat" class="w-4 h-4"></app-icon> Convert & Download All }</button>
-    @if (resultDataUrl() && convertedCount() > 0) { <button (click)="downloadAll()" class="btn-primary"><app-icon name="download" class="w-4 h-4"></app-icon> Download all ({{ convertedCount() }})</button> }
-    <label class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-deep-olive transition border border-olive-tan rounded bg-olive-tan hover:text-posthog-orange cursor-pointer"><app-icon name="image" class="w-4 h-4"></app-icon> Change Image <input type="file" accept="image/*" [multiple]="fileMode() === 'multiple'" class="hidden" (change)="onFileSelected($event)" /></label>
-    <button (click)="clear()" class="btn-ghost"><app-icon name="trash" class="w-4 h-4"></app-icon> Clear</button>
+    <button (click)="convertFormat()" [disabled]="loading()" class="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">@if (loading()) { <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> Converting... } @else { <fa-icon [icon]="['fas', 'repeat']" class="w-4 h-4"></fa-icon> Convert & Download All }</button>
+    @if (resultDataUrl() && convertedCount() > 0) { <button (click)="downloadAll()" class="btn-primary"><fa-icon [icon]="['fas', 'download']" class="w-4 h-4"></fa-icon> Download all ({{ convertedCount() }})</button> }
+    <label class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-deep transition border border-olive-tan rounded bg-olive-tan hover:text-posthog-orange cursor-pointer"><fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> Change Image <input type="file" accept="image/*" [multiple]="fileMode() === 'multiple'" class="hidden" (change)="onFileSelected($event)" /></label>
+    <button (click)="clear()" class="btn-ghost"><fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> Clear</button>
   </div>
   }
 </div>

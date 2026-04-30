@@ -1,13 +1,19 @@
 import { Component, Input, signal } from '@angular/core';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-copy-button',
-  imports: [IconComponent],
+  standalone: true,
+  imports: [FaIconComponent],
   templateUrl: './copy-button.html',
   styleUrl: './copy-button.css'
 })
 export class CopyButton {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faCopy, faCheck);
+  }
+
   @Input() textToCopy: string = '';
   copied = signal(false);
   copyText() {

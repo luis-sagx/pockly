@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Sistema de diseño PostHog-inspired (DESIGN.md)
         parchment: '#fdfdf8',
         olive: {
           DEFAULT: '#4d4f46',
@@ -23,12 +22,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"IBM Plex Sans Variable"', 'IBM Plex Sans', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
-        body: ['"IBM Plex Sans Variable"', 'IBM Plex Sans', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New'],
-      },
-      borderRadius: {
-        DEFAULT: '4px',
+        display: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Arial'],
+        body: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Arial'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas'],
       },
     },
   },

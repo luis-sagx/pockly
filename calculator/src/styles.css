@@ -4,117 +4,33 @@
 
 @layer base {
   html {
-    @apply bg-parchment;
+    @apply bg-zinc-900;
   }
 
   body {
-    font-family: "IBM Plex Sans Variable", "IBM Plex Sans", -apple-system, system-ui, Avenir Next, Avenir, "Segoe UI", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, Arial, sans-serif;
-    @apply bg-parchment text-olive-ink antialiased;
-  }
-
-  /* Focus ring - accessibility */
-  :focus-visible {
-    @apply outline-none ring-2 ring-blue-500/50;
-  }
-
-  /* Custom scrollbar - warm sage */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-olive-cream;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-olive-border rounded;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-olive-light;
+    font-family:
+      'Space Grotesk',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+    @apply antialiased bg-zinc-900 text-slate-100;
   }
 }
 
 @layer components {
-  /* Page shell - warm parchment container */
   .page-shell {
-    @apply w-full max-w-5xl px-4 sm:px-6 pt-24 pb-12 mx-auto;
+    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
   }
 
-  /* Main card container - bordered, warm */
   .page-content {
-    @apply flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-md bg-parchment;
+    @apply flex flex-col gap-6 p-6 border border-zinc-800 rounded-3xl bg-zinc-950/60;
   }
 
-  /* Section heading - bold olive */
   .page-title {
-    @apply text-3xl font-bold tracking-tight text-olive-deep leading-[1.20];
-  }
-
-  /* Sub-heading */
-  .section-title {
-    @apply text-2xl font-bold text-olive-deep leading-[1.33];
-  }
-
-  /* Body text - generous line-height */
-  .text-body {
-    @apply text-base leading-[1.50];
-  }
-
-  /* Tool card - bordered, hover orange flash */
-  .tool-card {
-    @apply flex flex-col items-start p-5 text-left transition border bg-parchment border-olive-border rounded-md;
-    @apply hover:border-olive-border hover:bg-parchment;
-    @apply hover:*:text-posthog-orange;
-  }
-
-  /* Tool card text */
-  .tool-card-title {
-    @apply text-lg font-semibold text-olive-deep leading-[1.40];
-    @apply group-hover:text-posthog-orange transition-colors duration-150;
-  }
-
-  .tool-card-desc {
-    @apply text-sm text-olive-ink/70 leading-[1.50];
-  }
-
-  /* Input fields - sage cream background */
-  .input-field {
-    @apply w-full px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50 placeholder:text-olive-placeholder;
-  }
-
-  /* Select fields */
-  .select-field {
-    @apply w-full px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50 cursor-pointer;
-  }
-
-  /* Primary button - dark near-black */
-  .btn-primary {
-    @apply px-[10px] py-2 text-sm font-semibold text-white bg-olive-deep rounded-md transition-opacity duration-150;
-    @apply hover:opacity-70 hover:text-posthog-amber;
-    @apply active:opacity-80 active:scale-[0.98];
-  }
-
-  /* Secondary button - sage light */
-  .btn-secondary {
-    @apply px-[10px] py-2 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-md transition-colors duration-150;
-    @apply hover:bg-olive-cream hover:text-posthog-orange;
-  }
-
-  /* Tab button - sage light style */
-  .tab-btn {
-    @apply px-4 py-2 text-sm font-medium bg-olive-cream text-olive-ink border border-olive-border rounded transition-colors duration-150;
-    @apply hover:bg-olive-lightSage hover:text-posthog-orange;
-  }
-
-  .tab-btn-active {
-    @apply px-4 py-2 text-sm font-medium bg-olive-deep text-white rounded;
-  }
-
-  /* Result display - prominent */
-  .result-display {
-    @apply p-3 bg-parchment border border-olive-border rounded;
-  }
-
-  .result-text {
-    @apply text-2xl font-bold text-olive-deep;
+    @apply text-2xl font-semibold text-slate-100;
   }
 }

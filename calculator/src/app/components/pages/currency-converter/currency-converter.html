@@ -1,12 +1,18 @@
-<div class="card">
+<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
   <div>
-    <h2 class="section-heading">Currency Converter</h2>
-    <p class="section-subtitle">Convert between currencies using live exchange rates.</p>
+    <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">
+      Currency Converter
+    </h2>
+    <p class="section-subtitle text-sm text-olive-ink/70">
+      Convert between currencies using live exchange rates.
+    </p>
   </div>
 
   <!-- Error Message -->
   @if (error()) {
-    <p class="error-message">
+    <p
+      class="error-message flex items-center gap-2 rounded-md border border-posthog-orange/40 bg-olive-cream px-3 py-2 text-sm text-posthog-orange"
+    >
       <fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon>
       <span>{{ error() }}</span>
     </p>
@@ -15,12 +21,14 @@
   <!-- Converter Section -->
   <div class="flex flex-col gap-6 lg:flex-row">
     <!-- From -->
-    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+    <div
+      class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
+    >
       <span class="label">From</span>
       <select
         [ngModel]="fromCurrency()"
         (ngModelChange)="onFromCurrencyChange($event)"
-        class="select-field"
+        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (currency of currencies; track currency.code) {
           <option [value]="currency.code">
@@ -36,7 +44,7 @@
           min="0"
           [value]="amount()"
           (input)="onAmountChange(+$any($event.target).value)"
-          class="py-4 text-xl font-bold input-field text-olive-deep"
+          class="input-field rounded-md border border-olive-border bg-parchment px-3 py-3 text-xl font-bold text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
         />
       </div>
     </div>
@@ -45,19 +53,21 @@
     <div class="flex items-center justify-center gap-2 lg:flex-col">
       <button
         (click)="swap()"
-        class="flex items-center justify-center w-10 h-10 transition border-2 rounded-full border-olive-border text-olive-ink hover:text-posthog-orange hover:border-posthog-orange"
+        class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-olive-border bg-parchment text-olive-ink transition hover:border-posthog-orange hover:text-posthog-orange"
       >
         <fa-icon [icon]="['fas', 'arrow-right-arrow-left']" class="w-4 h-4"></fa-icon>
       </button>
     </div>
 
     <!-- To -->
-    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+    <div
+      class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
+    >
       <span class="label">To</span>
       <select
         [ngModel]="toCurrency()"
         (ngModelChange)="onToCurrencyChange($event)"
-        class="select-field"
+        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (currency of currencies; track currency.code) {
           <option [value]="currency.code">
@@ -67,7 +77,7 @@
       </select>
       <div class="flex flex-col gap-2">
         <span class="label">Result</span>
-        <div class="result-box">
+        <div class="result-box rounded-md border border-olive-border bg-parchment px-4 py-3">
           @if (loading()) {
             <svg class="w-5 h-5 animate-spin text-olive-deep" fill="none" viewBox="0 0 24 24">
               <circle

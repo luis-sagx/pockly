@@ -1,61 +1,127 @@
-<div class="card">
+<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
   <div>
-    <h2 class="section-heading">Percentage Calculator</h2>
-    <p class="section-subtitle">Calculate percentages instantly with three modes.</p>
+    <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">
+      Percentage Calculator
+    </h2>
+    <p class="section-subtitle text-sm text-olive-ink/70">
+      Calculate percentages instantly with three modes.
+    </p>
   </div>
 
   <!-- Mode Tabs -->
-  <div class="flex flex-wrap gap-2 p-1 bg-olive-cream border border-olive-border rounded">
-    <button (click)="setMode('percent-of')" [class]="mode() === 'percent-of' ? 'tab-active' : 'tab-inactive'">X% of Y</button>
-    <button (click)="setMode('what-percent')" [class]="mode() === 'what-percent' ? 'tab-active' : 'tab-inactive'">X is what % of Y</button>
-    <button (click)="setMode('change')" [class]="mode() === 'change' ? 'tab-active' : 'tab-inactive'">% Change</button>
+  <div class="flex flex-wrap gap-2 rounded border border-olive-border bg-olive-cream p-1">
+    <button
+      (click)="setMode('percent-of')"
+      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
+      [class]="mode() === 'percent-of' ? 'tab-active' : 'tab-inactive'"
+    >
+      X% of Y
+    </button>
+    <button
+      (click)="setMode('what-percent')"
+      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
+      [class]="mode() === 'what-percent' ? 'tab-active' : 'tab-inactive'"
+    >
+      X is what % of Y
+    </button>
+    <button
+      (click)="setMode('change')"
+      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
+      [class]="mode() === 'change' ? 'tab-active' : 'tab-inactive'"
+    >
+      % Change
+    </button>
   </div>
 
   <!-- Input Section -->
-  <div class="flex flex-wrap items-end gap-4 p-4 bg-olive-cream border border-olive-border rounded">
+  <div
+    class="flex flex-wrap items-end gap-4 rounded border border-olive-border bg-olive-cream p-4 text-olive-deep"
+  >
     @switch (mode()) {
       @case ('percent-of') {
         <div class="flex flex-col gap-2">
           <label class="label">Percentage (%)</label>
-          <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="X" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="x()"
+            (input)="onXChange(+$any($event.target).value)"
+            placeholder="X"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
         <span class="pb-2 text-olive-ink">% of</span>
         <div class="flex flex-col gap-2">
           <label class="label">Number</label>
-          <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="Y" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="y()"
+            (input)="onYChange(+$any($event.target).value)"
+            placeholder="Y"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
       }
       @case ('what-percent') {
         <div class="flex flex-col gap-2">
           <label class="label">Number</label>
-          <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="X" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="x()"
+            (input)="onXChange(+$any($event.target).value)"
+            placeholder="X"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
         <span class="pb-2 text-olive-ink">is what % of</span>
         <div class="flex flex-col gap-2">
           <label class="label">Total</label>
-          <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="Y" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="y()"
+            (input)="onYChange(+$any($event.target).value)"
+            placeholder="Y"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
       }
       @case ('change') {
         <div class="flex flex-col gap-2">
           <label class="label">From</label>
-          <input type="number" [value]="x()" (input)="onXChange(+$any($event.target).value)" placeholder="Original" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="x()"
+            (input)="onXChange(+$any($event.target).value)"
+            placeholder="Original"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
         <span class="pb-2 text-olive-ink">to</span>
         <div class="flex flex-col gap-2">
           <label class="label">To</label>
-          <input type="number" [value]="y()" (input)="onYChange(+$any($event.target).value)" placeholder="New" class="input-field w-32" />
+          <input
+            type="number"
+            [value]="y()"
+            (input)="onYChange(+$any($event.target).value)"
+            placeholder="New"
+            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+          />
         </div>
       }
     }
   </div>
 
   <!-- Result Display -->
-  <div class="flex flex-col items-center justify-center p-6 bg-olive-cream border border-olive-border rounded">
+  <div
+    class="flex flex-col items-center justify-center rounded border border-olive-border bg-parchment p-6"
+  >
     <p class="mb-2 text-sm font-semibold text-olive-ink">Result</p>
-    <p class="text-4xl sm:text-5xl font-bold text-olive-deep">{{ result() | number:'1.2-2' }}%</p>
+    <p class="text-4xl font-bold text-olive-deep sm:text-5xl">{{ result() | number: '1.2-2' }}%</p>
     @if (mode() === 'change' && (x() || y())) {
-      <span class="mt-2 text-sm font-semibold uppercase" [class]="result() > 0 ? 'text-green-600' : result() < 0 ? 'text-red-600' : 'text-olive-ink'">{{ changeLabel() }}</span>
+      <span
+        class="mt-2 text-sm font-semibold uppercase"
+        [class]="result() > 0 ? 'text-green-600' : result() < 0 ? 'text-red-600' : 'text-olive-ink'"
+        >{{ changeLabel() }}</span
+      >
     }
   </div>
 </div>

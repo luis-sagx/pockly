@@ -1,33 +1,71 @@
 <div class="flex flex-col gap-6 px-4 pb-12">
   <!-- Hero Section -->
-  <div class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12">
+  <div
+    class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12"
+  >
     <!-- Imagen izquierda -->
     <div class="flex-shrink-0 order-2 md:order-1">
-      <img src="/pet.png" alt="Calculator illustration" class="object-contain w-48 h-48 md:w-64 md:h-64" />
+      <img
+        src="/pet.png"
+        alt="Calculator illustration"
+        class="object-contain w-48 h-48 md:w-64 md:h-64"
+      />
     </div>
     <!-- Texto derecha -->
     <div class="order-1 max-w-5xl mx-auto md:order-2">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep leading-[1.20]" style="letter-spacing: -0.75px">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-olive-deep leading-[1.20]"
+        style="letter-spacing: -0.75px"
+      >
         Your calculators, all in one place
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80">
-        Powerful and simple calculators to boost your productivity. Calculate percentages, convert currencies, and convert units. Completely free, no registration required.
+        Powerful and simple calculators to boost your productivity. Calculate percentages, convert
+        currencies, and convert units. Completely free, no registration required.
       </p>
     </div>
   </div>
 
   <!-- Filter Tabs -->
   <div class="flex flex-wrap justify-center gap-2">
-    <button (click)="filter.set('all')" [class]="filter() === 'all' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
+    <button
+      (click)="filter.set('all')"
+      [class]="
+        filter() === 'all'
+          ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all'
+          : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
+      "
+    >
       All Tools
     </button>
-    <button (click)="filter.set('math')" [class]="filter() === 'math' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
+    <button
+      (click)="filter.set('math')"
+      [class]="
+        filter() === 'math'
+          ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all'
+          : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
+      "
+    >
       Math
     </button>
-    <button (click)="filter.set('finance')" [class]="filter() === 'finance' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
+    <button
+      (click)="filter.set('finance')"
+      [class]="
+        filter() === 'finance'
+          ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all'
+          : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
+      "
+    >
       Finance
     </button>
-    <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all' : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'">
+    <button
+      (click)="filter.set('utilities')"
+      [class]="
+        filter() === 'utilities'
+          ? 'px-4 py-2 text-sm font-semibold bg-olive-deep text-white rounded-lg transition-all'
+          : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
+      "
+    >
       Utilities
     </button>
   </div>
@@ -35,10 +73,18 @@
   <!-- Tools Grid -->
   <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
     @for (tool of filteredTools(); track tool.id) {
-      <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left border rounded-lg cursor-pointer transition-all hover:border-posthog-orange hover:bg-olive-cream bg-parchment border-olive-border">
+      <button
+        (click)="navigate(tool.path)"
+        class="group flex flex-col items-start p-6 text-left border rounded-lg cursor-pointer transition-all hover:border-posthog-orange hover:bg-olive-cream bg-parchment border-olive-border"
+      >
         <div class="flex items-center gap-3 mb-3">
-          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-olive-lightSage transition-colors group-hover:bg-posthog-orange/10">
-            <fa-icon [icon]="['fas', tool.icon]" class="text-lg text-olive-deep transition-colors"></fa-icon>
+          <div
+            class="flex items-center justify-center w-10 h-10 rounded-lg bg-olive-lightSage transition-colors group-hover:bg-posthog-orange/10"
+          >
+            <fa-icon
+              [icon]="['fas', tool.icon]"
+              class="text-lg text-olive-deep transition-colors group-hover:text-posthog-orange"
+            ></fa-icon>
           </div>
           <span class="text-base font-bold text-olive-deep">{{ tool.label }}</span>
         </div>

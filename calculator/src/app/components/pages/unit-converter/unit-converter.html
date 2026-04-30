@@ -1,14 +1,15 @@
-<div class="card">
+<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
   <div>
-    <h2 class="section-heading">Unit Converter</h2>
-    <p class="section-subtitle">Convert between units instantly.</p>
+    <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">Unit Converter</h2>
+    <p class="section-subtitle text-sm text-olive-ink/70">Convert between units instantly.</p>
   </div>
 
   <!-- Category Tabs -->
-  <div class="flex flex-wrap gap-2 p-1 border rounded bg-olive-cream border-olive-border">
+  <div class="flex flex-wrap gap-2 rounded border border-olive-border bg-olive-cream p-1">
     @for (cat of categories; track cat.key) {
       <button
         (click)="setCategory($any(cat.key))"
+        class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
         [class]="category() === cat.key ? 'tab-active' : 'tab-inactive'"
       >
         {{ cat.name }}
@@ -19,13 +20,15 @@
   <!-- Converter Section -->
   <div class="flex flex-col gap-6 lg:flex-row">
     <!-- Left: Input -->
-    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+    <div
+      class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
+    >
       <span class="label">From</span>
 
       <select
         [ngModel]="fromUnit()"
         (ngModelChange)="onFromUnitChange($event)"
-        class="select-field"
+        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (unit of unitOptions() | keyvalue; track unit.key) {
           <option [value]="unit.key">{{ unit.value.name }} ({{ unit.value.symbol }})</option>
@@ -39,7 +42,7 @@
           step="any"
           [value]="amount()"
           (input)="onAmountChange(+$any($event.target).value)"
-          class="py-4 text-xl font-bold input-field text-olive-deep"
+          class="input-field rounded-md border border-olive-border bg-parchment px-3 py-3 text-xl font-bold text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
         />
       </div>
     </div>
@@ -48,17 +51,23 @@
     <div class="flex items-center justify-center gap-2 lg:flex-col">
       <button
         (click)="swap()"
-        class="flex items-center justify-center w-10 h-10 transition border-2 rounded-full border-olive-border text-olive-ink hover:text-posthog-orange hover:border-posthog-orange"
+        class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-olive-border bg-parchment text-olive-ink transition hover:border-posthog-orange hover:text-posthog-orange"
       >
         <fa-icon [icon]="['fas', 'arrow-right-arrow-left']" class="w-4 h-4"></fa-icon>
       </button>
     </div>
 
     <!-- Right: Result -->
-    <div class="flex flex-col flex-1 gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+    <div
+      class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
+    >
       <span class="label">To</span>
 
-      <select [ngModel]="toUnit()" (ngModelChange)="onToUnitChange($event)" class="select-field">
+      <select
+        [ngModel]="toUnit()"
+        (ngModelChange)="onToUnitChange($event)"
+        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+      >
         @for (unit of unitOptions() | keyvalue; track unit.key) {
           <option [value]="unit.key">{{ unit.value.name }} ({{ unit.value.symbol }})</option>
         }
@@ -66,7 +75,7 @@
 
       <div class="flex flex-col gap-2">
         <span class="label">Result</span>
-        <div class="result-box">
+        <div class="result-box rounded-md border border-olive-border bg-parchment px-4 py-3">
           <span class="text-xl font-bold text-olive-deep">
             {{ result() | number: getDecimals() }} {{ toUnit() }}
           </span>
@@ -76,12 +85,13 @@
   </div>
 
   <!-- Decimal precision selector -->
-  <div class="flex items-center gap-4 p-4 border rounded bg-olive-cream border-olive-border">
+  <div class="flex items-center gap-4 rounded border border-olive-border bg-olive-cream p-4">
     <span class="label">Decimal precision:</span>
     <div class="flex gap-2">
       @for (d of [0, 1, 2, 3, 4, 6]; track d) {
         <button
           (click)="onDecimalsChange(d)"
+          class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
           [class]="decimals() === d ? 'tab-active' : 'tab-inactive'"
         >
           {{ d }}

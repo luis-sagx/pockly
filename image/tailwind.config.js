@@ -5,28 +5,21 @@ export default {
     extend: {
       colors: {
         // Sistema de diseño PostHog-inspired (DESIGN.md)
-        parchment: "#fdfdf8",         // Warm Parchment - page background
         olive: {
-          ink: "#4d4f46",            // Primary text - olive-gray cálido
-          deep: "#23251d",          // Link text, high-emphasis headings
-          border: "#bfc1b7",         // Primary border - sage-tinted gray
-          light: "#b6b7af",          // Secondary border
-          placeholder: "#9ea096",    // Placeholder text, disabled
-          cream: "#eeefe9",          // Input backgrounds, secondary surfaces
-          lightSage: "#e5e7e0",      // Button backgrounds, tertiary surfaces
-          tan: "#d4c9b8",            // Featured button backgrounds
+          ink: "#4d4f46",      // Primary text - olive-gray cálido
+          deep: "#23251d",      // Link text, high-emphasis headings
+          border: "#bfc1b7",   // Primary border - sage-tinted gray
+          light: "#b6b7af",     // Secondary border
+          placeholder: "#9ea096", // Placeholder text, disabled
+          cream: "#eeefe9",     // Input backgrounds, secondary surfaces
+          lightSage: "#e5e7e0", // Button backgrounds, tertiary surfaces
+          parchment: "#fdfdf8", // Warm Parchment - page background
+          tan: "#d4c9b8",      // Featured button backgrounds
         },
-        "olive-cream": "#eeefe9",
-        "olive-lightSage": "#e5e7e0",
-        "deep-olive": "#23251d",
-        "muted-olive": "#65675e",
-        "hover-white": "#f4f4f4",
-        "olive-tan": "#d4c9b8",
         posthog: {
-          orange: "#F54E00",         // Hidden brand accent - hover surprises
-          amber: "#F7A501",          // Secondary hover accent
+          orange: "#F54E00",   // Hidden brand accent - hover surprises
+          amber: "#F7A501",    // Secondary hover accent
         },
-        "amber-gold": "#F7A501",
         tomato: {
           50: "#fdf8f5",
           100: "#f9ede4",
@@ -39,8 +32,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
-        body: ['"IBM Plex Sans"', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
+        display: ['"IBM Plex Sans Variable"', 'IBM Plex Sans', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
+        body: ['"IBM Plex Sans Variable"', 'IBM Plex Sans', '-apple-system', 'system-ui', 'Avenir Next', 'Avenir', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Arial'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New'],
       },
     },

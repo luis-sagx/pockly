@@ -1,7 +1,7 @@
 import { Component, signal, computed, OnInit } from '@angular/core';
 import { CommonModule, DecimalPipe, KeyValuePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 type UnitCategory = 'length' | 'weight' | 'temperature' | 'volume' | 'speed';
 
@@ -19,7 +19,7 @@ const UNIT_DEFINITIONS: { [key in UnitCategory]: UnitMap } = {
 @Component({
   selector: 'app-unit-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, DecimalPipe, KeyValuePipe, IconComponent],
+  imports: [CommonModule, FormsModule, DecimalPipe, KeyValuePipe, FaIconComponent],
   templateUrl: './unit-converter.html',
   styleUrl: './unit-converter.css',
 })

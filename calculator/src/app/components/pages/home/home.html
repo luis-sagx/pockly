@@ -1,24 +1,49 @@
-<div class="flex flex-col items-center justify-center min-h-[70vh] gap-10 p-6">
+<div class="flex flex-col gap-6 px-4 pb-12">
   <!-- Hero Section -->
-  <div class="text-center max-w-2xl">
-    <h1 class="text-[30px] font-extrabold tracking-tight text-olive-deep leading-[1.20] mb-4">
-      Calculator Tools
-    </h1>
-    <p class="text-lg text-olive-ink leading-[1.50]">
-      Free online calculators — no signup, no ads.
-    </p>
+  <div class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12">
+    <!-- Imagen izquierda -->
+    <div class="flex-shrink-0 order-2 md:order-1">
+      <img src="/pet.png" alt="Calculator illustration" class="object-contain w-48 h-48 md:w-64 md:h-64" />
+    </div>
+    <!-- Texto derecha -->
+    <div class="order-1 max-w-5xl mx-auto md:order-2">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]" style="letter-spacing: -0.75px">
+        Your calculators, all in one place
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-olive-ink/80">
+        Powerful and simple calculators to boost your productivity. Calculate percentages, convert currencies, and convert units. Completely free, no registration required.
+      </p>
+    </div>
   </div>
 
-  <!-- Tool Cards Grid -->
-  <div class="grid gap-4 w-full max-w-2xl sm:grid-cols-1">
-    @for (tool of toolList; track tool.path) {
-    <button (click)="navigate(tool.path)" class="tool-card group">
-      <div class="flex items-center gap-3 mb-2">
-        <app-icon [name]="tool.icon" class="w-5 h-5 text-olive-deep transition-colors group-hover:text-posthog-orange"></app-icon>
-        <span class="tool-card-title">{{ tool.label }}</span>
-      </div>
-      <p class="tool-card-desc">{{ tool.description }}</p>
+  <!-- Filter Tabs -->
+  <div class="flex flex-wrap justify-center gap-2">
+    <button (click)="filter.set('all')" [class]="filter() === 'all' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+      All Tools
     </button>
+    <button (click)="filter.set('math')" [class]="filter() === 'math' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+      Math
+    </button>
+    <button (click)="filter.set('finance')" [class]="filter() === 'finance' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+      Finance
+    </button>
+    <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+      Utilities
+    </button>
+  </div>
+
+  <!-- Tools Grid -->
+  <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+    @for (tool of filteredTools(); track tool.id) {
+      <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left transition-all duration-200 border rounded-lg cursor-pointer group bg-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-olive-lightSage group-hover:bg-posthog-orange/10">
+            <fa-icon [icon]="['fas', tool.icon]" class="text-lg transition-colors text-olive-deep group-hover:text-posthog-orange"></fa-icon>
+          </div>
+          <span class="text-base font-bold text-olive-deep">{{ tool.label }}</span>
+        </div>
+        <p class="text-sm text-olive-ink/70">{{ tool.description }}</p>
+      </button>
     }
   </div>
 </div>

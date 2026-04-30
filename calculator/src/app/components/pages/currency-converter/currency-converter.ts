@@ -1,7 +1,7 @@
 import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 interface Rates { [key: string]: number; }
 const API_URL = 'https://open.er-api.com/v6/latest/USD';
@@ -25,7 +25,7 @@ const COMMON_CURRENCIES = [
 @Component({
   selector: 'app-currency-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, DecimalPipe, IconComponent],
+  imports: [CommonModule, FormsModule, DecimalPipe, FaIconComponent],
   templateUrl: './currency-converter.html',
   styleUrl: './currency-converter.css',
 })

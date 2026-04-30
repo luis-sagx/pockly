@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IconComponent } from '../../ui/icon/icon';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [IconComponent],
+  imports: [],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })

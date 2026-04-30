@@ -1,22 +1,69 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { SeoService } from '../../../services/seo.service';
-import { IconComponent } from '../../ui/icon/icon';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
+interface Tool {
+  id: string;
+  label: string;
+  path: string;
+  icon: string;
+  description: string;
+  category: string;
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [IconComponent],
+  imports: [FaIconComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
   private seo = inject(SeoService);
 
-  toolList = [
-    { label: 'Percentage', path: '/percentage-calculator', icon: 'percent', description: 'Calculate percentages instantly' },
-    { label: 'Currency', path: '/currency-converter', icon: 'dollar-sign', description: 'Convert currencies with live rates' },
-    { label: 'Unit Converter', path: '/unit-converter', icon: 'ruler', description: 'Length, weight, temperature, and more' },
+  // Signal para el filtro actual
+  filter = signal<string>('all');
+
+  tools: Tool[] = [
+    {
+      id: 'percentage',
+      label: 'Percentage',
+      path: '/percentage-calculator',
+      icon: 'percentage',
+      description: 'Calculate percentages instantly with three modes',
+      category: 'Math',
+    },
+    {
+      id: 'currency',
+      label: 'Currency',
+      path: '/currency-converter',
+      icon: 'money-bill-wave',
+      description: 'Convert currencies using live exchange rates',
+      category: 'Finance',
+    },
+    {
+      id: 'unit',
+      label: 'Unit Converter',
+      path: '/unit-converter',
+      icon: 'ruler',
+      description: 'Length, weight, temperature, and more',
+      category: 'Utilities',
+    },
   ];
+
+  filteredTools = computed(() => {
+    const currentFilter = this.filter();
+    if (currentFilter === 'all') {
+      return this.tools;
+    }
+    // Map filter names to category names
+    const categoryMap: Record<string, string> = {
+      math: 'Math',
+      finance: 'Finance',
+      utilities: 'Utilities',
+    };
+    return this.tools.filter((tool) => tool.category === categoryMap[currentFilter]);
+  });
 
   ngOnInit() {
     this.seo.setMeta({

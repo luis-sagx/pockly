@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
-import { IconComponent } from '../../ui/icon/icon';
+import { Component, inject } from '@angular/core';
+import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [IconComponent],
+  imports: [FaIconComponent],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
-export class NavComponent {}
+export class NavComponent {
+  private library = inject(FaIconLibrary);
+
+  constructor() {
+    this.library.addIcons(faLink);
+  }
+}

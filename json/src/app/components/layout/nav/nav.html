@@ -1,12 +1,44 @@
-<nav class="fixed top-0 left-0 z-50 w-full bg-olive-parchment border-b border-olive-border">
-  <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
-    <a class="flex items-center gap-3 hover:text-posthog-orange transition" href="/">
-      <span class="font-display text-2xl font-bold text-olive-deep">JSON</span>
-      <img src="logo.png" alt="logo" class="w-10 h-10 -m-3" />
-      <span class="font-display text-2xl font-bold text-posthog-orange">Tools</span>
+<nav
+  class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
+>
+  <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
+    <!-- Logo a la izquierda -->
+    <a class="flex items-center gap-3 group" href="/">
+      <img src="logo.png" alt="logo" class="w-auto h-14" />
     </a>
-    <a href="/" class="px-3 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange transition">
-      <app-icon name="grid" class="w-4 h-4 text-posthog-orange"></app-icon> All Tools
-    </a>
+
+    <!-- Nav Links a la derecha -->
+    <div class="flex items-center gap-1">
+      <a
+        href="/"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        Home
+      </a>
+      <a
+        href="/generator"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        Generator
+      </a>
+      <a
+        href="/templates"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        Templates
+      </a>
+      <a
+        href="/convert"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        Convert
+      </a>
+      <a
+        href="/utils"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        Utils
+      </a>
+    </div>
   </div>
 </nav>

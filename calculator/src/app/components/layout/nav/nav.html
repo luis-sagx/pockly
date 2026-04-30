@@ -1,11 +1,25 @@
-<nav class="fixed top-0 left-0 z-50 w-full bg-parchment border-b border-olive-border">
-  <div class="flex items-center justify-between px-4 sm:px-6 py-4 mx-auto max-w-5xl">
+<nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
+  <div class="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
+    <!-- Logo a la izquierda -->
     <a class="flex items-center gap-3 group" href="/">
-      <app-icon name="grid" class="w-6 h-6 text-olive-deep transition-colors group-hover:text-posthog-orange"></app-icon>
-      <span class="font-semibold text-lg text-olive-deep tracking-tight">Calculator Tools</span>
+      <img src="logo.png" alt="logo" class="w-10 h-10" />
+      <span class="text-xl font-bold text-olive-deep group-hover:text-olive-orange transition-colors font-display">Calculator Tools</span>
     </a>
-    <a href="/" class="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded transition-colors hover:bg-olive-cream hover:text-posthog-orange">
-      <app-icon name="grid" class="w-4 h-4"></app-icon> All Tools
-    </a>
+
+    <!-- Nav Links a la derecha -->
+    <div class="flex items-center gap-1">
+      <a href="/" class="px-3 py-2 text-sm font-semibold text-olive-ink hover:text-olive-orange transition-colors font-body rounded hover:bg-olive-cream">
+        Home
+      </a>
+      <a href="/unit-converter" class="px-3 py-2 text-sm font-semibold text-olive-ink hover:text-olive-orange transition-colors font-body rounded hover:bg-olive-cream">
+        Unit Converter
+      </a>
+      <a href="/percentage-calculator" class="px-3 py-2 text-sm font-semibold text-olive-ink hover:text-olive-orange transition-colors font-body rounded hover:bg-olive-cream">
+        Percentage
+      </a>
+      <a href="/currency-converter" class="px-3 py-2 text-sm font-semibold text-olive-ink hover:text-olive-orange transition-colors font-body rounded hover:bg-olive-cream">
+        Currency
+      </a>
+    </div>
   </div>
 </nav>

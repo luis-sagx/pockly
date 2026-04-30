@@ -1,5 +1,5 @@
 import { Component, Input, signal } from '@angular/core';
-import { IconComponent } from '../../ui/icon/icon';
+import { IconComponent } from '../icon/icon';
 
 @Component({
   selector: 'app-copy-button',

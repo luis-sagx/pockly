@@ -1,4 +1,6 @@
-<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
+<div
+  class="card flex flex-col gap-6 rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink"
+>
   <div>
     <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">
       Currency Converter
@@ -28,7 +30,7 @@
       <select
         [ngModel]="fromCurrency()"
         (ngModelChange)="onFromCurrencyChange($event)"
-        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+        class="select-field w-full appearance-none rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (currency of currencies; track currency.code) {
           <option [value]="currency.code">
@@ -67,7 +69,7 @@
       <select
         [ngModel]="toCurrency()"
         (ngModelChange)="onToCurrencyChange($event)"
-        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+        class="select-field w-full appearance-none rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (currency of currencies; track currency.code) {
           <option [value]="currency.code">

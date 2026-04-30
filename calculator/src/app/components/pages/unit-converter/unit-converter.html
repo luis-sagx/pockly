@@ -1,4 +1,6 @@
-<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
+<div
+  class="card flex flex-col gap-6 rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink"
+>
   <div>
     <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">Unit Converter</h2>
     <p class="section-subtitle text-sm text-olive-ink/70">Convert between units instantly.</p>
@@ -10,7 +12,7 @@
       <button
         (click)="setCategory($any(cat.key))"
         class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
-        [class]="category() === cat.key ? 'tab-active' : 'tab-inactive'"
+        [class]="category() === cat.key ? 'tab-active text-black' : 'tab-inactive text-olive-ink'"
       >
         {{ cat.name }}
       </button>
@@ -28,7 +30,7 @@
       <select
         [ngModel]="fromUnit()"
         (ngModelChange)="onFromUnitChange($event)"
-        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+        class="select-field w-full appearance-none rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (unit of unitOptions() | keyvalue; track unit.key) {
           <option [value]="unit.key">{{ unit.value.name }} ({{ unit.value.symbol }})</option>
@@ -66,7 +68,7 @@
       <select
         [ngModel]="toUnit()"
         (ngModelChange)="onToUnitChange($event)"
-        class="select-field rounded-md border border-olive-border bg-parchment text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+        class="select-field w-full appearance-none rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
         @for (unit of unitOptions() | keyvalue; track unit.key) {
           <option [value]="unit.key">{{ unit.value.name }} ({{ unit.value.symbol }})</option>
@@ -92,7 +94,7 @@
         <button
           (click)="onDecimalsChange(d)"
           class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
-          [class]="decimals() === d ? 'tab-active' : 'tab-inactive'"
+          [class]="decimals() === d ? 'tab-active text-black' : 'tab-inactive text-olive-ink'"
         >
           {{ d }}
         </button>

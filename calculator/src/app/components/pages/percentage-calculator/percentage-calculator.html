@@ -1,9 +1,11 @@
-<div class="card rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink">
+<div
+  class="card flex flex-col gap-6 rounded-2xl border border-olive-border bg-parchment p-6 text-olive-ink"
+>
   <div>
-    <h2 class="section-heading text-2xl font-bold text-olive-deep sm:text-3xl">
+    <h2 class="text-2xl font-bold section-heading text-olive-deep sm:text-3xl">
       Percentage Calculator
     </h2>
-    <p class="section-subtitle text-sm text-olive-ink/70">
+    <p class="text-sm section-subtitle text-olive-ink/70">
       Calculate percentages instantly with three modes.
     </p>
   </div>
@@ -12,22 +14,22 @@
   <div class="flex flex-wrap gap-2 rounded border border-olive-border bg-olive-cream p-1">
     <button
       (click)="setMode('percent-of')"
-      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
-      [class]="mode() === 'percent-of' ? 'tab-active' : 'tab-inactive'"
+      class="px-3 py-2 text-sm font-semibold transition-colors rounded-md"
+      [class]="mode() === 'percent-of' ? 'tab-active text-black' : 'tab-inactive text-olive-ink'"
     >
       X% of Y
     </button>
     <button
       (click)="setMode('what-percent')"
-      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
-      [class]="mode() === 'what-percent' ? 'tab-active' : 'tab-inactive'"
+      class="px-3 py-2 text-sm font-semibold transition-colors rounded-md"
+      [class]="mode() === 'what-percent' ? 'tab-active text-black' : 'tab-inactive text-olive-ink'"
     >
       X is what % of Y
     </button>
     <button
       (click)="setMode('change')"
-      class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
-      [class]="mode() === 'change' ? 'tab-active' : 'tab-inactive'"
+      class="px-3 py-2 text-sm font-semibold transition-colors rounded-md"
+      [class]="mode() === 'change' ? 'tab-active text-black' : 'tab-inactive text-olive-ink'"
     >
       % Change
     </button>
@@ -46,7 +48,7 @@
             [value]="x()"
             (input)="onXChange(+$any($event.target).value)"
             placeholder="X"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
         <span class="pb-2 text-olive-ink">% of</span>
@@ -57,7 +59,7 @@
             [value]="y()"
             (input)="onYChange(+$any($event.target).value)"
             placeholder="Y"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
       }
@@ -69,7 +71,7 @@
             [value]="x()"
             (input)="onXChange(+$any($event.target).value)"
             placeholder="X"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
         <span class="pb-2 text-olive-ink">is what % of</span>
@@ -80,7 +82,7 @@
             [value]="y()"
             (input)="onYChange(+$any($event.target).value)"
             placeholder="Y"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
       }
@@ -92,7 +94,7 @@
             [value]="x()"
             (input)="onXChange(+$any($event.target).value)"
             placeholder="Original"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
         <span class="pb-2 text-olive-ink">to</span>
@@ -103,7 +105,7 @@
             [value]="y()"
             (input)="onYChange(+$any($event.target).value)"
             placeholder="New"
-            class="input-field w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+            class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
           />
         </div>
       }
@@ -115,7 +117,7 @@
     class="flex flex-col items-center justify-center rounded border border-olive-border bg-parchment p-6"
   >
     <p class="mb-2 text-sm font-semibold text-olive-ink">Result</p>
-    <p class="text-4xl font-bold text-olive-deep sm:text-5xl">{{ result() | number: '1.2-2' }}%</p>
+    <p class="text-xl font-bold text-olive-deep sm:text-2xl">{{ result() | number: '1.2-2' }}%</p>
     @if (mode() === 'change' && (x() || y())) {
       <span
         class="mt-2 text-sm font-semibold uppercase"

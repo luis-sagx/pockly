@@ -1,136 +1,95 @@
-<div class="flex flex-col gap-12 -mt-4 text-slate-100">
-  <!-- HERO -->
-  <section
-    class="relative py-12 overflow-hidden bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-[100vw]"
+<div class="flex flex-col gap-6 px-4 pb-12 pt-24">
+  <!-- Hero Section -->
+  <div
+    class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12"
   >
-    <div
-      class="absolute right-0 w-64 h-64 rounded-full -bottom-24 bg-brand-500/25 blur-3xl"
-    ></div>
-    <div
-      class="absolute w-40 h-40 rounded-full bottom-10 left-8 bg-tomato-500/20 blur-3xl"
-    ></div>
-    <div class="relative w-full max-w-6xl px-6 mx-auto">
-      <div class="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div class="space-y-6">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold border rounded-full border-brand-500/50 bg-brand-700/30 text-brand-200"
-          >
-            <span class="w-2 h-2 rounded-full bg-tomato-400"></span>
-            All your tools. Zero clutter.
-          </div>
-          <div class="space-y-4">
-            <h1
-              class="text-4xl font-semibold tracking-tight text-brand-100 sm:text-5xl"
-            >
-              Work faster. <br />
-              Stay focused.
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-100/90">
-              Pockly brings your essential utilities—text, JSON, images—into one
-              clean, distraction-free space. No logins. Just instant results.
-            </p>
-          </div>
-          <div
-            class="flex flex-wrap gap-4 text-xs font-medium text-slate-100/80"
-          >
-            <div class="flex items-center gap-2">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="w-4 h-4 text-brand-300"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M5 13l4 4L19 7"
-                ></path>
-              </svg>
-              100% free. No sign-up.
-            </div>
-            <div class="flex items-center gap-2">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="w-4 h-4 text-tomato-400"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3v18m9-9H3"
-                ></path>
-              </svg>
-              Instant, local, private.
-            </div>
-            <div class="flex items-center gap-2">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="w-4 h-4 text-brand-300"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4 7h16M4 12h16M4 17h16"
-                ></path>
-              </svg>
-              Copy or download in one click.
-            </div>
-          </div>
-        </div>
-        <div class="relative">
-          <img
-            src="banner.png"
-            alt="banner"
-            class="w-full h-auto shadow-lg opacity-80"
-          />
-        </div>
-      </div>
+    <!-- Texto izquierda -->
+    <div class="order-1 max-w-5xl mx-auto md:order-1">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]"
+        style="letter-spacing: -0.75px"
+      >
+        Your text tools, all in one place
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
+        Powerful and simple text utilities to boost your productivity. Count words, change text
+        case, compare documents, generate secure passwords, and save notes. Completely free, no
+        registration required.
+      </p>
     </div>
-  </section>
+    <!-- Imagen derecha -->
+    <div class="flex-shrink-0 order-2 md:order-2">
+      <img src="/pet.png" alt="Pet illustration" class="object-contain w-48 h-48 md:w-64 md:h-64" />
+    </div>
+  </div>
 
-  <!-- TOOLS BY CATEGORY -->
-  <section class="w-full max-w-6xl mx-auto my-12">
-    <div class="space-y-8">
-      @for (category of projectCategories; track category.key) {
-      <div>
-        <div class="flex items-center gap-2 mb-4">
-          <h2 class="text-lg font-semibold text-white">{{ category.title }}</h2>
-        </div>
-        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          @for (link of category.links; track link.url) {
-          <a
-            [href]="link.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="relative p-4 transition border group rounded-xl border-zinc-800 bg-zinc-950/20 hover:border-brand-500 hover:bg-zinc-800 hover:-translate-y-1"
+  <!-- Filter Tabs -->
+  <div class="flex flex-wrap justify-center gap-2">
+    <button
+      (click)="filter.set('all')"
+      [class]="
+        filter() === 'all'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      All Tools
+    </button>
+    <button
+      (click)="filter.set('text')"
+      [class]="
+        filter() === 'text'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      Text Tools
+    </button>
+    <button
+      (click)="filter.set('compare')"
+      [class]="
+        filter() === 'compare'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      Compare
+    </button>
+    <button
+      (click)="filter.set('utilities')"
+      [class]="
+        filter() === 'utilities'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      Utilities
+    </button>
+  </div>
+
+  <!-- Tools Grid -->
+  <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+    @for (tool of filteredTools(); track tool.id) {
+      <a
+        [routerLink]="tool.path"
+        class="flex flex-col items-start p-6 text-left transition-all duration-200 border rounded-lg cursor-pointer group bg-olive-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream"
+      >
+        <div class="flex items-center gap-3 mb-3">
+          <div
+            class="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-olive-lightSage group-hover:bg-posthog-orange/10"
           >
-            <div class="flex items-center gap-3 mb-2">
-              <div
-                class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400"
-              >
-                <i class="text-sm fas fa-external-link-alt"></i>
-              </div>
-              <span class="text-sm font-semibold text-slate-200"
-                >{{ link.label }}</span
-              >
-            </div>
-            @if (link.description) {
-            <p class="text-xs text-zinc-500">{{ link.description }}</p>
-            }
             <i
-              class="absolute transition top-4 right-4 text-zinc-600 fas fa-chevron-right group-hover:translate-x-1 group-hover:text-brand-400"
+              [class]="tool.icon + ' fas text-lg transition-colors text-olive-deep group-hover:text-posthog-orange'"
             ></i>
-          </a>
-          }
+          </div>
+          <span class="text-base font-bold text-olive-deep font-display">{{ tool.label }}</span>
         </div>
-      </div>
-      }
-    </div>
-  </section>
+        <p class="text-sm text-olive-ink/70 font-body">{{ tool.description }}</p>
+      </a>
+    }
+  </div>
 </div>

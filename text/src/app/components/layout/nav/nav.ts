@@ -1,4 +1,4 @@
-import { Component, inject, computed } from '@angular/core';
+import { Component, inject, computed, signal } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
@@ -10,4 +10,15 @@ import { LanguageService } from '../../../services/language.service';
 export class Nav {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations());
+
+  // Estado del menú móvil
+  isMenuOpen = signal(false);
+
+  toggleMenu() {
+    this.isMenuOpen.update(v => !v);
+  }
+
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
 }

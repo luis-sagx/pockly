@@ -11,6 +11,7 @@ export interface Translations {
   navDiffChecker: string;
   navPasswordGenerator: string;
   navQuickNotes: string;
+  navSpellChecker: string;
 
   // Footer
   freeOnlineTools: string;
@@ -84,6 +85,22 @@ export interface Translations {
   areYouSure: string;
   yesClear: string;
   cancel: string;
+
+  // Spell Checker
+  spellChecker: string;
+  spellCheckerDesc: string;
+  checkSpelling: string;
+  spellChecking: string;
+  spellingErrors: string;
+  noErrorsFound: string;
+  suggestions: string;
+  errorCount: string;
+  selectLanguage: string;
+  loadingDictionary: string;
+  dictionaryLoadError: string;
+  clickToReplace: string;
+  correctedText: string;
+  sourceText: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -95,6 +112,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Diff Checker',
     navPasswordGenerator: 'Password Generator',
     navQuickNotes: 'Quick Notes',
+    navSpellChecker: 'Spell Checker',
 
     // Footer
     freeOnlineTools: 'Free online tools — no signup, no ads.',
@@ -162,14 +180,30 @@ const translations: Record<Language, Translations> = {
     generatedPassword: 'Generated Password:',
     regenerate: 'Regenerate',
 
-    // Quick Notes
+// Quick Notes
     writeAndAutoSaveNotes: 'Write and auto-save your notes instantly.',
     startTypingNotes:
-      'Start typing your notes here... They will be auto-saved to your browser\'s local storage.',
+      "Start typing your notes here... They will be auto-saved to your browser's local storage.",
     saved: 'Saved',
     areYouSure: 'Are you sure?',
     yesClear: 'Yes, clear',
     cancel: 'Cancel',
+
+    // Spell Checker
+    spellChecker: 'Spell Checker',
+    spellCheckerDesc: 'Check spelling and get suggestions in multiple languages',
+    checkSpelling: 'Check Spelling',
+    spellChecking: 'Checking...',
+    spellingErrors: 'Spelling Errors',
+    noErrorsFound: 'No spelling errors found!',
+    suggestions: 'Suggestions',
+    errorCount: 'errors found',
+    selectLanguage: 'Check language',
+    loadingDictionary: 'Loading dictionary...',
+    dictionaryLoadError: 'Failed to load dictionary',
+    clickToReplace: 'Click to replace',
+    correctedText: 'Corrected Text',
+    sourceText: 'Original',
   },
   es: {
     // Nav
@@ -179,6 +213,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Comparador',
     navPasswordGenerator: 'Contraseñas',
     navQuickNotes: 'Notas',
+    navSpellChecker: 'Ortografía',
 
     // Footer
     freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
@@ -254,6 +289,22 @@ const translations: Record<Language, Translations> = {
     areYouSure: '¿Estás seguro?',
     yesClear: 'Sí, limpiar',
     cancel: 'Cancelar',
+
+    // Spell Checker
+    spellChecker: 'Corrector Ortográfico',
+    spellCheckerDesc: 'Verifica ortografía y obtén sugerencias en múltiples idiomas',
+    checkSpelling: 'Verificar Ortografía',
+    spellChecking: 'Verificando...',
+    spellingErrors: 'Errores de Ortografía',
+    noErrorsFound: '¡No se encontraron errores de ortografía!',
+    suggestions: 'Sugerencias',
+    errorCount: 'errores encontrados',
+    selectLanguage: 'Idioma para verificar',
+    loadingDictionary: 'Cargando diccionario...',
+    dictionaryLoadError: 'Error al cargar diccionario',
+    clickToReplace: 'Clic para reemplazar',
+    correctedText: 'Texto Corregido',
+    sourceText: 'Original',
   },
   fr: {
     // Nav
@@ -263,6 +314,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Différences',
     navPasswordGenerator: 'Mots de passe',
     navQuickNotes: 'Notes',
+    navSpellChecker: 'Orthographe',
 
     // Footer
     freeOnlineTools: 'Outils en ligne gratuits — sans inscription, sans publicité.',
@@ -330,14 +382,30 @@ const translations: Record<Language, Translations> = {
     generatedPassword: 'Mot de Passe Généré:',
     regenerate: 'Régénérer',
 
-    // Quick Notes
-    writeAndAutoSaveNotes: 'Écrivez et enregistrez vos notes instantanément.',
+// Quick Notes
+    writeAndAutoSaveNotes: "Écrivez et enregistrez vos notes instantanément.",
     startTypingNotes:
       'Commencez à écrire vos notes ici... Elles seront enregistrées automatiquement dans le stockage local de votre navigateur.',
     saved: 'Enregistré',
     areYouSure: 'Êtes-vous sûr?',
     yesClear: 'Oui, effacer',
     cancel: 'Annuler',
+
+    // Spell Checker
+    spellChecker: 'Vérificateur Orthographique',
+    spellCheckerDesc: 'Vérifiez l\'orthographe et recevez des suggestions en plusieurs langues',
+    checkSpelling: 'Vérifier l\'Orthographe',
+    spellChecking: 'Vérification...',
+    spellingErrors: 'Erreurs d\'Orthographe',
+    noErrorsFound: 'Aucune erreur d\'orthographe trouvée!',
+    suggestions: 'Suggestions',
+    errorCount: 'erreurs trouvées',
+    selectLanguage: 'Langue de vérification',
+    loadingDictionary: 'Chargement du dictionnaire...',
+    dictionaryLoadError: 'Échec du chargement du dictionnaire',
+    clickToReplace: 'Cliquez pour remplacer',
+    correctedText: 'Texte Corrigé',
+    sourceText: 'Original',
   },
   de: {
     // Nav
@@ -347,6 +415,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Vergleich',
     navPasswordGenerator: 'Passwörter',
     navQuickNotes: 'Notizen',
+    navSpellChecker: 'Rechtschreibung',
 
     // Footer
     freeOnlineTools: 'Kostenlose Online-Tools — keine Registrierung, keine Werbung.',
@@ -422,6 +491,22 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Sind Sie sicher?',
     yesClear: 'Ja, löschen',
     cancel: 'Abbrechen',
+
+    // Spell Checker
+    spellChecker: 'Rechtschreibprüfung',
+    spellCheckerDesc: 'Überprüfen Sie die Rechtschreibung und erhalten Sie Vorschläge in mehreren Sprachen',
+    checkSpelling: 'Rechtschreibung Prüfen',
+    spellChecking: 'Prüfe...',
+    spellingErrors: 'Rechtschreibfehler',
+    noErrorsFound: 'Keine Rechtschreibfehler gefunden!',
+    suggestions: 'Vorschläge',
+    errorCount: 'Fehler gefunden',
+    selectLanguage: 'Prüfsprache',
+    loadingDictionary: 'Wörterbuch wird geladen...',
+    dictionaryLoadError: 'Wörterbuch konnte nicht geladen werden',
+    clickToReplace: 'Klicken zum Ersetzen',
+    correctedText: 'Korrigierter Text',
+    sourceText: 'Original',
   },
   pt: {
     // Nav
@@ -431,6 +516,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Comparador',
     navPasswordGenerator: 'Senhas',
     navQuickNotes: 'Notas',
+    navSpellChecker: 'Ortografia',
 
     // Footer
     freeOnlineTools: 'Ferramentas online gratuitas — sem cadastro, sem anúncios.',
@@ -506,6 +592,22 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Tem certeza?',
     yesClear: 'Sim, limpar',
     cancel: 'Cancelar',
+
+    // Spell Checker
+    spellChecker: 'Verificador Ortográfico',
+    spellCheckerDesc: 'Verifique a ortografia e receba sugestões em vários idiomas',
+    checkSpelling: 'Verificar Ortografia',
+    spellChecking: 'Verificando...',
+    spellingErrors: 'Erros de Ortografia',
+    noErrorsFound: 'Nenhum erro de ortografia encontrado!',
+    suggestions: 'Sugestões',
+    errorCount: 'erros encontrados',
+    selectLanguage: 'Idioma para verificar',
+    loadingDictionary: 'Carregando dicionário...',
+    dictionaryLoadError: 'Falha ao carregar dicionário',
+    clickToReplace: 'Clique para substituir',
+    correctedText: 'Texto Corrigido',
+    sourceText: 'Original',
   },
   it: {
     // Nav
@@ -515,6 +617,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Controllo',
     navPasswordGenerator: 'Password',
     navQuickNotes: 'Note',
+    navSpellChecker: 'Ortografia',
 
     // Footer
     freeOnlineTools: 'Strumenti online gratuiti — senza registrazione, senza pubblicità.',
@@ -590,6 +693,22 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Sei sicuro?',
     yesClear: 'Sì, cancella',
     cancel: 'Annulla',
+
+    // Spell Checker
+    spellChecker: 'Controllo Ortografico',
+    spellCheckerDesc: 'Controlla l\'ortografia e ricevi suggerimenti in più lingue',
+    checkSpelling: 'Controlla Ortografia',
+    spellChecking: 'Controllo...',
+    spellingErrors: 'Errori Ortografici',
+    noErrorsFound: 'Nessun errore ortografico trovato!',
+    suggestions: 'Suggerimenti',
+    errorCount: 'errori trovati',
+    selectLanguage: 'Lingua da controllare',
+    loadingDictionary: 'Caricamento dizionario...',
+    dictionaryLoadError: 'Errore nel caricamento del dizionario',
+    clickToReplace: 'Clicca per sostituire',
+    correctedText: 'Testo Corretto',
+    sourceText: 'Originale',
   },
 };
 

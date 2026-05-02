@@ -51,6 +51,8 @@ export class SpellChecker implements OnDestroy {
   private historyStack: string[] = [];
   // Signal para trackear si hay undo disponible (público para el template)
   canUndo = signal(false);
+  // Signal para archivo cargado
+  fileName = signal<string | null>(null);
 
   private spellChecker: NSpellInstance | null = null;
   private loadedLanguages = new Map<SpellLanguage, NSpellInstance>();
@@ -114,6 +116,22 @@ export class SpellChecker implements OnDestroy {
     } finally {
       this.isLoadingDictionary.set(false);
     }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    this.fileName.set(file.name);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = reader.result as string;
+      this.inputText.set(content);
+      this.checkSpelling();
+    };
+    reader.readAsText(file);
   }
 
   async checkSpelling() {
@@ -201,6 +219,7 @@ export class SpellChecker implements OnDestroy {
     this.hasChecked.set(false);
     this.historyStack = [];
     this.canUndo.set(false);
+    this.fileName.set(null);
   }
 
   copyResult() {

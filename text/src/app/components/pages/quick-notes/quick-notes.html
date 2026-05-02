@@ -22,6 +22,15 @@
     class="w-full p-4 border rounded-lg resize-none text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border-olive-light focus:outline-none focus:ring-2 focus:ring-blue-500/50"
   ></textarea>
   <div class="flex flex-wrap items-center gap-3">
+    <!-- Botón Export PDF -->
+    <button
+      (click)="exportToPdf()"
+      [disabled]="!content()"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-white bg-olive-deep hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      <i class="fas fa-file-pdf"></i> {{ t().exportToPdf }}
+    </button>
+
     @if (showConfirm()) {
       <div class="flex items-center gap-2">
         <span class="text-sm text-red-600">{{ t().areYouSure }}</span>

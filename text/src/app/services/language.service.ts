@@ -85,6 +85,7 @@ export interface Translations {
   areYouSure: string;
   yesClear: string;
   cancel: string;
+  exportToPdf: string;
 
   // Spell Checker
   spellChecker: string;
@@ -92,16 +93,19 @@ export interface Translations {
   checkSpelling: string;
   spellChecking: string;
   spellingErrors: string;
-  noErrorsFound: string;
-  suggestions: string;
   errorCount: string;
+  clickToReplace: string;
+  suggestions: string;
+  correctedText: string;
+  noErrorsFound: string;
   selectLanguage: string;
   loadingDictionary: string;
   dictionaryLoadError: string;
-  clickToReplace: string;
-  correctedText: string;
-  sourceText: string;
+  uploadFile: string;
+  fileLoaded: string;
+  supportedFormats: string;
   undo: string;
+  sourceText: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -181,14 +185,15 @@ const translations: Record<Language, Translations> = {
     generatedPassword: 'Generated Password:',
     regenerate: 'Regenerate',
 
-// Quick Notes
+    // Quick Notes
     writeAndAutoSaveNotes: 'Write and auto-save your notes instantly.',
     startTypingNotes:
-      "Start typing your notes here... They will be auto-saved to your browser's local storage.",
+      'Start typing your notes here... They will be auto-saved to your browser\'s local storage.',
     saved: 'Saved',
     areYouSure: 'Are you sure?',
     yesClear: 'Yes, clear',
     cancel: 'Cancel',
+    exportToPdf: 'Export to PDF',
 
     // Spell Checker
     spellChecker: 'Spell Checker',
@@ -196,16 +201,19 @@ const translations: Record<Language, Translations> = {
     checkSpelling: 'Check Spelling',
     spellChecking: 'Checking...',
     spellingErrors: 'Spelling Errors',
-    noErrorsFound: 'No spelling errors found!',
+    errorCount: 'errors',
+    clickToReplace: 'Click to replace',
     suggestions: 'Suggestions',
-    errorCount: 'errors found',
-    selectLanguage: 'Check language',
+    correctedText: 'Corrected Text',
+    noErrorsFound: 'No spelling errors found!',
+    selectLanguage: 'Language',
     loadingDictionary: 'Loading dictionary...',
     dictionaryLoadError: 'Failed to load dictionary',
-    clickToReplace: 'Click to replace',
-    correctedText: 'Corrected Text',
-    sourceText: 'Original',
+    uploadFile: 'Upload a file',
+    fileLoaded: 'File loaded',
+    supportedFormats: 'Supported: TXT, MD, TEXT (plain text files)',
     undo: 'Undo',
+    sourceText: 'Source Text',
   },
   es: {
     // Nav
@@ -215,7 +223,7 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Comparador',
     navPasswordGenerator: 'Contraseñas',
     navQuickNotes: 'Notas',
-    navSpellChecker: 'Ortografía',
+    navSpellChecker: 'Corrector',
 
     // Footer
     freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
@@ -291,23 +299,27 @@ const translations: Record<Language, Translations> = {
     areYouSure: '¿Estás seguro?',
     yesClear: 'Sí, limpiar',
     cancel: 'Cancelar',
+    exportToPdf: 'Exportar a PDF',
 
     // Spell Checker
     spellChecker: 'Corrector Ortográfico',
     spellCheckerDesc: 'Verifica ortografía y obtén sugerencias en múltiples idiomas',
     checkSpelling: 'Verificar Ortografía',
     spellChecking: 'Verificando...',
-    spellingErrors: 'Errores de Ortografía',
-    noErrorsFound: '¡No se encontraron errores de ortografía!',
+    spellingErrors: 'Errores Ortográficos',
+    errorCount: 'errores',
+    clickToReplace: 'Click para reemplazar',
     suggestions: 'Sugerencias',
-    errorCount: 'errores encontrados',
-    selectLanguage: 'Idioma para verificar',
+    correctedText: 'Texto Corregido',
+    noErrorsFound: '¡No se encontraron errores ortográficos!',
+    selectLanguage: 'Idioma',
     loadingDictionary: 'Cargando diccionario...',
     dictionaryLoadError: 'Error al cargar diccionario',
-    clickToReplace: 'Clic para reemplazar',
-    correctedText: 'Texto Corregido',
-    sourceText: 'Original',
+    uploadFile: 'Subir un archivo',
+    fileLoaded: 'Archivo cargado',
+    supportedFormats: 'Soportados: TXT, MD, TEXT (archivos de texto plano)',
     undo: 'Deshacer',
+    sourceText: 'Texto Origen',
   },
   fr: {
     // Nav
@@ -385,14 +397,15 @@ const translations: Record<Language, Translations> = {
     generatedPassword: 'Mot de Passe Généré:',
     regenerate: 'Régénérer',
 
-// Quick Notes
-    writeAndAutoSaveNotes: "Écrivez et enregistrez vos notes instantanément.",
+    // Quick Notes
+    writeAndAutoSaveNotes: 'Écrivez et enregistrez vos notes instantanément.',
     startTypingNotes:
       'Commencez à écrire vos notes ici... Elles seront enregistrées automatiquement dans le stockage local de votre navigateur.',
     saved: 'Enregistré',
     areYouSure: 'Êtes-vous sûr?',
     yesClear: 'Oui, effacer',
     cancel: 'Annuler',
+    exportToPdf: 'Exporter en PDF',
 
     // Spell Checker
     spellChecker: 'Vérificateur Orthographique',
@@ -400,16 +413,19 @@ const translations: Record<Language, Translations> = {
     checkSpelling: 'Vérifier l\'Orthographe',
     spellChecking: 'Vérification...',
     spellingErrors: 'Erreurs d\'Orthographe',
-    noErrorsFound: 'Aucune erreur d\'orthographe trouvée!',
+    errorCount: 'erreurs',
+    clickToReplace: 'Cliquer pour remplacer',
     suggestions: 'Suggestions',
-    errorCount: 'erreurs trouvées',
-    selectLanguage: 'Langue de vérification',
+    correctedText: 'Texte Corrigé',
+    noErrorsFound: 'Aucune erreur d\'orthographe trouvée!',
+    selectLanguage: 'Langue',
     loadingDictionary: 'Chargement du dictionnaire...',
     dictionaryLoadError: 'Échec du chargement du dictionnaire',
-    clickToReplace: 'Cliquez pour remplacer',
-    correctedText: 'Texte Corrigé',
-    sourceText: 'Original',
+    uploadFile: 'Télécharger un fichier',
+    fileLoaded: 'Fichier chargé',
+    supportedFormats: 'Supportés: TXT, MD, TEXT (fichiers texte plain)',
     undo: 'Annuler',
+    sourceText: 'Texte Source',
   },
   de: {
     // Nav
@@ -495,23 +511,27 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Sind Sie sicher?',
     yesClear: 'Ja, löschen',
     cancel: 'Abbrechen',
+    exportToPdf: 'Als PDF exportieren',
 
     // Spell Checker
     spellChecker: 'Rechtschreibprüfung',
     spellCheckerDesc: 'Überprüfen Sie die Rechtschreibung und erhalten Sie Vorschläge in mehreren Sprachen',
     checkSpelling: 'Rechtschreibung Prüfen',
-    spellChecking: 'Prüfe...',
+    spellChecking: 'Überprüfen...',
     spellingErrors: 'Rechtschreibfehler',
-    noErrorsFound: 'Keine Rechtschreibfehler gefunden!',
-    suggestions: 'Vorschläge',
-    errorCount: 'Fehler gefunden',
-    selectLanguage: 'Prüfsprache',
-    loadingDictionary: 'Wörterbuch wird geladen...',
-    dictionaryLoadError: 'Wörterbuch konnte nicht geladen werden',
+    errorCount: 'Fehler',
     clickToReplace: 'Klicken zum Ersetzen',
+    suggestions: 'Vorschläge',
     correctedText: 'Korrigierter Text',
-    sourceText: 'Original',
+    noErrorsFound: 'Keine Rechtschreibfehler gefunden!',
+    selectLanguage: 'Sprache',
+    loadingDictionary: 'Wörterbuch laden...',
+    dictionaryLoadError: 'Fehler beim Laden des Wörterbuchs',
+    uploadFile: 'Datei hochladen',
+    fileLoaded: 'Datei geladen',
+    supportedFormats: 'Unterstützt: TXT, MD, TEXT (Klartextdateien)',
     undo: 'Rückgängig',
+    sourceText: 'Quelltext',
   },
   pt: {
     // Nav
@@ -597,23 +617,27 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Tem certeza?',
     yesClear: 'Sim, limpar',
     cancel: 'Cancelar',
+    exportToPdf: 'Exportar para PDF',
 
     // Spell Checker
     spellChecker: 'Verificador Ortográfico',
-    spellCheckerDesc: 'Verifique a ortografia e receba sugestões em vários idiomas',
+    spellCheckerDesc: 'Verifique a ortografia e obtenha sugestões em vários idiomas',
     checkSpelling: 'Verificar Ortografia',
     spellChecking: 'Verificando...',
-    spellingErrors: 'Erros de Ortografia',
-    noErrorsFound: 'Nenhum erro de ortografia encontrado!',
+    spellingErrors: 'Erros Ortográficos',
+    errorCount: 'erros',
+    clickToReplace: 'Clique para substituir',
     suggestions: 'Sugestões',
-    errorCount: 'erros encontrados',
-    selectLanguage: 'Idioma para verificar',
+    correctedText: 'Texto Corrigido',
+    noErrorsFound: 'Nenhum erro ortográfico encontrado!',
+    selectLanguage: 'Idioma',
     loadingDictionary: 'Carregando dicionário...',
     dictionaryLoadError: 'Falha ao carregar dicionário',
-    clickToReplace: 'Clique para substituir',
-    correctedText: 'Texto Corrigido',
-    sourceText: 'Original',
+    uploadFile: 'Carregar arquivo',
+    fileLoaded: 'Arquivo carregado',
+    supportedFormats: 'Suportados: TXT, MD, TEXT (arquivos de texto plano)',
     undo: 'Desfazer',
+    sourceText: 'Texto de Origem',
   },
   it: {
     // Nav
@@ -699,23 +723,27 @@ const translations: Record<Language, Translations> = {
     areYouSure: 'Sei sicuro?',
     yesClear: 'Sì, cancella',
     cancel: 'Annulla',
+    exportToPdf: 'Esporta in PDF',
 
     // Spell Checker
     spellChecker: 'Controllo Ortografico',
     spellCheckerDesc: 'Controlla l\'ortografia e ricevi suggerimenti in più lingue',
     checkSpelling: 'Controlla Ortografia',
-    spellChecking: 'Controllo...',
+    spellChecking: 'Controllando...',
     spellingErrors: 'Errori Ortografici',
-    noErrorsFound: 'Nessun errore ortografico trovato!',
+    errorCount: 'errori',
+    clickToReplace: 'Clicca per sostituire',
     suggestions: 'Suggerimenti',
-    errorCount: 'errori trovati',
-    selectLanguage: 'Lingua da controllare',
+    correctedText: 'Testo Corretto',
+    noErrorsFound: 'Nessun errore ortografico trovato!',
+    selectLanguage: 'Lingua',
     loadingDictionary: 'Caricamento dizionario...',
     dictionaryLoadError: 'Errore nel caricamento del dizionario',
-    clickToReplace: 'Clicca per sostituire',
-    correctedText: 'Testo Corretto',
-    sourceText: 'Originale',
+    uploadFile: 'Carica file',
+    fileLoaded: 'File caricato',
+    supportedFormats: 'Supportati: TXT, MD, TEXT (file di testo plain)',
     undo: 'Annulla',
+    sourceText: 'Testo di Origine',
   },
 };
 

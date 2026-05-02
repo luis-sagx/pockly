@@ -5,6 +5,22 @@
     <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">{{ t().wordCounter }}</h2>
     <p class="mt-1 text-sm text-olive-ink/70">{{ t().countWordsAndCharacters }}</p>
   </div>
+
+  <!-- Upload File -->
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-olive-ink">{{ t().uploadFile }}</label>
+    <input
+      type="file"
+      accept=".txt,.md,.text,.docx,.pdf"
+      (change)="onFileSelected($event)"
+      class="block w-full text-sm text-olive-ink file:mr-4 file:px-4 file:py-2 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-olive-deep file:text-white file:cursor-pointer file:transition file:hover:opacity-80 bg-olive-cream border border-olive-light rounded-lg cursor-pointer"
+    />
+    @if (fileName()) {
+      <p class="text-sm text-olive-ink/70">{{ t().fileLoaded }}: {{ fileName() }}</p>
+    }
+    <p class="text-xs text-olive-ink/50">{{ t().supportedFormats }}</p>
+  </div>
+
   <app-input-box
     [value]="inputText()"
     (valueChange)="inputText.set($event)"

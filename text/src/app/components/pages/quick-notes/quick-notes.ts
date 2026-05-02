@@ -59,4 +59,62 @@ export class QuickNotes implements OnInit, OnDestroy {
   }
 
   cancelClear(): void { this.showConfirm.set(false); }
+
+  exportToPdf(): void {
+    if (!this.isBrowser) return;
+    
+    const content = this.content();
+    if (!content) return;
+
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Quick Notes - Export</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #1a1a1a;
+            padding: 20mm;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+          h1 {
+            font-size: 18pt;
+            margin-bottom: 16pt;
+            color: #2d3e2d;
+            border-bottom: 1px solid #8b9b8b;
+            padding-bottom: 8pt;
+          }
+          .content { white-space: pre-wrap; word-wrap: break-word; }
+          .footer {
+            margin-top: 24pt;
+            font-size: 9pt;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 8pt;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Quick Notes</h1>
+        <div class="content">${content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+        <div class="footer">
+          <p>Exported from Pockly on ${new Date().toLocaleDateString()}</p>
+        </div>
+      </body>
+      </html>
+    `);
+    printWindow.document.close();
+    
+    setTimeout(() => {
+      printWindow.print();
+    }, 250);
+  }
 }

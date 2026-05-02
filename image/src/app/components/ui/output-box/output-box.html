@@ -1,1 +1,15 @@
-<div class="relative p-4 bg-neutral-900 border border-zinc-800 rounded-xl shadow-inner w-full min-h-[150px]">@if (text && text.trim().length > 0) { <div class="absolute top-2 right-2"><app-copy-button [textToCopy]="text" /></div><h4 class="mb-2 font-semibold text-tomato-100">Text</h4><div class="text-sm overflow-x-auto"><pre class="whitespace-pre-wrap break-all">{{ text }}</pre></div> } @else { <div class="flex items-center justify-center h-full"><p class="font-mono text-sm text-slate-500">No results yet</p></div> }</div>
+<div
+  class="relative p-4 bg-neutral-900 border border-zinc-800 rounded-xl shadow-inner w-full min-h-[150px]"
+>
+  @if (text && text.trim().length > 0) {
+    <div class="absolute top-2 right-2"><app-copy-button [textToCopy]="text" /></div>
+    <h4 class="mb-2 font-semibold text-tomato-100">Text</h4>
+    <div class="overflow-x-auto text-sm">
+      <pre class="break-all whitespace-pre-wrap">{{ text }}</pre>
+    </div>
+  } @else {
+    <div class="flex items-center justify-center h-full">
+      <p class="font-mono text-sm text-slate-500">No results yet</p>
+    </div>
+  }
+</div>

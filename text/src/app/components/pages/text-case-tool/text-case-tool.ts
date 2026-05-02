@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { OutputBox } from '../../ui/output-box/output-box';
 import { InputBox } from '../../ui/input-box/input-box';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-text-case-tool',
@@ -10,6 +11,10 @@ import { InputBox } from '../../ui/input-box/input-box';
   styleUrl: './text-case-tool.css',
 })
 export class TextCaseTool {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   inputText = '';
   outputText = '';
   hasError = false;

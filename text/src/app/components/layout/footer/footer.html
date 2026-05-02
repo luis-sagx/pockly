@@ -3,6 +3,19 @@
     <div class="flex items-center gap-2">
       <img src="logo.png" alt="logo" class="w-auto h-14" />
     </div>
-    <p class="text-xs text-olive-ink/70">Free online tools — no signup, no ads.</p>
+    <p class="text-xs text-olive-ink/70">{{ t().freeOnlineTools }}</p>
+    <div class="flex items-center gap-2">
+      <label for="language-select" class="text-xs text-olive-ink/60">{{ t().languageLabel }}:</label>
+      <select
+        id="language-select"
+        (change)="onLanguageChange($event)"
+        [value]="language()"
+        class="text-xs px-2 py-1 bg-olive-cream border border-olive-light rounded text-olive-ink focus:outline-none focus:ring-2 focus:ring-blue-500/50 cursor-pointer"
+      >
+        @for (lang of availableLanguages; track lang.code) {
+          <option [value]="lang.code">{{ lang.nativeName }}</option>
+        }
+      </select>
+    </div>
   </div>
 </footer>

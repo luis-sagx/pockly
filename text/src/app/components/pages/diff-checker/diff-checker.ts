@@ -1,6 +1,7 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputBox } from '../../ui/input-box/input-box';
+import { LanguageService } from '../../../services/language.service';
 
 interface DiffLine {
   type: 'added' | 'removed' | 'unchanged';
@@ -14,6 +15,10 @@ interface DiffLine {
   templateUrl: './diff-checker.html',
 })
 export class DiffChecker {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   leftText = signal('');
   rightText = signal('');
 

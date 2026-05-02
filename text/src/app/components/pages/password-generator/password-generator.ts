@@ -1,5 +1,6 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CopyButton } from '../../ui/copy-button/copy-button';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-password-generator',
@@ -9,6 +10,10 @@ import { CopyButton } from '../../ui/copy-button/copy-button';
   styleUrl: './password-generator.css',
 })
 export class PasswordGenerator {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   length = signal(16);
   includeUppercase = signal(true);
   includeLowercase = signal(true);

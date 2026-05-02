@@ -171,6 +171,7 @@ export class SpellChecker implements OnDestroy {
     this.errors.set([]);
     this.correctedText.set('');
     this.dictionaryError.set(null);
+    this.hasChecked.set(false);
 
     if (!this.loadedLanguages.has(lang)) {
       await this.loadDictionary(lang);

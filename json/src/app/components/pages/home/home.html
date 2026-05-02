@@ -61,7 +61,7 @@
   </div>
 
   <!-- Tools Grid -->
-  <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2">
+  <div class="grid w-full max-w-5xl gap-4 mx-auto sm:grid-cols-2 md:grid-cols-3">
     @for (tool of filteredTools(); track tool.id) {
       <button
         (click)="navigate(tool.path)"

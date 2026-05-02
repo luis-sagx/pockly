@@ -1,5 +1,6 @@
 import { Component, signal, computed, inject, OnDestroy } from '@angular/core';
 import { InputBox } from '../../ui/input-box/input-box';
+import { CopyButton } from '../../ui/copy-button/copy-button';
 import { LanguageService } from '../../../services/language.service';
 import { CommonModule } from '@angular/common';
 
@@ -31,7 +32,7 @@ type NSpellInstance = {
 @Component({
   selector: 'app-spell-checker',
   standalone: true,
-  imports: [InputBox, CommonModule],
+  imports: [InputBox, CopyButton, CommonModule],
   templateUrl: './spell-checker.html',
   styleUrl: './spell-checker.css',
 })

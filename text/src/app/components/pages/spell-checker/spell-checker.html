@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col max-w-4xl gap-6 p-4 mx-auto border rounded-lg shadow-lg sm:p-6 border-olive-border bg-olive-parchment"
+  class="flex flex-col max-w-6xl gap-6 p-4 mx-auto border rounded-lg shadow-lg sm:p-6 border-olive-border bg-olive-parchment"
 >
   <!-- Header -->
   <div>
@@ -41,7 +41,7 @@
       type="file"
       accept=".txt,.md,.text"
       (change)="onFileSelected($event)"
-      class="block w-full text-sm text-olive-ink file:mr-4 file:px-4 file:py-2 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-olive-deep file:text-white file:cursor-pointer file:transition file:hover:opacity-80 bg-olive-cream border border-olive-light rounded-lg cursor-pointer"
+      class="block w-full text-sm border rounded-lg cursor-pointer text-olive-ink file:mr-4 file:px-4 file:py-2 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-olive-deep file:text-white file:cursor-pointer file:transition file:hover:opacity-80 bg-olive-cream border-olive-light"
     />
     @if (fileName()) {
       <p class="text-sm text-olive-ink/70">{{ t().fileLoaded }}: {{ fileName() }}</p>
@@ -59,44 +59,50 @@
   />
 
   <!-- Actions -->
-  <div class="flex flex-wrap gap-2">
-    <button
-      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition rounded-lg bg-olive-deep hover:opacity-80"
-      (click)="checkSpelling()"
-      [disabled]="isChecking() || isLoadingDictionary() || !inputText()"
-    >
-      @if (isChecking()) {
-        {{ t().spellChecking }}
-      } @else {
-        <i class="fas fa-spell-check"></i> {{ t().checkSpelling }}
-      }
-    </button>
-
-    <button
-      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
-      (click)="clear()"
-      [disabled]="!inputText()"
-    >
-      <i class="fas fa-trash"></i> {{ t().clear }}
-    </button>
-
-    @if (canUndo()) {
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <div class="flex flex-wrap gap-2">
       <button
-        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition border rounded-lg text-olive-ink bg-amber-500/20 border-amber-500/50 hover:bg-amber-500/30"
-        (click)="undo()"
-        title="Deshacer última corrección"
+        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition rounded-lg bg-olive-deep hover:opacity-80"
+        (click)="checkSpelling()"
+        [disabled]="isChecking() || isLoadingDictionary() || !inputText()"
       >
-        <i class="fas fa-undo"></i> {{ t().undo }}
+        @if (isChecking()) {
+          {{ t().spellChecking }}
+        } @else {
+          <i class="fas fa-spell-check"></i> {{ t().checkSpelling }}
+        }
       </button>
-    }
 
-    @if (correctedText()) {
       <button
         class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
-        (click)="copyResult()"
+        (click)="clear()"
+        [disabled]="!inputText()"
       >
-        <i class="fas fa-copy"></i> {{ t().result }}
+        <i class="fas fa-trash"></i> {{ t().clear }}
       </button>
+
+      @if (canUndo()) {
+        <button
+          class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition border rounded-lg text-olive-ink bg-amber-500/20 border-amber-500/50 hover:bg-amber-500/30"
+          (click)="undo()"
+          title="Deshacer última corrección"
+        >
+          <i class="fas fa-undo"></i> {{ t().undo }}
+        </button>
+      }
+
+      @if (correctedText()) {
+        <button
+          class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
+          (click)="copyResult()"
+        >
+          <i class="fas fa-copy"></i> {{ t().result }}
+        </button>
+      }
+    </div>
+
+    @if (inputText()) {
+      <app-copy-button [textToCopy]="inputText()" />
     }
   </div>
 

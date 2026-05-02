@@ -2,29 +2,39 @@
 <label class="block mb-1 text-sm font-semibold text-olive-deep">{{ label }}</label>
 }
 
-@if (multiline) {
-<textarea
-  #textareaRef
-  [value]="value"
-  (input)="onInput($event)"
-  (blur)="fieldBlur.emit()"
-  [placeholder]="placeholder"
-  [rows]="rows"
-  [disabled]="disabled"
-  [autocomplete]="autocomplete"
-  [id]="id || null"
-  [class]="inputClass"
-></textarea>
-} @else {
-<input
-  [value]="value"
-  (input)="onInput($event)"
-  (blur)="fieldBlur.emit()"
-  [placeholder]="placeholder"
-  [type]="type"
-  [disabled]="disabled"
-  [autocomplete]="autocomplete"
-  [id]="id || null"
-  [class]="inputClass"
-/>
-}
+<div class="relative">
+  @if (multiline) {
+  <textarea
+    #textareaRef
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="fieldBlur.emit()"
+    [placeholder]="placeholder"
+    [rows]="rows"
+    [disabled]="disabled"
+    [autocomplete]="autocomplete"
+    [id]="id || null"
+    [class]="inputClass"
+    [style.padding-right]="showCopyButton && value ? '3.5rem' : ''"
+  ></textarea>
+  } @else {
+  <input
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="fieldBlur.emit()"
+    [placeholder]="placeholder"
+    [type]="type"
+    [disabled]="disabled"
+    [autocomplete]="autocomplete"
+    [id]="id || null"
+    [class]="inputClass"
+    [style.padding-right]="showCopyButton && value ? '3.5rem' : ''"
+  />
+  }
+
+  @if (showCopyButton && value && value.trim().length > 0) {
+  <div class="absolute top-2 right-2">
+    <app-copy-button [textToCopy]="value" />
+  </div>
+  }
+</div>

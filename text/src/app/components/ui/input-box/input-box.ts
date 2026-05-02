@@ -10,11 +10,12 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { CopyButton } from '../copy-button/copy-button';
 
 @Component({
   selector: 'app-input-box',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CopyButton],
   templateUrl: './input-box.html',
   styleUrl: './input-box.css',
 })
@@ -33,6 +34,7 @@ export class InputBox implements AfterViewInit, OnChanges {
   @Input() disabled: boolean = false;
   @Input() autoResize: boolean = true;
   @Input() inputClass: string = 'w-full p-4 bg-white border shadow-sm border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500';
+  @Input() showCopyButton: boolean = false;
 
   @ViewChild('textareaRef') textareaRef?: ElementRef<HTMLTextAreaElement>;
 

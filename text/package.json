@@ -24,8 +24,10 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@types/nspell": "^2.1.6",
     "autoprefixer": "^10.5.0",
     "express": "^5.1.0",
+    "nspell": "^2.1.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

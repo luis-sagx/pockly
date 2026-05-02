@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faScissors, faDownload, faImage, faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
   selector: 'app-background-remover',
   standalone: true,
-  imports: [CommonModule, FaIconComponent],
+  imports: [CommonModule, FaIconComponent, DropZone],
   templateUrl: './background-remover.html',
   styleUrl: './background-remover.css',
 })
@@ -25,9 +26,8 @@ export class BackgroundRemover {
   resultBlob: Blob | null = null;
   private originalFile: File | null = null;
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
+  onFilesSelected(files: File[]) {
+    const file = files[0];
     if (!file) return;
     this.originalFile = file;
     this.originalName.set(file.name);
@@ -41,8 +41,11 @@ export class BackgroundRemover {
     reader.readAsDataURL(file);
   }
 
-  onDrop(event: DragEvent) { event.preventDefault(); const file = event.dataTransfer?.files?.[0]; if (file && file.type.startsWith('image/')) this.onFileSelected({ target: { files: [file] } } as any); }
-  onDragOver(event: DragEvent) { event.preventDefault(); }
+  onFileSelectedFromInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (file) this.onFilesSelected([file]);
+  }
 
   async removeBackground() {
     if (!this.originalFile) { this.error.set('Please select an image first.'); return; }

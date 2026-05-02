@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OutputBox } from '../../ui/output-box/output-box';
 import { InputBox } from '../../ui/input-box/input-box';
+import { DropZone } from '../../ui/drop-zone/drop-zone';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faImage, faTrash, faSpinner, faCircleExclamation, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-base64-tool',
   standalone: true,
-  imports: [OutputBox, InputBox, FormsModule, FaIconComponent],
+  imports: [OutputBox, InputBox, FormsModule, FaIconComponent, DropZone],
   templateUrl: './base64-tool.html',
   styleUrl: './base64-tool.css',
 })
@@ -35,9 +36,8 @@ export class Base64Tool {
     this.errorMessage = '';
   }
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.selectedFile = input.files?.[0] ?? null;
+  onFilesSelected(files: File[]): void {
+    this.selectedFile = files[0] ?? null;
     this.clearResults();
     this.hasError = false;
     this.errorMessage = '';

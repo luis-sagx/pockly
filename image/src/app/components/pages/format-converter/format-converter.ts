@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faRepeat, faDownload, faImage, faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
   selector: 'app-format-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, FaIconComponent],
+  imports: [CommonModule, FormsModule, FaIconComponent, DropZone],
   templateUrl: './format-converter.html',
   styleUrl: './format-converter.css',
 })
@@ -28,7 +29,11 @@ export class FormatConverter {
   error = signal('');
   fileMode = signal<'single' | 'multiple'>('single');
 
-  onFileSelected(event: Event): void {
+  onFilesSelected(files: File[]): void {
+    this.loadFiles(files);
+  }
+
+  onFileSelectedFromInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.loadFiles(Array.from(input.files ?? []));
   }

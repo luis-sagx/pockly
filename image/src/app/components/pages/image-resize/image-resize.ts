@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import imageCompression from 'browser-image-compression';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faExpand, faDownload, faImage, faTrash, faSpinner, faGear } from '@fortawesome/free-solid-svg-icons';
+import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 type ResizeMode = 'dimensions' | 'weight';
 
 @Component({
   selector: 'app-image-resize',
   standalone: true,
-  imports: [CommonModule, FormsModule, FaIconComponent],
+  imports: [CommonModule, FormsModule, FaIconComponent, DropZone],
   templateUrl: './image-resize.html',
   styleUrl: './image-resize.css',
 })
@@ -37,9 +38,8 @@ export class ImageResize {
   private naturalWidth = 0;
   private naturalHeight = 0;
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
+  onFileSelected(files: File[]) {
+    const file = files[0];
     if (!file) return;
     this.originalFile = file;
     this.originalSizeKb.set(Math.round(file.size / 1024));
@@ -56,6 +56,12 @@ export class ImageResize {
       img.src = src;
     };
     reader.readAsDataURL(file);
+  }
+
+  onFileSelectedFromInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (file) this.onFileSelected([file]);
   }
 
   onWidthChange(val: number) { this.width.set(val); if (this.keepAspectRatio() && this.naturalWidth && this.naturalHeight) this.height.set(Math.round(val * (this.naturalHeight / this.naturalWidth))); }

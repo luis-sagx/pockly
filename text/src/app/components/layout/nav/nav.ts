@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
-export class Nav {}
+export class Nav {
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+}

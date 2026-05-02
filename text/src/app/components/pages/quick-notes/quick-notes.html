@@ -3,14 +3,14 @@
 >
   <div class="flex items-center justify-between">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">Quick Notes</h2>
-      <p class="mt-1 text-sm text-olive-ink/70">Write and auto-save your notes instantly.</p>
+      <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">{{ t().quickNotes }}</h2>
+      <p class="mt-1 text-sm text-olive-ink/70">{{ t().writeAndAutoSaveNotes }}</p>
     </div>
     @if (saved()) {
       <div
         class="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-green-600 bg-green-50 rounded-lg"
       >
-        <i class="fas fa-check"></i> Saved
+        <i class="fas fa-check"></i> {{ t().saved }}
       </div>
     }
   </div>
@@ -18,24 +18,24 @@
     [value]="content()"
     (input)="onInputChange($any($event.target).value)"
     rows="15"
-    placeholder="Start typing your notes here... They will be auto-saved to your browser's local storage."
+    [placeholder]="t().startTypingNotes"
     class="w-full p-4 border rounded-lg resize-none text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border-olive-light focus:outline-none focus:ring-2 focus:ring-blue-500/50"
   ></textarea>
   <div class="flex flex-wrap items-center gap-3">
     @if (showConfirm()) {
       <div class="flex items-center gap-2">
-        <span class="text-sm text-red-600">Are you sure?</span>
+        <span class="text-sm text-red-600">{{ t().areYouSure }}</span>
         <button
           (click)="clear()"
           class="flex items-center gap-1 px-3 py-1.5 text-sm font-semibold text-white transition bg-red-600 rounded-lg hover:bg-red-700"
         >
-          <i class="fas fa-check"></i> Yes, clear
+          <i class="fas fa-check"></i> {{ t().yesClear }}
         </button>
         <button
           (click)="cancelClear()"
           class="flex items-center gap-1 px-3 py-1.5 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream"
         >
-          <i class="fas fa-times"></i> Cancel
+          <i class="fas fa-times"></i> {{ t().cancel }}
         </button>
       </div>
     } @else {
@@ -43,7 +43,7 @@
         (click)="clear()"
         class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
       >
-        <i class="fas fa-trash"></i> Clear
+        <i class="fas fa-trash"></i> {{ t().clear }}
       </button>
     }
   </div>

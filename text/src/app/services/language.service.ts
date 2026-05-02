@@ -4,6 +4,14 @@ import { isPlatformBrowser } from '@angular/common';
 export type Language = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it';
 
 export interface Translations {
+  // Nav
+  navHome: string;
+  navWordCount: string;
+  navTextCase: string;
+  navDiffChecker: string;
+  navPasswordGenerator: string;
+  navQuickNotes: string;
+
   // Footer
   freeOnlineTools: string;
   noSignupNoAds: string;
@@ -80,6 +88,14 @@ export interface Translations {
 
 const translations: Record<Language, Translations> = {
   en: {
+    // Nav
+    navHome: 'Home',
+    navWordCount: 'Word Counter',
+    navTextCase: 'Text Case',
+    navDiffChecker: 'Diff Checker',
+    navPasswordGenerator: 'Password Generator',
+    navQuickNotes: 'Quick Notes',
+
     // Footer
     freeOnlineTools: 'Free online tools — no signup, no ads.',
     noSignupNoAds: '',
@@ -156,6 +172,14 @@ const translations: Record<Language, Translations> = {
     cancel: 'Cancel',
   },
   es: {
+    // Nav
+    navHome: 'Inicio',
+    navWordCount: 'Contador',
+    navTextCase: 'Mayúsculas',
+    navDiffChecker: 'Comparador',
+    navPasswordGenerator: 'Contraseñas',
+    navQuickNotes: 'Notas',
+
     // Footer
     freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
     noSignupNoAds: '',
@@ -232,6 +256,14 @@ const translations: Record<Language, Translations> = {
     cancel: 'Cancelar',
   },
   fr: {
+    // Nav
+    navHome: 'Accueil',
+    navWordCount: 'Compteur',
+    navTextCase: 'Casse',
+    navDiffChecker: 'Différences',
+    navPasswordGenerator: 'Mots de passe',
+    navQuickNotes: 'Notes',
+
     // Footer
     freeOnlineTools: 'Outils en ligne gratuits — sans inscription, sans publicité.',
     noSignupNoAds: '',
@@ -308,6 +340,14 @@ const translations: Record<Language, Translations> = {
     cancel: 'Annuler',
   },
   de: {
+    // Nav
+    navHome: 'Startseite',
+    navWordCount: 'Wörter',
+    navTextCase: 'Schreibung',
+    navDiffChecker: 'Vergleich',
+    navPasswordGenerator: 'Passwörter',
+    navQuickNotes: 'Notizen',
+
     // Footer
     freeOnlineTools: 'Kostenlose Online-Tools — keine Registrierung, keine Werbung.',
     noSignupNoAds: '',
@@ -384,6 +424,14 @@ const translations: Record<Language, Translations> = {
     cancel: 'Abbrechen',
   },
   pt: {
+    // Nav
+    navHome: 'Início',
+    navWordCount: 'Contador',
+    navTextCase: 'Maiúsculas',
+    navDiffChecker: 'Comparador',
+    navPasswordGenerator: 'Senhas',
+    navQuickNotes: 'Notas',
+
     // Footer
     freeOnlineTools: 'Ferramentas online gratuitas — sem cadastro, sem anúncios.',
     noSignupNoAds: '',
@@ -460,6 +508,14 @@ const translations: Record<Language, Translations> = {
     cancel: 'Cancelar',
   },
   it: {
+    // Nav
+    navHome: 'Home',
+    navWordCount: 'Contatore',
+    navTextCase: 'Maiuscole',
+    navDiffChecker: 'Controllo',
+    navPasswordGenerator: 'Password',
+    navQuickNotes: 'Note',
+
     // Footer
     freeOnlineTools: 'Strumenti online gratuiti — senza registrazione, senza pubblicità.',
     noSignupNoAds: '',

@@ -74,7 +74,8 @@ export class Home implements OnInit {
   ngOnInit() {
     this.seo.setMeta({
       title: 'JSON Tools - Free Online JSON Utilities',
-      description: 'Free online JSON tools: generator, templates, convert, and utils. No signup required.',
+      description:
+        'Free online JSON tools: generator, templates, convert, and utils. No signup required.',
     });
   }
 

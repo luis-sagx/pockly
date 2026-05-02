@@ -46,7 +46,11 @@ export class SpellChecker implements OnDestroy {
   errors = signal<SpellingError[]>([]);
   correctedText = signal('');
   hasChecked = signal(false);
-  lastText = signal('');
+
+  // Pila de historial para undo - permite múltiples undos
+  private historyStack: string[] = [];
+  // Signal para trackear si hay undo disponible (público para el template)
+  canUndo = signal(false);
 
   private spellChecker: NSpellInstance | null = null;
   private loadedLanguages = new Map<SpellLanguage, NSpellInstance>();
@@ -159,21 +163,28 @@ export class SpellChecker implements OnDestroy {
 
   replaceWord(error: SpellingError, suggestion: string) {
     const text = this.inputText();
+
+    // Guardar estado actual en la pila de historial ANTES de hacer el cambio
+    this.historyStack.push(text);
+    this.canUndo.set(true);
+
     const newText =
       text.substring(0, error.index) + suggestion + text.substring(error.index + error.word.length);
 
-    this.lastText.set(text);
     this.inputText.set(newText);
     this.checkSpelling();
   }
 
   undo() {
-    if (this.lastText()) {
-      this.inputText.set(this.lastText());
-      this.lastText.set('');
+    if (this.historyStack.length > 0) {
+      const previousText = this.historyStack.pop()!;
+      this.inputText.set(previousText);
+      this.canUndo.set(this.historyStack.length > 0);
       this.checkSpelling();
     }
   }
+
+  // OLD: computed para saber si hay algo que deshacer
 
   applyCorrection() {
     if (this.correctedText()) {
@@ -188,7 +199,8 @@ export class SpellChecker implements OnDestroy {
     this.errors.set([]);
     this.correctedText.set('');
     this.hasChecked.set(false);
-    this.lastText.set('');
+    this.historyStack = [];
+    this.canUndo.set(false);
   }
 
   copyResult() {

@@ -1,123 +1,12 @@
 import { Component, signal, computed, inject, OnDestroy } from '@angular/core';
 import { InputBox } from '../../ui/input-box/input-box';
-import { LanguageService, Language } from '../../../services/language.service';
+import { LanguageService } from '../../../services/language.service';
 import { CommonModule } from '@angular/common';
 
 interface SpellingError {
   word: string;
   index: number;
   suggestions: string[];
-}
-
-interface SpellCheckerInstance {
-  correct: (word: string) => boolean;
-  suggest: (word: string) => string[];
-}
-
-// Common typo corrections for Spanish
-const SPANISH_TYPOS: Record<string, string[]> = {
-  // h omitted
-  'gola': ['hola'],
-  'golas': ['holas'],
-  'aber': ['a ver'],
-  'ablar': ['hablar'],
-  'ace': ['has'],
-  'acer': ['hacer'],
-  'acion': ['acción'],
-  'aher': ['a', 'hay', 'ayer'],
-  'ahorra': ['ahora'],
-  'agusto': ['a gusto'],
-  
-  // Common misspellings - está/están
-  'esyan': ['están', 'está'],
-  'esyanmos': ['estamos'],
-  'estan': ['están'],
-  'estamo': ['estamos'],
-  'estmos': ['estamos'],
-  
-  // yo/estoy errors
-  'to': ['yo'],
-  'toy': ['estoy'],
-  'estoh': ['estoy'],
-  'estohay': ['estoy'],
-  'estoi': ['estoy'],
-  'estooy': ['estoy'],
-  'estohy': ['estoy'],
-  'eesou': ['estoy'],
-  
-  // todos errors - PRIORITIZE correct spelling
-  'tofos': ['todos'],
-  'toodos': ['todos'],
-  'todoos': ['todos'],
-  'todoss': ['todos'],
-  'tod': ['todo'],
-  'tood': ['todos'],
-  'toodss': ['todos'],
-  'todos': ['todos'],
-  
-  // bien errors
-  'vien': ['bien'],
-  'vienn': ['bien'],
-  'biem': ['bien'],
-  'been': ['bien'],
-  'ben': ['bien'],
-  'biin': ['bien'],
-  
-  // muy errors
-  'muuy': ['muy'],
-  'muyy': ['muy'],
-  'muy': ['muy'],
-  
-  // amigos errors
-  'amifos': ['amigos'],
-  'amigos': ['amigos'],
-  'amigo': ['amigo'],
-  'amiga': ['amiga'],
-  'amifoo': ['amigo'],
-  
-  // Common words
-  'pingino': ['pingüino'],
-  'habia': ['había'],
-  'seria': ['sería'],
-  'estaria': ['estaría'],
-  'podia': ['podía'],
-  'tendra': ['tendrá'],
-  'hizo': ['hizo'],
-  'izo': ['hizo'],
-  'echo': ['hecho'],
-  'bisto': ['visto'],
-  'baya': ['vaya'],
-  'bemos': ['vemos'],
-  'ber': ['ver'],
-  'bida': ['vida'],
-  'bao': ['voy'],
-  'sierta': ['cierta'],
-  
-  // Slang/informal
-  'tbn': ['también'],
-  'tb': ['también'],
-  'xq': ['porque'],
-  'pq': ['porque'],
-  'ke': ['que'],
-  'k': ['que'],
-  'dl': ['del'],
-  'cta': ['cuenta'],
-  'grasis': ['gracias'],
-  'ok': ['okay'],
-};
-
-function getSpanishPhoneticKey(word: string): string {
-  // Simple phonetic mapping for Spanish
-  return word
-    .toLowerCase()
-    .replace(/b|v/g, 'b')
-    .replace(/c|z|s/g, 's')
-    .replace(/g|j/g, 'j')
-    .replace(/h/g, '')
-    .replace(/qu/g, 'k')
-    .replace(/ll/g, 'y')
-    .replace(/ñ/g, 'n')
-    .replace(/á|é|í|ó|ú|ü/g, '');
 }
 
 type SpellLanguage = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it';
@@ -132,6 +21,12 @@ const DICTIONARY_MAP: Record<SpellLanguage, { pkg: string; name: string }> = {
 };
 
 const CDN_BASE = 'https://cdn.jsdelivr.net/npm';
+
+// nspell will be dynamically imported
+type NSpellInstance = {
+  correct: (word: string) => boolean;
+  suggest: (word: string) => string[];
+};
 
 @Component({
   selector: 'app-spell-checker',
@@ -151,9 +46,10 @@ export class SpellChecker implements OnDestroy {
   errors = signal<SpellingError[]>([]);
   correctedText = signal('');
   hasChecked = signal(false);
+  lastText = signal('');
 
-  private spellChecker: SpellCheckerInstance | null = null;
-  private loadedLanguages = new Set<SpellLanguage>();
+  private spellChecker: NSpellInstance | null = null;
+  private loadedLanguages = new Map<SpellLanguage, NSpellInstance>();
 
   t = computed(() => this.languageService.getTranslations());
 
@@ -173,7 +69,9 @@ export class SpellChecker implements OnDestroy {
     this.dictionaryError.set(null);
     this.hasChecked.set(false);
 
-    if (!this.loadedLanguages.has(lang)) {
+    if (this.loadedLanguages.has(lang)) {
+      this.spellChecker = this.loadedLanguages.get(lang)!;
+    } else {
       await this.loadDictionary(lang);
     }
   }
@@ -185,219 +83,96 @@ export class SpellChecker implements OnDestroy {
     try {
       const dict = DICTIONARY_MAP[lang];
 
+      // Load nspell dynamically (add to your package.json: "nspell": "^2.1.5")
+      const nspell = await import('nspell');
+
       const [affResponse, dicResponse] = await Promise.all([
         fetch(`${CDN_BASE}/${dict.pkg}/index.aff`),
         fetch(`${CDN_BASE}/${dict.pkg}/index.dic`),
       ]);
 
       if (!affResponse.ok || !dicResponse.ok) {
-        console.error('Failed to load dictionary:', affResponse.status, dicResponse.status);
         throw new Error(`Failed to load dictionary for ${lang}`);
       }
 
-      const [affContent, dicContent] = await Promise.all([
-        affResponse.text(),
-        dicResponse.text(),
-      ]);
+      const [affContent, dicContent] = await Promise.all([affResponse.text(), dicResponse.text()]);
 
-      console.log('Loaded dictionary for', lang, 'aff size:', affContent.length, 'dic size:', dicContent.length);
+      // nspell handles affix rules, morphological variants, and smart suggestions
+      const checker: NSpellInstance = nspell.default({ aff: affContent, dic: dicContent });
 
-      // Simple dictionary-based spell checking
-      // Parse the .dic file to build a word set
-      const words = new Set<string>();
-      const lines = dicContent.split('\n');
-      
-      // Skip first line (word count) and parse the rest
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-        
-        // Format: word or word/flags (tab separated)
-        const tabIndex = line.indexOf('\t');
-        let word: string;
-        
-        if (tabIndex >= 0) {
-          word = line.substring(0, tabIndex).trim();
-        } else {
-          // Check for slash-based flags
-          const slashIndex = line.indexOf('/');
-          word = slashIndex >= 0 ? line.substring(0, slashIndex).trim() : line.trim();
-        }
-        
-        if (word && word.length > 1 && /^[a-zA-ZáéíóúñÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõäëïöüßç]+$/.test(word)) {
-          words.add(word.toLowerCase());
-        }
-      }
+      this.loadedLanguages.set(lang, checker);
+      this.spellChecker = checker;
 
-      console.log('Parsed', words.size, 'words for', lang);
-
-      // Get phonetic key for each word in dictionary
-      const wordsByPhonetic = new Map<string, string[]>();
-      for (const word of words) {
-        const key = getSpanishPhoneticKey(word);
-        if (!wordsByPhonetic.has(key)) {
-          wordsByPhonetic.set(key, []);
-        }
-        wordsByPhonetic.get(key)!.push(word);
-      }
-
-      // Simple spell checker implementation
-      this.spellChecker = {
-        correct: (word: string) => {
-          const lower = word.toLowerCase();
-          return words.has(lower) || lower.length <= 1;
-        },
-        suggest: (word: string) => {
-          const lower = word.toLowerCase();
-          const suggestions: string[] = [];
-
-          // First check common Spanish typos
-          if (SPANISH_TYPOS[lower]) {
-            for (const suggestion of SPANISH_TYPOS[lower]) {
-              if (!suggestions.includes(suggestion)) {
-                suggestions.push(suggestion);
-              }
-            }
-          }
-
-          // Then find words with same phonetic key
-          const phoneticKey = getSpanishPhoneticKey(lower);
-          const phoneticMatches = wordsByPhonetic.get(phoneticKey);
-          if (phoneticMatches) {
-            for (const match of phoneticMatches) {
-              if (!suggestions.includes(match) && suggestions.length < 5) {
-                suggestions.push(match);
-              }
-            }
-          }
-
-          // Finally try Levenshtein distance - but prioritize by similarity
-          if (suggestions.length < 5) {
-            // Calculate distance for all matching words and sort by similarity
-            const matches: { word: string; distance: number }[] = [];
-            for (const dictWord of words) {
-              const distance = this.getLevenshteinDistance(lower, dictWord);
-              if (distance <= 2) {
-                // Prioritize words with similar length
-                const lengthDiff = Math.abs(dictWord.length - lower.length);
-                const score = distance * 10 + lengthDiff;
-                matches.push({ word: dictWord, distance: score });
-              }
-            }
-            
-            // Sort by score (lower is better)
-            matches.sort((a, b) => a.distance - b.distance);
-            
-            for (const match of matches) {
-              if (!suggestions.includes(match.word)) {
-                suggestions.push(match.word);
-              }
-              if (suggestions.length >= 5) break;
-            }
-          }
-
-          return suggestions;
-        },
-      };
-
-      this.loadedLanguages.add(lang);
+      console.log(`nspell dictionary loaded for ${lang}`);
     } catch (error) {
-      this.dictionaryError.set(this.t().dictionaryLoadError);
       console.error('Failed to load dictionary:', error);
+      this.dictionaryError.set(this.t().dictionaryLoadError);
     } finally {
       this.isLoadingDictionary.set(false);
     }
   }
 
-  private getLevenshteinDistance(a: string, b: string): number {
-    if (a.length === 0) return b.length;
-    if (b.length === 0) return a.length;
-
-    const matrix: number[][] = [];
-
-    for (let i = 0; i <= b.length; i++) {
-      matrix[i] = [i];
-    }
-
-    for (let j = 0; j <= a.length; j++) {
-      matrix[0][j] = j;
-    }
-
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b.charAt(i - 1) === a.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1,
-            matrix[i][j - 1] + 1,
-            matrix[i - 1][j] + 1
-          );
-        }
+  async checkSpelling() {
+    if (!this.spellChecker) {
+      const lang = this.selectedLanguage();
+      if (!this.loadedLanguages.has(lang)) {
+        await this.loadDictionary(lang);
+      } else {
+        this.spellChecker = this.loadedLanguages.get(lang)!;
       }
     }
 
-    return matrix[b.length][a.length];
-  }
-
-  async checkSpelling() {
-    if (!this.spellChecker && !this.loadedLanguages.has(this.selectedLanguage())) {
-      await this.loadDictionary(this.selectedLanguage());
-    }
-
-    if (!this.spellChecker) {
-      return;
-    }
+    if (!this.spellChecker) return;
 
     this.isChecking.set(true);
-
-    // Small delay to show loading state
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 50));
 
     const text = this.inputText();
     const foundErrors: SpellingError[] = [];
 
-    // Split text into words - ignore proper nouns (start with uppercase)
-    const wordRegex = /[a-zA-ZáéíóúñÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõäëïöüßç]+/g;
+    // Match words including accented characters
+    const wordRegex = /[a-zA-ZáéíóúñÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõäëïöüßçÇ]+/g;
     let match;
 
     while ((match = wordRegex.exec(text)) !== null) {
       const word = match[0];
       const index = match.index;
 
-      // Skip words starting with uppercase (proper nouns like YouTube)
-      if (word[0] === word[0].toUpperCase() && word[1] === word[1].toLowerCase()) {
-        continue;
-      }
+      // Skip short words (1 char)
+      if (word.length < 2) continue;
 
-      // Allow 2-letter words for common typos like "to" (should be "yo")
-      if (word.length < 2 && word !== 'to') continue;
+      // Skip proper nouns (starts uppercase, rest lowercase) — e.g. "London", "YouTube"
+      if (/^[A-ZÁÉÍÓÚ][a-záéíóúñ]/.test(word)) continue;
 
-      if (!this.spellChecker!.correct(word)) {
-        const suggestions = this.spellChecker!.suggest(word);
+      if (!this.spellChecker.correct(word)) {
+        // nspell.suggest() uses Hunspell affix rules for high-quality suggestions
+        const suggestions = this.spellChecker.suggest(word);
         foundErrors.push({ word, index, suggestions });
       }
     }
 
     this.errors.set(foundErrors);
-
-    // Don't auto-generate corrected text - let user click to replace
     this.correctedText.set('');
-
     this.isChecking.set(false);
     this.hasChecked.set(true);
   }
 
   replaceWord(error: SpellingError, suggestion: string) {
     const text = this.inputText();
-    const newText = text.substring(0, error.index) +
-      suggestion +
-      text.substring(error.index + error.word.length);
+    const newText =
+      text.substring(0, error.index) + suggestion + text.substring(error.index + error.word.length);
 
+    this.lastText.set(text);
     this.inputText.set(newText);
-
-    // Re-check after replacement
     this.checkSpelling();
+  }
+
+  undo() {
+    if (this.lastText()) {
+      this.inputText.set(this.lastText());
+      this.lastText.set('');
+      this.checkSpelling();
+    }
   }
 
   applyCorrection() {
@@ -413,14 +188,12 @@ export class SpellChecker implements OnDestroy {
     this.errors.set([]);
     this.correctedText.set('');
     this.hasChecked.set(false);
+    this.lastText.set('');
   }
 
   copyResult() {
-    if (this.correctedText()) {
-      navigator.clipboard.writeText(this.correctedText());
-    } else if (this.inputText()) {
-      navigator.clipboard.writeText(this.inputText());
-    }
+    const text = this.correctedText() || this.inputText();
+    if (text) navigator.clipboard.writeText(text);
   }
 
   ngOnDestroy() {

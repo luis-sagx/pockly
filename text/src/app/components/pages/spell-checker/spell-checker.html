@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-lg max-w-4xl mx-auto"
+  class="flex flex-col max-w-4xl gap-6 p-4 mx-auto border rounded-lg shadow-lg sm:p-6 border-olive-border bg-olive-parchment"
 >
   <!-- Header -->
   <div>
@@ -17,7 +17,7 @@
       {{ t().selectLanguage }}
     </label>
     <select
-      class="w-full md:w-64 px-4 py-2 bg-olive-cream border border-olive-light rounded-lg text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      class="w-full px-4 py-2 border rounded-lg md:w-64 bg-olive-cream border-olive-light text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
       [value]="selectedLanguage()"
       (change)="onLanguageChange($any($event.target).value)"
       [disabled]="isLoadingDictionary()"
@@ -47,7 +47,7 @@
   <!-- Actions -->
   <div class="flex flex-wrap gap-2">
     <button
-      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition rounded-lg bg-olive-deep hover:opacity-80"
       (click)="checkSpelling()"
       [disabled]="isChecking() || isLoadingDictionary() || !inputText()"
     >
@@ -59,16 +59,26 @@
     </button>
 
     <button
-      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
       (click)="clear()"
       [disabled]="!inputText()"
     >
       <i class="fas fa-trash"></i> {{ t().clear }}
     </button>
 
+    @if (lastText()) {
+      <button
+        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition border rounded-lg text-olive-ink bg-amber-500/20 border-amber-500/50 hover:bg-amber-500/30"
+        (click)="undo()"
+        title="Deshacer última corrección"
+      >
+        <i class="fas fa-undo"></i> {{ t().undo }}
+      </button>
+    }
+
     @if (correctedText()) {
       <button
-        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
+        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition rounded-lg text-olive-ink bg-olive-lightSage hover:bg-olive-cream hover:text-posthog-orange"
         (click)="copyResult()"
       >
         <i class="fas fa-copy"></i> {{ t().result }}
@@ -86,17 +96,17 @@
       <!-- Error List -->
       <div class="flex flex-col gap-3">
         @for (error of errors(); track error.index) {
-          <div class="p-4 bg-olive-cream border border-olive-light rounded-lg">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <div class="p-4 border rounded-lg bg-olive-cream border-olive-light">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div class="flex-1">
                 <span class="font-semibold text-red-600">{{ error.word }}</span>
-                <span class="text-sm text-olive-ink/70 ml-2">{{ t().clickToReplace }}</span>
+                <span class="ml-2 text-sm text-olive-ink/70">{{ t().clickToReplace }}</span>
               </div>
               @if (error.suggestions.length > 0) {
                 <div class="flex flex-wrap gap-2">
                   @for (suggestion of error.suggestions.slice(0, 5); track suggestion) {
                     <button
-                      class="px-3 py-1 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+                      class="px-3 py-1 text-sm font-semibold text-white transition rounded-lg bg-olive-deep hover:opacity-80"
                       (click)="replaceWord(error, suggestion)"
                     >
                       {{ suggestion }}
@@ -113,11 +123,11 @@
 
       <!-- Corrected Text -->
       @if (correctedText()) {
-        <div class="flex flex-col gap-3 p-4 bg-olive-cream border border-olive-light rounded-lg">
+        <div class="flex flex-col gap-3 p-4 border rounded-lg bg-olive-cream border-olive-light">
           <h4 class="font-semibold text-olive-deep">{{ t().correctedText }}</h4>
-          <p class="text-olive-ink whitespace-pre-wrap">{{ correctedText() }}</p>
+          <p class="whitespace-pre-wrap text-olive-ink">{{ correctedText() }}</p>
           <button
-            class="self-start px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+            class="self-start px-4 py-2 text-sm font-semibold text-white transition rounded-lg bg-olive-deep hover:opacity-80"
             (click)="applyCorrection()"
           >
             Apply Corrections
@@ -128,7 +138,7 @@
   }
 
   @if (hasChecked() && !isChecking() && errors().length === 0 && inputText()) {
-    <div class="p-6 bg-olive-cream border border-olive-light rounded-lg text-center">
+    <div class="p-6 text-center border rounded-lg bg-olive-cream border-olive-light">
       <p class="text-lg text-olive-ink">{{ t().noErrorsFound }}</p>
     </div>
   }

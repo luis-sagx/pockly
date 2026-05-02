@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "autoprefixer": "^10.5.0",
     "express": "^5.1.0",
+    "nspell": "^2.1.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -36,6 +37,7 @@
     "@tailwindcss/postcss": "^4.2.4",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
+    "@types/nspell": "^2.1.6",
     "jsdom": "^28.0.0",
     "postcss": "^8.5.10",
     "prettier": "^3.8.1",

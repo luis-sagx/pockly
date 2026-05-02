@@ -101,6 +101,7 @@ export interface Translations {
   clickToReplace: string;
   correctedText: string;
   sourceText: string;
+  undo: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -204,6 +205,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Click to replace',
     correctedText: 'Corrected Text',
     sourceText: 'Original',
+    undo: 'Undo',
   },
   es: {
     // Nav
@@ -305,6 +307,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Clic para reemplazar',
     correctedText: 'Texto Corregido',
     sourceText: 'Original',
+    undo: 'Deshacer',
   },
   fr: {
     // Nav
@@ -406,6 +409,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Cliquez pour remplacer',
     correctedText: 'Texte Corrigé',
     sourceText: 'Original',
+    undo: 'Annuler',
   },
   de: {
     // Nav
@@ -507,6 +511,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Klicken zum Ersetzen',
     correctedText: 'Korrigierter Text',
     sourceText: 'Original',
+    undo: 'Rückgängig',
   },
   pt: {
     // Nav
@@ -608,6 +613,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Clique para substituir',
     correctedText: 'Texto Corrigido',
     sourceText: 'Original',
+    undo: 'Desfazer',
   },
   it: {
     // Nav
@@ -709,6 +715,7 @@ const translations: Record<Language, Translations> = {
     clickToReplace: 'Clicca per sostituire',
     correctedText: 'Testo Corretto',
     sourceText: 'Originale',
+    undo: 'Annulla',
   },
 };
 

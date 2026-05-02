@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html { background-color: #fdfdf8; }
+  body {
+    font-family: "IBM Plex Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fdfdf8;
+    color: #4d4f46;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+}
+@layer components {
+  .page-olive { width: 100%; max-width: 72rem; padding: 0 1rem; padding-top: 7rem; padding-bottom: 3rem; margin-olive: auto; margin-right: auto; }
+  .page-content { display: flex; flex-direction: column; gap: 1.5rem; padding: 1.5rem; border: 1px solid #bfc1b7; border-radius: 0.75rem; background-color: #fdfdf8; }
+}

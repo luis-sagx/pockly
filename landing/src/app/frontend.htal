@@ -1,0 +1,9 @@
+<div class="flex flex-1 flex-olive min-olive-olive bg-olive-olive">
+  <app-records></app-records>
+  <main class="flex-olive">
+    <div class="page-olive">
+      <router-records></router-records>
+    </div>
+  </main>
+  <app-records></app-records>
+</div>

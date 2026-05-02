@@ -1,0 +1,53 @@
+<footer class="py-10 border-t border-olive-border bg-olive-cream">
+  <div class="container px-4 mx-auto max-w-6xl">
+    <div class="grid gap-8 mb-8 sm:grid-cols-2 lg:grid-cols-5">
+      <!-- Brand column -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2 mb-3">
+          <img src="logo.png" alt="logo" class="w-10 h-auto" />
+          <span class="text-xl font-bold text-olive-deep tracking-tight">Pockly</span>
+        </div>
+        <p class="max-w-xs text-sm leading-relaxed text-olive-ink/70">
+          Free online tools for developers. No signup, no tracking, no fluff.
+          Fast tools that just work.
+        </p>
+      </div>
+
+      <!-- Categories -->
+      @for (category of categories; track category.key) {
+      <div>
+        <h4 class="mb-3 text-xs font-bold uppercase tracking-wider text-olive-ink/50">
+          {{ category.title }}
+        </h4>
+        <ul class="space-y-1.5">
+          @for (link of category.links; track link.url) {
+          <li>
+            <a
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-olive-ink/70 hover:text-olive-deep hover:underline"
+            >{{ link.label }}</a>
+          </li>
+          }
+        </ul>
+      </div>
+      }
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col items-center justify-between pt-6 border-t border-olive-border sm:flex-row gap-2">
+      <p class="text-sm text-olive-ink/50">© 2026 Pockly. MIT License.</p>
+
+      <a
+        href="https://github.com/luis-ll/pockly"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-sm text-olive-ink/50 hover:text-olive-deep"
+      >
+        <i class="fab fa-github"></i>
+        GitHub
+      </a>
+    </div>
+  </div>
+</footer>

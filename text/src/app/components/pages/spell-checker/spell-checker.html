@@ -1,0 +1,135 @@
+<div
+  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-lg max-w-4xl mx-auto"
+>
+  <!-- Header -->
+  <div>
+    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">
+      {{ t().spellChecker }}
+    </h2>
+    <p class="mt-1 text-sm text-olive-ink/70">
+      {{ t().spellCheckerDesc }}
+    </p>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-olive-ink">
+      {{ t().selectLanguage }}
+    </label>
+    <select
+      class="w-full md:w-64 px-4 py-2 bg-olive-cream border border-olive-light rounded-lg text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      [value]="selectedLanguage()"
+      (change)="onLanguageChange($any($event.target).value)"
+      [disabled]="isLoadingDictionary()"
+    >
+      @for (lang of availableLanguages; track lang.code) {
+        <option [value]="lang.code">{{ lang.name }}</option>
+      }
+    </select>
+    @if (isLoadingDictionary()) {
+      <p class="text-sm text-olive-ink/70">{{ t().loadingDictionary }}</p>
+    }
+    @if (dictionaryError()) {
+      <p class="text-sm font-semibold text-red-600">{{ dictionaryError() }}</p>
+    }
+  </div>
+
+  <!-- Input -->
+  <app-input-box
+    [value]="inputText()"
+    (valueChange)="inputText.set($event)"
+    [placeholder]="t().enterTextHere"
+    [rows]="8"
+    [label]="t().sourceText"
+    inputClass="w-full p-4 text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+  />
+
+  <!-- Actions -->
+  <div class="flex flex-wrap gap-2">
+    <button
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+      (click)="checkSpelling()"
+      [disabled]="isChecking() || isLoadingDictionary() || !inputText()"
+    >
+      @if (isChecking()) {
+        {{ t().spellChecking }}
+      } @else {
+        <i class="fas fa-spell-check"></i> {{ t().checkSpelling }}
+      }
+    </button>
+
+    <button
+      class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
+      (click)="clear()"
+      [disabled]="!inputText()"
+    >
+      <i class="fas fa-trash"></i> {{ t().clear }}
+    </button>
+
+    @if (correctedText()) {
+      <button
+        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
+        (click)="copyResult()"
+      >
+        <i class="fas fa-copy"></i> {{ t().result }}
+      </button>
+    }
+  </div>
+
+  <!-- Results -->
+  @if (errors().length > 0) {
+    <div class="flex flex-col gap-4">
+      <h3 class="text-xl font-bold text-olive-deep font-display">
+        {{ t().spellingErrors }} ({{ errors().length }} {{ t().errorCount }})
+      </h3>
+
+      <!-- Error List -->
+      <div class="flex flex-col gap-3">
+        @for (error of errors(); track error.index) {
+          <div class="p-4 bg-olive-cream border border-olive-light rounded-lg">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div class="flex-1">
+                <span class="font-semibold text-red-600">{{ error.word }}</span>
+                <span class="text-sm text-olive-ink/70 ml-2">{{ t().clickToReplace }}</span>
+              </div>
+              @if (error.suggestions.length > 0) {
+                <div class="flex flex-wrap gap-2">
+                  @for (suggestion of error.suggestions.slice(0, 5); track suggestion) {
+                    <button
+                      class="px-3 py-1 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+                      (click)="replaceWord(error, suggestion)"
+                    >
+                      {{ suggestion }}
+                    </button>
+                  }
+                </div>
+              } @else {
+                <span class="text-sm text-olive-ink/70">{{ t().suggestions }}: —</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Corrected Text -->
+      @if (correctedText()) {
+        <div class="flex flex-col gap-3 p-4 bg-olive-cream border border-olive-light rounded-lg">
+          <h4 class="font-semibold text-olive-deep">{{ t().correctedText }}</h4>
+          <p class="text-olive-ink whitespace-pre-wrap">{{ correctedText() }}</p>
+          <button
+            class="self-start px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
+            (click)="applyCorrection()"
+          >
+            Apply Corrections
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (hasChecked() && !isChecking() && errors().length === 0 && inputText()) {
+    <div class="p-6 bg-olive-cream border border-olive-light rounded-lg text-center">
+      <p class="text-lg text-olive-ink">{{ t().noErrorsFound }}</p>
+    </div>
+  }
+</div>

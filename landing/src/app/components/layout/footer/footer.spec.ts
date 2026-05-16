@@ -20,4 +20,14 @@ describe('Footer', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should expose all project categories', () => {
+    expect(component.categories.map((category) => category.key)).toEqual([
+      'json',
+      'text',
+      'image',
+      'calculator',
+      'url',
+    ]);
+  });
 });

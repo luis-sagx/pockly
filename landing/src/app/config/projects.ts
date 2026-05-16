@@ -69,27 +69,6 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
     ],
   },
   {
-    key: 'calculator',
-    title: 'Calculator Tools',
-    links: [
-      {
-        label: 'Percentage',
-        url: 'https://calc.pockly.dev/percentage-calculator',
-        description: 'Calculate percentages quickly',
-      },
-      {
-        label: 'Currency',
-        url: 'https://calc.pockly.dev/currency-converter',
-        description: 'Convert currencies with live rates',
-      },
-      {
-        label: 'Unit',
-        url: 'https://calc.pockly.dev/unit-converter',
-        description: 'Length, weight and more',
-      },
-    ],
-  },
-  {
     key: 'image',
     title: 'Image Tools',
     links: [
@@ -116,17 +95,38 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
     ],
   },
   {
-    key: 'utilities',
-    title: 'Utilities',
+    key: 'calculator',
+    title: 'Calculator Tools',
+    links: [
+      {
+        label: 'Percentage',
+        url: 'https://calc.pockly.dev/percentage-calculator',
+        description: 'Calculate percentages quickly',
+      },
+      {
+        label: 'Currency',
+        url: 'https://calc.pockly.dev/currency-converter',
+        description: 'Convert currencies with live rates',
+      },
+      {
+        label: 'Unit',
+        url: 'https://calc.pockly.dev/unit-converter',
+        description: 'Length, weight and more',
+      },
+    ],
+  },
+  {
+    key: 'url',
+    title: 'URL Tools',
     links: [
       {
         label: 'QR Generator',
-        url: 'https://utils.pockly.dev/qr-generator',
+        url: 'https://url.pockly.dev/qr-generator',
         description: 'Generate QR codes from text and URLs',
       },
       {
         label: 'URL Shortener',
-        url: 'https://utils.pockly.dev/url-shortener',
+        url: 'https://url.pockly.dev/url-shortener',
         description: 'Create short URLs for sharing',
       },
     ],

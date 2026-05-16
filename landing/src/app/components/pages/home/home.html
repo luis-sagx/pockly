@@ -1,95 +1,80 @@
-<div class="flex flex-col gap-6 px-4 pb-12 pt-24">
-  <!-- Hero Section -->
-  <div
-    class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12"
-  >
-    <!-- Texto izquierda -->
-    <div class="order-1 max-w-5xl mx-auto md:order-1">
+<div class="flex flex-col gap-10 px-4 pt-24 pb-12">
+  <section class="flex flex-col items-center justify-between max-w-6xl gap-10 mx-auto md:flex-row">
+    <div class="order-2 max-w-3xl md:order-1">
       <h1
-        class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]"
+        class="text-4xl font-extrabold md:text-5xl text-olive-deep font-display leading-[1.12]"
         style="letter-spacing: -0.75px"
       >
-        Your text tools, all in one place
+        All your tools in one place
       </h1>
-      <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Powerful and simple text utilities to boost your productivity. Count words, change text
-        case, compare documents, generate secure passwords, and save notes. Completely free, no
-        registration required.
+      <p class="mt-5 text-lg leading-relaxed text-olive-ink/80 font-body">
+        Open the full collection of text, image, JSON, URL and calculator tools from a single hub.
+        Every card below takes you straight to the matching app.
       </p>
     </div>
-    <!-- Imagen derecha -->
-    <div class="flex-shrink-0 order-2 md:order-2">
-      <img src="/pet.png" alt="Pet illustration" class="object-contain w-48 h-48 md:w-64 md:h-64" />
+    <div class="flex-shrink-0 order-1 md:order-2">
+      <img src="/pet.png" alt="Pet illustration" class="object-contain w-56 h-56 md:w-72 md:h-72" />
     </div>
-  </div>
+  </section>
 
-  <!-- Filter Tabs -->
-  <div class="flex flex-wrap justify-center gap-2">
-    <button
-      (click)="filter.set('all')"
-      [class]="
-        filter() === 'all'
-          ? 'bg-olive-deep text-white'
-          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
-      "
-      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
-    >
-      All Tools
-    </button>
-    <button
-      (click)="filter.set('text')"
-      [class]="
-        filter() === 'text'
-          ? 'bg-olive-deep text-white'
-          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
-      "
-      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
-    >
-      Text Tools
-    </button>
-    <button
-      (click)="filter.set('compare')"
-      [class]="
-        filter() === 'compare'
-          ? 'bg-olive-deep text-white'
-          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
-      "
-      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
-    >
-      Compare
-    </button>
-    <button
-      (click)="filter.set('utilities')"
-      [class]="
-        filter() === 'utilities'
-          ? 'bg-olive-deep text-white'
-          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
-      "
-      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
-    >
-      Utilities
-    </button>
-  </div>
-
-  <!-- Tools Grid -->
-  <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
-    @for (tool of filteredTools(); track tool.id) {
-      <a
-        [routerLink]="tool.path"
-        class="flex flex-col items-start p-6 text-left transition-all duration-200 border rounded-lg cursor-pointer group bg-olive-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream"
+  <section class="flex flex-wrap justify-center gap-2">
+    @for (option of filterOptions; track option.value) {
+      <button
+        type="button"
+        (click)="filter.set(option.value)"
+        [class]="
+          filter() === option.value
+            ? 'bg-olive-deep text-white'
+            : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+        "
+        class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
       >
-        <div class="flex items-center gap-3 mb-3">
-          <div
-            class="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-olive-lightSage group-hover:bg-posthog-orange/10"
-          >
-            <i
-              [class]="tool.icon + ' fas text-lg transition-colors text-olive-deep group-hover:text-posthog-orange'"
-            ></i>
+        {{ option.label }}
+      </button>
+    }
+  </section>
+
+  <div class="flex flex-col gap-8">
+    @for (category of filteredCategories(); track category.key) {
+      <section class="w-full max-w-6xl mx-auto">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-olive-lightSage text-posthog-orange">
+              <i [class]="getCategoryIcon(category.key) + ' fas text-lg'"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-olive-deep font-display">{{ category.title }}</h2>
+              <p class="text-sm text-olive-ink/60 font-body">{{ category.links.length }} pages available</p>
+            </div>
           </div>
-          <span class="text-base font-bold text-olive-deep font-display">{{ tool.label }}</span>
         </div>
-        <p class="text-sm text-olive-ink/70 font-body">{{ tool.description }}</p>
-      </a>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          @for (link of category.links; track link.url) {
+            <a
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col justify-between p-5 transition-all duration-200 border rounded-2xl group bg-olive-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream"
+            >
+              <div class="flex items-start gap-4">
+                <div class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-xl bg-olive-lightSage/80 text-olive-deep group-hover:text-posthog-orange group-hover:bg-posthog-orange/10">
+                  <i [class]="getCategoryIcon(category.key) + ' fas text-base'"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-base font-bold text-olive-deep font-display">{{ link.label }}</h3>
+                  <p class="mt-2 text-sm leading-6 text-olive-ink/70 font-body">{{ link.description }}</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-olive-ink/45">
+                <span>{{ category.title }}</span>
+                <i class="transition-transform fas fa-arrow-right group-hover:translate-x-1 text-posthog-orange"></i>
+              </div>
+            </a>
+          }
+        </div>
+      </section>
     }
   </div>
 </div>

@@ -1,91 +1,59 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { PROJECT_CATEGORIES, type ProjectCategory } from '../../../config/projects';
 import { SeoService } from '../../../services/seo.service';
-
-interface Tool {
-  id: string;
-  label: string;
-  path: string;
-  icon: string;
-  description: string;
-  category: string;
-}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
   private seo = inject(SeoService);
 
-  // Signal para el filtro actual
-  filter = signal<string>('all');
+  private readonly featuredCategoryKeys = ['text', 'image', 'json', 'url', 'calculator'] as const;
 
-  tools: Tool[] = [
-    {
-      id: 'wordcount',
-      label: 'Word Counter',
-      path: '/word-count',
-      icon: 'fa-hashtag',
-      description: 'Count words, characters, sentences and paragraphs in your text',
-      category: 'Text',
-    },
-    {
-      id: 'textcase',
-      label: 'Text Case Converter',
-      path: '/text-case',
-      icon: 'fa-text-height',
-      description: 'Convert text to uppercase, lowercase, title case or sentence case',
-      category: 'Text',
-    },
-    {
-      id: 'diff',
-      label: 'Diff Checker',
-      path: '/diff-checker',
-      icon: 'fa-code-branch',
-      description: 'Compare two texts and see exactly what changed between them',
-      category: 'Compare',
-    },
-    {
-      id: 'password',
-      label: 'Password Generator',
-      path: '/password-generator',
-      icon: 'fa-key',
-      description: 'Generate secure passwords with custom length and character options',
-      category: 'Utilities',
-    },
-    {
-      id: 'quicknotes',
-      label: 'Quick Notes',
-      path: '/quick-notes',
-      icon: 'fa-pen-to-square',
-      description: 'Write and auto-save notes instantly to your browser storage',
-      category: 'Utilities',
-    },
+  readonly filter = signal<'all' | 'text' | 'image' | 'json' | 'url' | 'calculator'>('all');
+
+  readonly featuredCategories: ProjectCategory[] = this.featuredCategoryKeys
+    .map((key) => PROJECT_CATEGORIES.find((category) => category.key === key))
+    .filter((category): category is ProjectCategory => category !== undefined);
+
+  readonly filterOptions = [
+    { label: 'All', value: 'all' as const },
+    { label: 'Text', value: 'text' as const },
+    { label: 'Image', value: 'image' as const },
+    { label: 'JSON', value: 'json' as const },
+    { label: 'URL', value: 'url' as const },
+    { label: 'Calculator', value: 'calculator' as const },
   ];
 
-  filteredTools = computed(() => {
+  readonly filteredCategories = computed(() => {
     const currentFilter = this.filter();
+
     if (currentFilter === 'all') {
-      return this.tools;
+      return this.featuredCategories;
     }
-    // Map filter names to category names
-    const categoryMap: Record<string, string> = {
-      text: 'Text',
-      compare: 'Compare',
-      utilities: 'Utilities',
-    };
-    return this.tools.filter((tool) => tool.category === categoryMap[currentFilter]);
+
+    return this.featuredCategories.filter((category) => category.key === currentFilter);
   });
+
+  readonly categoryIcons: Record<string, string> = {
+    text: 'fa-font',
+    image: 'fa-image',
+    json: 'fa-code',
+    url: 'fa-link',
+    calculator: 'fa-calculator',
+  };
+
+  getCategoryIcon(key: string): string {
+    return this.categoryIcons[key] ?? 'fa-layer-group';
+  }
 
   ngOnInit() {
     this.seo.setMeta({
-      title: 'Pockly - Free Online Text Utilities',
-      description:
-        'Free online text tools: text case, word counter, diff checker, password generator, and quick notes.',
+      title: 'Pockly - Tools Hub',
+      description: 'Launch text, image, JSON, URL and calculator tools from one place.',
     });
   }
 }

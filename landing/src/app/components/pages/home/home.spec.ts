@@ -20,4 +20,14 @@ describe('Home', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should expose the five landing categories', () => {
+    expect(component.featuredCategories.map((category) => category.key)).toEqual([
+      'text',
+      'image',
+      'json',
+      'url',
+      'calculator',
+    ]);
+  });
 });

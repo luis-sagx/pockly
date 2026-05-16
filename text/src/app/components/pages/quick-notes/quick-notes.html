@@ -1,9 +1,9 @@
-<div
-  class="flex flex-col gap-6 p-4 border rounded-lg shadow-lg sm:p-6 border-olive-border bg-olive-parchment"
->
+<div class="flex flex-col gap-6 p-4 sm:p-6">
   <div class="flex items-center justify-between">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">{{ t().quickNotes }}</h2>
+      <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">
+        {{ t().quickNotes }}
+      </h2>
       <p class="mt-1 text-sm text-olive-ink/70">{{ t().writeAndAutoSaveNotes }}</p>
     </div>
     @if (saved()) {

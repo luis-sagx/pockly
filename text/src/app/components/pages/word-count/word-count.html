@@ -1,8 +1,8 @@
-<div
-  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-lg"
->
+<div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">{{ t().wordCounter }}</h2>
+    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">
+      {{ t().wordCounter }}
+    </h2>
     <p class="mt-1 text-sm text-olive-ink/70">{{ t().countWordsAndCharacters }}</p>
   </div>
 
@@ -18,7 +18,7 @@
     @if (fileName()) {
       <p class="text-sm text-olive-ink/70">{{ t().fileLoaded }}: {{ fileName() }}</p>
     }
-    <p class="text-xs text-olive-ink/50">{{ t().supportedFormats }}</p>
+    <p class="text-xs text-olive-ink/70">{{ t().supportedFormats }}</p>
   </div>
 
   <app-input-box

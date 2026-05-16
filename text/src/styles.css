@@ -8,14 +8,22 @@
   }
 
   body {
-    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family:
+      'Space Grotesk',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
     @apply bg-zinc-900 text-slate-100 antialiased;
   }
 }
 
 @layer components {
   .page-shell {
-    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
+    @apply w-full max-w-7xl px-6 py-12 mx-auto;
   }
 
   .page-content {

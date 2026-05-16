@@ -1,15 +1,15 @@
-<div
-  class="flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-lg bg-olive-parchment shadow-lg"
->
+<div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">{{ t().diffChecker }}</h2>
+    <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">
+      {{ t().diffChecker }}
+    </h2>
     <p class="mt-1 text-sm text-olive-ink/70">{{ t().compareTwoTexts }}</p>
   </div>
   <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
     <app-input-box
       [label]="t().originalText"
       [multiline]="true"
-      [rows]="10"
+      [rows]="16"
       [value]="leftText()"
       (valueChange)="leftText.set($event)"
       [placeholder]="t().pasteOriginalText"
@@ -18,7 +18,7 @@
     <app-input-box
       [label]="t().newText"
       [multiline]="true"
-      [rows]="10"
+      [rows]="16"
       [value]="rightText()"
       (valueChange)="rightText.set($event)"
       [placeholder]="t().pasteNewModifiedText"

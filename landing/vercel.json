@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/pockly",
+  "outputDirectory": "dist/pockly/browser",
   "installCommand": "pnpm install --frozen-lockfile",
   "rewrites": [
     {

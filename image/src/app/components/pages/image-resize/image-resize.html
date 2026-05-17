@@ -1,12 +1,12 @@
 <div class="card">
   <div>
-    <h2 class="section-heading">Image Resizer</h2>
-    <p class="section-subtitle text-sm">Resize your image to any dimension.</p>
+    <h2 class="section-heading">{{ t().imageResize }}</h2>
+    <p class="section-subtitle text-sm">{{ t().resizeImage }}</p>
   </div>
   @if (!originalPreview()) {
     <div class="stats-bar">
       <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-        >Width (px)<input
+        >{{ t().width }} ({{ t().pixels }})<input
           type="number"
           min="1"
           [value]="width()"
@@ -14,7 +14,7 @@
           class="w-28 px-3 py-2 bg-olive-cream border border-olive-light rounded text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
       /></label>
       <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-        >Height (px)<input
+        >{{ t().height }} ({{ t().pixels }})<input
           type="number"
           min="1"
           [value]="height()"
@@ -27,11 +27,11 @@
           [checked]="keepAspectRatio()"
           (change)="keepAspectRatio.set($any($event.target).checked)"
           class="w-4 h-4 accent-posthog-orange"
-        />Keep aspect ratio</label
+        />{{ t().maintainAspectRatio }}</label
       >
     </div>
     <app-drop-zone
-      labelText="Click to select an image"
+      labelText="{{ t().uploadImage }}"
       subText="PNG, JPG, WEBP"
       (fileSelected)="onFileSelected($event)"
     />

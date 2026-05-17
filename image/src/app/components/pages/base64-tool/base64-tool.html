@@ -1,13 +1,13 @@
 <div class="card">
   <div>
-    <h2 class="section-heading">Image → Base64</h2>
-    <p class="section-subtitle text-sm">Selecciona una imagen y obtén su Base64.</p>
+    <h2 class="section-heading">{{ t().imageToBase64 }} → Base64</h2>
+    <p class="section-subtitle text-sm">{{ t().convertImageToBase64 }}</p>
   </div>
 
   <div class="mt-3">
     @if (!selectedImagePreviewUrl) {
       <app-drop-zone
-        labelText="Click to select an image"
+        labelText="{{ t().uploadImage }}"
         subText="PNG, JPG, WEBP"
         (fileSelected)="onFilesSelected($event)"
       />
@@ -15,7 +15,7 @@
 
     @if (selectedImagePreviewUrl) {
       <div class="flex flex-col gap-2 mt-3">
-        <h3 class="label">Selected image:</h3>
+        <h3 class="label">{{ t().selectImage }}:</h3>
         <div class="preview-container">
           <img
             [src]="selectedImagePreviewUrl"
@@ -41,14 +41,15 @@
       [class]="loading ? 'btn-primary opacity-50 cursor-not-allowed' : 'btn-primary'"
     >
       @if (loading) {
-        <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> Procesando...
+        <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon>
+        {{ t().processing }}
       } @else {
-        <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> Convertir a Base64
+        <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> {{ t().convertImageToBase64 }}
       }
     </button>
 
     <button (click)="clear()" class="btn-ghost">
-      <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> Limpiar
+      <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> {{ t().clear }}
     </button>
 
     @if (base64Result) {
@@ -60,7 +61,7 @@
 
   @if (base64Result) {
     <div class="flex flex-col gap-2 mt-3">
-      <h3 class="label">Base64 result:</h3>
+      <h3 class="label">{{ t().base64Output }}</h3>
       <div
         class="flex flex-col w-full h-64 overflow-hidden border rounded-xl bg-olive-cream border-olive-border"
       >

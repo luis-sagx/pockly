@@ -1,13 +1,13 @@
 <div class="card">
   <div>
-    <h2 class="section-heading">Compress (by weight)</h2>
-    <p class="section-subtitle text-sm">Reduce el tamaño del archivo objetivo (KB).</p>
+    <h2 class="section-heading">{{ t().imageCompress }}</h2>
+    <p class="section-subtitle text-sm">{{ t().compressImageBySize }}</p>
   </div>
 
   <div class="mt-3">
     @if (!originalPreview()) {
       <app-drop-zone
-        labelText="Click to select an image"
+        labelText="{{ t().uploadImage }}"
         subText="PNG, JPG, WEBP"
         (fileSelected)="onFileSelected($event)"
       />
@@ -16,7 +16,7 @@
     @if (originalPreview()) {
       <div class="stats-bar mt-3">
         <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-          >Maximum weight (KB)
+          >{{ t().targetSize }} (KB)
           <input
             type="number"
             min="10"

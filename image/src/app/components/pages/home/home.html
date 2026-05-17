@@ -14,11 +14,10 @@
         class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]"
         style="letter-spacing: -0.75px"
       >
-        Your image tools, all in one place
+        {{ t().yourImageToolsAllInOnePlace }}
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Powerful and simple image utilities to boost your productivity. Remove backgrounds, resize
-        images, convert formats, and encode to Base64. Completely free, no registration required.
+        {{ t().homeSubtitle }}
       </p>
     </div>
   </div>
@@ -34,7 +33,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      All Tools
+      {{ t().allTools }}
     </button>
     <button
       (click)="filter.set('Image')"
@@ -45,7 +44,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      Image
+      {{ t().conversionTools }}
     </button>
   </div>
 

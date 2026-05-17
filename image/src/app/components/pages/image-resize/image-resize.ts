@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -10,6 +10,7 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { LanguageService } from '../../../services/language.service';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
@@ -20,6 +21,9 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
   styleUrl: './image-resize.css',
 })
 export class ImageResize {
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+
   constructor(library: FaIconLibrary) {
     library.addIcons(faExpand, faDownload, faImage, faTrash, faSpinner, faGear);
   }

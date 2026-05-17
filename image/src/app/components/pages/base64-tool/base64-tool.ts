@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -8,6 +8,7 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { LanguageService } from '../../../services/language.service';
 import { CopyButton } from '../../ui/copy-button/copy-button';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
@@ -19,6 +20,9 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
   styleUrl: './base64-tool.css',
 })
 export class Base64Tool {
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+
   constructor(
     library: FaIconLibrary,
     private ngZone: NgZone,

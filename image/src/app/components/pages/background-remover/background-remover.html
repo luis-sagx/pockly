@@ -1,9 +1,9 @@
 <div class="card">
   <div>
     <h2 class="text-3xl font-bold tracking-tight text-olive-deep font-display">
-      Background Remover
+      {{ t().backgroundRemover }}
     </h2>
-    <p class="mt-1 text-sm text-olive-ink/70">Remove the background from your images with AI.</p>
+    <p class="mt-1 text-sm text-olive-ink/70">{{ t().removeImageBackground }}</p>
   </div>
   @if (!originalPreview()) {
     <app-drop-zone (fileSelected)="onFilesSelected($event)" />
@@ -42,7 +42,7 @@
             class="flex flex-col items-center justify-center w-full gap-3 border h-72 rounded-xl border-olive-border bg-olive-cream text-olive-ink"
           >
             <fa-icon [icon]="['fas', 'spinner']" class="spinner fa-spin"></fa-icon
-            ><span class="text-sm">Processing with AI...</span>
+            ><span class="text-sm">{{ t().removing }}</span>
           </div>
         } @else {
           <div
@@ -62,17 +62,18 @@
         @if (loading()) {
           <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> Processing...
         } @else {
-          <fa-icon [icon]="['fas', 'scissors']" class="w-4 h-4"></fa-icon> Remove background
+          <fa-icon [icon]="['fas', 'scissors']" class="w-4 h-4"></fa-icon>
+          {{ t().removeImageBackground }}
         }
       </button>
       @if (resultDataUrl()) {
         <button (click)="download()" class="btn-primary">
-          <fa-icon [icon]="['fas', 'download']" class="w-4 h-4"></fa-icon> Download PNG
+          <fa-icon [icon]="['fas', 'download']" class="w-4 h-4"></fa-icon> {{ t().download }} PNG
         </button>
       }
       <label
         class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-deep transition border border-olive-tan rounded bg-olive-tan hover:text-posthog-orange cursor-pointer"
-        ><fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> Change Image
+        ><fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> {{ t().uploadImage }}
         <input
           type="file"
           accept="image/*"
@@ -80,7 +81,7 @@
           (change)="onFileSelectedFromInput($event)"
       /></label>
       <button (click)="clear()" class="btn-ghost">
-        <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> Clear
+        <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> {{ t().clear }}
       </button>
     </div>
   }

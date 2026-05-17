@@ -1,12 +1,13 @@
 <div class="card">
   <div>
-    <h2 class="section-heading">Format Converter</h2>
-    <p class="section-subtitle text-sm">Convert your image to PNG, JPEG, WEBP, BMP, SVG or PDF.</p>
+    <h2 class="section-heading">{{ t().formatConverter }}</h2>
+    <p class="section-subtitle text-sm">{{ t().convertImageFormat }}</p>
   </div>
   @if (!originalPreview()) {
     <div class="stats-bar">
       <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-        >Target Format<select
+        >{{ t().selectFormat
+        }}<select
           [value]="targetFormat()"
           (change)="targetFormat.set($any($event.target).value)"
           class="select-field"
@@ -20,7 +21,8 @@
         </select></label
       >
       <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-        >Quality<select
+        >{{ t().quality
+        }}<select
           [value]="quality()"
           (change)="quality.set($any($event.target).value)"
           class="select-field"

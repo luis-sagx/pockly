@@ -1,7 +1,14 @@
-import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faScissors, faDownload, faImage, faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faDownload,
+  faImage,
+  faScissors,
+  faSpinner,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
+import { LanguageService } from '../../../services/language.service';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
@@ -12,6 +19,9 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
   styleUrl: './background-remover.css',
 })
 export class BackgroundRemover {
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+
   constructor(library: FaIconLibrary) {
     library.addIcons(faScissors, faDownload, faImage, faTrash, faSpinner);
   }
@@ -48,7 +58,10 @@ export class BackgroundRemover {
   }
 
   async removeBackground() {
-    if (!this.originalFile) { this.error.set('Please select an image first.'); return; }
+    if (!this.originalFile) {
+      this.error.set('Please select an image first.');
+      return;
+    }
     this.loading.set(true);
     this.error.set('');
     this.resultDataUrl.set('');
@@ -56,15 +69,36 @@ export class BackgroundRemover {
     try {
       const { removeBackground } = await import('@imgly/background-removal');
       this.progressMessage.set('Processing image...');
-      const resultBlob = await removeBackground(this.originalFile, { output: { format: 'image/png', quality: 0.9 } });
+      const resultBlob = await removeBackground(this.originalFile, {
+        output: { format: 'image/png', quality: 0.9 },
+      });
       this.resultBlob = resultBlob;
       const url = URL.createObjectURL(resultBlob);
       this.resultDataUrl.set(url);
       this.progressMessage.set('');
-    } catch (e: any) { this.error.set(e.message ?? 'Background removal failed'); this.progressMessage.set(''); }
-    finally { this.loading.set(false); }
+    } catch (e: any) {
+      this.error.set(e.message ?? 'Background removal failed');
+      this.progressMessage.set('');
+    } finally {
+      this.loading.set(false);
+    }
   }
 
-  download() { if (!this.resultBlob) return; const base = this.originalName().replace(/\.[^.]+$/, ''); const a = document.createElement('a'); a.href = URL.createObjectURL(this.resultBlob); a.download = `${base}_no-bg.png`; a.click(); URL.revokeObjectURL(a.href); }
-  clear() { this.originalPreview.set(''); this.resultDataUrl.set(''); this.originalFile = null; this.resultBlob = null; this.error.set(''); this.progressMessage.set(''); }
+  download() {
+    if (!this.resultBlob) return;
+    const base = this.originalName().replace(/\.[^.]+$/, '');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(this.resultBlob);
+    a.download = `${base}_no-bg.png`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+  clear() {
+    this.originalPreview.set('');
+    this.resultDataUrl.set('');
+    this.originalFile = null;
+    this.resultBlob = null;
+    this.error.set('');
+    this.progressMessage.set('');
+  }
 }

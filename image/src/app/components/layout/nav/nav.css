@@ -1,0 +1,16 @@
+/* Animation for menu toggle */
+@media (max-width: 767px) {
+  nav {
+    padding-bottom: 0;
+  }
+}
+
+/* Smooth transitions for hamburger icon */
+button svg path {
+  stroke: currentColor;
+}
+
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

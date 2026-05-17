@@ -10,12 +10,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { CopyButton } from '../../ui/copy-button/copy-button';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
-import { InputBox } from '../../ui/input-box/input-box';
 
 @Component({
   selector: 'app-base64-tool',
   standalone: true,
-  imports: [InputBox, FormsModule, FaIconComponent, DropZone, CopyButton],
+  imports: [FormsModule, FaIconComponent, DropZone, CopyButton],
   templateUrl: './base64-tool.html',
   styleUrl: './base64-tool.css',
 })
@@ -27,25 +26,17 @@ export class Base64Tool {
     library.addIcons(faImage, faTrash, faSpinner, faCircleExclamation, faCheck);
   }
 
-  mode: 'image-to-base64' | 'base64-to-image' = 'image-to-base64';
+  // This page only implements Image -> Base64
   selectedFile: File | null = null;
   selectedImagePreviewUrl = '';
   selectedImageDataUrl = '';
-  base64Input = '';
   base64Result = '';
   outputFormat = 'png';
-  resultImageDataUrl = '';
   loading = false;
   hasError = false;
   errorMessage = '';
 
-  setMode(mode: 'image-to-base64' | 'base64-to-image'): void {
-    if (this.mode === mode) return;
-    this.mode = mode;
-    this.clearResults();
-    this.hasError = false;
-    this.errorMessage = '';
-  }
+  // Removed mode switching: this component is Image -> Base64 only
 
   onFilesSelected(files: File[]): void {
     this.revokePreviewUrl();
@@ -94,7 +85,7 @@ export class Base64Tool {
       this.selectedImageDataUrl = dataUrl;
       const commaIndex = dataUrl.indexOf(',');
       this.base64Result = commaIndex > -1 ? dataUrl.slice(commaIndex + 1) : dataUrl;
-      this.resultImageDataUrl = '';
+      // Only base64 result is kept on this page
     } catch {
       this.hasError = true;
       this.errorMessage = 'Could not convert image to Base64.';
@@ -103,35 +94,13 @@ export class Base64Tool {
     }
   }
 
-  async convertBase64ToImage(): Promise<void> {
-    if (!this.base64Input.trim()) {
-      this.hasError = true;
-      this.errorMessage = 'Paste a valid Base64 string.';
-      return;
-    }
-    this.loading = true;
-    this.clearResults();
-    try {
-      const normalized = this.normalizeBase64(this.base64Input);
-      const converted = await this.convertDataUrlFormat(
-        normalized,
-        this.mimeFromFormat(this.outputFormat),
-      );
-      this.resultImageDataUrl = converted;
-    } catch {
-      this.hasError = true;
-      this.errorMessage = 'Could not convert Base64. Verify that it is valid.';
-    } finally {
-      this.loading = false;
-    }
-  }
+  // Base64 -> Image removed from this page (moved to text-image page)
 
   clear(): void {
     this.revokePreviewUrl();
     this.selectedFile = null;
     this.selectedImagePreviewUrl = '';
     this.selectedImageDataUrl = '';
-    this.base64Input = '';
     this.clearResults();
     this.outputFormat = 'png';
     this.hasError = false;
@@ -150,7 +119,6 @@ export class Base64Tool {
 
   private clearResults(): void {
     this.base64Result = '';
-    this.resultImageDataUrl = '';
   }
 
   private revokePreviewUrl(): void {

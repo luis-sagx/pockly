@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/server",
+    "module": "es2020",
+    "types": ["node"]
+  },
+  "files": ["src/main.server.ts", "src/server.ts"],
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
+}

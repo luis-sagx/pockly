@@ -4,13 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npx ng build",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:image": "node dist/image/server/server.mjs"
+    "build:server": "ng run image:server:production",
+    "build:ssr": "pnpm run build && pnpm run build:server",
+    "serve:ssr:image": "node dist/image/server/server.mjs",
+    "serve:ssr": "node dist/image/server/server.mjs"
   },
   "private": true,
-  "packageManager": "npm@10.9.4",
+  "packageManager": "pnpm@8.8.0",
   "dependencies": {
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",

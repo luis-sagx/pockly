@@ -10,7 +10,7 @@
     "serve:ssr:text": "node dist/text/server/server.mjs"
   },
   "private": true,
-  "packageManager": "npm@10.9.4",
+  "packageManager": "pnpm@8.6.0",
   "dependencies": {
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",

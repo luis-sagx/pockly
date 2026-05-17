@@ -13,43 +13,43 @@
         href="/"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Home
+        {{ t().navHome }}
       </a>
       <a
         href="/image-to-base64"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Imagen a Base64
+        {{ t().navImageToBase64 }}
       </a>
       <a
         href="/base64-to-image"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Base64 a imagen
+        {{ t().navBase64ToImage }}
       </a>
       <a
         href="/remove-background"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Quitar fondo
+        {{ t().navRemoveBackground }}
       </a>
       <a
         href="/resize-dimensions"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Redimensionar
+        {{ t().navResize }}
       </a>
       <a
         href="/convert-formats"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Convertir formato
+        {{ t().navConvertFormats }}
       </a>
       <a
         href="/compress-by-weight"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        Comprimir por peso
+        {{ t().navCompress }}
       </a>
     </div>
 
@@ -79,60 +79,61 @@
   </div>
 
   <!-- Mobile menu -->
-  <div
-    *ngIf="isMenuOpen()"
-    class="md:hidden border-t bg-olive-parchment border-olive-border animate-in fade-in slide-in-from-top-2 duration-200"
-  >
-    <div class="flex flex-col px-4 py-2 gap-1">
-      <a
-        href="/"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Home
-      </a>
-      <a
-        href="/image-to-base64"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Imagen a Base64
-      </a>
-      <a
-        href="/base64-to-image"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Base64 a imagen
-      </a>
-      <a
-        href="/remove-background"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Quitar fondo
-      </a>
-      <a
-        href="/resize-dimensions"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Redimensionar
-      </a>
-      <a
-        href="/convert-formats"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Convertir formato
-      </a>
-      <a
-        href="/compress-by-weight"
-        (click)="closeMenu()"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Comprimir por peso
-      </a>
+  @if (isMenuOpen()) {
+    <div
+      class="md:hidden border-t bg-olive-parchment border-olive-border animate-in fade-in slide-in-from-top-2 duration-200"
+    >
+      <div class="flex flex-col px-4 py-2 gap-1">
+        <a
+          href="/"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navHome }}
+        </a>
+        <a
+          href="/image-to-base64"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navImageToBase64 }}
+        </a>
+        <a
+          href="/base64-to-image"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navBase64ToImage }}
+        </a>
+        <a
+          href="/remove-background"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navRemoveBackground }}
+        </a>
+        <a
+          href="/resize-dimensions"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navResize }}
+        </a>
+        <a
+          href="/convert-formats"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navConvertFormats }}
+        </a>
+        <a
+          href="/compress-by-weight"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navCompress }}
+        </a>
+      </div>
     </div>
-  </div>
+  }
 </nav>

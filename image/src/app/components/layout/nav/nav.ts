@@ -1,21 +1,25 @@
-import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
 export class Nav {
-  isMenuOpen = signal(false);
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+
+  private _isMenuOpen = signal(false);
+
+  isMenuOpen = computed(() => this._isMenuOpen());
 
   toggleMenu(): void {
-    this.isMenuOpen.update((value) => !value);
+    this._isMenuOpen.update((value) => !value);
   }
 
   closeMenu(): void {
-    this.isMenuOpen.set(false);
+    this._isMenuOpen.set(false);
   }
 }

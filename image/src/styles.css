@@ -25,12 +25,12 @@
 @layer components {
   /* Page container */
   .page-shell {
-    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
+    @apply w-full max-w-7xl px-6 pt-24 pb-12 mx-auto;
   }
 
   /* Card style - warm surface with sage border */
   .card {
-    @apply flex flex-col gap-6 p-4 sm:p-6 border border-olive-border rounded-md bg-olive-parchment shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)];
+    @apply flex flex-col gap-6 p-4 sm:p-6;
   }
 
   /* Primary button - dark CTA */

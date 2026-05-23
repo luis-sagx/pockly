@@ -1,0 +1,76 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">Length Converter</h2>
+    <p class="text-sm text-olive-ink/70">Convert between millimeters, centimeters, meters, inches, feet, and more.</p>
+  </div>
+
+  <div class="flex flex-col gap-6 lg:flex-row">
+    <div class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep">
+      <span class="text-sm font-semibold text-olive-ink">From</span>
+      <select
+        [ngModel]="fromUnit()"
+        (ngModelChange)="onFromUnitChange($event)"
+        class="w-full rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+      >
+        @for (unit of units; track unit.key) {
+          <option [value]="unit.key">{{ unit.name }} ({{ unit.symbol }})</option>
+        }
+      </select>
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold text-olive-ink">Amount</label>
+        <input
+          type="number"
+          step="any"
+          [value]="amount()"
+          (input)="onAmountChange(+$any($event.target).value)"
+          class="rounded-md border border-olive-border bg-parchment px-3 py-3 text-xl font-bold text-olive-deep focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+        />
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 lg:flex-col">
+      <button
+        (click)="swap()"
+        class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-olive-border bg-parchment text-olive-ink transition hover:border-posthog-orange hover:text-posthog-orange"
+      >
+        <fa-icon [icon]="['fas', 'arrow-right-arrow-left']" class="h-4 w-4"></fa-icon>
+      </button>
+    </div>
+
+    <div class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep">
+      <span class="text-sm font-semibold text-olive-ink">To</span>
+      <select
+        [ngModel]="toUnit()"
+        (ngModelChange)="onToUnitChange($event)"
+        class="w-full rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+      >
+        @for (unit of units; track unit.key) {
+          <option [value]="unit.key">{{ unit.name }} ({{ unit.symbol }})</option>
+        }
+      </select>
+      <div class="flex flex-col gap-2">
+        <span class="text-sm font-semibold text-olive-ink">Result</span>
+        <div class="rounded-md border border-olive-border bg-parchment px-4 py-3">
+          <span class="text-xl font-bold text-olive-deep">
+            {{ result() | number: getDecimals() }} {{ toUnit() }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4 rounded border border-olive-border bg-olive-cream p-4">
+    <span class="text-sm font-semibold text-olive-ink">Decimal precision:</span>
+    <div class="flex gap-2">
+      @for (d of [0, 1, 2, 3, 4, 6]; track d) {
+        <button
+          (click)="onDecimalsChange(d)"
+          class="rounded-md px-3 py-2 text-sm font-semibold transition-colors"
+          [class]="decimals() === d ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'"
+        >
+          {{ d }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

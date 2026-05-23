@@ -1,34 +1,141 @@
 <nav
-  class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
+  class="fixed top-0 left-0 z-50 w-full border-b bg-parchment/95 backdrop-blur-sm border-olive-border"
 >
-  <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
-    <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/">
-      <img src="logo.png" alt="logo" class="w-auto h-14" />
+  <div class="flex items-center justify-between px-4 sm:px-6 py-2 mx-auto max-w-7xl">
+    <!-- Logo -->
+    <a class="flex items-center gap-3 group shrink-0" routerLink="/">
+      <img src="logo.png" alt="logo" class="w-auto h-12 sm:h-14" />
     </a>
 
-    <!-- Nav Links a la derecha -->
-    <div class="flex items-center gap-1">
-      <a
-        href="/"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-        >Home</a
-      >
-      <a
-        href="/percentage-calculator"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-        >Percentage</a
-      >
-      <a
-        href="/currency-converter"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-        >Currency</a
-      >
-      <a
-        href="/unit-converter"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-        >Unit Converter</a
-      >
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-1">
+      <a routerLink="/"
+         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+         routerLinkActive="text-posthog-orange bg-olive-cream">Home</a>
+
+      <!-- Percentage dropdown -->
+      <div class="relative" (mouseleave)="percentOpen.set(false)">
+        <button
+          (click)="togglePercent()"
+          (mouseenter)="percentOpen.set(true)"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream flex items-center gap-1"
+        >
+          Percentage
+          <fa-icon [icon]="['fas', 'percentage']" class="text-xs w-3 h-3"></fa-icon>
+        </button>
+        @if (percentOpen()) {
+          <div
+            class="absolute top-full left-0 mt-1 w-48 rounded-lg border border-olive-border bg-parchment shadow-lg py-1 z-50"
+            (mouseenter)="percentOpen.set(true)"
+          >
+            <a routerLink="/percent-of-y"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="percentOpen.set(false)">X% of Y</a>
+            <a routerLink="/what-percent"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="percentOpen.set(false)">X is what % of Y</a>
+            <a routerLink="/percentage-change"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="percentOpen.set(false)">% Change</a>
+          </div>
+        }
+      </div>
+
+      <a routerLink="/currency-converter"
+         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+         routerLinkActive="text-posthog-orange bg-olive-cream">Currency</a>
+
+      <!-- Unit Converter dropdown -->
+      <div class="relative" (mouseleave)="unitOpen.set(false)">
+        <button
+          (click)="toggleUnit()"
+          (mouseenter)="unitOpen.set(true)"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream flex items-center gap-1"
+        >
+          Unit Converter
+          <fa-icon [icon]="['fas', 'ruler']" class="text-xs w-3 h-3"></fa-icon>
+        </button>
+        @if (unitOpen()) {
+          <div
+            class="absolute top-full left-0 mt-1 w-52 rounded-lg border border-olive-border bg-parchment shadow-lg py-1 z-50"
+            (mouseenter)="unitOpen.set(true)"
+          >
+            <a routerLink="/length-converter"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="unitOpen.set(false)">Length</a>
+            <a routerLink="/weight-converter"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="unitOpen.set(false)">Weight</a>
+            <a routerLink="/temperature-converter"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="unitOpen.set(false)">Temperature</a>
+            <a routerLink="/volume-converter"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="unitOpen.set(false)">Volume</a>
+            <a routerLink="/speed-converter"
+               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+               (click)="unitOpen.set(false)">Speed</a>
+          </div>
+        }
+      </div>
     </div>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      (click)="toggleMobile()"
+      class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-olive-ink hover:bg-olive-cream transition-colors"
+      aria-label="Toggle menu"
+    >
+      <fa-icon [icon]="['fas', mobileOpen() ? 'xmark' : 'bars']" class="w-5 h-5"></fa-icon>
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  @if (mobileOpen()) {
+    <div class="md:hidden border-t border-olive-border bg-parchment/98 backdrop-blur-sm">
+      <div class="flex flex-col py-2 px-4 max-h-[80vh] overflow-y-auto">
+        <a routerLink="/"
+           class="px-3 py-3 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Home</a>
+
+        <div class="border-t border-olive-border my-1"></div>
+
+        <span class="px-3 py-2 text-xs font-bold uppercase tracking-wider text-olive-ink/50">Percentage</span>
+        <a routerLink="/percent-of-y"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">X% of Y</a>
+        <a routerLink="/what-percent"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">X is what % of Y</a>
+        <a routerLink="/percentage-change"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">% Change</a>
+
+        <div class="border-t border-olive-border my-1"></div>
+
+        <a routerLink="/currency-converter"
+           class="px-3 py-3 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Currency</a>
+
+        <div class="border-t border-olive-border my-1"></div>
+
+        <span class="px-3 py-2 text-xs font-bold uppercase tracking-wider text-olive-ink/50">Unit Converter</span>
+        <a routerLink="/length-converter"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Length</a>
+        <a routerLink="/weight-converter"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Weight</a>
+        <a routerLink="/temperature-converter"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Temperature</a>
+        <a routerLink="/volume-converter"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Volume</a>
+        <a routerLink="/speed-converter"
+           class="px-3 py-2 pl-6 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
+           (click)="closeMobile()">Speed</a>
+      </div>
+    </div>
+  }
 </nav>

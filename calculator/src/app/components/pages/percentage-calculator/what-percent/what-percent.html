@@ -1,0 +1,39 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">X is what % of Y</h2>
+    <p class="text-sm text-olive-ink/70">Find what percentage X represents of a total number Y.</p>
+  </div>
+
+  <div
+    class="flex flex-wrap items-end gap-4 rounded border border-olive-border bg-olive-cream p-4 text-olive-deep"
+  >
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-olive-ink">Number</label>
+      <input
+        type="number"
+        [value]="x()"
+        (input)="onXChange(+$any($event.target).value)"
+        placeholder="X"
+        class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+      />
+    </div>
+    <span class="pb-2 text-olive-ink">is what % of</span>
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-olive-ink">Total</label>
+      <input
+        type="number"
+        [value]="y()"
+        (input)="onYChange(+$any($event.target).value)"
+        placeholder="Y"
+        class="w-32 rounded-md border border-olive-border bg-parchment px-3 py-2 text-sm text-black transition-colors focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
+      />
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col items-center justify-center rounded border border-olive-border bg-parchment p-6"
+  >
+    <p class="mb-2 text-sm font-semibold text-olive-ink">Result</p>
+    <p class="text-xl font-bold text-olive-deep sm:text-2xl">{{ result() | number: '1.2-2' }}%</p>
+  </div>
+</div>

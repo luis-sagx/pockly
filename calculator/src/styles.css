@@ -17,13 +17,13 @@
       Helvetica,
       Arial,
       sans-serif;
-    @apply antialiased bg-zinc-900 text-slate-100;
+    @apply bg-zinc-900 text-slate-100 antialiased;
   }
 }
 
 @layer components {
   .page-shell {
-    @apply w-full max-w-6xl px-6 pt-24 pb-12 mx-auto;
+    @apply w-full max-w-7xl px-6 py-12 mx-auto;
   }
 
   .page-content {

@@ -21,16 +21,31 @@ interface Tool {
 export class Home implements OnInit {
   private seo = inject(SeoService);
 
-  // Signal para el filtro actual
   filter = signal<string>('all');
 
   tools: Tool[] = [
     {
-      id: 'percentage',
-      label: 'Percentage',
-      path: '/percentage-calculator',
+      id: 'percent-of-y',
+      label: 'X% of Y',
+      path: '/percent-of-y',
       icon: 'percentage',
-      description: 'Calculate percentages instantly with three modes',
+      description: 'Calculate what is X percent of a given number',
+      category: 'Math',
+    },
+    {
+      id: 'what-percent',
+      label: 'X is what % of Y',
+      path: '/what-percent',
+      icon: 'percent',
+      description: 'Find what percentage X represents of a total Y',
+      category: 'Math',
+    },
+    {
+      id: 'percentage-change',
+      label: '% Change',
+      path: '/percentage-change',
+      icon: 'arrow-trend-up',
+      description: 'Calculate the percentage increase or decrease between two values',
       category: 'Math',
     },
     {
@@ -42,11 +57,43 @@ export class Home implements OnInit {
       category: 'Finance',
     },
     {
-      id: 'unit',
-      label: 'Unit Converter',
-      path: '/unit-converter',
+      id: 'length',
+      label: 'Length',
+      path: '/length-converter',
       icon: 'ruler',
-      description: 'Length, weight, temperature, and more',
+      description: 'Convert between mm, cm, m, km, inches, feet, miles',
+      category: 'Utilities',
+    },
+    {
+      id: 'weight',
+      label: 'Weight',
+      path: '/weight-converter',
+      icon: 'weight-scale',
+      description: 'Convert between mg, g, kg, pounds, ounces, metric tons',
+      category: 'Utilities',
+    },
+    {
+      id: 'temperature',
+      label: 'Temperature',
+      path: '/temperature-converter',
+      icon: 'thermometer-half',
+      description: 'Convert between Celsius, Fahrenheit, and Kelvin',
+      category: 'Utilities',
+    },
+    {
+      id: 'volume',
+      label: 'Volume',
+      path: '/volume-converter',
+      icon: 'flask',
+      description: 'Convert between mL, L, fl oz, cups, pints, gallons',
+      category: 'Utilities',
+    },
+    {
+      id: 'speed',
+      label: 'Speed',
+      path: '/speed-converter',
+      icon: 'gauge-high',
+      description: 'Convert between m/s, km/h, mph, and knots',
       category: 'Utilities',
     },
   ];
@@ -56,7 +103,6 @@ export class Home implements OnInit {
     if (currentFilter === 'all') {
       return this.tools;
     }
-    // Map filter names to category names
     const categoryMap: Record<string, string> = {
       math: 'Math',
       finance: 'Finance',

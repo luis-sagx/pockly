@@ -4,10 +4,17 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faCalculator,
   faPercentage,
+  faPercent,
   faMoneyBillWave,
   faRuler,
+  faWeightScale,
+  faThermometerHalf,
+  faFlask,
+  faGaugeHigh,
   faArrowRightArrowLeft,
-  faCircleExclamation,
+  faArrowTrendUp,
+  faBars,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
@@ -25,10 +32,17 @@ export class App {
     library.addIcons(
       faCalculator,
       faPercentage,
+      faPercent,
       faMoneyBillWave,
       faRuler,
+      faWeightScale,
+      faThermometerHalf,
+      faFlask,
+      faGaugeHigh,
       faArrowRightArrowLeft,
-      faCircleExclamation
+      faArrowTrendUp,
+      faBars,
+      faXmark,
     );
   }
 }

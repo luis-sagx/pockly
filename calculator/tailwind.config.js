@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,ts}"],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       colors: {
@@ -22,11 +22,47 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"IBM Plex Sans"', '-apple-system', 'system-ui', '"Segoe UI"', '"Helvetica Neue"', 'Arial'],
-        body: ['"IBM Plex Sans"', '-apple-system', 'system-ui', '"Segoe UI"', '"Helvetica Neue"', 'Arial'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas'],
+        display: [
+          '"IBM Plex Sans Variable"',
+          'IBM Plex Sans',
+          '-apple-system',
+          'system-ui',
+          'Avenir Next',
+          'Avenir',
+          'Segoe UI',
+          'Helvetica Neue',
+          'Helvetica',
+          'Ubuntu',
+          'Roboto',
+          'Noto',
+          'Arial',
+        ],
+        body: [
+          '"IBM Plex Sans Variable"',
+          'IBM Plex Sans',
+          '-apple-system',
+          'system-ui',
+          'Avenir Next',
+          'Avenir',
+          'Segoe UI',
+          'Helvetica Neue',
+          'Helvetica',
+          'Ubuntu',
+          'Roboto',
+          'Noto',
+          'Arial',
+        ],
+        mono: [
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'Liberation Mono',
+          'Courier New',
+        ],
       },
     },
   },
   plugins: [],
-}
+};

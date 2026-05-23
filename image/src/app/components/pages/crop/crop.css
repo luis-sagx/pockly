@@ -7,17 +7,10 @@
   display: block;
 }
 
-/* Force the CropperJS v2 Web Component canvas to fill the container */
-cropper-canvas {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  display: block !important;
-}
-
-/* The original <img> that CropperJS controls; keep it hidden while cropper runs */
+/* Let the original <img> be visible until CropperJS hides it itself.
+   CropperJS v2 sets style="display: none" inline on the img after init. */
 .editor-img {
-  display: none;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
 }

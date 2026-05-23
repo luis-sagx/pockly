@@ -99,11 +99,28 @@ export class Crop implements AfterViewInit, OnDestroy {
 
     this.destroyCropper();
 
+    // Grab the container dimensions *before* CropperJS replaces the DOM.
+    // We need these because cropper-canvas (a Web Component) does not
+    // automatically inherit the parent height from CSS.
+    const parentEl = img.parentElement;
+    const containerWidth = parentEl?.clientWidth ?? 0;
+    const containerHeight = parentEl?.clientHeight ?? 0;
+
     this.zone.runOutsideAngular(() => {
       const cropper = new Cropper(img);
       this.cropper = cropper;
 
-      // Wait for the cropper-image element to be ready
+      // Force the canvas to fill the parent by setting inline styles.
+      // CSS alone can't win against the shadow DOM min-height defaults.
+      const canvas = cropper.getCropperCanvas();
+      if (canvas) {
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = `${containerWidth}px`;
+        canvas.style.height = `${containerHeight}px`;
+      }
+
       const cropperImage = cropper.getCropperImage();
       if (!cropperImage) return;
 
@@ -111,11 +128,23 @@ export class Crop implements AfterViewInit, OnDestroy {
         const selection = cropper.getCropperSelection();
         if (!selection) return;
 
-        // Configure selection: initial crop area at 80% coverage, centered
+        // Ensure the image is properly centered and scaled.
+        // We temporarily enable movement so $center can do its job.
+        cropperImage.translatable = true;
+        cropperImage.scalable = true;
+        cropperImage.$center('contain');
+
+        // Now lock the image — only the selection box is interactive.
+        cropperImage.translatable = false;
+        cropperImage.scalable = false;
+        cropperImage.rotatable = false;
+        cropperImage.skewable = false;
+
+        // Configure initial crop area at 50% coverage, centered
         const naturalW = cropperImage.$image.naturalWidth || img.naturalWidth;
         const naturalH = cropperImage.$image.naturalHeight || img.naturalHeight;
-        const cropW = Math.round(naturalW * 0.8);
-        const cropH = Math.round(naturalH * 0.8);
+        const cropW = Math.round(naturalW * 0.5);
+        const cropH = Math.round(naturalH * 0.5);
         const cropX = Math.round((naturalW - cropW) / 2);
         const cropY = Math.round((naturalH - cropH) / 2);
 
@@ -172,30 +201,72 @@ export class Crop implements AfterViewInit, OnDestroy {
   /* --------------- Crop & download --------------- */
   cropImage(): void {
     if (!this.cropper) return;
-    const cropperCanvas = this.cropper.getCropperCanvas();
-    if (!cropperCanvas) return;
 
-    cropperCanvas
-      .$toCanvas({
-        width: this.width() || undefined,
-        height: this.height() || undefined,
-      })
-      .then((canvas: HTMLCanvasElement) => {
-        canvas.toBlob(
-          (blob: Blob | null) => {
-            if (!blob) return;
-            const name = this.originalFileName()
-              ? this.originalFileName().replace(/\.\w+$/, '_cropped.png')
-              : 'cropped.png';
-            this.downloadBlob(blob, name);
-          },
-          'image/png',
-          1,
-        );
-      })
-      .catch(() => {
-        /* silently ignore canvas generation errors */
-      });
+    const selection = this.cropper.getCropperSelection();
+    const cropperImage = this.cropper.getCropperImage();
+    const cropperCanvas = this.cropper.getCropperCanvas();
+    if (!selection || !cropperImage || !cropperCanvas) return;
+
+    const img = cropperImage.$image;
+    const naturalW = img.naturalWidth;
+    const naturalH = img.naturalHeight;
+    if (!naturalW || !naturalH) return;
+
+    // Read the ACTUAL visual geometry from the DOM instead of trusting
+    // the transform matrix (which can be stale or incorrectly composed).
+    const canvasRect = cropperCanvas.getBoundingClientRect();
+    const imageRect = cropperImage.getBoundingClientRect();
+
+    const canvasW = canvasRect.width;
+    const canvasH = canvasRect.height;
+    if (!canvasW || !canvasH) return;
+
+    // Where the image sits inside the canvas (CSS pixels)
+    const imageLeft = imageRect.left - canvasRect.left;
+    const imageTop = imageRect.top - canvasRect.top;
+    const displayedW = imageRect.width;
+    const displayedH = imageRect.height;
+
+    // Scale from CSS-displayed size to natural image size
+    const scaleX = displayedW ? naturalW / displayedW : 1;
+    const scaleY = displayedH ? naturalH / displayedH : 1;
+
+    // Selection bounds in CSS pixels (relative to the canvas)
+    const selX = selection.x;
+    const selY = selection.y;
+    const selW = selection.width;
+    const selH = selection.height;
+
+    // Map selection to natural-image coordinates
+    const cropX = Math.round((selX - imageLeft) * scaleX);
+    const cropY = Math.round((selY - imageTop) * scaleY);
+    const cropW = Math.round(selW * scaleX);
+    const cropH = Math.round(selH * scaleY);
+
+    // Clamp to image bounds
+    const cx = Math.max(0, Math.min(cropX, naturalW - 1));
+    const cy = Math.max(0, Math.min(cropY, naturalH - 1));
+    const cw = Math.max(1, Math.min(cropW, naturalW - cx));
+    const ch = Math.max(1, Math.min(cropH, naturalH - cy));
+
+    // Render at native resolution
+    const canvas = document.createElement('canvas');
+    canvas.width = cw;
+    canvas.height = ch;
+    const ctx = canvas.getContext('2d')!;
+    ctx.drawImage(img, cx, cy, cw, ch, 0, 0, cw, ch);
+
+    canvas.toBlob(
+      (blob: Blob | null) => {
+        if (!blob) return;
+        const name = this.originalFileName()
+          ? this.originalFileName().replace(/\.\w+$/, '_cropped.png')
+          : 'cropped.png';
+        this.downloadBlob(blob, name);
+      },
+      'image/png',
+      1,
+    );
   }
 
   onFileInputChange(event: Event): void {

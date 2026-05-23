@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Utils</h2>
+    <p class="mt-1 text-sm text-olive-muted">Choose a utility to get started with your JSON data.</p>
+  </div>
+
+  <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for (tool of tools; track tool.id) {
+      <a
+        [routerLink]="[tool.path]"
+        class="flex flex-col items-start p-4 text-left transition border bg-olive-cream border-olive-border rounded-xl hover:border-posthog-orange"
+      >
+        <div class="flex items-center gap-2 mb-1">
+          <app-icon [name]="tool.icon" class="text-posthog-orange"></app-icon>
+          <span class="font-semibold text-olive-deep text-sm">{{ tool.label }}</span>
+        </div>
+        <span class="text-xs text-olive-muted">{{ tool.description }}</span>
+      </a>
+    }
+  </div>
+</div>

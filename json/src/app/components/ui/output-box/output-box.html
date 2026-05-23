@@ -1,15 +1,15 @@
 <div
-  class="relative p-4 bg-olive-deep border border-olive-border rounded-xl w-full min-h-[150px]"
+  class="relative p-4 bg-olive-cream border border-olive-border rounded-xl w-full min-h-[150px]"
 >
   @if (text && text.trim().length > 0) {
   <div class="absolute top-2 right-2">
     <app-copy-button [textToCopy]="text" />
   </div>
 
-  <h4 class="mb-2 font-semibold text-posthog-orange">Text</h4>
+  <h4 class="mb-2 font-semibold text-olive-deep">Output</h4>
 
   <div class="text-sm overflow-x-auto font-mono">
-    <pre class="whitespace-pre-wrap break-all text-green-600">{{ text }}</pre>
+    <pre class="whitespace-pre-wrap break-all text-olive-ink">{{ text }}</pre>
   </div>
   } @else {
   <div class="flex items-center justify-center h-full">

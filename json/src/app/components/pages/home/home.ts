@@ -46,7 +46,7 @@ export class Home implements OnInit {
       label: 'JSON Convert',
       path: '/convert',
       icon: 'shuffle',
-      description: 'Convert between JSON, CSV, TSV, XML, and YAML formats',
+      description: 'CSV, TSV, XML, YAML — convert to and from JSON in dedicated pages',
       category: 'transform',
     },
     {
@@ -54,7 +54,7 @@ export class Home implements OnInit {
       label: 'JSON Utils',
       path: '/utils',
       icon: 'settings',
-      description: 'Format, minify, validate, diff and query JSON data',
+      description: 'Format, minify, sort, validate, flatten, diff, query — one tool per page',
       category: 'transform',
     },
   ];

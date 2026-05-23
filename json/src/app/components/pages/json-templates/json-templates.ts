@@ -55,6 +55,7 @@ export class JsonTemplates {
   readonly templates = TEMPLATES;
   selectedTemplate = signal<JsonTemplate | null>(null);
   activeCategory = signal<'all' | 'simple' | 'common' | 'complex'>('all');
+  copied = signal(false);
 
   get filteredTemplates() {
     const cat = this.activeCategory();
@@ -71,6 +72,13 @@ export class JsonTemplates {
 
   clearTemplate() {
     this.selectedTemplate.set(null);
+  }
+
+  copyTemplate(content: string) {
+    navigator.clipboard.writeText(content).then(() => {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    });
   }
 
   formatJson(content: string): string {

@@ -89,12 +89,6 @@
     <div class="flex flex-col gap-2">
       <label class="text-sm font-semibold text-olive-ink">Generated JSON:</label>
       <app-output-box [text]="output()" />
-      <button
-        (click)="copyToClipboard()"
-        class="self-start flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber"
-      >
-        <app-icon name="copy" class="w-4 h-4"></app-icon> Copy
-      </button>
     </div>
   }
 </div>

@@ -1,0 +1,40 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <a routerLink="/utils" class="text-sm text-olive-muted hover:text-posthog-orange transition">&larr; All Utils</a>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">Flatten JSON</h2>
+    <p class="mt-1 text-sm text-olive-muted">Convert nested objects to flat dot-notation keys (key.subkey).</p>
+  </div>
+
+  @if (error()) {
+    <p class="flex items-center gap-2 text-sm text-red-600">
+      <app-icon name="alert" class="w-4 h-4"></app-icon> {{ error() }}
+    </p>
+  }
+
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-olive-ink">Input JSON</label>
+    <textarea
+      [value]="input()"
+      (input)="input.set($any($event.target).value)"
+      placeholder='{"user":{"name":"John","age":30}}'
+      rows="8"
+      class="w-full p-3 text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-border rounded-xl focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
+    ></textarea>
+  </div>
+
+  <div class="flex flex-wrap gap-2">
+    <button (click)="apply()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber">
+      <app-icon name="play" class="w-4 h-4"></app-icon> Flatten
+    </button>
+    <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
+      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+    </button>
+  </div>
+
+  @if (output()) {
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-olive-ink">Result:</label>
+      <app-output-box [text]="output()" />
+    </div>
+  }
+</div>

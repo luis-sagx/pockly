@@ -33,7 +33,8 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
       {
         label: 'Utils',
         url: 'https://pockly-json.vercel.app/utils',
-        description: 'Format, minify, sort, validate, flatten, diff and query JSON',
+        description:
+          'Format, minify, sort, validate, flatten, diff and query JSON',
       },
     ],
   },
@@ -79,37 +80,37 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
     links: [
       {
         label: 'Image to Base64',
-        url: 'https://pockly-imagen.vercel.app/image-to-base64',
+        url: 'https://pockly-image.vercel.app/image-to-base64',
         description: 'Encode any image to a Base64 data URI',
       },
       {
         label: 'Base64 to Image',
-        url: 'https://pockly-imagen.vercel.app/base64-to-image',
+        url: 'https://pockly-image.vercel.app/base64-to-image',
         description: 'Decode a Base64 string back to an image',
       },
       {
         label: 'Remove Background',
-        url: 'https://pockly-imagen.vercel.app/remove-background',
+        url: 'https://pockly-image.vercel.app/remove-background',
         description: 'Remove image backgrounds automatically',
       },
       {
         label: 'Resize',
-        url: 'https://pockly-imagen.vercel.app/resize-dimensions',
+        url: 'https://pockly-image.vercel.app/resize-dimensions',
         description: 'Resize images by exact dimensions or percentage',
       },
       {
         label: 'Compress',
-        url: 'https://pockly-imagen.vercel.app/compress-by-weight',
+        url: 'https://pockly-image.vercel.app/compress-by-weight',
         description: 'Reduce file size while preserving visual quality',
       },
       {
         label: 'Crop',
-        url: 'https://pockly-imagen.vercel.app/crop-image',
+        url: 'https://pockly-image.vercel.app/crop-image',
         description: 'Crop images to a selected region',
       },
       {
         label: 'Format Converter',
-        url: 'https://pockly-imagen.vercel.app/convert-to-png',
+        url: 'https://pockly-image.vercel.app/convert-to-png',
         description: 'Convert between PNG, JPEG, WebP, BMP, SVG and PDF',
       },
     ],

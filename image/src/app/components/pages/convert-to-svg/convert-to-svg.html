@@ -1,0 +1,83 @@
+<div class="card">
+  <div>
+    <h2 class="section-heading">{{ pageTitleText() }}</h2>
+    <p class="section-subtitle text-sm">{{ pageDescriptionText() }}</p>
+  </div>
+
+  @if (!originalPreview()) {
+    <app-drop-zone
+      [labelText]="t().uploadImage"
+      subText="PNG, JPG, WEBP, BMP, SVG"
+      [multiple]="true"
+      (fileSelected)="onFilesSelected($event)"
+    />
+  }
+
+  @if (error()) {
+    <p class="error-message">
+      <fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon> {{ error() }}
+    </p>
+  }
+
+  @if (originalPreview()) {
+    <div class="stats-bar">
+      <p class="text-sm text-olive-ink">
+        Selected: <span class="font-semibold">{{ selectedFiles().length }}</span> image(s)
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="flex flex-col gap-2">
+        <p class="label">
+          Original <span class="font-normal text-olive-ink">({{ originalSizeKb() }} KB)</span>
+        </p>
+        <img
+          [src]="originalPreview()"
+          alt="original"
+          class="object-contain w-full border border-olive-border rounded max-h-96 bg-olive-cream"
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="label">Result</p>
+        @if (resultDataUrl()) {
+          <img
+            [src]="resultDataUrl()"
+            alt="converted"
+            class="object-contain w-full border border-olive-border rounded max-h-96 bg-olive-cream"
+          />
+        } @else if (loading()) {
+          <div class="flex flex-col items-center justify-center w-full gap-3 border h-96 rounded-xl border-olive-border bg-olive-cream text-olive-ink">
+            <fa-icon [icon]="['fas', 'spinner']" class="spinner fa-spin"></fa-icon>
+            <span class="text-sm">{{ t().processing }}</span>
+          </div>
+        } @else {
+          <div class="flex items-center justify-center w-full text-sm border border-dashed h-96 rounded-xl border-olive-light bg-olive-cream/40 text-olive-ink">
+            Ready to convert
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <button (click)="convert()" [disabled]="loading()" class="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">
+        @if (loading()) {
+          <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon> {{ t().processing }}
+        } @else {
+          <fa-icon [icon]="['fas', 'repeat']" class="w-4 h-4"></fa-icon> {{ t().convertBtn }}
+        }
+      </button>
+      @if (resultDataUrl() && convertedCount() > 0) {
+        <button (click)="downloadAll()" class="btn-primary">
+          <fa-icon [icon]="['fas', 'download']" class="w-4 h-4"></fa-icon> {{ t().download }} ({{ convertedCount() }})
+        </button>
+      }
+      <label class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-deep transition border border-olive-tan rounded bg-olive-tan hover:text-posthog-orange cursor-pointer">
+        <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon> {{ t().selectImage }}
+        <input type="file" accept="image/*" multiple class="hidden" (change)="onFileSelectedFromInput($event)" />
+      </label>
+      <button (click)="clear()" class="btn-ghost">
+        <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> {{ t().clear }}
+      </button>
+    </div>
+  }
+</div>

@@ -8,12 +8,30 @@ import { Component, signal } from '@angular/core';
 })
 export class Nav {
   openDropdown = signal<string | null>(null);
+  mobileMenuOpen = signal(false);
+  private closeTimer: ReturnType<typeof setTimeout> | null = null;
 
-  toggleDropdown(name: string) {
-    this.openDropdown.update((v) => (v === name ? null : name));
+  openDropdownMenu(name: string) {
+    this.cancelCloseTimer();
+    this.openDropdown.set(name);
   }
 
-  closeDropdown() {
-    this.openDropdown.set(null);
+  scheduleClose() {
+    this.closeTimer = setTimeout(() => this.openDropdown.set(null), 200);
+  }
+
+  cancelCloseTimer() {
+    if (this.closeTimer) {
+      clearTimeout(this.closeTimer);
+      this.closeTimer = null;
+    }
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen.update((v) => !v);
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen.set(false);
   }
 }

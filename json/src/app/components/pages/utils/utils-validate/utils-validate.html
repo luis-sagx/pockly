@@ -1,6 +1,5 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <a routerLink="/utils" class="text-sm text-olive-muted hover:text-posthog-orange transition">&larr; All Utils</a>
     <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">Validate JSON</h2>
     <p class="mt-1 text-sm text-olive-muted">Check if your text is valid JSON.</p>
   </div>
@@ -17,7 +16,7 @@
       [value]="input()"
       (input)="input.set($any($event.target).value)"
       placeholder='{"key":"value"}'
-      rows="8"
+      rows="12"
       class="w-full p-3 text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-border rounded-xl focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
     ></textarea>
   </div>

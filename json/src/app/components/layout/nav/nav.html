@@ -1,94 +1,149 @@
 <nav
   class="fixed top-0 left-0 z-40 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
 >
-  <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
-    <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/">
-      <img src="logo.png" alt="logo" class="w-auto h-14" />
+  <div class="flex items-center justify-between px-4 sm:px-6 py-2 mx-auto max-w-7xl">
+    <!-- Logo -->
+    <a class="flex items-center gap-3 group shrink-0" href="/">
+      <img src="logo.png" alt="logo" class="w-auto h-12 sm:h-14" />
     </a>
 
-    <!-- Nav Links a la derecha -->
-    <div class="flex items-center gap-1">
-      <a
-        href="/"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Home
-      </a>
-      <a
-        href="/generator"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Generator
-      </a>
-      <a
-        href="/templates"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        Templates
-      </a>
+    <!-- Desktop nav links -->
+    <div class="hidden md:flex items-center gap-1">
+      <a href="/" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Home</a>
+      <a href="/generator" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Generator</a>
+      <a href="/templates" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Templates</a>
 
       <!-- Convert Dropdown -->
-      <div class="relative" (mouseleave)="closeDropdown()">
+      <div class="relative" (mouseenter)="openDropdownMenu('convert')" (mouseleave)="scheduleClose()">
         <button
-          (click)="toggleDropdown('convert')"
-          (mouseenter)="openDropdown.set('convert')"
+          (click)="openDropdown() === 'convert' ? openDropdown.set(null) : openDropdownMenu('convert')"
           class="flex items-center gap-1 px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert
-          <svg class="w-3 h-3 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'convert'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         @if (openDropdown() === 'convert') {
           <div
-            class="absolute left-0 mt-1 w-48 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden z-50"
+            class="absolute left-0 top-full pt-1 z-50"
+            (mouseenter)="cancelCloseTimer()"
+            (mouseleave)="scheduleClose()"
           >
-            <a href="/convert" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange font-medium">
-              All Converters
-            </a>
-            <div class="border-t border-olive-border"></div>
-            <a href="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">CSV → JSON</a>
-            <a href="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">TSV → JSON</a>
-            <a href="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → CSV</a>
-            <a href="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → TSV</a>
-            <a href="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → XML</a>
-            <a href="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → YAML</a>
+            <div class="w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
+              <a href="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">CSV → JSON</a>
+              <a href="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">TSV → JSON</a>
+              <a href="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → CSV</a>
+              <a href="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → TSV</a>
+              <a href="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → XML</a>
+              <a href="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → YAML</a>
+            </div>
           </div>
         }
       </div>
 
       <!-- Utils Dropdown -->
-      <div class="relative" (mouseleave)="closeDropdown()">
+      <div class="relative" (mouseenter)="openDropdownMenu('utils')" (mouseleave)="scheduleClose()">
         <button
-          (click)="toggleDropdown('utils')"
-          (mouseenter)="openDropdown.set('utils')"
+          (click)="openDropdown() === 'utils' ? openDropdown.set(null) : openDropdownMenu('utils')"
           class="flex items-center gap-1 px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Utils
-          <svg class="w-3 h-3 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'utils'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         @if (openDropdown() === 'utils') {
           <div
-            class="absolute right-0 mt-1 w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden z-50"
+            class="absolute right-0 top-full pt-1 z-50"
+            (mouseenter)="cancelCloseTimer()"
+            (mouseleave)="scheduleClose()"
           >
-            <a href="/utils" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange font-medium">
-              All Utils
-            </a>
-            <div class="border-t border-olive-border"></div>
-            <a href="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Format</a>
-            <a href="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Minify</a>
-            <a href="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Sort Keys</a>
-            <a href="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Validate</a>
-            <a href="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Flatten</a>
-            <a href="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Unflatten</a>
-            <a href="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Diff</a>
-            <a href="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Query</a>
+            <div class="w-40 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
+              <a href="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Format</a>
+              <a href="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Minify</a>
+              <a href="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Sort Keys</a>
+              <a href="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Validate</a>
+              <a href="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Flatten</a>
+              <a href="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Unflatten</a>
+              <a href="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Diff</a>
+              <a href="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Query</a>
+            </div>
           </div>
         }
       </div>
     </div>
+
+    <!-- Hamburger button (mobile) -->
+    <button
+      (click)="toggleMobileMenu()"
+      class="md:hidden p-2 rounded-lg text-olive-ink hover:bg-olive-cream transition"
+      aria-label="Toggle menu"
+    >
+      @if (!mobileMenuOpen()) {
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      } @else {
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      }
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  @if (mobileMenuOpen()) {
+    <div class="md:hidden border-t border-olive-border bg-olive-parchment">
+      <div class="flex flex-col py-2 px-4">
+        <a href="/" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Home</a>
+        <a href="/generator" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Generator</a>
+        <a href="/templates" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Templates</a>
+
+        <!-- Convert mobile -->
+        <button
+          (click)="openDropdown() === 'convert-mobile' ? openDropdown.set(null) : openDropdown.set('convert-mobile')"
+          class="flex items-center justify-between py-2.5 font-semibold text-olive-ink hover:text-posthog-orange text-left"
+        >
+          Convert
+          <svg class="w-3 h-3 transition-transform" [class.rotate-180]="openDropdown() === 'convert-mobile'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        @if (openDropdown() === 'convert-mobile') {
+          <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
+            <a href="/convert/csv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">CSV → JSON</a>
+            <a href="/convert/tsv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">TSV → JSON</a>
+            <a href="/convert/json-to-csv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → CSV</a>
+            <a href="/convert/json-to-tsv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → TSV</a>
+            <a href="/convert/json-to-xml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → XML</a>
+            <a href="/convert/json-to-yaml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → YAML</a>
+          </div>
+        }
+
+        <!-- Utils mobile -->
+        <button
+          (click)="openDropdown() === 'utils-mobile' ? openDropdown.set(null) : openDropdown.set('utils-mobile')"
+          class="flex items-center justify-between py-2.5 font-semibold text-olive-ink hover:text-posthog-orange text-left"
+        >
+          Utils
+          <svg class="w-3 h-3 transition-transform" [class.rotate-180]="openDropdown() === 'utils-mobile'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        @if (openDropdown() === 'utils-mobile') {
+          <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
+            <a href="/utils/format" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Format</a>
+            <a href="/utils/minify" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Minify</a>
+            <a href="/utils/sort" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Sort Keys</a>
+            <a href="/utils/validate" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Validate</a>
+            <a href="/utils/flatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Flatten</a>
+            <a href="/utils/unflatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Unflatten</a>
+            <a href="/utils/diff" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Diff</a>
+            <a href="/utils/query" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Query</a>
+          </div>
+        }
+      </div>
+    </div>
+  }
 </nav>

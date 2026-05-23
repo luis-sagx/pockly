@@ -2,6 +2,8 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faCodeBranch,
+  faCompress,
+  faCrop,
   faExpand,
   faFile,
   faHashtag,
@@ -52,6 +54,8 @@ export class Home implements OnInit {
       faPenToSquare,
       faHouse,
       faFile,
+      faCompress,
+      faCrop,
     );
   }
 
@@ -65,7 +69,7 @@ export class Home implements OnInit {
       descKey: 'imageToBase64Desc' as const,
       path: '/base64',
       icon: 'image',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'background-remover',
@@ -73,7 +77,7 @@ export class Home implements OnInit {
       descKey: 'backgroundRemoverDesc' as const,
       path: '/background-remover',
       icon: 'scissors',
-      category: 'Image',
+      category: 'Processing',
     },
     {
       id: 'image-resize',
@@ -81,7 +85,7 @@ export class Home implements OnInit {
       descKey: 'imageResizeDesc' as const,
       path: '/image-resize',
       icon: 'expand',
-      category: 'Image',
+      category: 'Processing',
     },
     {
       id: 'convert-to-png',
@@ -89,7 +93,7 @@ export class Home implements OnInit {
       descKey: 'convertToPngDesc' as const,
       path: '/convert-to-png',
       icon: 'image',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'convert-to-jpeg',
@@ -97,7 +101,7 @@ export class Home implements OnInit {
       descKey: 'convertToJpegDesc' as const,
       path: '/convert-to-jpeg',
       icon: 'image',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'convert-to-webp',
@@ -105,7 +109,7 @@ export class Home implements OnInit {
       descKey: 'convertToWebpDesc' as const,
       path: '/convert-to-webp',
       icon: 'image',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'convert-to-bmp',
@@ -113,7 +117,7 @@ export class Home implements OnInit {
       descKey: 'convertToBmpDesc' as const,
       path: '/convert-to-bmp',
       icon: 'image',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'convert-to-svg',
@@ -121,7 +125,7 @@ export class Home implements OnInit {
       descKey: 'convertToSvgDesc' as const,
       path: '/convert-to-svg',
       icon: 'code-branch',
-      category: 'Image',
+      category: 'Conversion',
     },
     {
       id: 'convert-to-pdf',
@@ -129,7 +133,31 @@ export class Home implements OnInit {
       descKey: 'convertToPdfDesc' as const,
       path: '/convert-to-pdf',
       icon: 'file',
-      category: 'Image',
+      category: 'Conversion',
+    },
+    {
+      id: 'base64-to-image',
+      labelKey: 'base64ToImage' as const,
+      descKey: 'base64ToImageDesc' as const,
+      path: '/base64-to-image',
+      icon: 'repeat',
+      category: 'Conversion',
+    },
+    {
+      id: 'compress',
+      labelKey: 'imageCompress' as const,
+      descKey: 'imageCompressDesc' as const,
+      path: '/compress',
+      icon: 'compress',
+      category: 'Processing',
+    },
+    {
+      id: 'crop',
+      labelKey: 'cropImage' as const,
+      descKey: 'cropImageDesc' as const,
+      path: '/crop-image',
+      icon: 'crop',
+      category: 'Processing',
     },
   ];
 
@@ -155,7 +183,7 @@ export class Home implements OnInit {
     this.seo.setMeta({
       title: 'Image Tools - Free Online Image Utilities',
       description:
-        'Free online image tools: base64, background remover, resizer, and format converter.',
+        'Free online image tools: base64 converter, background remover, resizer, format converter, compress, and crop.',
     });
   }
 

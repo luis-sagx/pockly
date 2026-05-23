@@ -36,15 +36,26 @@
       {{ t().allTools }}
     </button>
     <button
-      (click)="filter.set('Image')"
+      (click)="filter.set('Conversion')"
       [class]="
-        filter() === 'Image'
+        filter() === 'Conversion'
           ? 'bg-olive-deep text-white'
           : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
       {{ t().conversionTools }}
+    </button>
+    <button
+      (click)="filter.set('Processing')"
+      [class]="
+        filter() === 'Processing'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      {{ t().processingTools }}
     </button>
   </div>
 

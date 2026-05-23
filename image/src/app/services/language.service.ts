@@ -43,6 +43,8 @@ export interface Translations {
   imageCompressDesc: string;
   textToImage: string;
   textToImageDesc: string;
+  cropImage: string;
+  cropImageDesc: string;
 
   // Common
   uploadImage: string;
@@ -180,6 +182,8 @@ const translations: Record<Language, Translations> = {
     imageCompressDesc: 'Compress images to a specific file size',
     textToImage: 'Text to Image',
     textToImageDesc: 'Convert text into image format',
+    cropImage: 'Crop Image',
+    cropImageDesc: 'Crop images to exact dimensions',
 
     // Common
     uploadImage: 'Upload image',
@@ -318,6 +322,8 @@ const translations: Record<Language, Translations> = {
     imageCompressDesc: 'Comprime imágenes a un tamaño de archivo específico',
     textToImage: 'Texto a imagen',
     textToImageDesc: 'Convierte texto en formato de imagen',
+    cropImage: 'Recortar imagen',
+    cropImageDesc: 'Recorta imágenes a dimensiones exactas',
 
     // Common
     uploadImage: 'Subir imagen',

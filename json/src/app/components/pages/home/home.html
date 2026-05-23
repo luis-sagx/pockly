@@ -48,15 +48,26 @@
       Create
     </button>
     <button
-      (click)="setFilter('transform')"
+      (click)="setFilter('convert')"
       [class]="
-        filter() === 'transform'
+        filter() === 'convert'
           ? 'bg-olive-deep text-white'
           : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      Transform
+      Convert
+    </button>
+    <button
+      (click)="setFilter('utils')"
+      [class]="
+        filter() === 'utils'
+          ? 'bg-olive-deep text-white'
+          : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'
+      "
+      class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
+    >
+      Utils
     </button>
   </div>
 

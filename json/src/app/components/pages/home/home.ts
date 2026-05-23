@@ -21,10 +21,10 @@ interface Tool {
 export class Home implements OnInit {
   private seo = inject(SeoService);
 
-  // Signal para el filtro actual
   filter = signal<string>('all');
 
   tools: Tool[] = [
+    // Create
     {
       id: 'generator',
       label: 'JSON Generator',
@@ -41,21 +41,121 @@ export class Home implements OnInit {
       description: 'Pre-built JSON structures for common use cases',
       category: 'create',
     },
+
+    // Convert
     {
-      id: 'convert',
-      label: 'JSON Convert',
-      path: '/convert',
+      id: 'csv2json',
+      label: 'CSV → JSON',
+      path: '/convert/csv-to-json',
       icon: 'shuffle',
-      description: 'CSV, TSV, XML, YAML — convert to and from JSON in dedicated pages',
-      category: 'transform',
+      description: 'Convert CSV data to JSON format',
+      category: 'convert',
     },
     {
-      id: 'utils',
-      label: 'JSON Utils',
-      path: '/utils',
+      id: 'tsv2json',
+      label: 'TSV → JSON',
+      path: '/convert/tsv-to-json',
+      icon: 'shuffle',
+      description: 'Convert TSV (tab-separated) data to JSON',
+      category: 'convert',
+    },
+    {
+      id: 'json2csv',
+      label: 'JSON → CSV',
+      path: '/convert/json-to-csv',
+      icon: 'shuffle',
+      description: 'Convert JSON array to CSV format',
+      category: 'convert',
+    },
+    {
+      id: 'json2tsv',
+      label: 'JSON → TSV',
+      path: '/convert/json-to-tsv',
+      icon: 'shuffle',
+      description: 'Convert JSON array to TSV format',
+      category: 'convert',
+    },
+    {
+      id: 'json2xml',
+      label: 'JSON → XML',
+      path: '/convert/json-to-xml',
+      icon: 'shuffle',
+      description: 'Convert JSON to XML format',
+      category: 'convert',
+    },
+    {
+      id: 'json2yaml',
+      label: 'JSON → YAML',
+      path: '/convert/json-to-yaml',
+      icon: 'shuffle',
+      description: 'Convert JSON to YAML format',
+      category: 'convert',
+    },
+
+    // Utils
+    {
+      id: 'format',
+      label: 'Format JSON',
+      path: '/utils/format',
       icon: 'settings',
-      description: 'Format, minify, sort, validate, flatten, diff, query — one tool per page',
-      category: 'transform',
+      description: 'Pretty print with indentation',
+      category: 'utils',
+    },
+    {
+      id: 'minify',
+      label: 'Minify JSON',
+      path: '/utils/minify',
+      icon: 'settings',
+      description: 'Remove whitespace from JSON',
+      category: 'utils',
+    },
+    {
+      id: 'sort',
+      label: 'Sort JSON Keys',
+      path: '/utils/sort',
+      icon: 'settings',
+      description: 'Sort object keys alphabetically',
+      category: 'utils',
+    },
+    {
+      id: 'validate',
+      label: 'Validate JSON',
+      path: '/utils/validate',
+      icon: 'settings',
+      description: 'Check if valid JSON',
+      category: 'utils',
+    },
+    {
+      id: 'flatten',
+      label: 'Flatten JSON',
+      path: '/utils/flatten',
+      icon: 'settings',
+      description: 'Convert nested to flat (key.subkey)',
+      category: 'utils',
+    },
+    {
+      id: 'unflatten',
+      label: 'Unflatten JSON',
+      path: '/utils/unflatten',
+      icon: 'settings',
+      description: 'Convert flat to nested object',
+      category: 'utils',
+    },
+    {
+      id: 'diff',
+      label: 'JSON Diff',
+      path: '/utils/diff',
+      icon: 'settings',
+      description: 'Compare two JSON objects',
+      category: 'utils',
+    },
+    {
+      id: 'query',
+      label: 'JSON Query',
+      path: '/utils/query',
+      icon: 'settings',
+      description: 'Extract values with JSONPath',
+      category: 'utils',
     },
   ];
 
@@ -64,18 +164,14 @@ export class Home implements OnInit {
     if (currentFilter === 'all') {
       return this.tools;
     }
-    const categoryMap: Record<string, string> = {
-      create: 'create',
-      transform: 'transform',
-    };
-    return this.tools.filter((tool) => tool.category === categoryMap[currentFilter]);
+    return this.tools.filter((tool) => tool.category === currentFilter);
   });
 
   ngOnInit() {
     this.seo.setMeta({
       title: 'JSON Tools - Free Online JSON Utilities',
       description:
-        'Free online JSON tools: generator, templates, convert, and utils. No signup required.',
+        'Free online JSON tools: generator, templates, converters (CSV, TSV, XML, YAML), and utilities (format, minify, validate, diff, query). No signup required.',
     });
   }
 

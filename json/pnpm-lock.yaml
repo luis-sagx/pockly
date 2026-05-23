@@ -35,6 +35,9 @@ importers:
       '@fortawesome/angular-fontawesome':
         specifier: ^4.0.0
         version: 4.0.0(@angular/core@21.2.14(@angular/compiler@21.2.14)(rxjs@7.8.2))
+      '@fortawesome/fontawesome-svg-core':
+        specifier: ^7.2.0
+        version: 7.2.0
       '@fortawesome/free-solid-svg-icons':
         specifier: ^7.1.0
         version: 7.2.0

@@ -41,18 +41,22 @@ export class Compress {
 
   compressionLevel = signal<'low' | 'medium' | 'high'>('medium');
 
-  computedTargetKb = computed(() => {
+  lowEstimateKb = computed(() => {
     const originalKb = this.originalSizeKb();
     if (!originalKb) return 200;
+    return Math.max(50, Math.round(originalKb * 0.6));
+  });
 
-    switch (this.compressionLevel()) {
-      case 'low':
-        return Math.max(50, Math.round(originalKb * 0.6));
-      case 'medium':
-        return Math.max(30, Math.round(originalKb * 0.35));
-      case 'high':
-        return Math.max(10, Math.round(originalKb * 0.1));
-    }
+  mediumEstimateKb = computed(() => {
+    const originalKb = this.originalSizeKb();
+    if (!originalKb) return 200;
+    return Math.max(30, Math.round(originalKb * 0.35));
+  });
+
+  highEstimateKb = computed(() => {
+    const originalKb = this.originalSizeKb();
+    if (!originalKb) return 200;
+    return Math.max(10, Math.round(originalKb * 0.1));
   });
 
   onFileSelected(files: File[]) {
@@ -76,8 +80,14 @@ export class Compress {
     this.loading.set(true);
     this.error.set('');
     try {
+      const targetKb =
+        this.compressionLevel() === 'low'
+          ? this.lowEstimateKb()
+          : this.compressionLevel() === 'medium'
+            ? this.mediumEstimateKb()
+            : this.highEstimateKb();
       const compressed = await imageCompression(this.originalFile, {
-        maxSizeMB: this.computedTargetKb() / 1024,
+        maxSizeMB: targetKb / 1024,
         fileType: this.mimeFromFormat(this.outputFormat()),
         useWebWorker: true,
       });

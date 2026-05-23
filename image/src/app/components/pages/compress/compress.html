@@ -29,8 +29,10 @@
         </label>
       </div>
 
-      <div class="flex flex-col gap-2 mt-3">
+      <div class="mt-3">
         <p class="label">{{ t().compressionLevel }}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
 
         <!-- Low compression -->
         <label class="flex items-start gap-3 p-3 border rounded cursor-pointer transition-colors"
@@ -45,7 +47,7 @@
             <span class="font-semibold text-olive-deep">{{ t().lowCompression }}</span>
             <p class="text-xs text-olive-ink/70">{{ t().lowCompressionDesc }}</p>
             @if (originalSizeKb() > 0) {
-              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ lowEstimateKb() }} KB</p>
             }
           </div>
         </label>
@@ -63,7 +65,7 @@
             <span class="font-semibold text-olive-deep">{{ t().mediumCompression }}</span>
             <p class="text-xs text-olive-ink/70">{{ t().mediumCompressionDesc }}</p>
             @if (originalSizeKb() > 0) {
-              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ mediumEstimateKb() }} KB</p>
             }
           </div>
         </label>
@@ -81,10 +83,12 @@
             <span class="font-semibold text-olive-deep">{{ t().highCompression }}</span>
             <p class="text-xs text-olive-ink/70">{{ t().highCompressionDesc }}</p>
             @if (originalSizeKb() > 0) {
-              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ highEstimateKb() }} KB</p>
             }
           </div>
         </label>
+
+        </div>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 mt-3">

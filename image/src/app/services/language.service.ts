@@ -111,6 +111,7 @@ export interface Translations {
 
   // Image Compress
   compressImageBySize: string;
+  outputFormat: string;
   targetSize: string;
   mb: string;
   compressingImage: string;
@@ -250,6 +251,7 @@ const translations: Record<Language, Translations> = {
 
     // Image Compress
     compressImageBySize: 'Compress image by size',
+    outputFormat: 'Output format',
     targetSize: 'Target size',
     mb: 'MB',
     compressingImage: 'Compressing image...',
@@ -264,8 +266,7 @@ const translations: Record<Language, Translations> = {
     lowCompressionDesc:
       'Minimal compression. Keeps the highest visual quality. Best for archiving or printing.',
     mediumCompression: 'Medium (Balanced)',
-    mediumCompressionDesc:
-      'Good balance between quality and file size. Ideal for general use.',
+    mediumCompressionDesc: 'Good balance between quality and file size. Ideal for general use.',
     highCompression: 'High (Smallest File)',
     highCompressionDesc:
       'Maximum compression. May have visible quality loss. Best for web or email.',
@@ -390,6 +391,7 @@ const translations: Record<Language, Translations> = {
 
     // Image Compress
     compressImageBySize: 'Comprimir imagen por tamaño',
+    outputFormat: 'Formato de salida',
     targetSize: 'Tamaño objetivo',
     mb: 'MB',
     compressingImage: 'Comprimiendo imagen...',
@@ -404,11 +406,9 @@ const translations: Record<Language, Translations> = {
     lowCompressionDesc:
       'Compresión mínima. Mantiene la mayor calidad visual. Ideal para archivar o imprimir.',
     mediumCompression: 'Media (Balanceada)',
-    mediumCompressionDesc:
-      'Buen balance entre calidad y tamaño. Ideal para uso general.',
+    mediumCompressionDesc: 'Buen balance entre calidad y tamaño. Ideal para uso general.',
     highCompression: 'Alta (Archivo más pequeño)',
-    highCompressionDesc:
-      'Compresión máxima. Puede perder calidad visible. Ideal para web o email.',
+    highCompressionDesc: 'Compresión máxima. Puede perder calidad visible. Ideal para web o email.',
     estimatedSize: 'Tamaño estimado',
 
     // Text to Image
@@ -421,7 +421,6 @@ const translations: Record<Language, Translations> = {
     textImageGenerated: 'Imagen generada exitosamente',
     failedToGenerateImage: 'Error al generar imagen',
   },
-
 };
 
 export interface LanguageOption {

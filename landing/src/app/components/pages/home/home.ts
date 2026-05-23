@@ -1,7 +1,12 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { PROJECT_CATEGORIES, type ProjectCategory } from '../../../config/projects';
 import { SeoService } from '../../../services/seo.service';
-import { LanguageService } from '../../../services/language.service';
+import {
+  LanguageService,
+  getCategoryTitleKey,
+  getLinkLabelKey,
+  getLinkDescriptionKey,
+} from '../../../services/language.service';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +28,19 @@ export class Home implements OnInit {
     .map((key) => PROJECT_CATEGORIES.find((category) => category.key === key))
     .filter((category): category is ProjectCategory => category !== undefined);
 
+  readonly translatedCategories = computed(() => {
+    const translations = this.t();
+    return this.featuredCategories.map((category) => ({
+      ...category,
+      title: translations[getCategoryTitleKey(category.key)],
+      links: category.links.map((link) => ({
+        ...link,
+        label: translations[getLinkLabelKey(category.key, link.label)],
+        description: translations[getLinkDescriptionKey(category.key, link.label)],
+      })),
+    }));
+  });
+
   readonly filterOptions = computed(() => {
     const t = this.languageService.getTranslations();
     return [
@@ -39,10 +57,10 @@ export class Home implements OnInit {
     const currentFilter = this.filter();
 
     if (currentFilter === 'all') {
-      return this.featuredCategories;
+      return this.translatedCategories();
     }
 
-    return this.featuredCategories.filter((category) => category.key === currentFilter);
+    return this.translatedCategories().filter((category) => category.key === currentFilter);
   });
 
   readonly categoryIcons: Record<string, string> = {

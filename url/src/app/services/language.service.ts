@@ -231,7 +231,7 @@ const translations: Record<Language, Translations> = {
     size: 'Tamaño',
     color: 'Color',
     content: 'Contenido',
-    enterTextOrUrl: 'Ingresá texto o URL...',
+    enterTextOrUrl: 'Ingresa texto o URL...',
     downloadPng: 'Descargar PNG',
     qrError: 'Error al generar el código QR',
     smallSize: 'Chico (128px)',
@@ -240,26 +240,26 @@ const translations: Record<Language, Translations> = {
 
     // URL Encoder
     textToEncode: 'Texto a codificar',
-    enterTextToEncode: 'Ingresá texto o URL para codificar...',
-    encodeError: 'Ingresá texto para codificar',
+    enterTextToEncode: 'Ingresa texto o URL para codificar...',
+    encodeError: 'Ingresa texto para codificar',
 
     // URL Decoder
     textToDecode: 'Texto a decodificar',
-    enterTextToDecode: 'Ingresá texto o URL codificado...',
-    decodeError: 'Ingresá texto para decodificar',
+    enterTextToDecode: 'Ingresa texto o URL codificado...',
+    decodeError: 'Ingresa texto para decodificar',
     invalidEncodedSeq: 'Error al decodificar. La entrada puede contener secuencias inválidas.',
 
     // UTM Builder
     baseUrl: 'URL base',
-    invalidUrl: 'Ingresá una URL válida',
+    invalidUrl: 'Ingresa una URL válida',
     autoFilledUtm: 'Auto-completado',
     optional: '(opcional)',
     clearAll: 'Limpiar todo',
     builtUrl: 'URL creada:',
-    fillUtmMessage: 'Completá al menos un parámetro UTM para crear la URL',
+    fillUtmMessage: 'Completa al menos un parámetro UTM para crear la URL',
 
     // URL Cleaner
-    enterUrlToClean: 'Ingresá URL para limpiar',
+    enterUrlToClean: 'Ingresa URL para limpiar',
     cleanUrl: 'Limpiar URL',
     whatThisDoes: 'Qué hace esta herramienta:',
     removesTracking: 'Elimina parámetros de rastreo (utm_*, fbclid, gclid, etc.)',
@@ -267,8 +267,8 @@ const translations: Record<Language, Translations> = {
     lowercasesHostname: 'Convierte el hostname a minúsculas',
     addsProtocol: 'Agrega https:// si falta',
     removedParams: 'Parámetros eliminados:',
-    pleaseEnterUrl: 'Ingresá una URL',
-    pleaseEnterValidUrl: 'Ingresá una URL válida',
+    pleaseEnterUrl: 'Ingresa una URL',
+    pleaseEnterValidUrl: 'Ingresa una URL válida',
   },
 };
 

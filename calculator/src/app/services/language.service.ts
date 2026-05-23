@@ -276,7 +276,7 @@ const translations: Record<Language, Translations> = {
     // Home
     heroTitle: 'Tus calculadoras, todo en un solo lugar',
     homeSubtitle:
-      'Calculadoras potentes y simples para aumentar tu productividad. Calculá porcentajes, convertí divisas y convertí unidades. Completamente gratis, sin registro requerido.',
+      'Calculadoras potentes y simples para aumentar tu productividad. Calcula porcentajes, convierte divisas y convierte unidades. Completamente gratis, sin registro requerido.',
     filterAll: 'Todas',
     filterMath: 'Matemática',
     filterFinance: 'Finanzas',
@@ -284,23 +284,23 @@ const translations: Record<Language, Translations> = {
 
     // Tool labels for home cards
     percentOfY: 'X% de Y',
-    percentOfYDesc: 'Calculá cuánto es el X por ciento de un número dado',
+    percentOfYDesc: 'Calcula cuánto es el X por ciento de un número dado',
     whatPercent: 'X es qué % de Y',
-    whatPercentDesc: 'Encontrá qué porcentaje representa X de un total Y',
+    whatPercentDesc: 'Encuentra qué porcentaje representa X de un total Y',
     percentChange: '% Cambio',
-    percentChangeDesc: 'Calculá el aumento o disminución porcentual entre dos valores',
+    percentChangeDesc: 'Calcula el aumento o disminución porcentual entre dos valores',
     currency: 'Divisas',
-    currencyDesc: 'Convertí divisas usando tasas de cambio en vivo',
+    currencyDesc: 'Convierte divisas usando tasas de cambio en vivo',
     length: 'Longitud',
-    lengthDesc: 'Convertí entre mm, cm, m, km, pulgadas, pies, millas',
+    lengthDesc: 'Convierte entre mm, cm, m, km, pulgadas, pies, millas',
     weight: 'Peso',
-    weightDesc: 'Convertí entre mg, g, kg, libras, onzas, toneladas métricas',
+    weightDesc: 'Convierte entre mg, g, kg, libras, onzas, toneladas métricas',
     temperature: 'Temperatura',
-    temperatureDesc: 'Convertí entre Celsius, Fahrenheit y Kelvin',
+    temperatureDesc: 'Convierte entre Celsius, Fahrenheit y Kelvin',
     volume: 'Volumen',
-    volumeDesc: 'Convertí entre mL, L, onzas líquidas, tazas, pintas, galones',
+    volumeDesc: 'Convierte entre mL, L, onzas líquidas, tazas, pintas, galones',
     speed: 'Velocidad',
-    speedDesc: 'Convertí entre m/s, km/h, mph y nudos',
+    speedDesc: 'Convierte entre m/s, km/h, mph y nudos',
 
     // Common calc page strings
     from: 'De',
@@ -343,14 +343,14 @@ const translations: Record<Language, Translations> = {
 
     // Unit Converter page descriptions
     lengthPageDesc:
-      'Convertí entre milímetros, centímetros, metros, pulgadas, pies y más.',
+      'Convierte entre milímetros, centímetros, metros, pulgadas, pies y más.',
     weightPageDesc:
-      'Convertí entre miligramos, gramos, kilogramos, libras, onzas y toneladas métricas.',
-    temperaturePageDesc: 'Convertí entre Celsius, Fahrenheit y Kelvin.',
+      'Convierte entre miligramos, gramos, kilogramos, libras, onzas y toneladas métricas.',
+    temperaturePageDesc: 'Convierte entre Celsius, Fahrenheit y Kelvin.',
     volumePageDesc:
-      'Convertí entre mililitros, litros, onzas líquidas, tazas, pintas y galones.',
+      'Convierte entre mililitros, litros, onzas líquidas, tazas, pintas y galones.',
     speedPageDesc:
-      'Convertí entre metros por segundo, kilómetros por hora, millas por hora y nudos.',
+      'Convierte entre metros por segundo, kilómetros por hora, millas por hora y nudos.',
 
     // Unit names
     unit_mm: 'Milímetro',

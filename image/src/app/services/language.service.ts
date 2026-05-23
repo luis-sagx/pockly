@@ -1,13 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { effect, Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
-export type Language = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it';
+export type Language = 'en' | 'es';
 
 export interface Translations {
   // Nav
   navHome: string;
   navImageToBase64: string;
   navBase64ToImage: string;
+  navCrop: string;
   navRemoveBackground: string;
   navResize: string;
   navConvertFormats: string;
@@ -92,6 +93,20 @@ export interface Translations {
   convertBtn: string;
   supportedFormats: string;
 
+  // Format converter pages (individual format pages)
+  convertToPng: string;
+  convertToPngDesc: string;
+  convertToJpeg: string;
+  convertToJpegDesc: string;
+  convertToWebp: string;
+  convertToWebpDesc: string;
+  convertToBmp: string;
+  convertToBmpDesc: string;
+  convertToSvg: string;
+  convertToSvgDesc: string;
+  convertToPdf: string;
+  convertToPdfDesc: string;
+
   // Image Compress
   compressImageBySize: string;
   targetSize: string;
@@ -101,6 +116,16 @@ export interface Translations {
   originalSize: string;
   compressedSize: string;
   compression: string;
+
+  // Compress levels
+  compressionLevel: string;
+  lowCompression: string;
+  lowCompressionDesc: string;
+  mediumCompression: string;
+  mediumCompressionDesc: string;
+  highCompression: string;
+  highCompressionDesc: string;
+  estimatedSize: string;
 
   // Text to Image
   convertTextToImage: string;
@@ -119,6 +144,7 @@ const translations: Record<Language, Translations> = {
     navHome: 'Home',
     navImageToBase64: 'Image to Base64',
     navBase64ToImage: 'Base64 to Image',
+    navCrop: 'Crop',
     navRemoveBackground: 'Remove Background',
     navResize: 'Resize',
     navConvertFormats: 'Convert Format',
@@ -204,6 +230,20 @@ const translations: Record<Language, Translations> = {
     convertBtn: 'Convert',
     supportedFormats: 'Supported formats: JPG, PNG, WebP, GIF',
 
+    // Format converter pages (individual format pages)
+    convertToPng: 'Convert to PNG',
+    convertToPngDesc: 'Convert any image to PNG format',
+    convertToJpeg: 'Convert to JPEG',
+    convertToJpegDesc: 'Convert any image to JPEG format',
+    convertToWebp: 'Convert to WebP',
+    convertToWebpDesc: 'Convert any image to WebP format',
+    convertToBmp: 'Convert to BMP',
+    convertToBmpDesc: 'Convert any image to BMP format',
+    convertToSvg: 'Convert to SVG',
+    convertToSvgDesc: 'Convert raster images to vector SVG',
+    convertToPdf: 'Convert to PDF',
+    convertToPdfDesc: 'Convert images to PDF document',
+
     // Image Compress
     compressImageBySize: 'Compress image by size',
     targetSize: 'Target size',
@@ -213,6 +253,19 @@ const translations: Record<Language, Translations> = {
     originalSize: 'Original size',
     compressedSize: 'Compressed size',
     compression: 'Compression',
+
+    // Compress levels
+    compressionLevel: 'Compression Level',
+    lowCompression: 'Low (Best Quality)',
+    lowCompressionDesc:
+      'Minimal compression. Keeps the highest visual quality. Best for archiving or printing.',
+    mediumCompression: 'Medium (Balanced)',
+    mediumCompressionDesc:
+      'Good balance between quality and file size. Ideal for general use.',
+    highCompression: 'High (Smallest File)',
+    highCompressionDesc:
+      'Maximum compression. May have visible quality loss. Best for web or email.',
+    estimatedSize: 'Estimated size',
 
     // Text to Image
     convertTextToImage: 'Convert text to image',
@@ -229,6 +282,7 @@ const translations: Record<Language, Translations> = {
     navHome: 'Inicio',
     navImageToBase64: 'Imagen a Base64',
     navBase64ToImage: 'Base64 a imagen',
+    navCrop: 'Recortar',
     navRemoveBackground: 'Quitar fondo',
     navResize: 'Redimensionar',
     navConvertFormats: 'Convertir formato',
@@ -314,6 +368,20 @@ const translations: Record<Language, Translations> = {
     convertBtn: 'Convertir',
     supportedFormats: 'Formatos soportados: JPG, PNG, WebP, GIF',
 
+    // Format converter pages (individual format pages)
+    convertToPng: 'Convertir a PNG',
+    convertToPngDesc: 'Convierte cualquier imagen a formato PNG',
+    convertToJpeg: 'Convertir a JPEG',
+    convertToJpegDesc: 'Convierte cualquier imagen a formato JPEG',
+    convertToWebp: 'Convertir a WebP',
+    convertToWebpDesc: 'Convierte cualquier imagen a formato WebP',
+    convertToBmp: 'Convertir a BMP',
+    convertToBmpDesc: 'Convierte cualquier imagen a formato BMP',
+    convertToSvg: 'Convertir a SVG',
+    convertToSvgDesc: 'Convierte imágenes raster a vector SVG',
+    convertToPdf: 'Convertir a PDF',
+    convertToPdfDesc: 'Convierte imágenes a documento PDF',
+
     // Image Compress
     compressImageBySize: 'Comprimir imagen por tamaño',
     targetSize: 'Tamaño objetivo',
@@ -323,6 +391,19 @@ const translations: Record<Language, Translations> = {
     originalSize: 'Tamaño original',
     compressedSize: 'Tamaño comprimido',
     compression: 'Compresión',
+
+    // Compress levels
+    compressionLevel: 'Nivel de compresión',
+    lowCompression: 'Baja (Mejor Calidad)',
+    lowCompressionDesc:
+      'Compresión mínima. Mantiene la mayor calidad visual. Ideal para archivar o imprimir.',
+    mediumCompression: 'Media (Balanceada)',
+    mediumCompressionDesc:
+      'Buen balance entre calidad y tamaño. Ideal para uso general.',
+    highCompression: 'Alta (Archivo más pequeño)',
+    highCompressionDesc:
+      'Compresión máxima. Puede perder calidad visible. Ideal para web o email.',
+    estimatedSize: 'Tamaño estimado',
 
     // Text to Image
     convertTextToImage: 'Convertir texto a imagen',
@@ -334,446 +415,7 @@ const translations: Record<Language, Translations> = {
     textImageGenerated: 'Imagen generada exitosamente',
     failedToGenerateImage: 'Error al generar imagen',
   },
-  fr: {
-    // Nav
-    navHome: 'Accueil',
-    navImageToBase64: 'Image vers Base64',
-    navBase64ToImage: 'Base64 vers image',
-    navRemoveBackground: 'Supprimer fond',
-    navResize: 'Redimensionner',
-    navConvertFormats: 'Convertir format',
-    navCompress: 'Compresser',
-    navTextImage: 'Texte vers image',
 
-    // Footer
-    freeOnlineTools: 'Outils en ligne gratuits — sans inscription, sans publicité.',
-    noSignupNoAds: '',
-    languageLabel: 'Langue',
-
-    // Home
-    yourImageToolsAllInOnePlace: "Vos outils d'image, tout au même endroit",
-    homeSubtitle:
-      "Des utilitaires d'image puissants et simples pour stimuler votre productivité. Convertissez les formats, redimensionnez les images, supprimez les arrière-plans, compressez les fichiers et créez des images de texte. Totalement gratuit, sans inscription requise.",
-    allTools: 'Tous',
-    conversionTools: 'Conversion',
-    processingTools: 'Traitement',
-    generationTools: 'Génération',
-
-    // Tool labels
-    imageToBase64: 'Image vers Base64',
-    imageToBase64Desc: "Convertir n'importe quelle image en texte encodé Base64",
-    base64ToImage: 'Base64 vers image',
-    base64ToImageDesc: 'Convertir du texte Base64 en images visibles',
-    backgroundRemover: "Suppresseur d'arrière-plan",
-    backgroundRemoverDesc: "Supprimer automatiquement l'arrière-plan des images",
-    imageResize: 'Redimensionner image',
-    imageResizeDesc: 'Redimensionner les images à des dimensions personnalisées',
-    formatConverter: 'Convertisseur de format',
-    formatConverterDesc: 'Convertir les images entre différents formats',
-    imageCompress: 'Compresser image',
-    imageCompressDesc: 'Compresser les images à une taille de fichier spécifique',
-    textToImage: 'Texte vers image',
-    textToImageDesc: 'Convertir du texte au format image',
-
-    // Common
-    uploadImage: 'Télécharger image',
-    uploadFile: 'Télécharger fichier',
-    fileLoaded: 'Fichier chargé',
-    download: 'Télécharger',
-    clear: 'Effacer',
-    results: 'Résultats:',
-    result: 'Résultat:',
-    error: 'Erreur',
-    processing: 'Traitement...',
-    success: 'Succès',
-
-    // Image to Base64
-    convertImageToBase64: 'Convertir image en Base64',
-    selectImage: 'Sélectionner une image',
-    base64Output: 'Sortie Base64:',
-    copyBase64: 'Copier Base64',
-    copied: 'Copié!',
-
-    // Base64 to Image
-    convertBase64ToImage: 'Convertir Base64 en image',
-    pasteBase64Here: 'Collez le texte Base64 ici...',
-    decodeBase64: 'Décoder Base64',
-    invalidBase64: 'Format Base64 invalide',
-
-    // Background Remover
-    removeImageBackground: "Supprimer l'arrière-plan de l'image",
-    selectImageForRemoval: "Sélectionner l'image pour la suppression du fond",
-    removing: 'Suppression du fond...',
-    backgroundRemoved: 'Arrière-plan supprimé avec succès',
-    failedToRemoveBackground: 'Échec de la suppression du fond',
-
-    // Image Resize
-    resizeImage: "Redimensionner l'image",
-    width: 'Largeur',
-    height: 'Hauteur',
-    maintainAspectRatio: 'Maintenir le rapport hauteur-largeur',
-    resizeBtn: 'Redimensionner',
-    pixels: 'px',
-    percent: '%',
-
-    // Format Converter
-    convertImageFormat: "Convertir le format d'image",
-    selectFormat: 'Sélectionner le format',
-    selectImageFormat: "Sélectionner le format d'image",
-    quality: 'Qualité',
-    convertBtn: 'Convertir',
-    supportedFormats: 'Formats supportés: JPG, PNG, WebP, GIF',
-
-    // Image Compress
-    compressImageBySize: "Compresser l'image par taille",
-    targetSize: 'Taille cible',
-    mb: 'MB',
-    compressingImage: "Compression de l'image...",
-    compressionFailed: 'Échec de la compression',
-    originalSize: "Taille d'origine",
-    compressedSize: 'Taille compressée',
-    compression: 'Compression',
-
-    // Text to Image
-    convertTextToImage: 'Convertir texte en image',
-    enterTextHere: 'Entrez le texte ici...',
-    fontSize: 'Taille de police',
-    fontColor: 'Couleur de police',
-    backgroundColor: 'Couleur de fond',
-    generateImage: "Générer l'image",
-    textImageGenerated: 'Image générée avec succès',
-    failedToGenerateImage: "Échec de la génération de l'image",
-  },
-  de: {
-    // Nav
-    navHome: 'Startseite',
-    navImageToBase64: 'Bild zu Base64',
-    navBase64ToImage: 'Base64 zu Bild',
-    navRemoveBackground: 'Hintergrund entfernen',
-    navResize: 'Größe ändern',
-    navConvertFormats: 'Format konvertieren',
-    navCompress: 'Komprimieren',
-    navTextImage: 'Text zu Bild',
-
-    // Footer
-    freeOnlineTools: 'Kostenlose Online-Tools — keine Registrierung, keine Werbung.',
-    noSignupNoAds: '',
-    languageLabel: 'Sprache',
-
-    // Home
-    yourImageToolsAllInOnePlace: 'Ihre Bildtools, alles an einem Ort',
-    homeSubtitle:
-      'Leistungsstarke und einfache Bildtools zur Steigerung Ihrer Produktivität. Konvertieren Sie Formate, ändern Sie die Bildgröße, entfernen Sie Hintergründe, komprimieren Sie Dateien und erstellen Sie Textbilder. Komplett kostenlos, keine Registrierung erforderlich.',
-    allTools: 'Alle',
-    conversionTools: 'Konvertierung',
-    processingTools: 'Verarbeitung',
-    generationTools: 'Generierung',
-
-    // Tool labels
-    imageToBase64: 'Bild zu Base64',
-    imageToBase64Desc: 'Konvertieren Sie jedes Bild in Base64-codiertem Text',
-    base64ToImage: 'Base64 zu Bild',
-    base64ToImageDesc: 'Konvertieren Sie Base64-Text zurück in anschaubare Bilder',
-    backgroundRemover: 'Hintergrundentferner',
-    backgroundRemoverDesc: 'Hintergrund automatisch aus Bildern entfernen',
-    imageResize: 'Bildgröße ändern',
-    imageResizeDesc: 'Ändern Sie die Bildgröße auf benutzerdefinierte Abmessungen',
-    formatConverter: 'Formatkonverter',
-    formatConverterDesc: 'Konvertieren Sie Bilder zwischen verschiedenen Formaten',
-    imageCompress: 'Bild komprimieren',
-    imageCompressDesc: 'Komprimieren Sie Bilder auf eine bestimmte Dateigröße',
-    textToImage: 'Text zu Bild',
-    textToImageDesc: 'Konvertiert Text in Bildformat',
-
-    // Common
-    uploadImage: 'Bild hochladen',
-    uploadFile: 'Datei hochladen',
-    fileLoaded: 'Datei geladen',
-    download: 'Herunterladen',
-    clear: 'Löschen',
-    results: 'Ergebnisse:',
-    result: 'Ergebnis:',
-    error: 'Fehler',
-    processing: 'Verarbeitung...',
-    success: 'Erfolgreich',
-
-    // Image to Base64
-    convertImageToBase64: 'Bild zu Base64 konvertieren',
-    selectImage: 'Wählen Sie ein Bild',
-    base64Output: 'Base64-Ausgabe:',
-    copyBase64: 'Base64 kopieren',
-    copied: 'Kopiert!',
-
-    // Base64 to Image
-    convertBase64ToImage: 'Base64 in Bild konvertieren',
-    pasteBase64Here: 'Fügen Sie Base64-Text hier ein...',
-    decodeBase64: 'Base64 dekodieren',
-    invalidBase64: 'Ungültiges Base64-Format',
-
-    // Background Remover
-    removeImageBackground: 'Bildhintergrund entfernen',
-    selectImageForRemoval: 'Wählen Sie Bild zur Hintergrundentfernung',
-    removing: 'Hintergrund wird entfernt...',
-    backgroundRemoved: 'Hintergrund erfolgreich entfernt',
-    failedToRemoveBackground: 'Fehler beim Entfernen des Hintergrunds',
-
-    // Image Resize
-    resizeImage: 'Bildgröße ändern',
-    width: 'Breite',
-    height: 'Höhe',
-    maintainAspectRatio: 'Seitenverhältnis beibehalten',
-    resizeBtn: 'Größe ändern',
-    pixels: 'px',
-    percent: '%',
-
-    // Format Converter
-    convertImageFormat: 'Bildformat konvertieren',
-    selectFormat: 'Format auswählen',
-    selectImageFormat: 'Bildformat auswählen',
-    quality: 'Qualität',
-    convertBtn: 'Konvertieren',
-    supportedFormats: 'Unterstützte Formate: JPG, PNG, WebP, GIF',
-
-    // Image Compress
-    compressImageBySize: 'Bild nach Größe komprimieren',
-    targetSize: 'Zielgröße',
-    mb: 'MB',
-    compressingImage: 'Bild wird komprimiert...',
-    compressionFailed: 'Komprimierung fehlgeschlagen',
-    originalSize: 'Ursprüngliche Größe',
-    compressedSize: 'Komprimierte Größe',
-    compression: 'Komprimierung',
-
-    // Text to Image
-    convertTextToImage: 'Text in Bild konvertieren',
-    enterTextHere: 'Geben Sie Text hier ein...',
-    fontSize: 'Schriftgröße',
-    fontColor: 'Schriftfarbe',
-    backgroundColor: 'Hintergrundfarbe',
-    generateImage: 'Bild erzeugen',
-    textImageGenerated: 'Bild erfolgreich erstellt',
-    failedToGenerateImage: 'Fehler beim Erstellen des Bildes',
-  },
-  pt: {
-    // Nav
-    navHome: 'Início',
-    navImageToBase64: 'Imagem para Base64',
-    navBase64ToImage: 'Base64 para imagem',
-    navRemoveBackground: 'Remover fundo',
-    navResize: 'Redimensionar',
-    navConvertFormats: 'Converter formato',
-    navCompress: 'Comprimir',
-    navTextImage: 'Texto para imagem',
-
-    // Footer
-    freeOnlineTools: 'Ferramentas online gratuitas — sem cadastro, sem anúncios.',
-    noSignupNoAds: '',
-    languageLabel: 'Idioma',
-
-    // Home
-    yourImageToolsAllInOnePlace: 'Suas ferramentas de imagem, tudo em um só lugar',
-    homeSubtitle:
-      'Utilitários de imagem poderosos e simples para impulsionar sua produtividade. Converta formatos, redimensione imagens, remova fundos, comprima arquivos e crie imagens de texto. Completamente grátis, sem registro necessário.',
-    allTools: 'Todas',
-    conversionTools: 'Conversão',
-    processingTools: 'Processamento',
-    generationTools: 'Geração',
-
-    // Tool labels
-    imageToBase64: 'Imagem para Base64',
-    imageToBase64Desc: 'Converta qualquer imagem em texto codificado em Base64',
-    base64ToImage: 'Base64 para imagem',
-    base64ToImageDesc: 'Converta texto Base64 de volta para imagens visíveis',
-    backgroundRemover: 'Removedor de fundo',
-    backgroundRemoverDesc: 'Remova o fundo das imagens automaticamente',
-    imageResize: 'Redimensionar imagem',
-    imageResizeDesc: 'Redimensione imagens para dimensões personalizadas',
-    formatConverter: 'Conversor de formato',
-    formatConverterDesc: 'Converta imagens entre diferentes formatos',
-    imageCompress: 'Comprimir imagem',
-    imageCompressDesc: 'Comprima imagens para um tamanho de arquivo específico',
-    textToImage: 'Texto para imagem',
-    textToImageDesc: 'Converta texto em formato de imagem',
-
-    // Common
-    uploadImage: 'Carregar imagem',
-    uploadFile: 'Carregar arquivo',
-    fileLoaded: 'Arquivo carregado',
-    download: 'Baixar',
-    clear: 'Limpar',
-    results: 'Resultados:',
-    result: 'Resultado:',
-    error: 'Erro',
-    processing: 'Processando...',
-    success: 'Sucesso',
-
-    // Image to Base64
-    convertImageToBase64: 'Converter imagem para Base64',
-    selectImage: 'Selecione uma imagem',
-    base64Output: 'Saída Base64:',
-    copyBase64: 'Copiar Base64',
-    copied: 'Copiado!',
-
-    // Base64 to Image
-    convertBase64ToImage: 'Converter Base64 para imagem',
-    pasteBase64Here: 'Cole o texto Base64 aqui...',
-    decodeBase64: 'Decodificar Base64',
-    invalidBase64: 'Formato Base64 inválido',
-
-    // Background Remover
-    removeImageBackground: 'Remover fundo da imagem',
-    selectImageForRemoval: 'Selecione a imagem para remoção de fundo',
-    removing: 'Removendo fundo...',
-    backgroundRemoved: 'Fundo removido com sucesso',
-    failedToRemoveBackground: 'Falha ao remover o fundo',
-
-    // Image Resize
-    resizeImage: 'Redimensionar imagem',
-    width: 'Largura',
-    height: 'Altura',
-    maintainAspectRatio: 'Manter proporção de aspecto',
-    resizeBtn: 'Redimensionar',
-    pixels: 'px',
-    percent: '%',
-
-    // Format Converter
-    convertImageFormat: 'Converter formato de imagem',
-    selectFormat: 'Selecionar formato',
-    selectImageFormat: 'Selecionar formato de imagem',
-    quality: 'Qualidade',
-    convertBtn: 'Converter',
-    supportedFormats: 'Formatos suportados: JPG, PNG, WebP, GIF',
-
-    // Image Compress
-    compressImageBySize: 'Comprimir imagem por tamanho',
-    targetSize: 'Tamanho alvo',
-    mb: 'MB',
-    compressingImage: 'Comprimindo imagem...',
-    compressionFailed: 'Falha na compressão',
-    originalSize: 'Tamanho original',
-    compressedSize: 'Tamanho comprimido',
-    compression: 'Compressão',
-
-    // Text to Image
-    convertTextToImage: 'Converter texto para imagem',
-    enterTextHere: 'Digite o texto aqui...',
-    fontSize: 'Tamanho da fonte',
-    fontColor: 'Cor da fonte',
-    backgroundColor: 'Cor de fundo',
-    generateImage: 'Gerar imagem',
-    textImageGenerated: 'Imagem gerada com sucesso',
-    failedToGenerateImage: 'Falha ao gerar imagem',
-  },
-  it: {
-    // Nav
-    navHome: 'Home',
-    navImageToBase64: 'Immagine a Base64',
-    navBase64ToImage: 'Base64 a immagine',
-    navRemoveBackground: 'Rimuovi sfondo',
-    navResize: 'Ridimensiona',
-    navConvertFormats: 'Converti formato',
-    navCompress: 'Comprimi',
-    navTextImage: 'Testo a immagine',
-
-    // Footer
-    freeOnlineTools: 'Strumenti online gratuiti — senza registrazione, senza pubblicità.',
-    noSignupNoAds: '',
-    languageLabel: 'Lingua',
-
-    // Home
-    yourImageToolsAllInOnePlace: 'I tuoi strumenti per immagini, tutto in un posto',
-    homeSubtitle:
-      'Utilità per immagini potenti e semplici per aumentare la tua produttività. Converti i formati, ridimensiona le immagini, rimuovi gli sfondi, comprimi i file e crea immagini di testo. Completamente gratuito, nessuna registrazione richiesta.',
-    allTools: 'Tutti',
-    conversionTools: 'Conversione',
-    processingTools: 'Elaborazione',
-    generationTools: 'Generazione',
-
-    // Tool labels
-    imageToBase64: 'Immagine a Base64',
-    imageToBase64Desc: 'Converti qualsiasi immagine in testo codificato Base64',
-    base64ToImage: 'Base64 a immagine',
-    base64ToImageDesc: 'Converti il testo Base64 in immagini visualizzabili',
-    backgroundRemover: 'Rimozione sfondo',
-    backgroundRemoverDesc: 'Rimuovi automaticamente lo sfondo dalle immagini',
-    imageResize: 'Ridimensiona immagine',
-    imageResizeDesc: 'Ridimensiona le immagini a dimensioni personalizzate',
-    formatConverter: 'Convertitore di formato',
-    formatConverterDesc: 'Converti immagini tra diversi formati',
-    imageCompress: 'Comprimi immagine',
-    imageCompressDesc: 'Comprimi le immagini a una dimensione file specifica',
-    textToImage: 'Testo a immagine',
-    textToImageDesc: 'Converti il testo in formato immagine',
-
-    // Common
-    uploadImage: 'Carica immagine',
-    uploadFile: 'Carica file',
-    fileLoaded: 'File caricato',
-    download: 'Scarica',
-    clear: 'Cancella',
-    results: 'Risultati:',
-    result: 'Risultato:',
-    error: 'Errore',
-    processing: 'Elaborazione...',
-    success: 'Successo',
-
-    // Image to Base64
-    convertImageToBase64: 'Converti immagine a Base64',
-    selectImage: "Seleziona un'immagine",
-    base64Output: 'Output Base64:',
-    copyBase64: 'Copia Base64',
-    copied: 'Copiato!',
-
-    // Base64 to Image
-    convertBase64ToImage: 'Converti Base64 a immagine',
-    pasteBase64Here: 'Incolla il testo Base64 qui...',
-    decodeBase64: 'Decodifica Base64',
-    invalidBase64: 'Formato Base64 non valido',
-
-    // Background Remover
-    removeImageBackground: "Rimuovi lo sfondo dell'immagine",
-    selectImageForRemoval: 'Seleziona immagine per la rimozione dello sfondo',
-    removing: 'Rimozione dello sfondo...',
-    backgroundRemoved: 'Sfondo rimosso con successo',
-    failedToRemoveBackground: 'Impossibile rimuovere lo sfondo',
-
-    // Image Resize
-    resizeImage: 'Ridimensiona immagine',
-    width: 'Larghezza',
-    height: 'Altezza',
-    maintainAspectRatio: 'Mantieni proporzioni',
-    resizeBtn: 'Ridimensiona',
-    pixels: 'px',
-    percent: '%',
-
-    // Format Converter
-    convertImageFormat: 'Converti formato immagine',
-    selectFormat: 'Seleziona formato',
-    selectImageFormat: 'Seleziona formato immagine',
-    quality: 'Qualità',
-    convertBtn: 'Converti',
-    supportedFormats: 'Formati supportati: JPG, PNG, WebP, GIF',
-
-    // Image Compress
-    compressImageBySize: 'Comprimi immagine per dimensione',
-    targetSize: 'Dimensione target',
-    mb: 'MB',
-    compressingImage: 'Compressione in corso...',
-    compressionFailed: 'Compressione non riuscita',
-    originalSize: 'Dimensione originale',
-    compressedSize: 'Dimensione compressa',
-    compression: 'Compressione',
-
-    // Text to Image
-    convertTextToImage: 'Converti testo in immagine',
-    enterTextHere: 'Inserisci il testo qui...',
-    fontSize: 'Dimensione carattere',
-    fontColor: 'Colore carattere',
-    backgroundColor: 'Colore sfondo',
-    generateImage: 'Genera immagine',
-    textImageGenerated: 'Immagine generata con successo',
-    failedToGenerateImage: "Impossibile generare l'immagine",
-  },
 };
 
 export interface LanguageOption {
@@ -785,10 +427,6 @@ export interface LanguageOption {
 const languages: LanguageOption[] = [
   { code: 'en', name: 'English', nativeName: 'English' },
   { code: 'es', name: 'Spanish', nativeName: 'Español' },
-  { code: 'fr', name: 'French', nativeName: 'Français' },
-  { code: 'de', name: 'German', nativeName: 'Deutsch' },
-  { code: 'pt', name: 'Portuguese', nativeName: 'Português' },
-  { code: 'it', name: 'Italian', nativeName: 'Italiano' },
 ];
 
 const STORAGE_KEY = 'pockly-language';

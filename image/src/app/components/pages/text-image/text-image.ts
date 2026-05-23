@@ -113,23 +113,10 @@ export class TextImage {
           ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
         ctx.drawImage(image, 0, 0);
-        canvas.toBlob(async (blob) => {
-          if (!blob) return reject(new Error('format-not-supported'));
-          const dataUrl = await this.readBlobAsDataUrl(blob);
-          resolve(dataUrl);
-        }, outputMime);
+        resolve(canvas.toDataURL(outputMime));
       };
       image.onerror = () => reject(new Error('invalid-base64'));
       image.src = dataUrl;
-    });
-  }
-
-  private readBlobAsDataUrl(blob: Blob): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve((reader.result as string) ?? '');
-      reader.onerror = () => reject(new Error('blob-read-failed'));
-      reader.readAsDataURL(blob);
     });
   }
 }

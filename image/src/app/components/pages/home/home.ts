@@ -3,6 +3,7 @@ import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome
 import {
   faCodeBranch,
   faExpand,
+  faFile,
   faHashtag,
   faHouse,
   faImage,
@@ -50,6 +51,7 @@ export class Home implements OnInit {
       faKey,
       faPenToSquare,
       faHouse,
+      faFile,
     );
   }
 
@@ -82,11 +84,51 @@ export class Home implements OnInit {
       category: 'Image',
     },
     {
-      id: 'format-converter',
-      labelKey: 'formatConverter' as const,
-      descKey: 'formatConverterDesc' as const,
-      path: '/format-converter',
-      icon: 'repeat',
+      id: 'convert-to-png',
+      labelKey: 'convertToPng' as const,
+      descKey: 'convertToPngDesc' as const,
+      path: '/convert-to-png',
+      icon: 'image',
+      category: 'Image',
+    },
+    {
+      id: 'convert-to-jpeg',
+      labelKey: 'convertToJpeg' as const,
+      descKey: 'convertToJpegDesc' as const,
+      path: '/convert-to-jpeg',
+      icon: 'image',
+      category: 'Image',
+    },
+    {
+      id: 'convert-to-webp',
+      labelKey: 'convertToWebp' as const,
+      descKey: 'convertToWebpDesc' as const,
+      path: '/convert-to-webp',
+      icon: 'image',
+      category: 'Image',
+    },
+    {
+      id: 'convert-to-bmp',
+      labelKey: 'convertToBmp' as const,
+      descKey: 'convertToBmpDesc' as const,
+      path: '/convert-to-bmp',
+      icon: 'image',
+      category: 'Image',
+    },
+    {
+      id: 'convert-to-svg',
+      labelKey: 'convertToSvg' as const,
+      descKey: 'convertToSvgDesc' as const,
+      path: '/convert-to-svg',
+      icon: 'code-branch',
+      category: 'Image',
+    },
+    {
+      id: 'convert-to-pdf',
+      labelKey: 'convertToPdf' as const,
+      descKey: 'convertToPdfDesc' as const,
+      path: '/convert-to-pdf',
+      icon: 'file',
       category: 'Image',
     },
   ];

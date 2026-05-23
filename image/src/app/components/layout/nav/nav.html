@@ -39,17 +39,32 @@
       >
         {{ t().navResize }}
       </a>
-      <a
-        href="/convert-formats"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        {{ t().navConvertFormats }}
-      </a>
+      <div class="relative group">
+        <span class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream cursor-pointer">
+          {{ t().navConvertFormats }}
+        </span>
+        <div class="absolute left-0 hidden group-hover:block pt-1 min-w-[180px] z-50">
+          <div class="flex flex-col py-2 border rounded-lg shadow-lg bg-olive-parchment border-olive-border">
+            <a href="/convert-to-png" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PNG</a>
+            <a href="/convert-to-jpeg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">JPEG</a>
+            <a href="/convert-to-webp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">WebP</a>
+            <a href="/convert-to-bmp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">BMP</a>
+            <a href="/convert-to-svg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">SVG</a>
+            <a href="/convert-to-pdf" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PDF</a>
+          </div>
+        </div>
+      </div>
       <a
         href="/compress-by-weight"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navCompress }}
+      </a>
+      <a
+        href="/crop-image"
+        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+      >
+        {{ t().navCrop }}
       </a>
     </div>
 
@@ -120,11 +135,46 @@
           {{ t().navResize }}
         </a>
         <a
-          href="/convert-formats"
+          href="/convert-to-png"
           (click)="closeMenu()"
           class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
-          {{ t().navConvertFormats }}
+          Convert to PNG
+        </a>
+        <a
+          href="/convert-to-jpeg"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          Convert to JPEG
+        </a>
+        <a
+          href="/convert-to-webp"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          Convert to WebP
+        </a>
+        <a
+          href="/convert-to-bmp"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          Convert to BMP
+        </a>
+        <a
+          href="/convert-to-svg"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          Convert to SVG
+        </a>
+        <a
+          href="/convert-to-pdf"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          Convert to PDF
         </a>
         <a
           href="/compress-by-weight"
@@ -132,6 +182,13 @@
           class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navCompress }}
+        </a>
+        <a
+          href="/crop-image"
+          (click)="closeMenu()"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navCrop }}
         </a>
       </div>
     </div>

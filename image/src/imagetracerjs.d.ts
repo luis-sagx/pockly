@@ -12,6 +12,8 @@ declare module 'imagetracerjs' {
     roundcoords?: number;
     viewbox?: boolean;
     desc?: boolean;
+    blurradius?: number;
+    blurdelta?: number;
     noorb?: boolean;
     noprogress?: boolean;
     whitespace?: boolean;

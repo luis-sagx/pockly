@@ -31,7 +31,6 @@ export class Compress {
   originalFile: File | null = null;
   originalPreview = signal('');
   originalSizeKb = signal(0);
-  targetKb = signal(200);
   outputFormat = signal<'jpeg' | 'webp' | 'png'>('jpeg');
   loading = signal(false);
   error = signal('');
@@ -39,6 +38,22 @@ export class Compress {
   resultBlob: Blob | null = null;
   resultSizeKb = signal(0);
   resultFileName = signal('');
+
+  compressionLevel = signal<'low' | 'medium' | 'high'>('medium');
+
+  computedTargetKb = computed(() => {
+    const originalKb = this.originalSizeKb();
+    if (!originalKb) return 200;
+
+    switch (this.compressionLevel()) {
+      case 'low':
+        return Math.max(50, Math.round(originalKb * 0.6));
+      case 'medium':
+        return Math.max(30, Math.round(originalKb * 0.35));
+      case 'high':
+        return Math.max(10, Math.round(originalKb * 0.1));
+    }
+  });
 
   onFileSelected(files: File[]) {
     const file = files[0];
@@ -62,7 +77,7 @@ export class Compress {
     this.error.set('');
     try {
       const compressed = await imageCompression(this.originalFile, {
-        maxSizeMB: this.targetKb() / 1024,
+        maxSizeMB: this.computedTargetKb() / 1024,
         fileType: this.mimeFromFormat(this.outputFormat()),
         useWebWorker: true,
       });
@@ -119,7 +134,7 @@ export class Compress {
     this.resultSizeKb.set(0);
     this.resultFileName.set('');
     this.error.set('');
-    this.targetKb.set(200);
     this.outputFormat.set('jpeg');
+    this.compressionLevel.set('medium');
   }
 }

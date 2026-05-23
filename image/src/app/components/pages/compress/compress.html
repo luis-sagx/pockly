@@ -16,16 +16,6 @@
     @if (originalPreview()) {
       <div class="stats-bar mt-3">
         <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
-          >{{ t().targetSize }} (KB)
-          <input
-            type="number"
-            min="10"
-            [value]="targetKb()"
-            (input)="targetKb.set(+$any($event.target).value)"
-            class="w-32 px-3 py-2 bg-olive-cream border border-olive-light rounded"
-          />
-        </label>
-        <label class="flex flex-col gap-1.5 text-sm font-semibold text-olive-deep"
           >Output format
           <select
             [value]="outputFormat()"
@@ -36,6 +26,64 @@
             <option value="webp">WEBP</option>
             <option value="png">PNG</option>
           </select>
+        </label>
+      </div>
+
+      <div class="flex flex-col gap-2 mt-3">
+        <p class="label">{{ t().compressionLevel }}</p>
+
+        <!-- Low compression -->
+        <label class="flex items-start gap-3 p-3 border rounded cursor-pointer transition-colors"
+          [class.border-posthog-orange]="compressionLevel() === 'low'"
+          [class.border-olive-border]="compressionLevel() !== 'low'"
+          [class.bg-olive-cream]="compressionLevel() === 'low'"
+        >
+          <input type="radio" name="compression" value="low"
+            [checked]="compressionLevel() === 'low'"
+            (change)="compressionLevel.set('low')" class="mt-1" />
+          <div>
+            <span class="font-semibold text-olive-deep">{{ t().lowCompression }}</span>
+            <p class="text-xs text-olive-ink/70">{{ t().lowCompressionDesc }}</p>
+            @if (originalSizeKb() > 0) {
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+            }
+          </div>
+        </label>
+
+        <!-- Medium compression -->
+        <label class="flex items-start gap-3 p-3 border rounded cursor-pointer transition-colors"
+          [class.border-posthog-orange]="compressionLevel() === 'medium'"
+          [class.border-olive-border]="compressionLevel() !== 'medium'"
+          [class.bg-olive-cream]="compressionLevel() === 'medium'"
+        >
+          <input type="radio" name="compression" value="medium"
+            [checked]="compressionLevel() === 'medium'"
+            (change)="compressionLevel.set('medium')" class="mt-1" />
+          <div>
+            <span class="font-semibold text-olive-deep">{{ t().mediumCompression }}</span>
+            <p class="text-xs text-olive-ink/70">{{ t().mediumCompressionDesc }}</p>
+            @if (originalSizeKb() > 0) {
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+            }
+          </div>
+        </label>
+
+        <!-- High compression -->
+        <label class="flex items-start gap-3 p-3 border rounded cursor-pointer transition-colors"
+          [class.border-posthog-orange]="compressionLevel() === 'high'"
+          [class.border-olive-border]="compressionLevel() !== 'high'"
+          [class.bg-olive-cream]="compressionLevel() === 'high'"
+        >
+          <input type="radio" name="compression" value="high"
+            [checked]="compressionLevel() === 'high'"
+            (change)="compressionLevel.set('high')" class="mt-1" />
+          <div>
+            <span class="font-semibold text-olive-deep">{{ t().highCompression }}</span>
+            <p class="text-xs text-olive-ink/70">{{ t().highCompressionDesc }}</p>
+            @if (originalSizeKb() > 0) {
+              <p class="text-xs text-olive-ink/50">{{ t().estimatedSize }}: ~{{ computedTargetKb() }} KB</p>
+            }
+          </div>
         </label>
       </div>
 

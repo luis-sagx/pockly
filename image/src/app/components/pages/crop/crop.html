@@ -1,1 +1,120 @@
-<p>crop works!</p>
+<div class="card">
+  <!-- Header -->
+  <div>
+    <h2 class="section-heading">{{ labels().cropImage }}</h2>
+    <p class="section-subtitle text-sm">{{ labels().cropSubtitle }}</p>
+  </div>
+
+  <!-- No image: show drop zone -->
+  @if (!originalSrc()) {
+    <app-drop-zone
+      [labelText]="t().uploadImage"
+      subText="PNG, JPG, WEBP"
+      (fileSelected)="onFileSelected($event)"
+    />
+  }
+
+  <!-- Image loaded: show cropper + sidebar + actions -->
+  @if (originalSrc()) {
+    <!-- Main layout: cropper area + sidebar -->
+    <div class="flex flex-col gap-4 lg:flex-row">
+      <!-- Cropper area -->
+      <div class="flex-1 min-w-0">
+        <div
+          class="flex items-center justify-center overflow-hidden border rounded-lg bg-olive-cream border-olive-border h-[350px] md:h-[500px] lg:h-[550px] relative"
+        >
+          <img
+            #image
+            [src]="originalSrc()"
+            [alt]="labels().cropImage"
+            (load)="onImageLoad()"
+            class="editor-img"
+          />
+        </div>
+      </div>
+
+      <!-- Sidebar: crop options -->
+      <div
+        class="w-full lg:w-64 shrink-0 p-4 border rounded-lg bg-olive-cream border-olive-border"
+      >
+        <h3 class="mb-3 text-sm font-semibold text-olive-deep">
+          {{ labels().cropOptions }}
+        </h3>
+
+        <div class="flex flex-col gap-3">
+          <!-- Width -->
+          <label class="flex flex-col gap-1">
+            <span class="text-xs font-medium text-olive-ink">{{ labels().width }}</span>
+            <input
+              type="number"
+              [value]="width()"
+              (input)="onOptionInput(+$any($event.target).value, 'width')"
+              min="1"
+              class="w-full px-3 py-2 text-sm border rounded bg-white border-olive-light text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+          </label>
+
+          <!-- Height -->
+          <label class="flex flex-col gap-1">
+            <span class="text-xs font-medium text-olive-ink">{{ labels().height }}</span>
+            <input
+              type="number"
+              [value]="height()"
+              (input)="onOptionInput(+$any($event.target).value, 'height')"
+              min="1"
+              class="w-full px-3 py-2 text-sm border rounded bg-white border-olive-light text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+          </label>
+
+          <!-- Position X -->
+          <label class="flex flex-col gap-1">
+            <span class="text-xs font-medium text-olive-ink">{{ labels().positionX }}</span>
+            <input
+              type="number"
+              [value]="x()"
+              (input)="onOptionInput(+$any($event.target).value, 'x')"
+              min="0"
+              class="w-full px-3 py-2 text-sm border rounded bg-white border-olive-light text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+          </label>
+
+          <!-- Position Y -->
+          <label class="flex flex-col gap-1">
+            <span class="text-xs font-medium text-olive-ink">{{ labels().positionY }}</span>
+            <input
+              type="number"
+              [value]="y()"
+              (input)="onOptionInput(+$any($event.target).value, 'y')"
+              min="0"
+              class="w-full px-3 py-2 text-sm border rounded bg-white border-olive-light text-olive-deep focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="flex flex-wrap gap-2">
+      <button (click)="cropImage()" class="btn-primary">
+        <fa-icon [icon]="['fas', 'crop-simple']" class="w-4 h-4"></fa-icon>
+        {{ labels().cropBtn }}
+      </button>
+      <label
+        class="flex items-center gap-2 px-4 py-2 text-sm font-semibold transition border rounded cursor-pointer text-olive-deep border-olive-tan bg-olive-tan hover:text-posthog-orange"
+      >
+        <fa-icon [icon]="['fas', 'image']" class="w-4 h-4"></fa-icon>
+        {{ labels().changeImage }}
+        <input
+          type="file"
+          accept="image/*"
+          class="hidden"
+          (change)="onFileInputChange($event)"
+        />
+      </label>
+      <button (click)="clear()" class="btn-ghost">
+        <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon>
+        {{ t().clear }}
+      </button>
+    </div>
+  }
+</div>

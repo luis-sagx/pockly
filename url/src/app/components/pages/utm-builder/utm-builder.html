@@ -1,0 +1,122 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">UTM Builder</h2>
+    <p class="mt-1 text-sm text-[#4d4f46]">Build tracking URLs with UTM parameters for your marketing campaigns.</p>
+  </div>
+
+  <!-- Base URL -->
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-[#23251d]">Base URL <span class="text-red-500">*</span></label>
+    <input
+      [value]="baseUrl()"
+      (input)="onInputChange('baseUrl', $any($event.target).value)"
+      placeholder="https://example.com/landing"
+      class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+    />
+    @if (baseUrl().trim() && !isValidUrl()) {
+      <p class="text-sm font-semibold text-red-600">Please enter a valid URL</p>
+    }
+  </div>
+
+  @if (extractedCount() > 0) {
+    <div class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#F54E00] bg-orange-50 border border-orange-200 rounded-md">
+      <fa-icon [icon]="['fas', 'wand-magic-sparkles']"></fa-icon>
+      Auto-filled {{ extractedCount() }} UTM parameter(s) from the URL
+    </div>
+  }
+
+  <!-- UTM Fields Grid -->
+  <div class="grid gap-4 sm:grid-cols-2">
+    <!-- utm_source -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-[#23251d]">utm_source</label>
+      <input
+        [value]="utmSource()"
+        (input)="onInputChange('utmSource', $any($event.target).value)"
+        placeholder="google, facebook, newsletter..."
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      />
+    </div>
+
+    <!-- utm_medium -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-[#23251d]">utm_medium</label>
+      <input
+        [value]="utmMedium()"
+        (input)="onInputChange('utmMedium', $any($event.target).value)"
+        placeholder="cpc, email, social..."
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      />
+    </div>
+
+    <!-- utm_campaign -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-[#23251d]">utm_campaign</label>
+      <input
+        [value]="utmCampaign()"
+        (input)="onInputChange('utmCampaign', $any($event.target).value)"
+        placeholder="spring_sale, product_launch..."
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      />
+    </div>
+
+    <!-- utm_term (optional) -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-semibold text-[#23251d]">utm_term <span class="text-[#9ea096] font-normal">(optional)</span></label>
+      <input
+        [value]="utmTerm()"
+        (input)="onInputChange('utmTerm', $any($event.target).value)"
+        placeholder="running+shoes, keyword..."
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      />
+    </div>
+
+    <!-- utm_content (optional) -->
+    <div class="flex flex-col gap-2 sm:col-span-2">
+      <label class="text-sm font-semibold text-[#23251d]">utm_content <span class="text-[#9ea096] font-normal">(optional)</span></label>
+      <input
+        [value]="utmContent()"
+        (input)="onInputChange('utmContent', $any($event.target).value)"
+        placeholder="hero_banner, sidebar_link..."
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      />
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="flex flex-wrap gap-2">
+    <button
+      (click)="clear()"
+      class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-[#4d4f46] transition-colors duration-150 rounded border border-[#bfc1b7] bg-[#fdfdf8] hover:bg-[#eeefe9]"
+    >
+      <fa-icon [icon]="['fas', 'trash-can']"></fa-icon>
+      Clear All
+    </button>
+  </div>
+
+  <!-- Result -->
+  @if (builtUrl()) {
+    <div class="flex flex-col gap-3 p-4 border border-olive-border rounded-lg bg-[#eeefe9]">
+      <span class="text-sm font-semibold text-[#23251d]">Built URL:</span>
+      <div class="flex items-center gap-2">
+        <input
+          [value]="builtUrl()"
+          readonly
+          class="flex-1 px-3 py-2 font-mono text-sm text-[#F54E00] bg-transparent border border-[#bfc1b7] rounded"
+        />
+        <app-copy-button [textToCopy]="builtUrl()" />
+      </div>
+      <div class="flex flex-wrap gap-1 text-xs text-[#65675e]">
+        @if (utmSource()) { <span class="px-2 py-0.5 bg-[#e5e7e0] rounded">source: {{ utmSource() }}</span> }
+        @if (utmMedium()) { <span class="px-2 py-0.5 bg-[#e5e7e0] rounded">medium: {{ utmMedium() }}</span> }
+        @if (utmCampaign()) { <span class="px-2 py-0.5 bg-[#e5e7e0] rounded">campaign: {{ utmCampaign() }}</span> }
+        @if (utmTerm()) { <span class="px-2 py-0.5 bg-[#e5e7e0] rounded">term: {{ utmTerm() }}</span> }
+        @if (utmContent()) { <span class="px-2 py-0.5 bg-[#e5e7e0] rounded">content: {{ utmContent() }}</span> }
+      </div>
+    </div>
+  } @else if (baseUrl().trim() && isValidUrl()) {
+    <div class="flex flex-col gap-3 p-4 border border-dashed border-[#bfc1b7] rounded-lg bg-[#fdfdf8]">
+      <p class="text-sm text-[#9ea096] text-center">Fill in at least one UTM parameter to build the URL</p>
+    </div>
+  }
+</div>

@@ -12,7 +12,7 @@
         Your URL tools, all in one place
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Powerful and simple URL utilities to boost your productivity. Generate QR codes, shorten URLs, and more. Completely free, no registration required.
+        Powerful and simple URL utilities to boost your productivity. Generate QR codes, encode URLs, build UTM links, and more. Completely free, no registration required.
       </p>
     </div>
   </div>
@@ -24,6 +24,9 @@
     </button>
     <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
       Utilities
+    </button>
+    <button (click)="filter.set('url-tools')" [class]="filter() === 'url-tools' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
+      URL Tools
     </button>
   </div>
 

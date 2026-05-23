@@ -124,11 +124,29 @@ const PAGE_CONFIGS: Record<string, PageMeta> = {
       'Generate QR codes online. Custom colors, size, and error correction. Download as PNG. Free QR generator.',
     keywords: 'qr code generator, qr generator, create qr',
   },
-  'url-shortener': {
-    title: 'URL Shortener - Shorten Links Free',
+  'url-encoder': {
+    title: 'URL Encoder - Encode Text for Safe URLs',
     description:
-      'Shorten URLs online. Free link shortener tool. Track clicks and manage links.',
-    keywords: 'url shortener, link shortener, shorten url',
+      'Encode text and URLs for safe use in query parameters. Works with special characters and non-ASCII text. Free online URL encoder.',
+    keywords: 'url encoder, encode url, percent encoding, url encode',
+  },
+  'url-decoder': {
+    title: 'URL Decoder - Decode Percent-Encoded URLs',
+    description:
+      'Decode percent-encoded URLs and text back to readable form. Handles special characters and international text. Free online URL decoder.',
+    keywords: 'url decoder, decode url, percent decode, url decode',
+  },
+  'utm-builder': {
+    title: 'UTM Builder - Create Campaign Tracking URLs',
+    description:
+      'Build campaign tracking URLs with UTM parameters for marketing. Add source, medium, campaign, term, and content. Free online UTM builder.',
+    keywords: 'utm builder, utm parameters, campaign tracking, marketing urls, utm link',
+  },
+  'url-cleaner': {
+    title: 'URL Cleaner - Remove Tracking & Normalize URLs',
+    description:
+      'Clean URLs by removing tracking parameters, sorting query params, and normalizing hostnames. Free online URL cleaner tool.',
+    keywords: 'url cleaner, clean url, remove tracking, normalize url, url sanitizer',
   },
 };
 

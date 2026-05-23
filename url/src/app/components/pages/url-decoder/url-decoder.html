@@ -1,0 +1,46 @@
+<div class="flex flex-col gap-6 p-4 sm:p-6">
+  <div>
+    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">URL Decoder</h2>
+    <p class="mt-1 text-sm text-[#4d4f46]">Decode percent-encoded URLs and text back to their original form.</p>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label class="text-sm font-semibold text-[#23251d]">Text to decode</label>
+    <app-input-box
+      [value]="input()"
+      (valueChange)="onInputChange($event)"
+      placeholder="Enter encoded text or URL..."
+      [multiline]="true"
+      [rows]="4"
+      inputClass="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+    ></app-input-box>
+  </div>
+
+  @if (error()) {
+    <p class="flex items-center gap-2 text-sm font-semibold text-red-600">
+      <fa-icon [icon]="['fas', 'circle-exclamation']"></fa-icon>
+      {{ error() }}
+    </p>
+  }
+
+  <div class="flex flex-wrap gap-2">
+    <button
+      (click)="decode()"
+      class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-base font-semibold text-white transition-all duration-150 rounded-md bg-[#1e1f23] hover:opacity-70 active:opacity-80"
+    >
+      <fa-icon [icon]="['fas', 'lock-open']"></fa-icon>
+      Decode
+    </button>
+    <button
+      (click)="clear()"
+      class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-[#4d4f46] transition-colors duration-150 rounded border border-[#bfc1b7] bg-[#fdfdf8] hover:bg-[#eeefe9]"
+    >
+      <fa-icon [icon]="['fas', 'trash-can']"></fa-icon>
+      Clear
+    </button>
+  </div>
+
+  @if (output()) {
+    <app-output-box [text]="output()"></app-output-box>
+  }
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { SeoService } from '../../../services/seo.service';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faQrcode, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faQrcode, faCode, faBullseye, faBroom, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 interface Tool {
   id: string;
@@ -24,7 +24,7 @@ export class Home implements OnInit {
   private library = inject(FaIconLibrary);
 
   constructor() {
-    this.library.addIcons(faQrcode, faLink);
+    this.library.addIcons(faQrcode, faCode, faBullseye, faBroom, faLockOpen);
   }
 
   filter = signal<string>('all');
@@ -39,12 +39,36 @@ export class Home implements OnInit {
       category: 'Utilities',
     },
     {
-      id: 'url-shortener',
-      label: 'URL Shortener',
-      path: '/url-shortener',
-      icon: 'link',
-      description: 'Shorten long URLs instantly with just one click',
-      category: 'Utilities',
+      id: 'url-encoder',
+      label: 'URL Encoder',
+      path: '/url-encoder',
+      icon: 'code',
+      description: 'Encode text and URLs into safe format for query parameters',
+      category: 'url-tools',
+    },
+    {
+      id: 'url-decoder',
+      label: 'URL Decoder',
+      path: '/url-decoder',
+      icon: 'lock-open',
+      description: 'Decode percent-encoded URLs back to readable text',
+      category: 'url-tools',
+    },
+    {
+      id: 'utm-builder',
+      label: 'UTM Builder',
+      path: '/utm-builder',
+      icon: 'bullseye',
+      description: 'Build campaign tracking URLs with UTM parameters for marketing',
+      category: 'url-tools',
+    },
+    {
+      id: 'url-cleaner',
+      label: 'URL Cleaner',
+      path: '/url-cleaner',
+      icon: 'broom',
+      description: 'Remove tracking junk, sort query params, and normalize URLs',
+      category: 'url-tools',
     },
   ];
 
@@ -59,7 +83,7 @@ export class Home implements OnInit {
   ngOnInit() {
     this.seo.setMeta({
       title: 'URL Tools - Free Online Utilities',
-      description: 'Free online URL utilities: QR generator, URL shortener, and more.',
+      description: 'Free online URL utilities: QR generator, encoder, decoder, UTM builder, URL cleaner, and more.',
     });
   }
 

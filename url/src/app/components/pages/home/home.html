@@ -9,10 +9,10 @@
     <!-- Texto derecha -->
     <div class="order-1 max-w-5xl mx-auto md:order-2">
       <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]" style="letter-spacing: -0.75px">
-        Your URL tools, all in one place
+        {{ t().heroTitle }}
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Powerful and simple URL utilities to boost your productivity. Generate QR codes, encode URLs, build UTM links, and more. Completely free, no registration required.
+        {{ t().homeSubtitle }}
       </p>
     </div>
   </div>
@@ -20,13 +20,13 @@
   <!-- Filter Tabs -->
   <div class="flex flex-wrap justify-center gap-2">
     <button (click)="filter.set('all')" [class]="filter() === 'all' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
-      All Tools
+      {{ t().filterAll }}
     </button>
     <button (click)="filter.set('utilities')" [class]="filter() === 'utilities' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
-      Utilities
+      {{ t().filterUtilities }}
     </button>
     <button (click)="filter.set('url-tools')" [class]="filter() === 'url-tools' ? 'bg-olive-deep text-white' : 'bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange'" class="px-4 py-2 text-sm font-semibold transition-all rounded-lg">
-      URL Tools
+      {{ t().filterUrlTools }}
     </button>
   </div>
 

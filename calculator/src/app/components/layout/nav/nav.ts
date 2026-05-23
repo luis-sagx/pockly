@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,6 +11,10 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
   styleUrl: './nav.css',
 })
 export class Nav {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   mobileOpen = signal(false);
   percentOpen = signal(false);
   unitOpen = signal(false);

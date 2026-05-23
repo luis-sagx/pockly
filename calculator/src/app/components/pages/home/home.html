@@ -15,11 +15,10 @@
         class="text-4xl md:text-5xl font-extrabold text-olive-deep leading-[1.20]"
         style="letter-spacing: -0.75px"
       >
-        Your calculators, all in one place
+        {{ t().heroTitle }}
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80">
-        Powerful and simple calculators to boost your productivity. Calculate percentages, convert
-        currencies, and convert units. Completely free, no registration required.
+        {{ t().homeSubtitle }}
       </p>
     </div>
   </div>
@@ -34,7 +33,7 @@
           : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      All Tools
+      {{ t().filterAll }}
     </button>
     <button
       (click)="filter.set('math')"
@@ -44,7 +43,7 @@
           : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Math
+      {{ t().filterMath }}
     </button>
     <button
       (click)="filter.set('finance')"
@@ -54,7 +53,7 @@
           : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Finance
+      {{ t().filterFinance }}
     </button>
     <button
       (click)="filter.set('utilities')"
@@ -64,7 +63,7 @@
           : 'px-4 py-2 text-sm font-semibold bg-olive-lightSage text-olive-ink rounded-lg transition-all hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Utilities
+      {{ t().filterUtilities }}
     </button>
   </div>
 

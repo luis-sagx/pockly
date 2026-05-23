@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { OutputBox } from '../../../ui/output-box/output-box';
 import { IconComponent } from '../../../ui/icon/icon';
 import { csvToJson, getDownloadInfo, downloadFile } from '../convert.service';
+import { LanguageService } from '../../../../services/language.service';
 
 @Component({
   selector: 'app-convert-csv2json',
@@ -10,9 +11,13 @@ import { csvToJson, getDownloadInfo, downloadFile } from '../convert.service';
   templateUrl: './convert-csv2json.html',
 })
 export class ConvertCsv2Json {
+  private languageService = inject(LanguageService);
+
   input = signal('');
   output = signal('');
   error = signal<string | null>(null);
+
+  t = computed(() => this.languageService.getTranslations());
 
   convert() {
     this.error.set(null);

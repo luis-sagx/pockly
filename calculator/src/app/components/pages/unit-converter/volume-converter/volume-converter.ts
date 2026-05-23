@@ -1,7 +1,8 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../../services/language.service';
 
 interface UnitDef {
   key: string;
@@ -19,6 +20,13 @@ const VOLUME_UNITS: UnitDef[] = [
   { key: 'gallon', name: 'Gallon (US)', symbol: 'gal', toBase: 3.78541 },
 ];
 
+type UnitTranslationKey = 'unit_ml' | 'unit_l' | 'unit_floz' | 'unit_cup' | 'unit_pint' | 'unit_gallon';
+
+const unitKeyMap: Record<string, UnitTranslationKey> = {
+  ml: 'unit_ml', l: 'unit_l', floz: 'unit_floz',
+  cup: 'unit_cup', pint: 'unit_pint', gallon: 'unit_gallon',
+};
+
 @Component({
   selector: 'app-volume-converter',
   standalone: true,
@@ -27,13 +35,23 @@ const VOLUME_UNITS: UnitDef[] = [
   styleUrl: './volume-converter.css',
 })
 export class VolumeConverter implements OnInit {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   fromUnit = signal('ml');
   toUnit = signal('cup');
   amount = signal(1);
   decimals = signal(2);
   result = signal(0);
 
-  units = VOLUME_UNITS;
+  units = computed(() => {
+    const t = this.t();
+    return VOLUME_UNITS.map((u) => {
+      const tk = unitKeyMap[u.key];
+      return { ...u, name: tk ? t[tk] : u.name };
+    });
+  });
 
   ngOnInit(): void {
     this.calculate();

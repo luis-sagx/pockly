@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Query</h2>
-    <p class="mt-1 text-sm text-olive-muted">Extract values from JSON using JSONPath dot notation.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().query }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().extractValuesWithJsonPath }}</p>
   </div>
 
   @if (error()) {
@@ -11,7 +11,7 @@
   }
 
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-olive-ink">JSON Input</label>
+    <label class="text-sm font-semibold text-olive-ink">{{ t().inputJson }}</label>
     <textarea
       [value]="input()"
       (input)="input.set($any($event.target).value)"
@@ -22,28 +22,28 @@
   </div>
 
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-olive-ink">JSONPath Query</label>
+    <label class="text-sm font-semibold text-olive-ink">{{ t().jsonPathQuery }}</label>
     <input
       [value]="query()"
       (input)="query.set($any($event.target).value)"
       placeholder="users.0.name"
       class="w-full px-3 py-2 text-sm font-mono text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border border-olive-border rounded-lg focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
     />
-    <p class="text-xs text-olive-muted">Examples: users, users.0, users[*].name, data.items[0]</p>
+    <p class="text-xs text-olive-muted">{{ t().queryExamples }}</p>
   </div>
 
   <div class="flex flex-wrap gap-2">
     <button (click)="apply()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber">
-      <app-icon name="play" class="w-4 h-4"></app-icon> Query
+      <app-icon name="play" class="w-4 h-4"></app-icon> {{ t().query }}
     </button>
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
-      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+      <app-icon name="trash" class="w-4 h-4"></app-icon> {{ t().clear }}
     </button>
   </div>
 
   @if (output()) {
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">Result:</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().result }}</label>
       <app-output-box [text]="output()" />
     </div>
   }

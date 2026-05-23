@@ -1,5 +1,6 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { LanguageService } from '../../../../services/language.service';
 
 @Component({
   selector: 'app-percentage-change',
@@ -9,6 +10,10 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   styleUrl: './percentage-change.css',
 })
 export class PercentageChange {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   x = signal(0);
   y = signal(0);
 
@@ -21,9 +26,9 @@ export class PercentageChange {
 
   changeLabel = computed(() => {
     const val = this.result();
-    if (val > 0) return 'increase';
-    if (val < 0) return 'decrease';
-    return 'no change';
+    if (val > 0) return this.t().increase;
+    if (val < 0) return this.t().decrease;
+    return this.t().noChange;
   });
 
   onXChange(value: number): void {

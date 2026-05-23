@@ -1,7 +1,8 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../../services/language.service';
 
 interface UnitDef {
   key: string;
@@ -19,6 +20,13 @@ const WEIGHT_UNITS: UnitDef[] = [
   { key: 'ton', name: 'Metric Ton', symbol: 't', toBase: 1000 },
 ];
 
+type UnitTranslationKey = 'unit_mg' | 'unit_g' | 'unit_kg' | 'unit_lb' | 'unit_oz' | 'unit_ton';
+
+const unitKeyMap: Record<string, UnitTranslationKey> = {
+  mg: 'unit_mg', g: 'unit_g', kg: 'unit_kg',
+  lb: 'unit_lb', oz: 'unit_oz', ton: 'unit_ton',
+};
+
 @Component({
   selector: 'app-weight-converter',
   standalone: true,
@@ -27,13 +35,23 @@ const WEIGHT_UNITS: UnitDef[] = [
   styleUrl: './weight-converter.css',
 })
 export class WeightConverter implements OnInit {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   fromUnit = signal('g');
   toUnit = signal('lb');
   amount = signal(1);
   decimals = signal(2);
   result = signal(0);
 
-  units = WEIGHT_UNITS;
+  units = computed(() => {
+    const t = this.t();
+    return WEIGHT_UNITS.map((u) => {
+      const tk = unitKeyMap[u.key];
+      return { ...u, name: tk ? t[tk] : u.name };
+    });
+  });
 
   ngOnInit(): void {
     this.calculate();

@@ -3,8 +3,8 @@
   class="flex items-center gap-1 px-3 py-1 text-sm font-semibold transition border rounded-lg text-posthog-orange bg-posthog-orange/10 hover:bg-posthog-orange/20 border-posthog-orange/30"
 >
   @if (!copied()) {
-    <span><app-icon name="copy" class="w-4 h-4 text-posthog-orange"></app-icon> Copy</span>
+    <span><app-icon name="copy" class="w-4 h-4 text-posthog-orange"></app-icon> {{ t().copy }}</span>
   } @else {
-    <span><app-icon name="check" class="w-4 h-4 text-posthog-orange"></app-icon> Copied</span>
+    <span><app-icon name="check" class="w-4 h-4 text-posthog-orange"></app-icon> {{ t().copied }}</span>
   }
 </button>

@@ -1,8 +1,9 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faLockOpen, faTrashCan, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { InputBox } from '../../ui/input-box/input-box';
 import { OutputBox } from '../../ui/output-box/output-box';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-url-decoder',
@@ -13,6 +14,9 @@ import { OutputBox } from '../../ui/output-box/output-box';
 })
 export class UrlDecoder {
   private library = inject(FaIconLibrary);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   input = signal('');
   output = signal('');
@@ -25,7 +29,7 @@ export class UrlDecoder {
   decode(): void {
     const text = this.input().trim();
     if (!text) {
-      this.error.set('Please enter text to decode');
+      this.error.set(this.t().decodeError);
       this.output.set('');
       return;
     }
@@ -33,7 +37,7 @@ export class UrlDecoder {
     try {
       this.output.set(decodeURIComponent(text));
     } catch {
-      this.error.set('Failed to decode. The input may contain invalid encoded sequences.');
+      this.error.set(this.t().invalidEncodedSeq);
       this.output.set('');
     }
   }

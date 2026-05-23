@@ -1,7 +1,8 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../../services/language.service';
 
 interface UnitDef {
   key: string;
@@ -15,6 +16,14 @@ const TEMP_UNITS: UnitDef[] = [
   { key: 'kelvin', name: 'Kelvin', symbol: 'K' },
 ];
 
+type UnitTranslationKey = 'unit_celsius' | 'unit_fahrenheit' | 'unit_kelvin';
+
+const unitKeyMap: Record<string, UnitTranslationKey> = {
+  celsius: 'unit_celsius',
+  fahrenheit: 'unit_fahrenheit',
+  kelvin: 'unit_kelvin',
+};
+
 @Component({
   selector: 'app-temperature-converter',
   standalone: true,
@@ -23,13 +32,23 @@ const TEMP_UNITS: UnitDef[] = [
   styleUrl: './temperature-converter.css',
 })
 export class TemperatureConverter implements OnInit {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   fromUnit = signal('celsius');
   toUnit = signal('fahrenheit');
   amount = signal(1);
   decimals = signal(2);
   result = signal(0);
 
-  units = TEMP_UNITS;
+  units = computed(() => {
+    const t = this.t();
+    return TEMP_UNITS.map((u) => {
+      const tk = unitKeyMap[u.key];
+      return { ...u, name: tk ? t[tk] : u.name };
+    });
+  });
 
   ngOnInit(): void {
     this.calculate();

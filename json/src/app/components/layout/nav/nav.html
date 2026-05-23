@@ -9,9 +9,9 @@
 
     <!-- Desktop nav links -->
     <div class="hidden md:flex items-center gap-1">
-      <a href="/" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Home</a>
-      <a href="/generator" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Generator</a>
-      <a href="/templates" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">Templates</a>
+      <a href="/" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navHome }}</a>
+      <a href="/generator" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navGenerator }}</a>
+      <a href="/templates" class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navTemplates }}</a>
 
       <!-- Convert Dropdown -->
       <div class="relative" (mouseenter)="openDropdownMenu('convert')" (mouseleave)="scheduleClose()">
@@ -19,7 +19,7 @@
           (click)="openDropdown() === 'convert' ? openDropdown.set(null) : openDropdownMenu('convert')"
           class="flex items-center gap-1 px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
-          Convert
+          {{ t().navConvert }}
           <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'convert'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
@@ -31,12 +31,12 @@
             (mouseleave)="scheduleClose()"
           >
             <div class="w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a href="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">CSV → JSON</a>
-              <a href="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">TSV → JSON</a>
-              <a href="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → CSV</a>
-              <a href="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → TSV</a>
-              <a href="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → XML</a>
-              <a href="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">JSON → YAML</a>
+              <a href="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
+              <a href="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
+              <a href="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
+              <a href="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
+              <a href="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
+              <a href="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
             </div>
           </div>
         }
@@ -48,7 +48,7 @@
           (click)="openDropdown() === 'utils' ? openDropdown.set(null) : openDropdownMenu('utils')"
           class="flex items-center gap-1 px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
-          Utils
+          {{ t().navUtils }}
           <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'utils'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
@@ -60,14 +60,14 @@
             (mouseleave)="scheduleClose()"
           >
             <div class="w-40 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a href="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Format</a>
-              <a href="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Minify</a>
-              <a href="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Sort Keys</a>
-              <a href="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Validate</a>
-              <a href="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Flatten</a>
-              <a href="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Unflatten</a>
-              <a href="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Diff</a>
-              <a href="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">Query</a>
+              <a href="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFormat }}</a>
+              <a href="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navMinify }}</a>
+              <a href="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navSortKeys }}</a>
+              <a href="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navValidate }}</a>
+              <a href="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFlatten }}</a>
+              <a href="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navUnflatten }}</a>
+              <a href="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navDiff }}</a>
+              <a href="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navQuery }}</a>
             </div>
           </div>
         }
@@ -96,28 +96,28 @@
   @if (mobileMenuOpen()) {
     <div class="md:hidden border-t border-olive-border bg-olive-parchment">
       <div class="flex flex-col py-2 px-4">
-        <a href="/" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Home</a>
-        <a href="/generator" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Generator</a>
-        <a href="/templates" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">Templates</a>
+        <a href="/" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navHome }}</a>
+        <a href="/generator" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navGenerator }}</a>
+        <a href="/templates" (click)="closeMobileMenu()" class="py-2.5 font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navTemplates }}</a>
 
         <!-- Convert mobile -->
         <button
           (click)="openDropdown() === 'convert-mobile' ? openDropdown.set(null) : openDropdown.set('convert-mobile')"
           class="flex items-center justify-between py-2.5 font-semibold text-olive-ink hover:text-posthog-orange text-left"
         >
-          Convert
+          {{ t().navConvert }}
           <svg class="w-3 h-3 transition-transform" [class.rotate-180]="openDropdown() === 'convert-mobile'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         @if (openDropdown() === 'convert-mobile') {
           <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
-            <a href="/convert/csv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">CSV → JSON</a>
-            <a href="/convert/tsv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">TSV → JSON</a>
-            <a href="/convert/json-to-csv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → CSV</a>
-            <a href="/convert/json-to-tsv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → TSV</a>
-            <a href="/convert/json-to-xml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → XML</a>
-            <a href="/convert/json-to-yaml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">JSON → YAML</a>
+            <a href="/convert/csv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
+            <a href="/convert/tsv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
+            <a href="/convert/json-to-csv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
+            <a href="/convert/json-to-tsv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
+            <a href="/convert/json-to-xml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
+            <a href="/convert/json-to-yaml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
           </div>
         }
 
@@ -126,21 +126,21 @@
           (click)="openDropdown() === 'utils-mobile' ? openDropdown.set(null) : openDropdown.set('utils-mobile')"
           class="flex items-center justify-between py-2.5 font-semibold text-olive-ink hover:text-posthog-orange text-left"
         >
-          Utils
+          {{ t().navUtils }}
           <svg class="w-3 h-3 transition-transform" [class.rotate-180]="openDropdown() === 'utils-mobile'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         @if (openDropdown() === 'utils-mobile') {
           <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
-            <a href="/utils/format" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Format</a>
-            <a href="/utils/minify" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Minify</a>
-            <a href="/utils/sort" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Sort Keys</a>
-            <a href="/utils/validate" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Validate</a>
-            <a href="/utils/flatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Flatten</a>
-            <a href="/utils/unflatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Unflatten</a>
-            <a href="/utils/diff" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Diff</a>
-            <a href="/utils/query" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">Query</a>
+            <a href="/utils/format" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFormat }}</a>
+            <a href="/utils/minify" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navMinify }}</a>
+            <a href="/utils/sort" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navSortKeys }}</a>
+            <a href="/utils/validate" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navValidate }}</a>
+            <a href="/utils/flatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFlatten }}</a>
+            <a href="/utils/unflatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navUnflatten }}</a>
+            <a href="/utils/diff" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navDiff }}</a>
+            <a href="/utils/query" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navQuery }}</a>
           </div>
         }
       </div>

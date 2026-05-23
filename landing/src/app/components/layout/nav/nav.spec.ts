@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Nav } from './nav';
 
@@ -8,9 +9,9 @@ describe('Nav', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Nav]
-    })
-    .compileComponents();
+      imports: [Nav],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Nav);
     component = fixture.componentInstance;

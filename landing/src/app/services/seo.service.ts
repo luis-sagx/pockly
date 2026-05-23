@@ -1,7 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { LanguageService } from './language.service';
 
 export interface PageMeta {
   title: string;
@@ -15,13 +16,6 @@ export interface PageMeta {
 }
 
 const PAGE_CONFIGS: Record<string, PageMeta> = {
-  '': {
-    title: 'Pockly - Free Online Tools for Daily Productivity',
-    description:
-      'Free online productivity tools: word counter, JSON generator, background remover, image resizer, format converter, text case tool, and more.',
-    keywords: 'online tools, productivity, word counter, json generator, image tools',
-    noindex: false,
-  },
   'word-count': {
     title: 'Word Counter - Free Online Word Count Tool',
     description:
@@ -137,6 +131,15 @@ export class SeoService {
   private title = inject(Title);
   private meta = inject(Meta);
   private router = inject(Router);
+  private languageService = inject(LanguageService);
+
+  readonly homeMeta = computed(() => {
+    const t = this.languageService.getTranslations();
+    return {
+      title: t.seoTitle,
+      description: t.seoDescription,
+    };
+  });
 
   constructor() {
     this.router.events
@@ -151,6 +154,13 @@ export class SeoService {
   }
 
   private getConfigForPath(url: string): PageMeta {
+    if (!url) {
+      return {
+        title: this.homeMeta().title,
+        description: this.homeMeta().description,
+      };
+    }
+
     const exactMatch = PAGE_CONFIGS[url];
     if (exactMatch) return exactMatch;
 
@@ -158,7 +168,10 @@ export class SeoService {
     const parentMatch = PAGE_CONFIGS[basePath];
     if (parentMatch && PAGE_CONFIGS[basePath]) return parentMatch;
 
-    return PAGE_CONFIGS[''];
+    return {
+      title: this.homeMeta().title,
+      description: this.homeMeta().description,
+    };
   }
 
   setMeta(config: PageMeta) {

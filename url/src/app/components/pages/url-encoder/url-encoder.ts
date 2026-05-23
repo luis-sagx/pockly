@@ -1,8 +1,9 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCode, faTrashCan, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { InputBox } from '../../ui/input-box/input-box';
 import { OutputBox } from '../../ui/output-box/output-box';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-url-encoder',
@@ -13,6 +14,9 @@ import { OutputBox } from '../../ui/output-box/output-box';
 })
 export class UrlEncoder {
   private library = inject(FaIconLibrary);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   input = signal('');
   output = signal('');
@@ -25,7 +29,7 @@ export class UrlEncoder {
   encode(): void {
     const text = this.input().trim();
     if (!text) {
-      this.error.set('Please enter text to encode');
+      this.error.set(this.t().encodeError);
       this.output.set('');
       return;
     }

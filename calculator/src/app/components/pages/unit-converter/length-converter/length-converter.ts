@@ -1,7 +1,8 @@
-import { Component, signal, computed, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService, Translations } from '../../../../services/language.service';
 
 interface UnitDef {
   key: string;
@@ -21,6 +22,13 @@ const LENGTH_UNITS: UnitDef[] = [
   { key: 'mi', name: 'Mile', symbol: 'mi', toBase: 1609.344 },
 ];
 
+type UnitTranslationKey = 'unit_mm' | 'unit_cm' | 'unit_m' | 'unit_km' | 'unit_in' | 'unit_ft' | 'unit_yd' | 'unit_mi';
+
+const unitKeyMap: Record<string, UnitTranslationKey> = {
+  mm: 'unit_mm', cm: 'unit_cm', m: 'unit_m', km: 'unit_km',
+  in: 'unit_in', ft: 'unit_ft', yd: 'unit_yd', mi: 'unit_mi',
+};
+
 @Component({
   selector: 'app-length-converter',
   standalone: true,
@@ -29,13 +37,23 @@ const LENGTH_UNITS: UnitDef[] = [
   styleUrl: './length-converter.css',
 })
 export class LengthConverter implements OnInit {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   fromUnit = signal('cm');
   toUnit = signal('in');
   amount = signal(1);
   decimals = signal(2);
   result = signal(0);
 
-  units = LENGTH_UNITS;
+  units = computed(() => {
+    const t = this.t();
+    return LENGTH_UNITS.map((u) => {
+      const tk = unitKeyMap[u.key];
+      return { ...u, name: tk ? t[tk] : u.name };
+    });
+  });
 
   ngOnInit(): void {
     this.calculate();

@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Convert</h2>
-    <p class="mt-1 text-sm text-olive-muted">Choose a conversion type to get started.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().navConvert }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().chooseConversionType }}</p>
   </div>
 
   <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -12,9 +12,9 @@
       >
         <div class="flex items-center gap-2 mb-1">
           <app-icon [name]="tool.icon" class="text-posthog-orange"></app-icon>
-          <span class="font-semibold text-olive-deep text-sm">{{ tool.label }}</span>
+          <span class="font-semibold text-olive-deep text-sm">{{ getToolLabel(tool.id) }}</span>
         </div>
-        <span class="text-xs text-olive-muted">{{ tool.description }}</span>
+        <span class="text-xs text-olive-muted">{{ getToolDesc(tool.id) }}</span>
       </a>
     }
   </div>

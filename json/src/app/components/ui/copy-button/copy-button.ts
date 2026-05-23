@@ -1,5 +1,6 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../icon/icon';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-copy-button',
@@ -10,7 +11,11 @@ import { IconComponent } from '../icon/icon';
 export class CopyButton {
   @Input() textToCopy: string = '';
 
+  private languageService = inject(LanguageService);
+
   copied = signal(false);
+
+  t = computed(() => this.languageService.getTranslations());
 
   copyText() {
     navigator.clipboard.writeText(this.textToCopy).then(() => {

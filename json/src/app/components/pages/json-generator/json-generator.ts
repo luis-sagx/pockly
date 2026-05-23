@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { OutputBox } from '../../ui/output-box/output-box';
 import { IconComponent } from '../../ui/icon/icon';
+import { LanguageService } from '../../../services/language.service';
 
 interface BuilderField {
   id: string;
@@ -16,12 +17,16 @@ interface BuilderField {
   templateUrl: './json-generator.html',
 })
 export class JsonGenerator {
+  private languageService = inject(LanguageService);
+
   output = signal('');
   fields = signal<BuilderField[]>([
     { id: '1', key: 'id', type: 'uuid', value: '' },
     { id: '2', key: 'name', type: 'text', value: '' },
     { id: '3', key: 'email', type: 'email', value: '' },
   ]);
+
+  t = computed(() => this.languageService.getTranslations());
 
   readonly fieldTypes = [
     { value: 'text', label: 'Text' },

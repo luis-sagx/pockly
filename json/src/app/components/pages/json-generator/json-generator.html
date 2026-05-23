@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Generator</h2>
-    <p class="mt-1 text-sm text-olive-muted">Build JSON objects interactively — no API needed.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().generator }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().buildJsonInteractively }}</p>
   </div>
 
   <!-- Field Builder -->
@@ -68,26 +68,26 @@
       (click)="addField()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
-      <app-icon name="plus" class="w-4 h-4"></app-icon> Add Field
+      <app-icon name="plus" class="w-4 h-4"></app-icon> {{ t().addField }}
     </button>
     <button
       (click)="generate()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber"
     >
-      <app-icon name="wand" class="w-4 h-4"></app-icon> Generate
+      <app-icon name="wand" class="w-4 h-4"></app-icon> {{ t().generate }}
     </button>
     <button
       (click)="clear()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
-      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+      <app-icon name="trash" class="w-4 h-4"></app-icon> {{ t().clear }}
     </button>
   </div>
 
   <!-- Output -->
   @if (output()) {
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">Generated JSON:</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().generatedJson }}</label>
       <app-output-box [text]="output()" />
     </div>
   }

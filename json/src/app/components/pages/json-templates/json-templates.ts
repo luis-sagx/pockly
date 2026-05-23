@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../ui/icon/icon';
+import { LanguageService } from '../../../services/language.service';
 
 interface JsonTemplate {
   name: string;
@@ -52,10 +53,14 @@ const TEMPLATES: JsonTemplate[] = [
   templateUrl: './json-templates.html',
 })
 export class JsonTemplates {
+  private languageService = inject(LanguageService);
+
   readonly templates = TEMPLATES;
   selectedTemplate = signal<JsonTemplate | null>(null);
   activeCategory = signal<'all' | 'simple' | 'common' | 'complex'>('all');
   copied = signal(false);
+
+  t = computed(() => this.languageService.getTranslations());
 
   get filteredTemplates() {
     const cat = this.activeCategory();
@@ -90,10 +95,11 @@ export class JsonTemplates {
   }
 
   getCategoryLabel(cat: string): string {
+    const tr = this.t();
     switch (cat) {
-      case 'simple': return 'Simple';
-      case 'common': return 'Common';
-      case 'complex': return 'Complex';
+      case 'simple': return tr.templateCategorySimple;
+      case 'common': return tr.templateCategoryCommon;
+      case 'complex': return tr.templateCategoryComplex;
       default: return cat;
     }
   }

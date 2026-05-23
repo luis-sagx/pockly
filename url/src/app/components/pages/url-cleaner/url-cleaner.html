@@ -1,11 +1,11 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">URL Cleaner / Normalizer</h2>
-    <p class="mt-1 text-sm text-[#4d4f46]">Remove tracking parameters, sort query params, and normalize URLs in one click.</p>
+    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">{{ t().urlCleaner }}</h2>
+    <p class="mt-1 text-sm text-[#4d4f46]">{{ t().urlCleanerDesc }}</p>
   </div>
 
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-[#23251d]">Enter URL to clean</label>
+    <label class="text-sm font-semibold text-[#23251d]">{{ t().enterUrlToClean }}</label>
     <app-input-box
       [value]="inputUrl()"
       (valueChange)="onInputChange($event)"
@@ -28,25 +28,25 @@
       class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-base font-semibold text-white transition-all duration-150 rounded-md bg-[#1e1f23] hover:opacity-70 active:opacity-80"
     >
       <fa-icon [icon]="['fas', 'broom']"></fa-icon>
-      Clean URL
+      {{ t().cleanUrl }}
     </button>
     <button
       (click)="clear()"
       class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-[#4d4f46] transition-colors duration-150 rounded border border-[#bfc1b7] bg-[#fdfdf8] hover:bg-[#eeefe9]"
     >
       <fa-icon [icon]="['fas', 'trash-can']"></fa-icon>
-      Clear
+      {{ t().clear }}
     </button>
   </div>
 
   <!-- What gets cleaned info -->
   <div class="p-4 border border-[#bfc1b7] rounded-lg bg-[#fdfdf8]">
-    <h4 class="mb-2 text-sm font-semibold text-[#23251d]">What this does:</h4>
+    <h4 class="mb-2 text-sm font-semibold text-[#23251d]">{{ t().whatThisDoes }}</h4>
     <ul class="space-y-1 text-sm text-[#4d4f46]">
-      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Removes tracking parameters (utm_*, fbclid, gclid, etc.)</li>
-      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Sorts remaining query parameters alphabetically</li>
-      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Lowercases the hostname</li>
-      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> Adds https:// if missing</li>
+      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> {{ t().removesTracking }}</li>
+      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> {{ t().sortsQueryParams }}</li>
+      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> {{ t().lowercasesHostname }}</li>
+      <li class="flex items-center gap-2"><span class="text-green-600">✓</span> {{ t().addsProtocol }}</li>
     </ul>
   </div>
 
@@ -54,7 +54,7 @@
     <app-output-box [text]="outputUrl()"></app-output-box>
     @if (removedParams().length) {
       <p class="text-sm text-[#65675e]">
-        <span class="font-semibold">Removed params:</span>
+        <span class="font-semibold">{{ t().removedParams }}</span>
         @for (param of removedParams(); track param) {
           <span class="inline-block px-2 py-0.5 ml-1 text-xs bg-red-100 text-red-700 rounded">{{ param }}</span>
         }

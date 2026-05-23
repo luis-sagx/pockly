@@ -1,7 +1,8 @@
-import { Component, signal, OnInit, OnDestroy } from '@angular/core';
+import { Component, signal, computed, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../services/language.service';
 
 interface Rates { [key: string]: number; }
 const API_URL = 'https://open.er-api.com/v6/latest/USD';
@@ -30,6 +31,10 @@ const COMMON_CURRENCIES = [
   styleUrl: './currency-converter.css',
 })
 export class CurrencyConverter implements OnInit, OnDestroy {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   currencies = COMMON_CURRENCIES;
   rates = signal<Rates>({});
   lastUpdated = signal<string>('');
@@ -56,7 +61,7 @@ export class CurrencyConverter implements OnInit, OnDestroy {
       this.rates.set(rateMap);
       if (data.time_last_update_utc) this.lastUpdated.set(new Date(data.time_last_update_utc).toLocaleDateString());
       this.calculate();
-    } catch (e) { this.error.set('Failed to load exchange rates.'); }
+    } catch (e) { this.error.set(this.t().failedToLoadRates); }
     finally { this.loading.set(false); }
   }
 

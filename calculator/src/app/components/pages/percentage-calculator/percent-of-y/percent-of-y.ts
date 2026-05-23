@@ -1,5 +1,6 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { LanguageService } from '../../../../services/language.service';
 
 @Component({
   selector: 'app-percent-of-y',
@@ -9,6 +10,10 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   styleUrl: './percent-of-y.css',
 })
 export class PercentOfY {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   x = signal(0);
   y = signal(0);
 

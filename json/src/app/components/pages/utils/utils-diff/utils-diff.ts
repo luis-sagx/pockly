@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { OutputBox } from '../../../ui/output-box/output-box';
 import { IconComponent } from '../../../ui/icon/icon';
 import { compareJson } from '../utils.service';
+import { LanguageService } from '../../../../services/language.service';
 
 @Component({
   selector: 'app-utils-diff',
@@ -10,10 +11,14 @@ import { compareJson } from '../utils.service';
   templateUrl: './utils-diff.html',
 })
 export class UtilsDiff {
+  private languageService = inject(LanguageService);
+
   input1 = signal('');
   input2 = signal('');
   output = signal('');
   error = signal<string | null>(null);
+
+  t = computed(() => this.languageService.getTranslations());
 
   apply() {
     this.error.set(null);
@@ -21,7 +26,7 @@ export class UtilsDiff {
       const v1 = this.input1();
       const v2 = this.input2();
       if (!v1.trim() || !v2.trim()) {
-        this.error.set('Please enter JSON in both fields');
+        this.error.set(this.t().pleaseEnterBothJson);
         return;
       }
       this.output.set(compareJson(v1, v2));

@@ -1,16 +1,30 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBroom, faTrashCan, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { InputBox } from '../../ui/input-box/input-box';
 import { OutputBox } from '../../ui/output-box/output-box';
+import { LanguageService } from '../../../services/language.service';
 
 const TRACKING_PARAMS = new Set([
-  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-  'fbclid', 'gclid', 'gclsrc', 'dclid',
-  'msclkid', 'twclid',
-  'igshid', 'mc_cid', 'mc_eid',
-  '_ga', '_gl', '_gaq',
-  'ref', 'source', // common referrer params
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'fbclid',
+  'gclid',
+  'gclsrc',
+  'dclid',
+  'msclkid',
+  'twclid',
+  'igshid',
+  'mc_cid',
+  'mc_eid',
+  '_ga',
+  '_gl',
+  '_gaq',
+  'ref',
+  'source',
 ]);
 
 @Component({
@@ -22,6 +36,9 @@ const TRACKING_PARAMS = new Set([
 })
 export class UrlCleaner {
   private library = inject(FaIconLibrary);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   inputUrl = signal('');
   outputUrl = signal('');
@@ -35,7 +52,7 @@ export class UrlCleaner {
   clean(): void {
     const raw = this.inputUrl().trim();
     if (!raw) {
-      this.error.set('Please enter a URL');
+      this.error.set(this.t().pleaseEnterUrl);
       this.outputUrl.set('');
       this.removedParams.set([]);
       return;
@@ -47,7 +64,6 @@ export class UrlCleaner {
     try {
       let urlString = raw;
 
-      // Add protocol if missing
       if (!/^https?:\/\//i.test(urlString)) {
         urlString = 'https://' + urlString;
       }
@@ -55,7 +71,6 @@ export class UrlCleaner {
       const url = new URL(urlString);
       const removed: string[] = [];
 
-      // Collect and remove tracking params
       const paramsToRemove: string[] = [];
       url.searchParams.forEach((_value, key) => {
         const lowerKey = key.toLowerCase();
@@ -67,13 +82,10 @@ export class UrlCleaner {
 
       paramsToRemove.forEach((key) => url.searchParams.delete(key));
 
-      // Sort remaining query params alphabetically
       url.searchParams.sort();
 
-      // Lowercase hostname
       url.hostname = url.hostname.toLowerCase();
 
-      // Remove fragment (hash) if it's empty
       if (url.hash === '#' || url.hash === '') {
         url.hash = '';
       }
@@ -81,7 +93,7 @@ export class UrlCleaner {
       this.removedParams.set(removed);
       this.outputUrl.set(url.toString());
     } catch {
-      this.error.set('Please enter a valid URL');
+      this.error.set(this.t().pleaseEnterValidUrl);
       this.outputUrl.set('');
       this.removedParams.set([]);
     }

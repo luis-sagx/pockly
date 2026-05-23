@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,13 @@ import { Component, signal } from '@angular/core';
   styleUrl: './nav.css',
 })
 export class Nav {
+  private languageService = inject(LanguageService);
+
   openDropdown = signal<string | null>(null);
   mobileMenuOpen = signal(false);
   private closeTimer: ReturnType<typeof setTimeout> | null = null;
+
+  t = computed(() => this.languageService.getTranslations());
 
   openDropdownMenu(name: string) {
     this.cancelCloseTimer();

@@ -2,6 +2,7 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBullseye, faTrashCan, faLink, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
 import { CopyButton } from '../../ui/copy-button/copy-button';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-utm-builder',
@@ -12,6 +13,9 @@ import { CopyButton } from '../../ui/copy-button/copy-button';
 })
 export class UtmBuilder {
   private library = inject(FaIconLibrary);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   baseUrl = signal('');
   utmSource = signal('');
@@ -65,7 +69,10 @@ export class UtmBuilder {
   });
 
   canBuild = computed(() => {
-    return this.isValidUrl() && (this.utmSource().trim() || this.utmMedium().trim() || this.utmCampaign().trim());
+    return (
+      this.isValidUrl() &&
+      (this.utmSource().trim() || this.utmMedium().trim() || this.utmCampaign().trim())
+    );
   });
 
   private extractUtmFromUrl(url: string): void {
@@ -83,20 +90,37 @@ export class UtmBuilder {
       const term = parsed.searchParams.get('utm_term');
       const content = parsed.searchParams.get('utm_content');
 
-      if (source) { this.utmSource.set(source); count++; }
-      if (medium) { this.utmMedium.set(medium); count++; }
-      if (campaign) { this.utmCampaign.set(campaign); count++; }
-      if (term) { this.utmTerm.set(term); count++; }
-      if (content) { this.utmContent.set(content); count++; }
+      if (source) {
+        this.utmSource.set(source);
+        count++;
+      }
+      if (medium) {
+        this.utmMedium.set(medium);
+        count++;
+      }
+      if (campaign) {
+        this.utmCampaign.set(campaign);
+        count++;
+      }
+      if (term) {
+        this.utmTerm.set(term);
+        count++;
+      }
+      if (content) {
+        this.utmContent.set(content);
+        count++;
+      }
 
       this.extractedCount.set(count);
     } catch {
-      // Not a valid URL yet, ignore
       this.extractedCount.set(0);
     }
   }
 
-  onInputChange(field: 'baseUrl' | 'utmSource' | 'utmMedium' | 'utmCampaign' | 'utmTerm' | 'utmContent', value: string): void {
+  onInputChange(
+    field: 'baseUrl' | 'utmSource' | 'utmMedium' | 'utmCampaign' | 'utmTerm' | 'utmContent',
+    value: string
+  ): void {
     const signals: Record<string, ReturnType<typeof signal>> = {
       baseUrl: this.baseUrl,
       utmSource: this.utmSource,

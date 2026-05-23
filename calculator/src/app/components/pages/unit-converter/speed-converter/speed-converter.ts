@@ -1,7 +1,8 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { LanguageService } from '../../../../services/language.service';
 
 interface UnitDef {
   key: string;
@@ -17,6 +18,12 @@ const SPEED_UNITS: UnitDef[] = [
   { key: 'knot', name: 'Knot', symbol: 'kn', toBase: 0.514444 },
 ];
 
+type UnitTranslationKey = 'unit_ms' | 'unit_kmh' | 'unit_mph' | 'unit_knot';
+
+const unitKeyMap: Record<string, UnitTranslationKey> = {
+  ms: 'unit_ms', kmh: 'unit_kmh', mph: 'unit_mph', knot: 'unit_knot',
+};
+
 @Component({
   selector: 'app-speed-converter',
   standalone: true,
@@ -25,13 +32,23 @@ const SPEED_UNITS: UnitDef[] = [
   styleUrl: './speed-converter.css',
 })
 export class SpeedConverter implements OnInit {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   fromUnit = signal('kmh');
   toUnit = signal('mph');
   amount = signal(1);
   decimals = signal(2);
   result = signal(0);
 
-  units = SPEED_UNITS;
+  units = computed(() => {
+    const t = this.t();
+    return SPEED_UNITS.map((u) => {
+      const tk = unitKeyMap[u.key];
+      return { ...u, name: tk ? t[tk] : u.name };
+    });
+  });
 
   ngOnInit(): void {
     this.calculate();

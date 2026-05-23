@@ -1,6 +1,7 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { PROJECT_CATEGORIES, type ProjectCategory } from '../../../config/projects';
 import { SeoService } from '../../../services/seo.service';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,9 @@ import { SeoService } from '../../../services/seo.service';
 })
 export class Home implements OnInit {
   private seo = inject(SeoService);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   private readonly featuredCategoryKeys = ['text', 'image', 'json', 'url', 'calculator'] as const;
 
@@ -19,14 +23,17 @@ export class Home implements OnInit {
     .map((key) => PROJECT_CATEGORIES.find((category) => category.key === key))
     .filter((category): category is ProjectCategory => category !== undefined);
 
-  readonly filterOptions = [
-    { label: 'All', value: 'all' as const },
-    { label: 'Text', value: 'text' as const },
-    { label: 'Image', value: 'image' as const },
-    { label: 'JSON', value: 'json' as const },
-    { label: 'URL', value: 'url' as const },
-    { label: 'Calculator', value: 'calculator' as const },
-  ];
+  readonly filterOptions = computed(() => {
+    const t = this.languageService.getTranslations();
+    return [
+      { label: t.filterAll, value: 'all' as const },
+      { label: t.filterText, value: 'text' as const },
+      { label: t.filterImage, value: 'image' as const },
+      { label: t.filterJson, value: 'json' as const },
+      { label: t.filterUrl, value: 'url' as const },
+      { label: t.filterCalculator, value: 'calculator' as const },
+    ];
+  });
 
   readonly filteredCategories = computed(() => {
     const currentFilter = this.filter();
@@ -51,9 +58,10 @@ export class Home implements OnInit {
   }
 
   ngOnInit() {
+    const t = this.languageService.getTranslations();
     this.seo.setMeta({
-      title: 'Pockly - Tools Hub',
-      description: 'Launch text, image, JSON, URL and calculator tools from one place.',
+      title: t.seoTitle,
+      description: t.seoDescription,
     });
   }
 }

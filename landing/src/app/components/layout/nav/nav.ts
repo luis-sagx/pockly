@@ -1,35 +1,26 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-interface NavLink {
-  label: string;
-  path: string;
-}
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-nav',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
 export class Nav {
-  isMenuOpen: boolean = false;
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
 
-  navLinks: NavLink[] = [
-    { label: 'Home', path: '/' },
-    { label: 'Word Counter', path: '/word-count' },
-    { label: 'Text Case', path: '/text-case' },
-    { label: 'Diff Checker', path: '/diff-checker' },
-    { label: 'Password Generator', path: '/password-generator' },
-    { label: 'Quick Notes', path: '/quick-notes' },
-  ];
+  private _isMenuOpen = signal(false);
+  isMenuOpen = computed(() => this._isMenuOpen());
 
   toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+    this._isMenuOpen.update((value) => !value);
   }
 
   closeMenu(): void {
-    this.isMenuOpen = false;
+    this._isMenuOpen.set(false);
   }
 }

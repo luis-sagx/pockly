@@ -1,23 +1,23 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">Temperature Converter</h2>
-    <p class="text-base text-olive-ink/70">Convert between Celsius, Fahrenheit, and Kelvin.</p>
+    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">{{ t().temperatureTitle }}</h2>
+    <p class="text-base text-olive-ink/70">{{ t().temperaturePageDesc }}</p>
   </div>
 
   <div class="flex flex-col gap-6 lg:flex-row">
     <div class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep">
-      <span class="text-base font-semibold text-olive-ink">From</span>
+      <span class="text-base font-semibold text-olive-ink">{{ t().from }}</span>
       <select
         [ngModel]="fromUnit()"
         (ngModelChange)="onFromUnitChange($event)"
         class="w-full rounded-md border border-olive-border bg-parchment px-3 py-2 text-base text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
-        @for (unit of units; track unit.key) {
+        @for (unit of units(); track unit.key) {
           <option [value]="unit.key">{{ unit.name }} ({{ unit.symbol }})</option>
         }
       </select>
       <div class="flex flex-col gap-2">
-        <label class="text-base font-semibold text-olive-ink">Amount</label>
+        <label class="text-base font-semibold text-olive-ink">{{ t().amount }}</label>
         <input
           type="number"
           step="any"
@@ -38,18 +38,18 @@
     </div>
 
     <div class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep">
-      <span class="text-base font-semibold text-olive-ink">To</span>
+      <span class="text-base font-semibold text-olive-ink">{{ t().to }}</span>
       <select
         [ngModel]="toUnit()"
         (ngModelChange)="onToUnitChange($event)"
         class="w-full rounded-md border border-olive-border bg-parchment px-3 py-2 text-base text-black transition-colors hover:border-posthog-orange/60 focus:border-posthog-orange focus:outline-none focus:ring-2 focus:ring-posthog-orange/30"
       >
-        @for (unit of units; track unit.key) {
+        @for (unit of units(); track unit.key) {
           <option [value]="unit.key">{{ unit.name }} ({{ unit.symbol }})</option>
         }
       </select>
       <div class="flex flex-col gap-2">
-        <span class="text-base font-semibold text-olive-ink">Result</span>
+        <span class="text-base font-semibold text-olive-ink">{{ t().result }}</span>
         <div class="rounded-md border border-olive-border bg-parchment px-4 py-3">
           <span class="text-2xl font-semibold text-olive-deep">
             {{ result() | number: getDecimals() }} {{ toUnit() }}
@@ -60,7 +60,7 @@
   </div>
 
   <div class="flex items-center gap-4 rounded border border-olive-border bg-olive-cream p-4">
-    <span class="text-base font-semibold text-olive-ink">Decimal precision:</span>
+    <span class="text-base font-semibold text-olive-ink">{{ t().decimalPrecision }}</span>
     <div class="flex gap-2">
       @for (d of [0, 1, 2, 3, 4, 6]; track d) {
         <button

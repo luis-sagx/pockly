@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Templates</h2>
-    <p class="mt-1 text-sm text-olive-muted">Pre-built JSON structures for common use cases.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().templates }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().preBuiltStructures }}</p>
   </div>
 
   <div class="flex flex-wrap gap-2">
@@ -13,7 +13,7 @@
           : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      All
+      {{ t().all }}
     </button>
     <button
       (click)="setCategory('simple')"
@@ -23,7 +23,7 @@
           : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Simple
+      {{ t().simple }}
     </button>
     <button
       (click)="setCategory('common')"
@@ -33,7 +33,7 @@
           : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Common
+      {{ t().common }}
     </button>
     <button
       (click)="setCategory('complex')"
@@ -43,7 +43,7 @@
           : 'px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange'
       "
     >
-      Complex
+      {{ t().complex }}
     </button>
   </div>
 
@@ -89,10 +89,10 @@
             >
               @if (!copied()) {
                 <app-icon name="copy" class="w-4 h-4"></app-icon>
-                <span>Copy</span>
+                <span>{{ t().copy }}</span>
               } @else {
                 <app-icon name="check" class="w-4 h-4"></app-icon>
-                <span>Copied!</span>
+                <span>{{ t().copied }}</span>
               }
             </button>
             <button

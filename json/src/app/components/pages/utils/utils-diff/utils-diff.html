@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">JSON Diff</h2>
-    <p class="mt-1 text-sm text-olive-muted">Compare two JSON objects and see what was added, removed, or changed.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().diff }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().compareTwoJson }}</p>
   </div>
 
   @if (error()) {
@@ -12,7 +12,7 @@
 
   <div class="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">JSON 1 (original):</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().json1Original }}</label>
       <textarea
         [value]="input1()"
         (input)="input1.set($any($event.target).value)"
@@ -22,7 +22,7 @@
       ></textarea>
     </div>
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">JSON 2 (modified):</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().json2Modified }}</label>
       <textarea
         [value]="input2()"
         (input)="input2.set($any($event.target).value)"
@@ -35,16 +35,16 @@
 
   <div class="flex flex-wrap gap-2">
     <button (click)="apply()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber">
-      <app-icon name="play" class="w-4 h-4"></app-icon> Compare
+      <app-icon name="play" class="w-4 h-4"></app-icon> {{ t().compareBtn }}
     </button>
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
-      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+      <app-icon name="trash" class="w-4 h-4"></app-icon> {{ t().clear }}
     </button>
   </div>
 
   @if (output()) {
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">Result:</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().result }}</label>
       <app-output-box [text]="output()" />
     </div>
   }

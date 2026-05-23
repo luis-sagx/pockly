@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">UTM Builder</h2>
-    <p class="mt-1 text-sm text-[#4d4f46]">Build tracking URLs with UTM parameters for your marketing campaigns.</p>
+    <h2 class="text-2xl font-bold tracking-tight text-[#23251d] font-display">{{ t().utmBuilder }}</h2>
+    <p class="mt-1 text-sm text-[#4d4f46]">{{ t().utmBuilderDesc }}</p>
   </div>
 
   <!-- Base URL -->
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-[#23251d]">Base URL <span class="text-red-500">*</span></label>
+    <label class="text-sm font-semibold text-[#23251d]">{{ t().baseUrl }} <span class="text-red-500">*</span></label>
     <input
       [value]="baseUrl()"
       (input)="onInputChange('baseUrl', $any($event.target).value)"
@@ -14,14 +14,14 @@
       class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
     />
     @if (baseUrl().trim() && !isValidUrl()) {
-      <p class="text-sm font-semibold text-red-600">Please enter a valid URL</p>
+      <p class="text-sm font-semibold text-red-600">{{ t().invalidUrl }}</p>
     }
   </div>
 
   @if (extractedCount() > 0) {
     <div class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#F54E00] bg-orange-50 border border-orange-200 rounded-md">
       <fa-icon [icon]="['fas', 'wand-magic-sparkles']"></fa-icon>
-      Auto-filled {{ extractedCount() }} UTM parameter(s) from the URL
+      {{ t().autoFilledUtm }} {{ extractedCount() }} UTM parameter(s) from the URL
     </div>
   }
 
@@ -62,7 +62,7 @@
 
     <!-- utm_term (optional) -->
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-[#23251d]">utm_term <span class="text-[#9ea096] font-normal">(optional)</span></label>
+      <label class="text-sm font-semibold text-[#23251d]">utm_term <span class="text-[#9ea096] font-normal">{{ t().optional }}</span></label>
       <input
         [value]="utmTerm()"
         (input)="onInputChange('utmTerm', $any($event.target).value)"
@@ -73,7 +73,7 @@
 
     <!-- utm_content (optional) -->
     <div class="flex flex-col gap-2 sm:col-span-2">
-      <label class="text-sm font-semibold text-[#23251d]">utm_content <span class="text-[#9ea096] font-normal">(optional)</span></label>
+      <label class="text-sm font-semibold text-[#23251d]">utm_content <span class="text-[#9ea096] font-normal">{{ t().optional }}</span></label>
       <input
         [value]="utmContent()"
         (input)="onInputChange('utmContent', $any($event.target).value)"
@@ -90,14 +90,14 @@
       class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-[#4d4f46] transition-colors duration-150 rounded border border-[#bfc1b7] bg-[#fdfdf8] hover:bg-[#eeefe9]"
     >
       <fa-icon [icon]="['fas', 'trash-can']"></fa-icon>
-      Clear All
+      {{ t().clearAll }}
     </button>
   </div>
 
   <!-- Result -->
   @if (builtUrl()) {
     <div class="flex flex-col gap-3 p-4 border border-olive-border rounded-lg bg-[#eeefe9]">
-      <span class="text-sm font-semibold text-[#23251d]">Built URL:</span>
+      <span class="text-sm font-semibold text-[#23251d]">{{ t().builtUrl }}</span>
       <div class="flex items-center gap-2">
         <input
           [value]="builtUrl()"
@@ -116,7 +116,7 @@
     </div>
   } @else if (baseUrl().trim() && isValidUrl()) {
     <div class="flex flex-col gap-3 p-4 border border-dashed border-[#bfc1b7] rounded-lg bg-[#fdfdf8]">
-      <p class="text-sm text-[#9ea096] text-center">Fill in at least one UTM parameter to build the URL</p>
+      <p class="text-sm text-[#9ea096] text-center">{{ t().fillUtmMessage }}</p>
     </div>
   }
 </div>

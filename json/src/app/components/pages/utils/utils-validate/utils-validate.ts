@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../../ui/icon/icon';
+import { LanguageService } from '../../../../services/language.service';
 
 @Component({
   selector: 'app-utils-validate',
@@ -8,21 +9,25 @@ import { IconComponent } from '../../../ui/icon/icon';
   templateUrl: './utils-validate.html',
 })
 export class UtilsValidate {
+  private languageService = inject(LanguageService);
+
   input = signal('');
   output = signal('');
   error = signal<string | null>(null);
+
+  t = computed(() => this.languageService.getTranslations());
 
   apply() {
     this.error.set(null);
     try {
       const val = this.input();
-      if (!val.trim()) { this.error.set('Please enter some JSON'); return; }
+      if (!val.trim()) { this.error.set(this.t().pleaseEnterJson); return; }
       JSON.parse(val);
-      this.output.set('✓ Valid JSON');
+      this.output.set(this.t().validJson);
       this.error.set(null);
     } catch (err: any) {
       this.output.set('');
-      this.error.set(`Invalid JSON: ${err.message}`);
+      this.error.set(`${this.t().invalidJson}: ${err.message}`);
     }
   }
 

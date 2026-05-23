@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">CSV → JSON</h2>
-    <p class="mt-1 text-sm text-olive-muted">Paste CSV data to convert it to JSON format.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().csvToJson }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().pasteCsvDataToConvert }}</p>
   </div>
 
   @if (error()) {
@@ -11,7 +11,7 @@
   }
 
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-olive-ink">CSV Input</label>
+    <label class="text-sm font-semibold text-olive-ink">{{ t().csvInput }}</label>
     <textarea
       [value]="input()"
       (input)="input.set($any($event.target).value)"
@@ -23,21 +23,21 @@
 
   <div class="flex flex-wrap gap-2">
     <button (click)="convert()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber">
-      <app-icon name="shuffle" class="w-4 h-4"></app-icon> Convert
+      <app-icon name="shuffle" class="w-4 h-4"></app-icon> {{ t().convertBtn }}
     </button>
     @if (output()) {
       <button (click)="download()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-green-600 rounded-lg hover:bg-green-700">
-        <app-icon name="download" class="w-4 h-4"></app-icon> Download
+        <app-icon name="download" class="w-4 h-4"></app-icon> {{ t().download }}
       </button>
     }
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
-      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+      <app-icon name="trash" class="w-4 h-4"></app-icon> {{ t().clear }}
     </button>
   </div>
 
   @if (output()) {
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">JSON Output:</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().jsonOutput }}</label>
       <app-output-box [text]="output()" />
     </div>
   }

@@ -13,12 +13,10 @@
         class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]"
         style="letter-spacing: -0.75px"
       >
-        Your JSON tools, all in one place
+        {{ t().heroTitle }}
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Powerful and simple JSON utilities to boost your productivity. Generate JSON, use pre-built
-        templates, convert between formats, and transform your data. Completely free, no
-        registration required.
+        {{ t().homeSubtitle }}
       </p>
     </div>
   </div>
@@ -34,7 +32,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      All Tools
+      {{ t().filterAll }}
     </button>
     <button
       (click)="setFilter('create')"
@@ -45,7 +43,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      Create
+      {{ t().filterCreate }}
     </button>
     <button
       (click)="setFilter('convert')"
@@ -56,7 +54,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      Convert
+      {{ t().filterConvert }}
     </button>
     <button
       (click)="setFilter('utils')"
@@ -67,7 +65,7 @@
       "
       class="px-4 py-2 text-sm font-semibold transition-all rounded-lg"
     >
-      Utils
+      {{ t().filterUtils }}
     </button>
   </div>
 
@@ -87,9 +85,9 @@
               class="text-lg transition-colors text-olive-deep group-hover:text-posthog-orange"
             ></app-icon>
           </div>
-          <span class="text-base font-bold text-olive-deep font-display">{{ tool.label }}</span>
+          <span class="text-base font-bold text-olive-deep font-display">{{ getToolLabel(tool.id) }}</span>
         </div>
-        <p class="text-sm text-olive-ink/70 font-body">{{ tool.description }}</p>
+        <p class="text-sm text-olive-ink/70 font-body">{{ getToolDesc(tool.id) }}</p>
       </button>
     }
   </div>

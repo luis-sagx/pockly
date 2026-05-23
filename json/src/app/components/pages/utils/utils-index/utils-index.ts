@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../../ui/icon/icon';
+import { LanguageService } from '../../../../services/language.service';
 
 interface UtilTool {
   id: string;
-  label: string;
   path: string;
   icon: string;
-  description: string;
 }
 
 @Component({
@@ -17,62 +16,28 @@ interface UtilTool {
   templateUrl: './utils-index.html',
 })
 export class UtilsIndex {
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
+
   readonly tools: UtilTool[] = [
-    {
-      id: 'format',
-      label: 'Format',
-      path: '/utils/format',
-      icon: 'settings',
-      description: 'Pretty print with indentation',
-    },
-    {
-      id: 'minify',
-      label: 'Minify',
-      path: '/utils/minify',
-      icon: 'settings',
-      description: 'Remove whitespace',
-    },
-    {
-      id: 'sort',
-      label: 'Sort Keys',
-      path: '/utils/sort',
-      icon: 'settings',
-      description: 'Sort object keys alphabetically',
-    },
-    {
-      id: 'validate',
-      label: 'Validate',
-      path: '/utils/validate',
-      icon: 'settings',
-      description: 'Check if valid JSON',
-    },
-    {
-      id: 'flatten',
-      label: 'Flatten',
-      path: '/utils/flatten',
-      icon: 'settings',
-      description: 'Convert nested to flat (key.subkey)',
-    },
-    {
-      id: 'unflatten',
-      label: 'Unflatten',
-      path: '/utils/unflatten',
-      icon: 'settings',
-      description: 'Convert flat to nested object',
-    },
-    {
-      id: 'diff',
-      label: 'Diff',
-      path: '/utils/diff',
-      icon: 'settings',
-      description: 'Compare two JSON objects',
-    },
-    {
-      id: 'query',
-      label: 'Query',
-      path: '/utils/query',
-      icon: 'settings',
-      description: 'Extract values with JSONPath',
-    },
+    { id: 'format', path: '/utils/format', icon: 'settings' },
+    { id: 'minify', path: '/utils/minify', icon: 'settings' },
+    { id: 'sortKeys', path: '/utils/sort', icon: 'settings' },
+    { id: 'validate', path: '/utils/validate', icon: 'settings' },
+    { id: 'flatten', path: '/utils/flatten', icon: 'settings' },
+    { id: 'unflatten', path: '/utils/unflatten', icon: 'settings' },
+    { id: 'diff', path: '/utils/diff', icon: 'settings' },
+    { id: 'query', path: '/utils/query', icon: 'settings' },
   ];
+
+  getToolLabel(toolId: string): string {
+    const tr = this.t() as unknown as Record<string, string>;
+    return tr[toolId] || toolId;
+  }
+
+  getToolDesc(toolId: string): string {
+    const tr = this.t() as unknown as Record<string, string>;
+    return tr[toolId + 'Desc'] || '';
+  }
 }

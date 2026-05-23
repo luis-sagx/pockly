@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">Currency Converter</h2>
-    <p class="text-base text-olive-ink/70">Convert between currencies using live exchange rates.</p>
+    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">{{ t().currencyTitle }}</h2>
+    <p class="text-base text-olive-ink/70">{{ t().currencyDesc }}.</p>
   </div>
 
   <!-- Error Message -->
@@ -20,7 +20,7 @@
     <div
       class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
     >
-      <span class="text-base font-semibold text-olive-ink">From</span>
+      <span class="text-base font-semibold text-olive-ink">{{ t().from }}</span>
       <select
         [ngModel]="fromCurrency()"
         (ngModelChange)="onFromCurrencyChange($event)"
@@ -33,7 +33,7 @@
         }
       </select>
       <div class="flex flex-col gap-2">
-        <label class="text-base font-semibold text-olive-ink">Amount</label>
+        <label class="text-base font-semibold text-olive-ink">{{ t().amount }}</label>
         <input
           type="number"
           step="any"
@@ -59,7 +59,7 @@
     <div
       class="flex flex-col flex-1 gap-4 rounded-lg border border-olive-border bg-olive-cream p-4 text-olive-deep"
     >
-      <span class="text-base font-semibold text-olive-ink">To</span>
+      <span class="text-base font-semibold text-olive-ink">{{ t().to }}</span>
       <select
         [ngModel]="toCurrency()"
         (ngModelChange)="onToCurrencyChange($event)"
@@ -72,7 +72,7 @@
         }
       </select>
       <div class="flex flex-col gap-2">
-        <span class="text-base font-semibold text-olive-ink">Result</span>
+        <span class="text-base font-semibold text-olive-ink">{{ t().result }}</span>
         <div class="rounded-md border border-olive-border bg-parchment px-4 py-3">
           @if (loading()) {
             <svg class="w-5 h-5 animate-spin text-olive-deep" fill="none" viewBox="0 0 24 24">
@@ -98,6 +98,6 @@
 
   <!-- Last Updated -->
   @if (lastUpdated()) {
-    <p class="text-xs text-olive-ink/70">Rates from: {{ lastUpdated() }}</p>
+    <p class="text-xs text-olive-ink/70">{{ t().ratesFrom }} {{ lastUpdated() }}</p>
   }
 </div>

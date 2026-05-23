@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, computed, inject } from '@angular/core';
 import { CopyButton } from '../copy-button/copy-button';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-output-box',
@@ -10,4 +11,8 @@ import { CopyButton } from '../copy-button/copy-button';
 })
 export class OutputBox {
   @Input() text: string = '';
+
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 }

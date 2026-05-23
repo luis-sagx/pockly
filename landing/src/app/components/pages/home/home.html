@@ -5,11 +5,10 @@
         class="text-4xl font-extrabold md:text-5xl text-olive-deep font-display leading-[1.12]"
         style="letter-spacing: -0.75px"
       >
-        All your tools in one place
+        {{ t().heroTitle }}
       </h1>
       <p class="mt-5 text-lg leading-relaxed text-olive-ink/80 font-body">
-        Open the full collection of text, image, JSON, URL and calculator tools from a single hub.
-        Every card below takes you straight to the matching app.
+        {{ t().heroSubtitle }}
       </p>
     </div>
     <div class="flex-shrink-0 order-1 md:order-2">
@@ -18,7 +17,7 @@
   </section>
 
   <section class="flex flex-wrap justify-center gap-2">
-    @for (option of filterOptions; track option.value) {
+    @for (option of filterOptions(); track option.value) {
       <button
         type="button"
         (click)="filter.set(option.value)"
@@ -44,7 +43,7 @@
             </div>
             <div>
               <h2 class="text-xl font-bold text-olive-deep font-display">{{ category.title }}</h2>
-              <p class="text-sm text-olive-ink/60 font-body">{{ category.links.length }} pages available</p>
+              <p class="text-sm text-olive-ink/60 font-body">{{ category.links.length }} {{ t().pagesAvailable }}</p>
             </div>
           </div>
         </div>

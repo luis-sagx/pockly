@@ -1,9 +1,17 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { SeoService } from '../../../services/seo.service';
+import { LanguageService } from '../../../services/language.service';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faQrcode, faCode, faBullseye, faBroom, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
-interface Tool {
+interface ToolConfig {
+  id: string;
+  path: string;
+  icon: string;
+  category: string;
+}
+
+interface ToolDisplay {
   id: string;
   label: string;
   path: string;
@@ -11,6 +19,39 @@ interface Tool {
   description: string;
   category: string;
 }
+
+const TOOL_CONFIGS: ToolConfig[] = [
+  {
+    id: 'qr-generator',
+    path: '/qr-generator',
+    icon: 'qrcode',
+    category: 'utilities',
+  },
+  {
+    id: 'url-encoder',
+    path: '/url-encoder',
+    icon: 'code',
+    category: 'url-tools',
+  },
+  {
+    id: 'url-decoder',
+    path: '/url-decoder',
+    icon: 'lock-open',
+    category: 'url-tools',
+  },
+  {
+    id: 'utm-builder',
+    path: '/utm-builder',
+    icon: 'bullseye',
+    category: 'url-tools',
+  },
+  {
+    id: 'url-cleaner',
+    path: '/url-cleaner',
+    icon: 'broom',
+    category: 'url-tools',
+  },
+];
 
 @Component({
   selector: 'app-home',
@@ -22,6 +63,9 @@ interface Tool {
 export class Home implements OnInit {
   private seo = inject(SeoService);
   private library = inject(FaIconLibrary);
+  private languageService = inject(LanguageService);
+
+  t = computed(() => this.languageService.getTranslations());
 
   constructor() {
     this.library.addIcons(faQrcode, faCode, faBullseye, faBroom, faLockOpen);
@@ -29,61 +73,43 @@ export class Home implements OnInit {
 
   filter = signal<string>('all');
 
-  tools: Tool[] = [
-    {
-      id: 'qr-generator',
-      label: 'QR Generator',
-      path: '/qr-generator',
-      icon: 'qrcode',
-      description: 'Generate QR codes from text and URLs with custom colors and sizes',
-      category: 'Utilities',
-    },
-    {
-      id: 'url-encoder',
-      label: 'URL Encoder',
-      path: '/url-encoder',
-      icon: 'code',
-      description: 'Encode text and URLs into safe format for query parameters',
-      category: 'url-tools',
-    },
-    {
-      id: 'url-decoder',
-      label: 'URL Decoder',
-      path: '/url-decoder',
-      icon: 'lock-open',
-      description: 'Decode percent-encoded URLs back to readable text',
-      category: 'url-tools',
-    },
-    {
-      id: 'utm-builder',
-      label: 'UTM Builder',
-      path: '/utm-builder',
-      icon: 'bullseye',
-      description: 'Build campaign tracking URLs with UTM parameters for marketing',
-      category: 'url-tools',
-    },
-    {
-      id: 'url-cleaner',
-      label: 'URL Cleaner',
-      path: '/url-cleaner',
-      icon: 'broom',
-      description: 'Remove tracking junk, sort query params, and normalize URLs',
-      category: 'url-tools',
-    },
-  ];
+  tools = computed<ToolDisplay[]>(() => {
+    const t = this.t();
+    const labelMap: Record<string, string> = {
+      'qr-generator': t.qrGenerator,
+      'url-encoder': t.urlEncoder,
+      'url-decoder': t.urlDecoder,
+      'utm-builder': t.utmBuilder,
+      'url-cleaner': t.urlCleaner,
+    };
+    const descMap: Record<string, string> = {
+      'qr-generator': t.qrGeneratorDesc,
+      'url-encoder': t.urlEncoderDesc,
+      'url-decoder': t.urlDecoderDesc,
+      'utm-builder': t.utmBuilderDesc,
+      'url-cleaner': t.urlCleanerDesc,
+    };
+    return TOOL_CONFIGS.map((config) => ({
+      ...config,
+      label: labelMap[config.id] || config.id,
+      description: descMap[config.id] || '',
+    }));
+  });
 
   filteredTools = computed(() => {
     const currentFilter = this.filter();
+    const allTools = this.tools();
     if (currentFilter === 'all') {
-      return this.tools;
+      return allTools;
     }
-    return this.tools.filter((tool) => tool.category === currentFilter);
+    return allTools.filter((tool) => tool.category === currentFilter);
   });
 
   ngOnInit() {
     this.seo.setMeta({
       title: 'URL Tools - Free Online Utilities',
-      description: 'Free online URL utilities: QR generator, encoder, decoder, UTM builder, URL cleaner, and more.',
+      description:
+        'Free online URL utilities: QR generator, encoder, decoder, UTM builder, URL cleaner, and more.',
     });
   }
 

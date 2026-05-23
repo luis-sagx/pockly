@@ -3,22 +3,63 @@
 >
   <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/">
+    <a class="flex items-center gap-3 group" href="/" (click)="closeMenu()">
       <img src="logo.png" alt="logo" class="w-auto h-14" />
     </a>
 
-    <!-- Nav Links a la derecha -->
-    <div class="flex items-center gap-1">
-      @for (link of navLinks; track link.path) {
+    <!-- Nav Links hidden on mobile, visible on md+ -->
+    <div class="hidden items-center gap-1 md:flex">
       <a
-        [routerLink]="link.path"
+        routerLink="/"
         routerLinkActive="text-posthog-orange bg-olive-cream"
-        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+        [routerLinkActiveOptions]="{ exact: true }"
         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
-        {{ link.label }}
+        {{ t().navHome }}
       </a>
-      }
     </div>
+
+    <!-- Hamburger button visible only on mobile -->
+    <button
+      (click)="toggleMenu()"
+      class="md:hidden focus:outline-none focus:ring-2 focus:ring-olive-ink rounded p-1"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="w-6 h-6 text-olive-ink transition-transform duration-300"
+        [class.rotate-90]="isMenuOpen()"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          class="origin-center transition-all duration-300"
+          [attr.d]="isMenuOpen() ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  @if (isMenuOpen()) {
+    <div
+      class="md:hidden border-t bg-olive-parchment border-olive-border animate-in fade-in slide-in-from-top-2 duration-200"
+    >
+      <div class="flex flex-col px-4 py-2 gap-1">
+        <a
+          routerLink="/"
+          (click)="closeMenu()"
+          routerLinkActive="text-posthog-orange bg-olive-cream"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        >
+          {{ t().navHome }}
+        </a>
+      </div>
+    </div>
+  }
 </nav>

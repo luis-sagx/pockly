@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">Minify JSON</h2>
-    <p class="mt-1 text-sm text-olive-muted">Remove all unnecessary whitespace from your JSON.</p>
+    <h2 class="text-3xl font-display font-bold tracking-tight text-olive-deep">{{ t().minify }}</h2>
+    <p class="mt-1 text-sm text-olive-muted">{{ t().removeWhitespace }}</p>
   </div>
 
   @if (error()) {
@@ -11,7 +11,7 @@
   }
 
   <div class="flex flex-col gap-2">
-    <label class="text-sm font-semibold text-olive-ink">Input JSON</label>
+    <label class="text-sm font-semibold text-olive-ink">{{ t().inputJson }}</label>
     <textarea
       [value]="input()"
       (input)="input.set($any($event.target).value)"
@@ -23,16 +23,16 @@
 
   <div class="flex flex-wrap gap-2">
     <button (click)="apply()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-70 hover:text-posthog-amber">
-      <app-icon name="play" class="w-4 h-4"></app-icon> Minify
+      <app-icon name="play" class="w-4 h-4"></app-icon> {{ t().minify }}
     </button>
     <button (click)="clear()" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange">
-      <app-icon name="trash" class="w-4 h-4"></app-icon> Clear
+      <app-icon name="trash" class="w-4 h-4"></app-icon> {{ t().clear }}
     </button>
   </div>
 
   @if (output()) {
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-semibold text-olive-ink">Result:</label>
+      <label class="text-sm font-semibold text-olive-ink">{{ t().result }}</label>
       <app-output-box [text]="output()" />
     </div>
   }

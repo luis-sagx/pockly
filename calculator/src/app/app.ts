@@ -13,6 +13,7 @@ import {
   faGaugeHigh,
   faArrowRightArrowLeft,
   faArrowTrendUp,
+  faChevronDown,
   faBars,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
@@ -40,8 +41,9 @@ export class App {
       faFlask,
       faGaugeHigh,
       faArrowRightArrowLeft,
-      faArrowTrendUp,
-      faBars,
+  faArrowTrendUp,
+  faChevronDown,
+  faBars,
       faXmark,
     );
   }

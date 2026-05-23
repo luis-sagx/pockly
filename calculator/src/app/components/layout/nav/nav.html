@@ -10,71 +10,76 @@
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-1">
       <a routerLink="/"
-         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
-         routerLinkActive="text-posthog-orange bg-olive-cream">Home</a>
+         routerLinkActive="text-posthog-orange bg-olive-cream"
+         [routerLinkActiveOptions]="{exact: true}"
+         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">Home</a>
 
       <!-- Percentage dropdown -->
-      <div class="relative" (mouseleave)="percentOpen.set(false)">
+      <div class="relative" (mouseleave)="scheduleClosePercent()">
         <button
           (click)="togglePercent()"
-          (mouseenter)="percentOpen.set(true)"
+          (mouseenter)="openPercent()"
           class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream flex items-center gap-1"
         >
           Percentage
-          <fa-icon [icon]="['fas', 'percentage']" class="text-xs w-3 h-3"></fa-icon>
+          <fa-icon [icon]="['fas', 'chevron-down']" class="text-xs w-3 h-3 inline-block align-middle"></fa-icon>
         </button>
         @if (percentOpen()) {
           <div
-            class="absolute top-full left-0 mt-1 w-48 rounded-lg border border-olive-border bg-parchment shadow-lg py-1 z-50"
-            (mouseenter)="percentOpen.set(true)"
+            class="absolute top-full left-0 pt-1 w-48 z-50"
+            (mouseenter)="openPercent()"
           >
-            <a routerLink="/percent-of-y"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="percentOpen.set(false)">X% of Y</a>
-            <a routerLink="/what-percent"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="percentOpen.set(false)">X is what % of Y</a>
-            <a routerLink="/percentage-change"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="percentOpen.set(false)">% Change</a>
+            <div class="rounded-lg border border-olive-border bg-parchment shadow-lg py-1">
+              <a routerLink="/percent-of-y"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="percentOpen.set(false)">X% of Y</a>
+              <a routerLink="/what-percent"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="percentOpen.set(false)">X is what % of Y</a>
+              <a routerLink="/percentage-change"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="percentOpen.set(false)">% Change</a>
+            </div>
           </div>
         }
       </div>
 
       <a routerLink="/currency-converter"
-         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream"
-         routerLinkActive="text-posthog-orange bg-olive-cream">Currency</a>
+         routerLinkActive="text-posthog-orange bg-olive-cream"
+         class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">Currency</a>
 
       <!-- Unit Converter dropdown -->
-      <div class="relative" (mouseleave)="unitOpen.set(false)">
+      <div class="relative" (mouseleave)="scheduleCloseUnit()">
         <button
           (click)="toggleUnit()"
-          (mouseenter)="unitOpen.set(true)"
+          (mouseenter)="openUnit()"
           class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream flex items-center gap-1"
         >
           Unit Converter
-          <fa-icon [icon]="['fas', 'ruler']" class="text-xs w-3 h-3"></fa-icon>
+          <fa-icon [icon]="['fas', 'chevron-down']" class="text-xs w-3 h-3 inline-block align-middle"></fa-icon>
         </button>
         @if (unitOpen()) {
           <div
-            class="absolute top-full left-0 mt-1 w-52 rounded-lg border border-olive-border bg-parchment shadow-lg py-1 z-50"
-            (mouseenter)="unitOpen.set(true)"
+            class="absolute top-full left-0 pt-1 w-52 z-50"
+            (mouseenter)="openUnit()"
           >
-            <a routerLink="/length-converter"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="unitOpen.set(false)">Length</a>
-            <a routerLink="/weight-converter"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="unitOpen.set(false)">Weight</a>
-            <a routerLink="/temperature-converter"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="unitOpen.set(false)">Temperature</a>
-            <a routerLink="/volume-converter"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="unitOpen.set(false)">Volume</a>
-            <a routerLink="/speed-converter"
-               class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
-               (click)="unitOpen.set(false)">Speed</a>
+            <div class="rounded-lg border border-olive-border bg-parchment shadow-lg py-1">
+              <a routerLink="/length-converter"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="unitOpen.set(false)">Length</a>
+              <a routerLink="/weight-converter"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="unitOpen.set(false)">Weight</a>
+              <a routerLink="/temperature-converter"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="unitOpen.set(false)">Temperature</a>
+              <a routerLink="/volume-converter"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="unitOpen.set(false)">Volume</a>
+              <a routerLink="/speed-converter"
+                 class="block px-4 py-2 text-sm font-semibold text-olive-ink hover:text-posthog-orange hover:bg-olive-cream transition-colors"
+                 (click)="unitOpen.set(false)">Speed</a>
+            </div>
           </div>
         }
       </div>

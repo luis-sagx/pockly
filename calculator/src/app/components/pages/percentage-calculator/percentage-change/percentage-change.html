@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6 p-4 sm:p-6">
   <div>
-    <h2 class="text-2xl font-bold text-olive-deep sm:text-3xl">% Change</h2>
+    <h2 class="text-2xl font-semibold text-olive-deep sm:text-3xl">% Change</h2>
     <p class="text-base text-olive-ink/70">Calculate the percentage increase or decrease between two values.</p>
   </div>
 
@@ -34,7 +34,7 @@
     class="flex flex-col items-center justify-center rounded border border-olive-border bg-parchment p-6"
   >
     <p class="mb-2 text-base font-semibold text-olive-ink">Result</p>
-    <p class="text-2xl font-bold text-olive-deep sm:text-3xl">{{ result() | number: '1.2-2' }}%</p>
+    <p class="text-2xl font-semibold text-olive-deep sm:text-3xl">{{ result() | number: '1.2-2' }}%</p>
     @if (x() || y()) {
       <span
         class="mt-2 text-base font-semibold uppercase"

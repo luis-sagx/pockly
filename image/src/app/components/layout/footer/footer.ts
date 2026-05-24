@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { Language, LanguageOption, LanguageService } from '../../../services/language.service';
@@ -6,6 +7,7 @@ import { Language, LanguageOption, LanguageService } from '../../../services/lan
 @Component({
   selector: 'app-footer',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

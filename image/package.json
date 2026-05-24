@@ -10,7 +10,8 @@
     "build:server": "ng run image:server:production",
     "build:ssr": "pnpm run build && pnpm run build:server",
     "serve:ssr:image": "node dist/image/server/server.mjs",
-    "serve:ssr": "node dist/image/server/server.mjs"
+    "serve:ssr": "node dist/image/server/server.mjs",
+    "licenses:record": "node scripts/append-license-record.mjs"
   },
   "private": true,
   "packageManager": "pnpm@8.8.0",

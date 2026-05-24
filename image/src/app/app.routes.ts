@@ -11,6 +11,7 @@ import { ConvertToWebp } from './components/pages/convert-to-webp/convert-to-web
 import { Crop } from './components/pages/crop/crop';
 import { Home } from './components/pages/home/home';
 import { ImageResize } from './components/pages/image-resize/image-resize';
+import { LicensesAttributions } from './components/pages/licenses-attributions/licenses-attributions';
 import { TextImage } from './components/pages/text-image/text-image';
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'convert-to-bmp', component: ConvertToBmp },
   { path: 'convert-to-svg', component: ConvertToSvg },
   { path: 'convert-to-pdf', component: ConvertToPdf },
+  { path: 'licenses-attributions', component: LicensesAttributions },
   { path: 'convert-formats', redirectTo: 'convert-to-png', pathMatch: 'full' },
   { path: 'format-converter', redirectTo: 'convert-to-png', pathMatch: 'full' },
   { path: 'base64', redirectTo: 'image-to-base64', pathMatch: 'full' },

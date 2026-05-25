@@ -44,9 +44,9 @@ export class QuickNotes implements OnInit, OnDestroy {
   showCreateForm = signal(false);
   showDetail = signal(false);
 
-  highNotes = computed(() => this.notes().filter((n) => n.priority === 'high'));
-  mediumNotes = computed(() => this.notes().filter((n) => n.priority === 'medium'));
   lowNotes = computed(() => this.notes().filter((n) => n.priority === 'low'));
+  mediumNotes = computed(() => this.notes().filter((n) => n.priority === 'medium'));
+  highNotes = computed(() => this.notes().filter((n) => n.priority === 'high'));
 
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 

@@ -36,17 +36,17 @@
     <div class="flex gap-2">
       <button
         type="button"
-        (click)="setPriority('high')"
+        (click)="setPriority('low')"
         class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors"
-        [class.border-red-500]="priority() === 'high'"
-        [class.bg-red-50]="priority() === 'high'"
-        [class.text-red-700]="priority() === 'high'"
-        [class.border-olive-light]="priority() !== 'high'"
-        [class.text-olive-ink/60]="priority() !== 'high'"
-        [class.hover:border-red-300]="priority() !== 'high'"
+        [class.border-green-500]="priority() === 'low'"
+        [class.bg-green-50]="priority() === 'low'"
+        [class.text-green-700]="priority() === 'low'"
+        [class.border-olive-light]="priority() !== 'low'"
+        [class.text-olive-ink/60]="priority() !== 'low'"
+        [class.hover:border-green-300]="priority() !== 'low'"
       >
-        <i class="fas fa-arrow-up mr-1"></i>
-        {{ t().priorityHigh }}
+        <i class="fas fa-arrow-down mr-1"></i>
+        {{ t().priorityLow }}
       </button>
 
       <button
@@ -66,17 +66,17 @@
 
       <button
         type="button"
-        (click)="setPriority('low')"
+        (click)="setPriority('high')"
         class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors"
-        [class.border-green-500]="priority() === 'low'"
-        [class.bg-green-50]="priority() === 'low'"
-        [class.text-green-700]="priority() === 'low'"
-        [class.border-olive-light]="priority() !== 'low'"
-        [class.text-olive-ink/60]="priority() !== 'low'"
-        [class.hover:border-green-300]="priority() !== 'low'"
+        [class.border-red-500]="priority() === 'high'"
+        [class.bg-red-50]="priority() === 'high'"
+        [class.text-red-700]="priority() === 'high'"
+        [class.border-olive-light]="priority() !== 'high'"
+        [class.text-olive-ink/60]="priority() !== 'high'"
+        [class.hover:border-red-300]="priority() !== 'high'"
       >
-        <i class="fas fa-arrow-down mr-1"></i>
-        {{ t().priorityLow }}
+        <i class="fas fa-arrow-up mr-1"></i>
+        {{ t().priorityHigh }}
       </button>
     </div>
   </div>

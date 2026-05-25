@@ -1,0 +1,47 @@
+import { Component, Input, Output, EventEmitter, inject, computed } from '@angular/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { Note } from '../../pages/quick-notes/note.model';
+import { LanguageService } from '../../../services/language.service';
+
+@Component({
+  selector: 'app-note-card',
+  standalone: true,
+  imports: [DragDropModule],
+  templateUrl: './note-card.html',
+  styleUrl: './note-card.css',
+})
+export class NoteCard {
+  @Input({ required: true }) note!: Note;
+  @Output() clicked = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<string>();
+
+  private languageService = inject(LanguageService);
+  t = computed(() => this.languageService.getTranslations());
+
+  get priorityColorClass(): string {
+    switch (this.note.priority) {
+      case 'high':
+        return 'border-l-red-500';
+      case 'medium':
+        return 'border-l-amber-500';
+      case 'low':
+        return 'border-l-green-500';
+    }
+  }
+
+  get checklistBadge(): string {
+    if (!this.note.checklist || this.note.checklist.length === 0) return '';
+    const checked = this.note.checklist.filter((item) => item.checked).length;
+    const total = this.note.checklist.length;
+    return `${checked}/${total}`;
+  }
+
+  onClick(): void {
+    this.clicked.emit(this.note.id);
+  }
+
+  onDelete(event: MouseEvent): void {
+    event.stopPropagation();
+    this.deleted.emit(this.note.id);
+  }
+}

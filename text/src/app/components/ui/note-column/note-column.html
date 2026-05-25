@@ -1,0 +1,40 @@
+<div
+  cdkDropList
+  [cdkDropListData]="notes"
+  (cdkDropListEntered)="onDragEntered()"
+  (cdkDropListExited)="onDragExited()"
+  (cdkDropListDropped)="onDrop($event)"
+  class="flex flex-col gap-2 min-h-[200px] p-3 rounded-lg border-2 border-dashed transition-colors"
+  [class.border-blue-400]="isDragging"
+  [class.border-transparent]="!isDragging"
+>
+  <!-- Column Header -->
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-semibold text-sm" [class]="headerColorClass">
+      {{ columnTitle }}
+    </h3>
+    <span class="text-xs text-olive-ink/60 bg-olive-cream px-2 py-0.5 rounded-full">
+      {{ notes.length }}
+    </span>
+  </div>
+
+  <!-- Accent bar -->
+  <div class="h-0.5 w-full mb-1" [class]="accentBorderClass" [class.bg-red-400]="priority === 'high'" [class.bg-amber-400]="priority === 'medium'" [class.bg-green-500]="priority === 'low'"></div>
+
+  <!-- Note Cards -->
+  @for (note of notes; track note.id) {
+    <app-note-card
+      [note]="note"
+      (clicked)="onCardClicked($event)"
+      (deleted)="onCardDeleted($event)"
+    />
+  }
+
+  <!-- Empty State -->
+  @empty {
+    <div class="text-center text-olive-ink/40 py-8 flex flex-col items-center gap-2">
+      <i class="fas fa-inbox text-2xl"></i>
+      <p class="text-sm">{{ t().noNotesInColumn }}</p>
+    </div>
+  }
+</div>

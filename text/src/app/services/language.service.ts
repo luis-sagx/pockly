@@ -87,6 +87,29 @@ export interface Translations {
   cancel: string;
   exportToPdf: string;
 
+  // Quick Notes - Priority Columns
+  priorityHigh: string;
+  priorityMedium: string;
+  priorityLow: string;
+  createNote: string;
+  noteTitle: string;
+  noteTitlePlaceholder: string;
+  noteDescription: string;
+  noteDescriptionPlaceholder: string;
+  addNote: string;
+  editNote: string;
+  deleteNote: string;
+  deleteNoteConfirm: string;
+  checklist: string;
+  addChecklistItem: string;
+  noChecklistItems: string;
+  noNotesInColumn: string;
+  dragNotesHere: string;
+  moveToColumn: string;
+  noteCreated: string;
+  noteUpdated: string;
+  noteDeleted: string;
+
   // Spell Checker
   spellChecker: string;
   spellCheckerDesc: string;
@@ -195,6 +218,29 @@ const translations: Record<Language, Translations> = {
     cancel: 'Cancel',
     exportToPdf: 'Export to PDF',
 
+    // Quick Notes - Priority Columns
+    priorityHigh: 'High Priority',
+    priorityMedium: 'Medium Priority',
+    priorityLow: 'Low Priority',
+    createNote: 'Create Note',
+    noteTitle: 'Title',
+    noteTitlePlaceholder: 'Note title...',
+    noteDescription: 'Description',
+    noteDescriptionPlaceholder: 'Add a description...',
+    addNote: 'Add Note',
+    editNote: 'Edit Note',
+    deleteNote: 'Delete Note',
+    deleteNoteConfirm: 'Delete this note?',
+    checklist: 'Checklist',
+    addChecklistItem: 'Add item...',
+    noChecklistItems: 'No items yet',
+    noNotesInColumn: 'No notes yet',
+    dragNotesHere: 'Drag notes here',
+    moveToColumn: 'Move to...',
+    noteCreated: 'Note created',
+    noteUpdated: 'Note updated',
+    noteDeleted: 'Note deleted',
+
     // Spell Checker
     spellChecker: 'Spell Checker',
     spellCheckerDesc: 'Check spelling and get suggestions in multiple languages',
@@ -300,6 +346,29 @@ const translations: Record<Language, Translations> = {
     yesClear: 'Sí, limpiar',
     cancel: 'Cancelar',
     exportToPdf: 'Exportar a PDF',
+
+    // Quick Notes - Priority Columns
+    priorityHigh: 'Prioridad Alta',
+    priorityMedium: 'Prioridad Media',
+    priorityLow: 'Prioridad Baja',
+    createNote: 'Crear Nota',
+    noteTitle: 'Título',
+    noteTitlePlaceholder: 'Título de la nota...',
+    noteDescription: 'Descripción',
+    noteDescriptionPlaceholder: 'Agregar una descripción...',
+    addNote: 'Agregar Nota',
+    editNote: 'Editar Nota',
+    deleteNote: 'Eliminar Nota',
+    deleteNoteConfirm: '¿Eliminar esta nota?',
+    checklist: 'Checklist',
+    addChecklistItem: 'Agregar ítem...',
+    noChecklistItems: 'Sin ítems aún',
+    noNotesInColumn: 'Sin notas aún',
+    dragNotesHere: 'Arrastra notas aquí',
+    moveToColumn: 'Mover a...',
+    noteCreated: 'Nota creada',
+    noteUpdated: 'Nota actualizada',
+    noteDeleted: 'Nota eliminada',
 
     // Spell Checker
     spellChecker: 'Corrector Ortográfico',
@@ -407,6 +476,29 @@ const translations: Record<Language, Translations> = {
     cancel: 'Annuler',
     exportToPdf: 'Exporter en PDF',
 
+    // Quick Notes - Priority Columns
+    priorityHigh: 'Priorité Haute',
+    priorityMedium: 'Priorité Moyenne',
+    priorityLow: 'Priorité Basse',
+    createNote: 'Créer une Note',
+    noteTitle: 'Titre',
+    noteTitlePlaceholder: 'Titre de la note...',
+    noteDescription: 'Description',
+    noteDescriptionPlaceholder: 'Ajouter une description...',
+    addNote: 'Ajouter une Note',
+    editNote: 'Modifier la Note',
+    deleteNote: 'Supprimer la Note',
+    deleteNoteConfirm: 'Supprimer cette note ?',
+    checklist: 'Checklist',
+    addChecklistItem: 'Ajouter un élément...',
+    noChecklistItems: 'Aucun élément',
+    noNotesInColumn: 'Aucune note',
+    dragNotesHere: 'Glissez les notes ici',
+    moveToColumn: 'Déplacer vers...',
+    noteCreated: 'Note créée',
+    noteUpdated: 'Note mise à jour',
+    noteDeleted: 'Note supprimée',
+
     // Spell Checker
     spellChecker: 'Vérificateur Orthographique',
     spellCheckerDesc: 'Vérifiez l\'orthographe et recevez des suggestions en plusieurs langues',
@@ -512,6 +604,29 @@ const translations: Record<Language, Translations> = {
     yesClear: 'Ja, löschen',
     cancel: 'Abbrechen',
     exportToPdf: 'Als PDF exportieren',
+
+    // Quick Notes - Priority Columns
+    priorityHigh: 'Hohe Priorität',
+    priorityMedium: 'Mittlere Priorität',
+    priorityLow: 'Niedrige Priorität',
+    createNote: 'Notiz Erstellen',
+    noteTitle: 'Titel',
+    noteTitlePlaceholder: 'Titel der Notiz...',
+    noteDescription: 'Beschreibung',
+    noteDescriptionPlaceholder: 'Beschreibung hinzufügen...',
+    addNote: 'Notiz Hinzufügen',
+    editNote: 'Notiz Bearbeiten',
+    deleteNote: 'Notiz Löschen',
+    deleteNoteConfirm: 'Diese Notiz löschen?',
+    checklist: 'Checkliste',
+    addChecklistItem: 'Element hinzufügen...',
+    noChecklistItems: 'Noch keine Elemente',
+    noNotesInColumn: 'Noch keine Notizen',
+    dragNotesHere: 'Notizen hierher ziehen',
+    moveToColumn: 'Verschieben nach...',
+    noteCreated: 'Notiz erstellt',
+    noteUpdated: 'Notiz aktualisiert',
+    noteDeleted: 'Notiz gelöscht',
 
     // Spell Checker
     spellChecker: 'Rechtschreibprüfung',
@@ -619,6 +734,29 @@ const translations: Record<Language, Translations> = {
     cancel: 'Cancelar',
     exportToPdf: 'Exportar para PDF',
 
+    // Quick Notes - Priority Columns
+    priorityHigh: 'Prioridade Alta',
+    priorityMedium: 'Prioridade Média',
+    priorityLow: 'Prioridade Baixa',
+    createNote: 'Criar Nota',
+    noteTitle: 'Título',
+    noteTitlePlaceholder: 'Título da nota...',
+    noteDescription: 'Descrição',
+    noteDescriptionPlaceholder: 'Adicionar uma descrição...',
+    addNote: 'Adicionar Nota',
+    editNote: 'Editar Nota',
+    deleteNote: 'Excluir Nota',
+    deleteNoteConfirm: 'Excluir esta nota?',
+    checklist: 'Checklist',
+    addChecklistItem: 'Adicionar item...',
+    noChecklistItems: 'Nenhum item ainda',
+    noNotesInColumn: 'Nenhuma nota ainda',
+    dragNotesHere: 'Arraste notas aqui',
+    moveToColumn: 'Mover para...',
+    noteCreated: 'Nota criada',
+    noteUpdated: 'Nota atualizada',
+    noteDeleted: 'Nota excluída',
+
     // Spell Checker
     spellChecker: 'Verificador Ortográfico',
     spellCheckerDesc: 'Verifique a ortografia e obtenha sugestões em vários idiomas',
@@ -724,6 +862,29 @@ const translations: Record<Language, Translations> = {
     yesClear: 'Sì, cancella',
     cancel: 'Annulla',
     exportToPdf: 'Esporta in PDF',
+
+    // Quick Notes - Priority Columns
+    priorityHigh: 'Priorità Alta',
+    priorityMedium: 'Priorità Media',
+    priorityLow: 'Priorità Bassa',
+    createNote: 'Crea Nota',
+    noteTitle: 'Titolo',
+    noteTitlePlaceholder: 'Titolo della nota...',
+    noteDescription: 'Descrizione',
+    noteDescriptionPlaceholder: 'Aggiungi una descrizione...',
+    addNote: 'Aggiungi Nota',
+    editNote: 'Modifica Nota',
+    deleteNote: 'Elimina Nota',
+    deleteNoteConfirm: 'Eliminare questa nota?',
+    checklist: 'Checklist',
+    addChecklistItem: 'Aggiungi elemento...',
+    noChecklistItems: 'Nessun elemento',
+    noNotesInColumn: 'Nessuna nota',
+    dragNotesHere: 'Trascina le note qui',
+    moveToColumn: 'Sposta in...',
+    noteCreated: 'Nota creata',
+    noteUpdated: 'Nota aggiornata',
+    noteDeleted: 'Nota eliminata',
 
     // Spell Checker
     spellChecker: 'Controllo Ortografico',

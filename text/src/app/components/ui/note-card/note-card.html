@@ -1,0 +1,38 @@
+<div
+  cdkDrag
+  [cdkDragData]="note"
+  class="note-card group relative cursor-pointer border-l-4"
+  [class.border-l-red-500]="note.priority === 'high'"
+  [class.border-l-amber-500]="note.priority === 'medium'"
+  [class.border-l-green-500]="note.priority === 'low'"
+  (click)="onClick()"
+>
+  <!-- Title -->
+  <h4 class="font-semibold text-sm text-olive-deep line-clamp-2 pr-8">
+    {{ note.title }}
+  </h4>
+
+  <!-- Description snippet -->
+  @if (note.description) {
+    <p class="text-xs text-olive-ink/50 line-clamp-1 mt-1">
+      {{ note.description }}
+    </p>
+  }
+
+  <!-- Checklist badge -->
+  @if (checklistBadge) {
+    <div class="flex items-center gap-1 mt-2">
+      <i class="fas fa-check-square text-xs text-olive-ink/40"></i>
+      <span class="text-xs text-olive-ink/50">{{ checklistBadge }}</span>
+    </div>
+  }
+
+  <!-- Delete button (hover) -->
+  <button
+    class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity p-1 text-olive-ink/30 hover:text-red-500 rounded"
+    (click)="onDelete($event)"
+    [attr.aria-label]="t().deleteNote"
+  >
+    <i class="fas fa-trash text-xs"></i>
+  </button>
+</div>

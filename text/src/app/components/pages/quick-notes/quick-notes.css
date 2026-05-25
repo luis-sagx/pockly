@@ -1,0 +1,13 @@
+.columns-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  min-height: 60vh;
+}
+
+@media (max-width: 768px) {
+  .columns-container {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}

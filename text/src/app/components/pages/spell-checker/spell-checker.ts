@@ -1,8 +1,8 @@
-import { Component, signal, computed, inject, OnDestroy } from '@angular/core';
-import { InputBox } from '../../ui/input-box/input-box';
-import { CopyButton } from '../../ui/copy-button/copy-button';
-import { LanguageService } from '../../../services/language.service';
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
+import { LanguageService } from '../../../services/language.service';
+import { CopyButton } from '../../ui/copy-button/copy-button';
+import { InputBox } from '../../ui/input-box/input-box';
 
 interface SpellingError {
   word: string;
@@ -10,15 +10,11 @@ interface SpellingError {
   suggestions: string[];
 }
 
-type SpellLanguage = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it';
+type SpellLanguage = 'en' | 'es';
 
 const DICTIONARY_MAP: Record<SpellLanguage, { pkg: string; name: string }> = {
   en: { pkg: 'dictionary-en', name: 'English' },
   es: { pkg: 'dictionary-es', name: 'Español' },
-  fr: { pkg: 'dictionary-fr', name: 'Français' },
-  de: { pkg: 'dictionary-de', name: 'Deutsch' },
-  pt: { pkg: 'dictionary-pt', name: 'Português' },
-  it: { pkg: 'dictionary-it', name: 'Italiano' },
 };
 
 const CDN_BASE = 'https://cdn.jsdelivr.net/npm';
@@ -63,10 +59,6 @@ export class SpellChecker implements OnDestroy {
   availableLanguages: { code: SpellLanguage; name: string }[] = [
     { code: 'en', name: 'English' },
     { code: 'es', name: 'Español' },
-    { code: 'fr', name: 'Français' },
-    { code: 'de', name: 'Deutsch' },
-    { code: 'pt', name: 'Português' },
-    { code: 'it', name: 'Italiano' },
   ];
 
   async onLanguageChange(lang: SpellLanguage) {

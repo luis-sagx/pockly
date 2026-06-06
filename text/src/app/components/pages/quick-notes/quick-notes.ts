@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LanguageService } from '../../../services/language.service';
+import { SupabaseService } from '../../../services/supabase.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoteColumn } from '../../ui/note-column/note-column';
 import { CreateNoteForm, CreateNoteData } from '../../ui/create-note-form/create-note-form';
@@ -36,6 +37,7 @@ const DEBOUNCE_MS = 500;
 })
 export class QuickNotes implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
+  private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;
   t = computed(() => this.languageService.getTranslations());
 
@@ -57,6 +59,15 @@ export class QuickNotes implements OnInit, OnDestroy {
       const allNotes = this.notes();
       // Skip save if notes were just loaded (avoid double save on init)
       this.debouncedSave(allNotes);
+    });
+
+    // Listen for auth changes — reload notes when user logs in/out
+    effect(() => {
+      const loggedIn = this.supabaseService.isLoggedIn();
+      if (loggedIn) {
+        this.loadSupabaseNotes();
+      }
+      // On logout, keep current notes in localStorage (already saved)
     });
   }
 
@@ -83,12 +94,22 @@ export class QuickNotes implements OnInit, OnDestroy {
     };
 
     this.notes.update((notes) => [note, ...notes]);
+
+    // Sync to Supabase if logged in
+    if (this.supabaseService.isLoggedIn()) {
+      this.supabaseService.createNote(note);
+    }
   }
 
   updateNote(updated: Note): void {
+    updated = { ...updated, updatedAt: Date.now() };
     this.notes.update((notes) =>
       notes.map((n) => (n.id === updated.id ? updated : n))
     );
+
+    if (this.supabaseService.isLoggedIn()) {
+      this.supabaseService.updateNote(updated);
+    }
   }
 
   deleteNote(id: string): void {
@@ -96,6 +117,10 @@ export class QuickNotes implements OnInit, OnDestroy {
     if (this.activeNote()?.id === id) {
       this.activeNote.set(null);
       this.showDetail.set(false);
+    }
+
+    if (this.supabaseService.isLoggedIn()) {
+      this.supabaseService.deleteNote(id);
     }
   }
 
@@ -107,6 +132,14 @@ export class QuickNotes implements OnInit, OnDestroy {
           : n
       )
     );
+
+    // Sync moved note to Supabase
+    if (this.supabaseService.isLoggedIn()) {
+      const movedNote = this.notes().find((n) => n.id === noteId);
+      if (movedNote) {
+        this.supabaseService.updateNote(movedNote);
+      }
+    }
   }
 
   // ── Note interaction ──
@@ -173,11 +206,34 @@ export class QuickNotes implements OnInit, OnDestroy {
   // ── Persistence ──
 
   private loadFromStorage(): void {
-    const state = this.readStorage();
-    this.notes.set(state.notes);
+    if (this.supabaseService.isLoggedIn()) {
+      this.loadSupabaseNotes();
+    } else {
+      const state = this.readLocalStorage();
+      this.notes.set(state.notes);
+    }
   }
 
-  private readStorage(): NotesState {
+  private async loadSupabaseNotes(): Promise<void> {
+    const remoteNotes = await this.supabaseService.fetchNotes();
+    if (remoteNotes.length > 0) {
+      this.notes.set(remoteNotes);
+      // Also update localStorage as cache
+      this.saveToStorage(remoteNotes);
+    } else {
+      // No notes in Supabase yet — try localStorage (first login)
+      const state = this.readLocalStorage();
+      if (state.notes.length > 0) {
+        this.notes.set(state.notes);
+        // Upload existing notes to Supabase
+        for (const note of state.notes) {
+          await this.supabaseService.createNote(note);
+        }
+      }
+    }
+  }
+
+  private readLocalStorage(): NotesState {
     if (!this.isBrowser) return { notes: [], version: CURRENT_VERSION };
 
     // Try v2 first

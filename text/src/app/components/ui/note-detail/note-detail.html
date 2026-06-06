@@ -124,32 +124,7 @@
       </div>
 
       <!-- Footer -->
-      <div class="flex items-center justify-between p-4 border-t border-olive-light/30">
-        @if (showDeleteConfirm()) {
-          <div class="flex items-center gap-2">
-            <span class="text-sm text-red-600">{{ t().deleteNoteConfirm }}</span>
-            <button
-              (click)="executeDelete()"
-              class="px-3 py-1.5 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700 transition"
-            >
-              <i class="fas fa-check mr-1"></i> {{ t().deleteNote }}
-            </button>
-            <button
-              (click)="cancelDelete()"
-              class="px-3 py-1.5 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream transition"
-            >
-              {{ t().cancel }}
-            </button>
-          </div>
-        } @else {
-          <button
-            (click)="confirmDelete()"
-            class="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition"
-          >
-            <i class="fas fa-trash text-xs"></i> {{ t().deleteNote }}
-          </button>
-        }
-
+      <div class="flex items-center justify-end p-4 border-t border-olive-light/30">
         <div class="flex items-center gap-2">
           <button
             (click)="close()"

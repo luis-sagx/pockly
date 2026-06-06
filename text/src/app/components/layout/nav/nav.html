@@ -3,72 +3,115 @@
 >
   <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/">
-      <img src="logo.png" alt="logo" class="w-auto h-10 sm:h-14" />
+    <a class="flex items-center gap-3 group flex-shrink-0" href="/">
+      <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
-    <!-- Botón hamburguesa (solo móvil) -->
-    <button
-      class="flex md:hidden p-2 rounded text-olive-ink hover:bg-olive-cream"
-      (click)="toggleMenu()"
-      [attr.aria-expanded]="isMenuOpen()"
-      aria-label="Toggle menu"
-    >
-      @if (isMenuOpen()) {
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      } @else {
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      }
-    </button>
-
-    <!-- Nav Links (desktop always visible, mobile in dropdown) -->
+    <!-- Desktop: Nav Links + Auth -->
     <div class="hidden md:flex items-center gap-1">
       <a
         href="/"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navHome }}
       </a>
       <a
         href="/word-count"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navWordCount }}
       </a>
       <a
         href="/text-case"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navTextCase }}
       </a>
       <a
         href="/diff-checker"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navDiffChecker }}
       </a>
       <a
         href="/password-generator"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navPasswordGenerator }}
       </a>
       <a
         href="/quick-notes"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navQuickNotes }}
       </a>
       <a
         href="/spell-checker"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navSpellChecker }}
       </a>
+
+      <!-- Desktop auth button -->
+      <div class="ml-3 pl-3 border-l border-olive-light/50">
+        @if (isLoggedIn()) {
+          <button
+            (click)="signOut()"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink/70 hover:text-red-600 rounded-lg hover:bg-olive-cream transition"
+            title="Sign out"
+          >
+            <span class="max-w-[120px] truncate text-xs">
+              {{ user()?.email }}
+            </span>
+            <i class="fas fa-sign-out-alt text-xs"></i>
+          </button>
+        } @else {
+          <button
+            (click)="showAuthModal.set(true)"
+            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
+          >
+            <i class="fas fa-user-circle"></i>
+            Sign in
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Mobile: Auth + Hamburger -->
+    <div class="flex md:hidden items-center gap-2">
+      @if (isLoggedIn()) {
+        <button
+          (click)="signOut()"
+          class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-red-600 rounded-lg hover:bg-olive-cream transition"
+          title="Sign out"
+        >
+          <i class="fas fa-sign-out-alt text-xs"></i>
+        </button>
+      } @else {
+        <button
+          (click)="showAuthModal.set(true)"
+          class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
+        >
+          <i class="fas fa-user-circle"></i>
+        </button>
+      }
+
+      <button
+        class="flex p-2 rounded text-olive-ink hover:bg-olive-cream"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Toggle menu"
+      >
+        @if (isMenuOpen()) {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        } @else {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        }
+      </button>
     </div>
   </div>
 
@@ -78,49 +121,49 @@
       <div class="flex flex-col px-4 py-2">
         <a
           href="/"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navHome }}
         </a>
         <a
           href="/word-count"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navWordCount }}
         </a>
         <a
           href="/text-case"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navTextCase }}
         </a>
         <a
           href="/diff-checker"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navDiffChecker }}
         </a>
         <a
           href="/password-generator"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navPasswordGenerator }}
         </a>
         <a
           href="/quick-notes"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navQuickNotes }}
         </a>
         <a
           href="/spell-checker"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navSpellChecker }}
@@ -129,3 +172,8 @@
     </div>
   }
 </nav>
+
+<!-- Auth Modal -->
+@if (showAuthModal()) {
+  <app-auth-modal (closed)="showAuthModal.set(false)" />
+}

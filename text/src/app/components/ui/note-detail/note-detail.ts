@@ -29,7 +29,6 @@ export class NoteDetail implements OnChanges {
   @Input() open = false;
   @Output() saved = new EventEmitter<Note>();
   @Output() closed = new EventEmitter<void>();
-  @Output() deleted = new EventEmitter<string>();
 
   @ViewChild('modalBody') modalBody?: ElementRef<HTMLElement>;
 
@@ -41,7 +40,6 @@ export class NoteDetail implements OnChanges {
   editCategory = signal('');
   editChecklist = signal<ChecklistItem[]>([]);
   newItemText = signal('');
-  showDeleteConfirm = signal(false);
 
   private previousChecklistLength = 0;
 
@@ -53,7 +51,6 @@ export class NoteDetail implements OnChanges {
       this.editChecklist.set(
         this.note.checklist.map((item) => ({ ...item }))
       );
-      this.showDeleteConfirm.set(false);
       this.previousChecklistLength = this.note.checklist.length;
     }
   }
@@ -125,22 +122,6 @@ export class NoteDetail implements OnChanges {
 
   removeChecklistItem(id: string): void {
     this.editChecklist.update((items) => items.filter((i) => i.id !== id));
-  }
-
-  confirmDelete(): void {
-    this.showDeleteConfirm.set(true);
-  }
-
-  cancelDelete(): void {
-    this.showDeleteConfirm.set(false);
-  }
-
-  executeDelete(): void {
-    if (this.note) {
-      this.deleted.emit(this.note.id);
-    }
-    this.showDeleteConfirm.set(false);
-    this.close();
   }
 
   get priorityLabel(): string {

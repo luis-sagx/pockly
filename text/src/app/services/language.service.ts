@@ -145,14 +145,14 @@ const translations: Record<Language, Translations> = {
     navSpellChecker: 'Spell Checker',
 
     // Footer
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     noSignupNoAds: '',
     languageLabel: 'Language',
 
     // Home
     yourTextToolsAllInOnePlace: 'Your text tools, all in one place',
     homeSubtitle:
-      'Powerful and simple text utilities to boost your productivity. Count words, change text case, compare documents, generate secure passwords, and save notes. Completely free, no registration required.',
+      'Powerful and simple text utilities to boost your productivity. Count words, change text case, compare documents, generate secure passwords, and save notes.',
     allTools: 'All Tools',
     textTools: 'Text Tools',
     compare: 'Compare',
@@ -276,14 +276,14 @@ const translations: Record<Language, Translations> = {
     navSpellChecker: 'Corrector',
 
     // Footer
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     noSignupNoAds: '',
     languageLabel: 'Idioma',
 
     // Home
     yourTextToolsAllInOnePlace: 'Tus herramientas de texto, todo en un solo lugar',
     homeSubtitle:
-      'Utilidades de texto potentes y simples para aumentar tu productividad. Cuenta palabras, cambia mayúsculas/minúsculas, compara documentos, genera contraseñas seguras y guarda notas. Completamente gratis, sin registro requerido.',
+      'Utilidades de texto potentes y simples para aumentar tu productividad. Cuenta palabras, cambia mayúsculas/minúsculas, compara documentos, genera contraseñas seguras y guarda notas.',
     allTools: 'Todas',
     textTools: 'Texto',
     compare: 'Comparar',

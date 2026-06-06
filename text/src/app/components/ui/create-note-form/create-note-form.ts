@@ -6,6 +6,7 @@ import { LanguageService } from '../../../services/language.service';
 export interface CreateNoteData {
   title: string;
   description: string;
+  category?: string;
   priority: Priority;
   checklist: never[];
 }
@@ -26,18 +27,20 @@ export class CreateNoteForm {
 
   title = signal('');
   description = signal('');
+  category = signal('');
   priority = signal<Priority>('medium');
 
   submit(): void {
     const trimmedTitle = this.title().trim();
     if (!trimmedTitle) return;
 
-    // Truncate title to 200 chars
     const finalTitle = trimmedTitle.length > 200 ? trimmedTitle.substring(0, 200) : trimmedTitle;
+    const trimmedCategory = this.category().trim();
 
     this.created.emit({
       title: finalTitle,
       description: this.description().trim(),
+      category: trimmedCategory || undefined,
       priority: this.priority(),
       checklist: [],
     });
@@ -56,6 +59,7 @@ export class CreateNoteForm {
   private reset(): void {
     this.title.set('');
     this.description.set('');
+    this.category.set('');
     this.priority.set('medium');
   }
 }

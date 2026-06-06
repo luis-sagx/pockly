@@ -75,6 +75,7 @@ export class QuickNotes implements OnInit, OnDestroy {
       id: generateId(),
       title: data.title,
       description: data.description,
+      category: data.category,
       priority: data.priority,
       checklist: data.checklist,
       createdAt: Date.now(),

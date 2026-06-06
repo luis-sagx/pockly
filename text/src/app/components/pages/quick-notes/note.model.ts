@@ -10,6 +10,7 @@ export interface Note {
   id: string;
   title: string;
   description: string;
+  category?: string;
   priority: Priority;
   checklist: ChecklistItem[];
   createdAt: number;

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject, computed } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, computed, signal } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Note } from '../../pages/quick-notes/note.model';
 import { LanguageService } from '../../../services/language.service';
@@ -17,6 +17,8 @@ export class NoteCard {
 
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations());
+
+  showDeleteConfirm = signal(false);
 
   get priorityColorClass(): string {
     switch (this.note.priority) {
@@ -37,11 +39,23 @@ export class NoteCard {
   }
 
   onClick(): void {
+    if (this.showDeleteConfirm()) return;
     this.clicked.emit(this.note.id);
   }
 
   onDelete(event: MouseEvent): void {
     event.stopPropagation();
+    this.showDeleteConfirm.set(true);
+  }
+
+  confirmDelete(event: MouseEvent): void {
+    event.stopPropagation();
+    this.showDeleteConfirm.set(false);
     this.deleted.emit(this.note.id);
+  }
+
+  cancelDelete(event: MouseEvent): void {
+    event.stopPropagation();
+    this.showDeleteConfirm.set(false);
   }
 }

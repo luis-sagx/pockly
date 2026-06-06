@@ -1,12 +1,23 @@
 <div
   cdkDrag
   [cdkDragData]="note"
+  [cdkDragDisabled]="showDeleteConfirm()"
   class="note-card group relative cursor-pointer border-l-4"
   [class.border-l-red-500]="note.priority === 'high'"
   [class.border-l-amber-500]="note.priority === 'medium'"
   [class.border-l-green-500]="note.priority === 'low'"
   (click)="onClick()"
 >
+  <!-- Category badge -->
+  @if (note.category) {
+    <span
+      class="inline-block text-[10px] font-semibold uppercase tracking-wide text-olive-deep bg-olive-lightSage px-1.5 py-0.5 rounded mb-1.5 max-w-full truncate"
+      [title]="note.category"
+    >
+      {{ note.category }}
+    </span>
+  }
+
   <!-- Title -->
   <h4 class="font-semibold text-sm text-olive-deep line-clamp-2 pr-8">
     {{ note.title }}
@@ -27,12 +38,35 @@
     </div>
   }
 
-  <!-- Delete button (hover) -->
-  <button
-    class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity p-1 text-olive-ink/30 hover:text-red-500 rounded"
-    (click)="onDelete($event)"
-    [attr.aria-label]="t().deleteNote"
-  >
-    <i class="fas fa-trash text-xs"></i>
-  </button>
+  <!-- Delete button (hover) or inline confirm -->
+  @if (showDeleteConfirm()) {
+    <div
+      class="absolute inset-0 flex items-center justify-center gap-1.5 bg-white/95 rounded-lg p-1.5"
+      (click)="$event.stopPropagation()"
+    >
+      <span class="text-[11px] font-semibold text-red-600">{{ t().deleteNoteConfirm }}</span>
+      <button
+        (click)="confirmDelete($event)"
+        class="px-2 py-1 text-[11px] font-semibold text-white bg-red-600 hover:bg-red-700 rounded transition"
+        [attr.aria-label]="t().deleteNote"
+      >
+        <i class="fas fa-check"></i>
+      </button>
+      <button
+        (click)="cancelDelete($event)"
+        class="px-2 py-1 text-[11px] font-semibold text-olive-ink bg-olive-lightSage hover:bg-olive-cream rounded transition"
+        [attr.aria-label]="t().cancel"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  } @else {
+    <button
+      class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity p-1 text-olive-ink/30 hover:text-red-500 rounded"
+      (click)="onDelete($event)"
+      [attr.aria-label]="t().deleteNote"
+    >
+      <i class="fas fa-trash text-xs"></i>
+    </button>
+  }
 </div>

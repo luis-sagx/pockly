@@ -100,6 +100,8 @@ export interface Translations {
   editNote: string;
   deleteNote: string;
   deleteNoteConfirm: string;
+  noteCategory: string;
+  noteCategoryPlaceholder: string;
   checklist: string;
   addChecklistItem: string;
   noChecklistItems: string;
@@ -231,6 +233,8 @@ const translations: Record<Language, Translations> = {
     editNote: 'Edit Note',
     deleteNote: 'Delete Note',
     deleteNoteConfirm: 'Delete this note?',
+    noteCategory: 'Category',
+    noteCategoryPlaceholder: 'e.g. Work, Personal, Ideas...',
     checklist: 'Checklist',
     addChecklistItem: 'Add item...',
     noChecklistItems: 'No items yet',
@@ -361,6 +365,8 @@ const translations: Record<Language, Translations> = {
     editNote: 'Editar Nota',
     deleteNote: 'Eliminar Nota',
     deleteNoteConfirm: '¿Eliminar esta nota?',
+    noteCategory: 'Categoría',
+    noteCategoryPlaceholder: 'ej. Trabajo, Personal, Ideas...',
     checklist: 'Checklist',
     addChecklistItem: 'Agregar ítem...',
     noChecklistItems: 'Sin ítems aún',

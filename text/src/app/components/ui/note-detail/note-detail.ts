@@ -8,6 +8,9 @@ import {
   inject,
   computed,
   signal,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Note, ChecklistItem } from '../../pages/quick-notes/note.model';
@@ -28,23 +31,30 @@ export class NoteDetail implements OnChanges {
   @Output() closed = new EventEmitter<void>();
   @Output() deleted = new EventEmitter<string>();
 
+  @ViewChild('modalBody') modalBody?: ElementRef<HTMLElement>;
+
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations());
 
   editTitle = signal('');
   editDescription = signal('');
+  editCategory = signal('');
   editChecklist = signal<ChecklistItem[]>([]);
   newItemText = signal('');
   showDeleteConfirm = signal(false);
+
+  private previousChecklistLength = 0;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['note'] && this.note) {
       this.editTitle.set(this.note.title);
       this.editDescription.set(this.note.description);
+      this.editCategory.set(this.note.category ?? '');
       this.editChecklist.set(
         this.note.checklist.map((item) => ({ ...item }))
       );
       this.showDeleteConfirm.set(false);
+      this.previousChecklistLength = this.note.checklist.length;
     }
   }
 
@@ -65,11 +75,13 @@ export class NoteDetail implements OnChanges {
     if (!trimmedTitle) return;
 
     const finalTitle = trimmedTitle.length > 200 ? trimmedTitle.substring(0, 200) : trimmedTitle;
+    const trimmedCategory = this.editCategory().trim();
 
     const updated: Note = {
       ...this.note,
       title: finalTitle,
       description: this.editDescription().trim(),
+      category: trimmedCategory || undefined,
       checklist: this.editChecklist(),
       updatedAt: Date.now(),
     };
@@ -89,6 +101,18 @@ export class NoteDetail implements OnChanges {
 
     this.editChecklist.update((items) => [...items, item]);
     this.newItemText.set('');
+    this.onChecklistChanged();
+  }
+
+  onChecklistChanged(): void {
+    const currentLength = this.editChecklist().length;
+    if (currentLength > this.previousChecklistLength && this.modalBody) {
+      queueMicrotask(() => {
+        const el = this.modalBody?.nativeElement;
+        if (el) el.scrollTop = el.scrollHeight;
+      });
+    }
+    this.previousChecklistLength = currentLength;
   }
 
   toggleChecklistItem(id: string): void {

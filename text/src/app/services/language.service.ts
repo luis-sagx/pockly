@@ -131,6 +131,28 @@ export interface Translations {
   supportedFormats: string;
   undo: string;
   sourceText: string;
+
+  // Auth
+  signIn: string;
+  createAccount: string;
+  signInToSync: string;
+  username: string;
+  email: string;
+  password: string;
+  passwordMin: string;
+  yourPassword: string;
+  googleContinue: string;
+  or: string;
+  invalidCredentials: string;
+  fillAllFields: string;
+  usernameLength: string;
+  usernameChars: string;
+  passwordLength: string;
+  accountExists: string;
+  accountCreated: string;
+  checkEmail: string;
+  backToTools: string;
+  googleNotConfigured: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -264,6 +286,28 @@ const translations: Record<Language, Translations> = {
     supportedFormats: 'Supported: TXT, MD, TEXT (plain text files)',
     undo: 'Undo',
     sourceText: 'Source Text',
+
+    // Auth
+    signIn: 'Sign in',
+    createAccount: 'Create account',
+    signInToSync: 'Sign in to sync your notes across devices',
+    username: 'Username',
+    email: 'Email',
+    password: 'Password',
+    passwordMin: 'Password (min. 8 chars)',
+    yourPassword: 'Your password',
+    googleContinue: 'Continue with Google',
+    or: 'or',
+    invalidCredentials: 'Invalid email or password.',
+    fillAllFields: 'Please fill in all fields.',
+    usernameLength: 'Username must be between 2 and 30 characters.',
+    usernameChars: 'Username can only contain letters, numbers, hyphens and underscores.',
+    passwordLength: 'Password must be at least 8 characters.',
+    accountExists: 'An account with this email already exists.',
+    accountCreated: 'Account created! You can now sign in.',
+    checkEmail: 'Account created! Check your email to confirm.',
+    backToTools: '← Back to tools',
+    googleNotConfigured: 'Google sign in is not configured. Enable it in the Supabase dashboard.',
   },
   es: {
     // Nav
@@ -396,6 +440,28 @@ const translations: Record<Language, Translations> = {
     supportedFormats: 'Soportados: TXT, MD, TEXT (archivos de texto plano)',
     undo: 'Deshacer',
     sourceText: 'Texto Origen',
+
+    // Auth
+    signIn: 'Iniciar sesión',
+    createAccount: 'Crear cuenta',
+    signInToSync: 'Iniciá sesión para sincronizar tus notas entre dispositivos',
+    username: 'Usuario',
+    email: 'Email',
+    password: 'Contraseña',
+    passwordMin: 'Contraseña (mín. 8 caracteres)',
+    yourPassword: 'Tu contraseña',
+    googleContinue: 'Continuar con Google',
+    or: 'o',
+    invalidCredentials: 'Email o contraseña inválidos.',
+    fillAllFields: 'Por favor completá todos los campos.',
+    usernameLength: 'El usuario debe tener entre 2 y 30 caracteres.',
+    usernameChars: 'El usuario solo puede contener letras, números, guiones y guiones bajos.',
+    passwordLength: 'La contraseña debe tener al menos 8 caracteres.',
+    accountExists: 'Ya existe una cuenta con este email.',
+    accountCreated: '¡Cuenta creada! Ya podés iniciar sesión.',
+    checkEmail: '¡Cuenta creada! Revisá tu email para confirmarla.',
+    backToTools: '← Volver a las herramientas',
+    googleNotConfigured: 'Google no está configurado. Habilitá el proveedor en el dashboard de Supabase.',
   },
 };
 

@@ -52,16 +52,27 @@ export class SupabaseService {
     });
   }
 
-  async signUp(email: string, password: string, username: string): Promise<{ error: Error | null }> {
-    if (!this.client) return { error: new Error('Supabase not initialized') };
-    const { error } = await this.client.auth.signUp({
+  async signUp(
+    email: string,
+    password: string,
+    username: string
+  ): Promise<{ error: Error | null; needsConfirmation: boolean }> {
+    if (!this.client) return { error: new Error('Supabase not initialized'), needsConfirmation: false };
+    const { data, error } = await this.client.auth.signUp({
       email,
       password,
       options: {
         data: { username },
       },
     });
-    return { error };
+    // If a session is returned, email confirmation is disabled — user is already logged in
+    if (data.session) {
+      this.session.set(data.session);
+      this.user.set(data.session.user);
+      return { error: null, needsConfirmation: false };
+    }
+    // If user exists but no session, email confirmation is required
+    return { error, needsConfirmation: !error && !!data.user };
   }
 
   async signInWithPassword(email: string, password: string): Promise<{ error: Error | null }> {

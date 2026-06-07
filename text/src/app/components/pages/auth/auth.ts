@@ -1,5 +1,5 @@
 import { Component, inject, computed, signal, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../../../services/supabase.service';
 import { LanguageService } from '../../../services/language.service';
@@ -7,7 +7,7 @@ import { LanguageService } from '../../../services/language.service';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './auth.html',
   styleUrl: './auth.css',
 })
@@ -19,7 +19,6 @@ export class Auth implements OnInit {
 
   isSignUp = signal(false);
 
-  // Shared fields
   email = signal('');
   password = signal('');
   username = signal('');
@@ -53,7 +52,7 @@ export class Auth implements OnInit {
     const p = this.password();
 
     if (!e || !p) {
-      this.error.set('Please fill in all fields.');
+      this.error.set(this.t().fillAllFields);
       return;
     }
 
@@ -65,7 +64,7 @@ export class Auth implements OnInit {
     this.loading.set(false);
 
     if (error) {
-      this.error.set('Invalid email or password.');
+      this.error.set(this.t().invalidCredentials);
     } else {
       this.router.navigate(['/quick-notes']);
     }
@@ -77,22 +76,22 @@ export class Auth implements OnInit {
     const p = this.password();
 
     if (!u || !e || !p) {
-      this.error.set('Please fill in all fields.');
+      this.error.set(this.t().fillAllFields);
       return;
     }
 
     if (u.length < 2 || u.length > 30) {
-      this.error.set('Username must be between 2 and 30 characters.');
+      this.error.set(this.t().usernameLength);
       return;
     }
 
     if (!/^[a-zA-Z0-9_-]+$/.test(u)) {
-      this.error.set('Username can only contain letters, numbers, hyphens and underscores.');
+      this.error.set(this.t().usernameChars);
       return;
     }
 
     if (p.length < 8) {
-      this.error.set('Password must be at least 8 characters.');
+      this.error.set(this.t().passwordLength);
       return;
     }
 
@@ -100,20 +99,27 @@ export class Auth implements OnInit {
     this.error.set('');
     this.success.set('');
 
-    const { error } = await this.supabaseService.signUp(e, p, u);
+    const { error, needsConfirmation } = await this.supabaseService.signUp(e, p, u);
 
     this.loading.set(false);
 
     if (error) {
       if (error.message.includes('already registered')) {
-        this.error.set('An account with this email already exists.');
+        this.error.set(this.t().accountExists);
       } else {
-        this.error.set('Could not create account. Please try again.');
+        this.error.set(this.t().invalidCredentials);
       }
-    } else {
-      this.success.set('Account created! Check your email to confirm, or sign in now.');
+      return;
+    }
+
+    if (needsConfirmation) {
+      // Email confirmation is required
+      this.success.set(this.t().checkEmail);
       this.isSignUp.set(false);
       this.password.set('');
+    } else {
+      // Email confirmation is disabled — auto logged in
+      this.router.navigate(['/quick-notes']);
     }
   }
 
@@ -123,7 +129,7 @@ export class Auth implements OnInit {
     try {
       await this.supabaseService.signInWithGoogle();
     } catch {
-      this.error.set('Google sign in is not configured. Enable it in the Supabase dashboard.');
+      this.error.set(this.t().googleNotConfigured);
     } finally {
       this.loading.set(false);
     }

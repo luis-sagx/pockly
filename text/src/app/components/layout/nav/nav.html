@@ -61,18 +61,18 @@
             title="Sign out"
           >
             <span class="max-w-[120px] truncate text-xs">
-              {{ user()?.email }}
+              {{ displayName() }}
             </span>
             <i class="fas fa-sign-out-alt text-xs"></i>
           </button>
         } @else {
-          <button
-            (click)="showAuthModal.set(true)"
+          <a
+            routerLink="/sign-in"
             class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
           >
             <i class="fas fa-user-circle"></i>
             Sign in
-          </button>
+          </a>
         }
       </div>
     </div>
@@ -88,12 +88,12 @@
           <i class="fas fa-sign-out-alt text-xs"></i>
         </button>
       } @else {
-        <button
-          (click)="showAuthModal.set(true)"
+        <a
+          routerLink="/sign-in"
           class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
         >
           <i class="fas fa-user-circle"></i>
-        </button>
+        </a>
       }
 
       <button
@@ -172,8 +172,3 @@
     </div>
   }
 </nav>
-
-<!-- Auth Modal -->
-@if (showAuthModal()) {
-  <app-auth-modal (closed)="showAuthModal.set(false)" />
-}

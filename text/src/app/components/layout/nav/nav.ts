@@ -1,12 +1,12 @@
 import { Component, inject, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../../services/language.service';
 import { SupabaseService } from '../../../services/supabase.service';
-import { AuthModal } from '../../ui/auth-modal/auth-modal';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [AuthModal],
+  imports: [RouterLink],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
@@ -17,8 +17,7 @@ export class Nav {
 
   // Auth
   isLoggedIn = this.supabaseService.isLoggedIn;
-  user = this.supabaseService.user;
-  showAuthModal = signal(false);
+  displayName = this.supabaseService.displayName;
 
   // Estado del menú móvil
   isMenuOpen = signal(false);

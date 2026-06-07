@@ -6,9 +6,11 @@ import { DiffChecker } from './components/pages/diff-checker/diff-checker';
 import { PasswordGenerator } from './components/pages/password-generator/password-generator';
 import { QuickNotes } from './components/pages/quick-notes/quick-notes';
 import { SpellChecker } from './components/pages/spell-checker/spell-checker';
+import { Auth } from './components/pages/auth/auth';
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'sign-in', component: Auth },
   { path: 'text-case', component: TextCaseTool },
   { path: 'word-count', component: WordCount },
   { path: 'diff-checker', component: DiffChecker },

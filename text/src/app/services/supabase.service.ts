@@ -14,6 +14,11 @@ export class SupabaseService {
   user = signal<User | null>(null);
   session = signal<Session | null>(null);
   isLoggedIn = computed(() => !!this.session());
+  displayName = computed(() => {
+    const u = this.user();
+    if (!u) return '';
+    return u.user_metadata?.['username'] || u.email?.split('@')[0] || '';
+  });
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -47,14 +52,21 @@ export class SupabaseService {
     });
   }
 
-  async signInWithMagicLink(email: string): Promise<{ error: Error | null }> {
+  async signUp(email: string, password: string, username: string): Promise<{ error: Error | null }> {
     if (!this.client) return { error: new Error('Supabase not initialized') };
-    const { error } = await this.client.auth.signInWithOtp({
+    const { error } = await this.client.auth.signUp({
       email,
+      password,
       options: {
-        emailRedirectTo: `${window.location.origin}/quick-notes`,
+        data: { username },
       },
     });
+    return { error };
+  }
+
+  async signInWithPassword(email: string, password: string): Promise<{ error: Error | null }> {
+    if (!this.client) return { error: new Error('Supabase not initialized') };
+    const { error } = await this.client.auth.signInWithPassword({ email, password });
     return { error };
   }
 

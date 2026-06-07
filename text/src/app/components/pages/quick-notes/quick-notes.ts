@@ -51,24 +51,26 @@ export class QuickNotes implements OnInit, OnDestroy {
   highNotes = computed(() => this.notes().filter((n) => n.priority === 'high'));
 
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
+  private prevLoggedIn: boolean | undefined;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
 
     effect(() => {
       const allNotes = this.notes();
-      // Skip save if notes were just loaded (avoid double save on init)
       this.debouncedSave(allNotes);
     });
 
-    // Listen for auth changes — reload notes when user logs in/out
     effect(() => {
       const loggedIn = this.supabaseService.isLoggedIn();
-      if (loggedIn) {
+      if (this.prevLoggedIn === true && !loggedIn) {
+        this.notes.set([]);
+        this.clearStorage();
+      } else if (loggedIn && this.prevLoggedIn !== true) {
         this.loadSupabaseNotes();
       }
-      // On logout, keep current notes in localStorage (already saved)
-    });
+      this.prevLoggedIn = loggedIn;
+    }, { allowSignalWrites: true });
   }
 
   ngOnInit(): void {
@@ -301,5 +303,11 @@ export class QuickNotes implements OnInit, OnDestroy {
     } catch (e) {
       console.warn('Failed to save notes: localStorage quota exceeded');
     }
+  }
+
+  private clearStorage(): void {
+    if (!this.isBrowser) return;
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
   }
 }

@@ -143,7 +143,7 @@ const translations: Record<Language, Translations> = {
     navSpeed: 'Speed',
 
     // Footer
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     languageLabel: 'Language',
 
     // Home
@@ -215,13 +215,11 @@ const translations: Record<Language, Translations> = {
     speedTitle: 'Speed Converter',
 
     // Unit Converter page descriptions
-    lengthPageDesc:
-      'Convert between millimeters, centimeters, meters, inches, feet, and more.',
+    lengthPageDesc: 'Convert between millimeters, centimeters, meters, inches, feet, and more.',
     weightPageDesc:
       'Convert between milligrams, grams, kilograms, pounds, ounces, and metric tons.',
     temperaturePageDesc: 'Convert between Celsius, Fahrenheit, and Kelvin.',
-    volumePageDesc:
-      'Convert between milliliters, liters, fluid ounces, cups, pints, and gallons.',
+    volumePageDesc: 'Convert between milliliters, liters, fluid ounces, cups, pints, and gallons.',
     speedPageDesc:
       'Convert between meters per second, kilometers per hour, miles per hour, and knots.',
 
@@ -270,7 +268,7 @@ const translations: Record<Language, Translations> = {
     navSpeed: 'Velocidad',
 
     // Footer
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     languageLabel: 'Idioma',
 
     // Home
@@ -342,13 +340,11 @@ const translations: Record<Language, Translations> = {
     speedTitle: 'Conversor de velocidad',
 
     // Unit Converter page descriptions
-    lengthPageDesc:
-      'Convierte entre milímetros, centímetros, metros, pulgadas, pies y más.',
+    lengthPageDesc: 'Convierte entre milímetros, centímetros, metros, pulgadas, pies y más.',
     weightPageDesc:
       'Convierte entre miligramos, gramos, kilogramos, libras, onzas y toneladas métricas.',
     temperaturePageDesc: 'Convierte entre Celsius, Fahrenheit y Kelvin.',
-    volumePageDesc:
-      'Convierte entre mililitros, litros, onzas líquidas, tazas, pintas y galones.',
+    volumePageDesc: 'Convierte entre mililitros, litros, onzas líquidas, tazas, pintas y galones.',
     speedPageDesc:
       'Convierte entre metros por segundo, kilómetros por hora, millas por hora y nudos.',
 

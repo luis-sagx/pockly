@@ -155,7 +155,7 @@ const translations: Record<Language, Translations> = {
     navTextImage: 'Text to Image',
 
     // Footer
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     noSignupNoAds: '',
     languageLabel: 'Language',
 
@@ -295,7 +295,7 @@ const translations: Record<Language, Translations> = {
     navTextImage: 'Texto a imagen',
 
     // Footer
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     noSignupNoAds: '',
     languageLabel: 'Idioma',
 

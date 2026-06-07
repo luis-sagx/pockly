@@ -159,7 +159,7 @@ const translations: Record<Language, Translations> = {
     navQuery: 'Query',
 
     // Footer
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     languageLabel: 'Language',
 
     // Home
@@ -217,11 +217,9 @@ const translations: Record<Language, Translations> = {
 
     // Page-specific
     pasteCsvDataToConvert: 'Paste CSV data to convert it to JSON format.',
-    pasteTsvDataToConvert:
-      'Paste TSV (tab-separated) data to convert it to JSON format.',
+    pasteTsvDataToConvert: 'Paste TSV (tab-separated) data to convert it to JSON format.',
     pasteJsonArrayToCsv: 'Paste a JSON array to convert it to CSV format.',
-    pasteJsonArrayToTsv:
-      'Paste a JSON array to convert it to TSV (tab-separated) format.',
+    pasteJsonArrayToTsv: 'Paste a JSON array to convert it to TSV (tab-separated) format.',
     pasteJsonToXml: 'Paste JSON data to convert it to XML format.',
     pasteJsonToYaml: 'Paste JSON data to convert it to YAML format.',
     chooseConversionType: 'Choose a conversion type to get started.',
@@ -250,8 +248,7 @@ const translations: Record<Language, Translations> = {
     checkIfValidJson: 'Check if your text is valid JSON.',
     convertNestedToFlat: 'Convert nested objects to flat dot-notation keys (key.subkey).',
     convertFlatToNested: 'Convert flat dot-notation keys back to nested objects.',
-    compareTwoJson:
-      'Compare two JSON objects and see what was added, removed, or changed.',
+    compareTwoJson: 'Compare two JSON objects and see what was added, removed, or changed.',
     extractValuesWithJsonPath: 'Extract values from JSON using JSONPath dot notation.',
     inputJson: 'Input JSON',
     jsonPathQuery: 'JSONPath Query',
@@ -294,7 +291,7 @@ const translations: Record<Language, Translations> = {
     navQuery: 'Consultar',
 
     // Footer
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     languageLabel: 'Idioma',
 
     // Home
@@ -352,11 +349,9 @@ const translations: Record<Language, Translations> = {
 
     // Page-specific
     pasteCsvDataToConvert: 'Pega datos CSV para convertirlos a formato JSON.',
-    pasteTsvDataToConvert:
-      'Pega datos TSV (separados por tab) para convertirlos a formato JSON.',
+    pasteTsvDataToConvert: 'Pega datos TSV (separados por tab) para convertirlos a formato JSON.',
     pasteJsonArrayToCsv: 'Pega un array JSON para convertirlo a formato CSV.',
-    pasteJsonArrayToTsv:
-      'Pega un array JSON para convertirlo a formato TSV (separado por tab).',
+    pasteJsonArrayToTsv: 'Pega un array JSON para convertirlo a formato TSV (separado por tab).',
     pasteJsonToXml: 'Pega datos JSON para convertirlos a formato XML.',
     pasteJsonToYaml: 'Pega datos JSON para convertirlos a formato YAML.',
     chooseConversionType: 'Elige un tipo de conversión para empezar.',
@@ -383,14 +378,10 @@ const translations: Record<Language, Translations> = {
     removeWhitespace: 'Elimina todos los espacios innecesarios de tu JSON.',
     sortKeysAlphabetically: 'Ordena todas las claves alfabéticamente (recursivo).',
     checkIfValidJson: 'Verifica si tu texto es JSON válido.',
-    convertNestedToFlat:
-      'Convierte objetos anidados a notación plana con puntos (clave.subclave).',
-    convertFlatToNested:
-      'Convierte notación plana con puntos de vuelta a objetos anidados.',
-    compareTwoJson:
-      'Compara dos objetos JSON y ve qué fue agregado, eliminado o modificado.',
-    extractValuesWithJsonPath:
-      'Extrae valores de JSON usando notación JSONPath con puntos.',
+    convertNestedToFlat: 'Convierte objetos anidados a notación plana con puntos (clave.subclave).',
+    convertFlatToNested: 'Convierte notación plana con puntos de vuelta a objetos anidados.',
+    compareTwoJson: 'Compara dos objetos JSON y ve qué fue agregado, eliminado o modificado.',
+    extractValuesWithJsonPath: 'Extrae valores de JSON usando notación JSONPath con puntos.',
     inputJson: 'JSON de entrada',
     jsonPathQuery: 'Consulta JSONPath',
     queryExamples: 'Ejemplos: users, users.0, users[*].name, data.items[0]',

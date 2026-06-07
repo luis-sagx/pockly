@@ -1,46 +1,46 @@
 <nav
   class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
 >
-  <div class="flex items-center justify-between px-4 py-3 mx-auto max-w-7xl">
+  <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
     <a class="flex items-center gap-3 group" href="/" (click)="closeMenu()">
-      <img src="logo.png" alt="logo" class="w-auto h-10 sm:h-14" />
+      <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
     <!-- Nav Links hidden on mobile, visible on md+ -->
     <div class="hidden items-center gap-1 md:flex">
       <a
         href="/"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navHome }}
       </a>
       <a
         href="/image-to-base64"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navImageToBase64 }}
       </a>
       <a
         href="/base64-to-image"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navBase64ToImage }}
       </a>
       <a
         href="/remove-background"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navRemoveBackground }}
       </a>
       <a
         href="/resize-dimensions"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navResize }}
       </a>
       <div class="relative group">
-        <span class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream cursor-pointer">
+        <span class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream cursor-pointer">
           {{ t().navConvertFormats }}
         </span>
         <div class="absolute left-0 hidden group-hover:block pt-1 min-w-[180px] z-50">
@@ -56,13 +56,13 @@
       </div>
       <a
         href="/compress-by-weight"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navCompress }}
       </a>
       <a
         href="/crop-image"
-        class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navCrop }}
       </a>
@@ -102,91 +102,91 @@
         <a
           href="/"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navHome }}
         </a>
         <a
           href="/image-to-base64"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navImageToBase64 }}
         </a>
         <a
           href="/base64-to-image"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navBase64ToImage }}
         </a>
         <a
           href="/remove-background"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navRemoveBackground }}
         </a>
         <a
           href="/resize-dimensions"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navResize }}
         </a>
         <a
           href="/convert-to-png"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to PNG
         </a>
         <a
           href="/convert-to-jpeg"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to JPEG
         </a>
         <a
           href="/convert-to-webp"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to WebP
         </a>
         <a
           href="/convert-to-bmp"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to BMP
         </a>
         <a
           href="/convert-to-svg"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to SVG
         </a>
         <a
           href="/convert-to-pdf"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to PDF
         </a>
         <a
           href="/compress-by-weight"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navCompress }}
         </a>
         <a
           href="/crop-image"
           (click)="closeMenu()"
-          class="px-3 py-2 font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navCrop }}
         </a>

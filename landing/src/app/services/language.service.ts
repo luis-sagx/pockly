@@ -121,7 +121,7 @@ const translations: Record<Language, Translations> = {
   en: {
     navHome: 'Home',
 
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     languageLabel: 'Language',
     footerCopyright: '© 2026 Pockly. All tools, one launcher.',
 
@@ -190,13 +190,17 @@ const translations: Record<Language, Translations> = {
 
     // Link descriptions — JSON
     linkDesc_json_generator: 'Build JSON interactively from scratch',
-    linkDesc_json_templates: 'Ready-to-use datasets for testing and prototyping',
+    linkDesc_json_templates:
+      'Ready-to-use datasets for testing and prototyping',
     linkDesc_json_convert: 'Convert between CSV, TSV, XML and YAML',
-    linkDesc_json_utils: 'Format, minify, sort, validate, flatten, diff and query JSON',
+    linkDesc_json_utils:
+      'Format, minify, sort, validate, flatten, diff and query JSON',
 
     // Link descriptions — Text
-    linkDesc_text_case: 'Convert between UPPER, lower, Title, Sentence and more',
-    linkDesc_text_wordcount: 'Count words, characters, sentences and paragraphs',
+    linkDesc_text_case:
+      'Convert between UPPER, lower, Title, Sentence and more',
+    linkDesc_text_wordcount:
+      'Count words, characters, sentences and paragraphs',
     linkDesc_text_diff: 'Compare two blocks of text side by side',
     linkDesc_text_password: 'Create strong, customisable passwords',
     linkDesc_text_notes: 'Private notes with auto-save to local storage',
@@ -214,12 +218,15 @@ const translations: Record<Language, Translations> = {
     // Link descriptions — Calculator
     linkDesc_calculator_percentof: 'Calculate what is X% of a given number',
     linkDesc_calculator_whatpercent: 'Find what percentage X is of Y',
-    linkDesc_calculator_percentchange: 'Calculate increase or decrease between two values',
-    linkDesc_calculator_currency: 'Convert between currencies with live exchange rates',
+    linkDesc_calculator_percentchange:
+      'Calculate increase or decrease between two values',
+    linkDesc_calculator_currency:
+      'Convert between currencies with live exchange rates',
     linkDesc_calculator_length: 'Convert between meters, feet, inches and more',
     linkDesc_calculator_weight: 'Convert between kg, lbs, oz and more',
     linkDesc_calculator_temp: 'Convert between Celsius, Fahrenheit and Kelvin',
-    linkDesc_calculator_volume: 'Convert between liters, gallons, cups and more',
+    linkDesc_calculator_volume:
+      'Convert between liters, gallons, cups and more',
     linkDesc_calculator_speed: 'Convert between km/h, mph, knots and more',
 
     // Link descriptions — URL
@@ -232,7 +239,7 @@ const translations: Record<Language, Translations> = {
   es: {
     navHome: 'Inicio',
 
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     languageLabel: 'Idioma',
     footerCopyright: '© 2026 Pockly. Todas las herramientas, un solo lanzador.',
 
@@ -247,7 +254,8 @@ const translations: Record<Language, Translations> = {
     filterCalculator: 'Calculadora',
     pagesAvailable: 'páginas disponibles',
 
-    seoTitle: 'Pockly - Herramientas online gratuitas para la productividad diaria',
+    seoTitle:
+      'Pockly - Herramientas online gratuitas para la productividad diaria',
     seoDescription:
       'Herramientas de productividad online gratuitas: contador de palabras, generador JSON, eliminador de fondos, redimensionador de imágenes, convertidor de formato, conversor de texto, y más.',
 
@@ -301,32 +309,43 @@ const translations: Record<Language, Translations> = {
 
     // Link descriptions — JSON
     linkDesc_json_generator: 'Construye JSON de forma interactiva desde cero',
-    linkDesc_json_templates: 'Conjuntos de datos listos para pruebas y prototipado',
+    linkDesc_json_templates:
+      'Conjuntos de datos listos para pruebas y prototipado',
     linkDesc_json_convert: 'Convierte entre CSV, TSV, XML y YAML',
-    linkDesc_json_utils: 'Formatea, minimiza, ordena, valida, aplana, compara y consulta JSON',
+    linkDesc_json_utils:
+      'Formatea, minimiza, ordena, valida, aplana, compara y consulta JSON',
 
     // Link descriptions — Text
-    linkDesc_text_case: 'Convierte entre MAYÚSCULAS, minúsculas, Título, Oración y más',
-    linkDesc_text_wordcount: 'Cuenta palabras, caracteres, oraciones y párrafos',
+    linkDesc_text_case:
+      'Convierte entre MAYÚSCULAS, minúsculas, Título, Oración y más',
+    linkDesc_text_wordcount:
+      'Cuenta palabras, caracteres, oraciones y párrafos',
     linkDesc_text_diff: 'Compara dos bloques de texto lado a lado',
     linkDesc_text_password: 'Crea contraseñas seguras y personalizables',
-    linkDesc_text_notes: 'Notas privadas con guardado automático en el navegador',
+    linkDesc_text_notes:
+      'Notas privadas con guardado automático en el navegador',
     linkDesc_text_spell: 'Revisa ortografía y gramática en tu texto',
 
     // Link descriptions — Image
-    linkDesc_image_base64to: 'Codifica cualquier imagen a un URI de datos Base64',
-    linkDesc_image_base64from: 'Decodifica una cadena Base64 de vuelta a imagen',
+    linkDesc_image_base64to:
+      'Codifica cualquier imagen a un URI de datos Base64',
+    linkDesc_image_base64from:
+      'Decodifica una cadena Base64 de vuelta a imagen',
     linkDesc_image_bgremove: 'Elimina fondos de imágenes automáticamente',
-    linkDesc_image_resize: 'Redimensiona imágenes por dimensiones exactas o porcentaje',
-    linkDesc_image_compress: 'Reduce el tamaño del archivo conservando la calidad visual',
+    linkDesc_image_resize:
+      'Redimensiona imágenes por dimensiones exactas o porcentaje',
+    linkDesc_image_compress:
+      'Reduce el tamaño del archivo conservando la calidad visual',
     linkDesc_image_crop: 'Recorta imágenes a una región seleccionada',
     linkDesc_image_format: 'Convierte entre PNG, JPEG, WebP, BMP, SVG y PDF',
 
     // Link descriptions — Calculator
     linkDesc_calculator_percentof: 'Calcula cuánto es el X% de un número dado',
     linkDesc_calculator_whatpercent: 'Encuentra qué porcentaje es X de Y',
-    linkDesc_calculator_percentchange: 'Calcula el aumento o disminución entre dos valores',
-    linkDesc_calculator_currency: 'Convierte entre divisas con tasas de cambio en vivo',
+    linkDesc_calculator_percentchange:
+      'Calcula el aumento o disminución entre dos valores',
+    linkDesc_calculator_currency:
+      'Convierte entre divisas con tasas de cambio en vivo',
     linkDesc_calculator_length: 'Convierte entre metros, pies, pulgadas y más',
     linkDesc_calculator_weight: 'Convierte entre kg, libras, onzas y más',
     linkDesc_calculator_temp: 'Convierte entre Celsius, Fahrenheit y Kelvin',
@@ -484,7 +503,10 @@ export function getCategoryTitleKey(categoryKey: string): keyof Translations {
 }
 
 /** Maps (category key, original English label) to the link-label translation property name. */
-export function getLinkLabelKey(categoryKey: string, originalLabel: string): keyof Translations {
+export function getLinkLabelKey(
+  categoryKey: string,
+  originalLabel: string,
+): keyof Translations {
   const suffix = LABEL_TO_SUFFIX[categoryKey]?.[originalLabel];
   if (!suffix) return 'catTitleJson'; // safe fallback, shouldn't happen
   return `linkLabel_${categoryKey}_${suffix}` as keyof Translations;

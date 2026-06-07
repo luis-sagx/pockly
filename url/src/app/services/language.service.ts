@@ -102,7 +102,7 @@ const translations: Record<Language, Translations> = {
     navUrlCleaner: 'URL Cleaner',
 
     // Footer
-    freeOnlineTools: 'Free online tools — no signup, no ads.',
+    freeOnlineTools: 'Free online tools to boost your productivity.',
     languageLabel: 'Language',
 
     // Home page
@@ -191,7 +191,7 @@ const translations: Record<Language, Translations> = {
     navUrlCleaner: 'Limpiar URL',
 
     // Footer
-    freeOnlineTools: 'Herramientas online gratuitas — sin registro, sin anuncios.',
+    freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
     languageLabel: 'Idioma',
 
     // Home page

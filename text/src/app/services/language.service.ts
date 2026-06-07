@@ -288,9 +288,9 @@ const translations: Record<Language, Translations> = {
     sourceText: 'Source Text',
 
     // Auth
-    signIn: 'Sign in',
+    signIn: 'Login',
     createAccount: 'Create account',
-    signInToSync: 'Sign in to sync your notes across devices',
+    signInToSync: 'Login to sync your notes across devices',
     username: 'Username',
     email: 'Email',
     password: 'Password',
@@ -442,9 +442,9 @@ const translations: Record<Language, Translations> = {
     sourceText: 'Texto Origen',
 
     // Auth
-    signIn: 'Iniciar sesión',
+    signIn: 'Ingresar',
     createAccount: 'Crear cuenta',
-    signInToSync: 'Iniciá sesión para sincronizar tus notas entre dispositivos',
+    signInToSync: 'Ingresá para sincronizar tus notas entre dispositivos',
     username: 'Usuario',
     email: 'Email',
     password: 'Contraseña',

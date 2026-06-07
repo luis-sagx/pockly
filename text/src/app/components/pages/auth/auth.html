@@ -11,26 +11,34 @@
     <!-- Auth Card -->
     <div class="bg-white rounded-xl shadow-sm border border-olive-light/30 overflow-hidden">
       <!-- Tabs -->
-      <div class="flex border-b border-olive-light/30">
+      <div class="flex border-b border-olive-light/30 bg-olive-parchment/40">
         <button
           (click)="isSignUp.set(false)"
-          class="flex-1 py-3 text-sm font-semibold transition-colors"
-          [class.bg-white]="!isSignUp()"
+          class="relative flex-1 py-3.5 text-sm font-bold transition-all"
           [class.text-olive-deep]="!isSignUp()"
-          [class.bg-olive-parchment/50]="isSignUp()"
-          [class.text-olive-ink/50]="isSignUp()"
+          [class.text-gray-400]="isSignUp()"
         >
+          <i class="fas fa-sign-in-alt mr-1.5 text-xs"></i>
           {{ t().signIn }}
+          <span
+            class="absolute bottom-0 left-0 right-0 h-1 transition-all"
+            [class.bg-posthog-orange]="!isSignUp()"
+            [class.bg-transparent]="isSignUp()"
+          ></span>
         </button>
         <button
           (click)="isSignUp.set(true)"
-          class="flex-1 py-3 text-sm font-semibold transition-colors"
-          [class.bg-white]="isSignUp()"
+          class="relative flex-1 py-3.5 text-sm font-bold transition-all"
           [class.text-olive-deep]="isSignUp()"
-          [class.bg-olive-parchment/50]="!isSignUp()"
-          [class.text-olive-ink/50]="!isSignUp()"
+          [class.text-gray-400]="!isSignUp()"
         >
+          <i class="fas fa-user-plus mr-1.5 text-xs"></i>
           {{ t().createAccount }}
+          <span
+            class="absolute bottom-0 left-0 right-0 h-1 transition-all"
+            [class.bg-posthog-orange]="isSignUp()"
+            [class.bg-transparent]="!isSignUp()"
+          ></span>
         </button>
       </div>
 

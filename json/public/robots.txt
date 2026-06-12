@@ -1,0 +1,5 @@
+# https://json.pockly.vercel.app/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://json.pockly.vercel.app/sitemap.xml

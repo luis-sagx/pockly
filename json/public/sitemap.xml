@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://json.pockly.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://json.pockly.vercel.app/generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://json.pockly.vercel.app/templates</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/csv-to-json</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/tsv-to-json</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/json-to-csv</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/json-to-tsv</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/json-to-xml</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/convert/json-to-yaml</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/format</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/minify</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/sort</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/validate</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/flatten</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/unflatten</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/diff</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://json.pockly.vercel.app/utils/query</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+</urlset>

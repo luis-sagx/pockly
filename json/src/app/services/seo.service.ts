@@ -14,121 +14,161 @@ export interface PageMeta {
   canonicalUrl?: string;
 }
 
+const BASE_URL = 'https://json.pockly.vercel.app';
+const OG_IMAGE = `${BASE_URL}/og-image.png`;
+
 const PAGE_CONFIGS: Record<string, PageMeta> = {
   '': {
-    title: 'Pockly - Free Online Tools for Daily Productivity',
+    title: 'JSON Tools - Free Online JSON Utilities',
     description:
-      'Free online productivity tools: word counter, JSON generator, background remover, image resizer, format converter, text case tool, and more.',
-    keywords: 'online tools, productivity, word counter, json generator, image tools',
-    noindex: false,
+      'Free online JSON tools: generator, formatter, validator, converter (CSV, XML, YAML), templates, and utilities. No installation required.',
+    keywords: 'json tools, json generator, json formatter, json validator, json converter',
+    ogImage: OG_IMAGE,
+    canonicalUrl: BASE_URL,
   },
-  'word-count': {
-    title: 'Word Counter - Free Online Word Count Tool',
-    description:
-      'Free online word counter. Count words, characters, sentences, and paragraphs instantly. Copy or export results. No registration required.',
-    keywords: 'word counter, character counter, online word count, text analyzer',
-  },
-  'json-generator': {
+  generator: {
     title: 'JSON Generator - Create and Format JSON Online',
     description:
       'Free online JSON generator and formatter. Create, validate, and format JSON structures with smart presets. Export as file or code.',
     keywords: 'json generator, json formatter, json validator, create json',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/generator`,
   },
-  'background-remover': {
-    title: 'Background Remover - Remove Image Backgrounds Free',
-    description:
-      'Remove image backgrounds online for free. One-click background removal with clean edges. Download as PNG or with transparent background.',
-    keywords: 'background remover, remove background, transparent background, image editor',
-  },
-  'image-resize': {
-    title: 'Image Resizer - Resize Images Online Free',
-    description:
-      'Resize images online for free. Set exact pixel dimensions, percentage, or preset sizes. Fast preview and instant download.',
-    keywords: 'image resize, resize image, photo resizer, pixels',
-  },
-  'format-converter': {
-    title: 'Image Format Converter - Convert PNG JPEG WEBP',
-    description:
-      'Convert image formats online. PNG to JPEG, WEBP, BMP. Batch conversion supported. Fast and free.',
-    keywords: 'image converter, format converter, png to jpg, webp converter',
-  },
-  'text-case': {
-    title: 'Text Case Converter - UPPERCASE lowercase Title Case',
-    description:
-      'Convert text between uppercase, lowercase, title case, and more. Preserve formatting while converting.',
-    keywords: 'text case, uppercase, lowercase, title case, converter',
-  },
-  'diff-checker': {
-    title: 'Diff Checker - Compare Text Online',
-    description:
-      'Compare two text blocks side-by-side. Highlight differences. Export or copy results. Free online text diff tool.',
-    keywords: 'diff checker, text compare, text diff, compare tool',
-  },
-  'base64': {
-    title: 'Base64 Encoder/Decoder - Image to Base64',
-    description:
-      'Encode images to Base64 or decode Base64 back to image. Copy or download result. Free online Base64 tool.',
-    keywords: 'base64 encoder, base64 decoder, image to base64',
-  },
-  'json/templates': {
+  templates: {
     title: 'JSON Templates - Ready-to-Use JSON Examples',
     description:
       'Free JSON templates for common use cases. API templates, configurations, data structures. Copy and customize.',
     keywords: 'json templates, json examples, json presets',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/templates`,
   },
-  'json/convert': {
-    title: 'JSON Convert - JSON to XML YAML CSV',
+  convert: {
+    title: 'JSON Convert - Convert JSON to CSV XML YAML TSV',
     description:
-      'Convert JSON to XML, YAML, CSV, and more. Online JSON converter tool. Free and fast.',
-    keywords: 'json to xml, json to yaml, json converter',
+      'Convert JSON to CSV, TSV, XML, YAML and vice versa. Free online JSON converter tool.',
+    keywords: 'json to csv, json to xml, json to yaml, json converter',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert`,
   },
-  'json/utils': {
-    title: 'JSON Utils - Validate Minify Sort',
+  'convert/csv-to-json': {
+    title: 'CSV to JSON Converter - Convert CSV to JSON Online',
     description:
-      'JSON utilities: validate, minify, prettify, sort keys. Free online JSON tools.',
+      'Convert CSV files to JSON online. Free and fast CSV to JSON converter. No installation required.',
+    keywords: 'csv to json, csv converter, csv to json online',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/csv-to-json`,
+  },
+  'convert/tsv-to-json': {
+    title: 'TSV to JSON Converter - Convert TSV to JSON Online',
+    description:
+      'Convert TSV files to JSON online. Free and fast TSV to JSON converter.',
+    keywords: 'tsv to json, tsv converter, tsv to json online',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/tsv-to-json`,
+  },
+  'convert/json-to-csv': {
+    title: 'JSON to CSV Converter - Convert JSON to CSV Online',
+    description:
+      'Convert JSON to CSV format online. Free and fast JSON to CSV converter. Download as CSV file.',
+    keywords: 'json to csv, json converter, json to csv online',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/json-to-csv`,
+  },
+  'convert/json-to-tsv': {
+    title: 'JSON to TSV Converter - Convert JSON to TSV Online',
+    description:
+      'Convert JSON to TSV format online. Free and fast JSON to TSV converter.',
+    keywords: 'json to tsv, json to tsv converter',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/json-to-tsv`,
+  },
+  'convert/json-to-xml': {
+    title: 'JSON to XML Converter - Convert JSON to XML Online',
+    description:
+      'Convert JSON to XML format online. Free and fast JSON to XML converter.',
+    keywords: 'json to xml, json to xml converter',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/json-to-xml`,
+  },
+  'convert/json-to-yaml': {
+    title: 'JSON to YAML Converter - Convert JSON to YAML Online',
+    description:
+      'Convert JSON to YAML format online. Free and fast JSON to YAML converter.',
+    keywords: 'json to yaml, json to yaml converter',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/convert/json-to-yaml`,
+  },
+  utils: {
+    title: 'JSON Utils - Validate Minify Sort Format',
+    description:
+      'JSON utilities: validate, minify, prettify, sort keys, flatten, unflatten, diff, and query. Free online JSON tools.',
     keywords: 'json validate, json minify, json prettify, json sort',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils`,
   },
-  'password-generator': {
-    title: 'Password Generator - Create Secure Passwords',
+  'utils/format': {
+    title: 'JSON Format - Prettify JSON Online',
     description:
-      'Generate secure passwords online. Custom length, characters, and complexity. Copy to clipboard. Free password generator.',
-    keywords: 'password generator, secure password, random password',
+      'Prettify and format JSON online. Indent and beautify JSON structures. Free JSON formatter tool.',
+    keywords: 'json format, json prettify, json beautify',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/format`,
   },
-  'quick-notes': {
-    title: 'Quick Notes - Free Online Notepad',
+  'utils/minify': {
+    title: 'JSON Minify - Minify JSON Online',
     description:
-      'Free online notepad. Save notes instantly. No login required. Access from any device.',
-    keywords: 'quick notes, online notepad, text notes',
+      'Minify JSON online. Remove whitespace and compress JSON files. Free JSON minifier.',
+    keywords: 'json minify, json compress, minify json',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/minify`,
   },
-  'percentage-calculator': {
-    title: 'Percentage Calculator - Calculate Percentages',
+  'utils/sort': {
+    title: 'JSON Sort - Sort JSON Keys Online',
     description:
-      'Calculate percentages online. Find percentage of a number, percentage change, and more. Free calculator.',
-    keywords: 'percentage calculator, calculate percentage',
+      'Sort JSON keys alphabetically online. Reorder JSON object keys. Free JSON sort tool.',
+    keywords: 'json sort, sort json keys, json order',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/sort`,
   },
-  'currency-converter': {
-    title: 'Currency Converter - Exchange Rates',
+  'utils/validate': {
+    title: 'JSON Validator - Validate JSON Online',
     description:
-      'Convert currencies with live exchange rates. Free currency converter tool.',
-    keywords: 'currency converter, exchange rates',
+      'Validate JSON online. Check JSON syntax and structure. Free JSON validator tool.',
+    keywords: 'json validator, json validate, json check',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/validate`,
   },
-  'unit-converter': {
-    title: 'Unit Converter - Length Weight Temperature',
+  'utils/flatten': {
+    title: 'JSON Flatten - Flatten Nested JSON Online',
     description:
-      'Convert units: length, weight, temperature, and more. Free online unit converter.',
-    keywords: 'unit converter, length converter, weight converter',
+      'Flatten nested JSON objects online. Convert deep JSON structures to flat key-value pairs. Free JSON flatten tool.',
+    keywords: 'json flatten, flatten json, nested json',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/flatten`,
   },
-  'qr-generator': {
-    title: 'QR Code Generator - Create QR Codes Free',
+  'utils/unflatten': {
+    title: 'JSON Unflatten - Unflatten JSON Online',
     description:
-      'Generate QR codes online. Custom colors, size, and error correction. Download as PNG. Free QR generator.',
-    keywords: 'qr code generator, qr generator, create qr',
+      'Unflatten flat key-value JSON back to nested objects. Free JSON unflatten tool.',
+    keywords: 'json unflatten, unflatten json',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/unflatten`,
   },
-  'url-shortener': {
-    title: 'URL Shortener - Shorten Links Free',
+  'utils/diff': {
+    title: 'JSON Diff - Compare JSON Online',
     description:
-      'Shorten URLs online. Free link shortener tool. Track clicks and manage links.',
-    keywords: 'url shortener, link shortener, shorten url',
+      'Compare two JSON documents side-by-side. Find differences between JSON structures. Free JSON diff tool.',
+    keywords: 'json diff, json compare, json difference',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/diff`,
+  },
+  'utils/query': {
+    title: 'JSON Query - Query JSON with JSONPath',
+    description:
+      'Query JSON data using JSONPath expressions. Extract values from complex JSON. Free JSON query tool.',
+    keywords: 'json query, jsonpath, json extract',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/utils/query`,
   },
 };
 

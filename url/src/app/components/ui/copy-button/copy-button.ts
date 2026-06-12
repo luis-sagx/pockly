@@ -8,7 +8,6 @@ import { LanguageService } from '../../../services/language.service';
   standalone: true,
   imports: [FaIconComponent],
   templateUrl: './copy-button.html',
-  styleUrl: './copy-button.css'
 })
 export class CopyButton {
   private library = inject(FaIconLibrary);

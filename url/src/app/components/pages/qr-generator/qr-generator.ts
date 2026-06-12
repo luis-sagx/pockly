@@ -9,7 +9,6 @@ import { LanguageService } from '../../../services/language.service';
   standalone: true,
   imports: [FaIconComponent, InputBox],
   templateUrl: './qr-generator.html',
-  styleUrl: './qr-generator.css',
 })
 export class QrGenerator implements OnDestroy {
   private library = inject(FaIconLibrary);

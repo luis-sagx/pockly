@@ -1,0 +1,5 @@
+# https://pockly-qr.vercel.app/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://pockly-qr.vercel.app/sitemap.xml

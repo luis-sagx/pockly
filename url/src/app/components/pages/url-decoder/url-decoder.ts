@@ -10,7 +10,6 @@ import { LanguageService } from '../../../services/language.service';
   standalone: true,
   imports: [FaIconComponent, InputBox, OutputBox],
   templateUrl: './url-decoder.html',
-  styleUrl: './url-decoder.css',
 })
 export class UrlDecoder {
   private library = inject(FaIconLibrary);

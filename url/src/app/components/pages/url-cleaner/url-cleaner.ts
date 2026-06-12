@@ -32,7 +32,6 @@ const TRACKING_PARAMS = new Set([
   standalone: true,
   imports: [FaIconComponent, InputBox, OutputBox],
   templateUrl: './url-cleaner.html',
-  styleUrl: './url-cleaner.css',
 })
 export class UrlCleaner {
   private library = inject(FaIconLibrary);

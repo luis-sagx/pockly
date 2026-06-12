@@ -16,7 +16,6 @@ import {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './input-box.html',
-  styleUrl: './input-box.css',
 })
 export class InputBox implements AfterViewInit, OnChanges {
   @Input() value: string = '';

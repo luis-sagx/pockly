@@ -9,7 +9,6 @@ import { LanguageService } from '../../../services/language.service';
   standalone: true,
   imports: [FaIconComponent, CopyButton],
   templateUrl: './utm-builder.html',
-  styleUrl: './utm-builder.css',
 })
 export class UtmBuilder {
   private library = inject(FaIconLibrary);

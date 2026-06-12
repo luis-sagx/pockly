@@ -103,6 +103,7 @@ export interface Translations {
   checklist: string;
   addChecklistItem: string;
   noChecklistItems: string;
+  removeItem: string;
   noNotesInColumn: string;
   dragNotesHere: string;
   moveToColumn: string;
@@ -237,6 +238,7 @@ const translations: Record<Language, Translations> = {
     checklist: 'Checklist',
     addChecklistItem: 'Add item...',
     noChecklistItems: 'No items yet',
+    removeItem: 'Remove item',
     noNotesInColumn: 'No notes yet',
     dragNotesHere: 'Drag notes here',
     moveToColumn: 'Move to...',
@@ -370,6 +372,7 @@ const translations: Record<Language, Translations> = {
     checklist: 'Checklist',
     addChecklistItem: 'Agregar ítem...',
     noChecklistItems: 'Sin ítems aún',
+    removeItem: 'Eliminar ítem',
     noNotesInColumn: 'Sin notas aún',
     dragNotesHere: 'Arrastra notas aquí',
     moveToColumn: 'Mover a...',

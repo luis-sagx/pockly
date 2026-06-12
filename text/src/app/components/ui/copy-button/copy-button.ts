@@ -9,6 +9,8 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class CopyButton {
   @Input() textToCopy: string = '';
+  @Input() copyLabel: string = 'Copy';
+  @Input() copiedLabel: string = 'Copied';
 
   copied = signal(false);
 

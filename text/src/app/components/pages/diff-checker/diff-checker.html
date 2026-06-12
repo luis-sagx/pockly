@@ -13,7 +13,7 @@
       [value]="leftText()"
       (valueChange)="leftText.set($event)"
       [placeholder]="t().pasteOriginalText"
-      inputClass="w-full p-4 font-mono text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      inputClass="w-full p-4 font-mono text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
     />
     <app-input-box
       [label]="t().newText"
@@ -22,7 +22,7 @@
       [value]="rightText()"
       (valueChange)="rightText.set($event)"
       [placeholder]="t().pasteNewModifiedText"
-      inputClass="w-full p-4 font-mono text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      inputClass="w-full p-4 font-mono text-sm text-olive-deep placeholder:text-olive-placeholder bg-olive-cream border resize-none border-olive-light rounded-lg focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
     />
   </div>
   @if (error()) {

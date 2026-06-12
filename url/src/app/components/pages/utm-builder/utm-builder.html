@@ -11,7 +11,7 @@
       [value]="baseUrl()"
       (input)="onInputChange('baseUrl', $any($event.target).value)"
       placeholder="https://example.com/landing"
-      class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+      class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
     />
     @if (baseUrl().trim() && !isValidUrl()) {
       <p class="text-sm font-semibold text-red-600">{{ t().invalidUrl }}</p>
@@ -34,7 +34,7 @@
         [value]="utmSource()"
         (input)="onInputChange('utmSource', $any($event.target).value)"
         placeholder="google, facebook, newsletter..."
-        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
       />
     </div>
 
@@ -45,7 +45,7 @@
         [value]="utmMedium()"
         (input)="onInputChange('utmMedium', $any($event.target).value)"
         placeholder="cpc, email, social..."
-        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
       />
     </div>
 
@@ -56,7 +56,7 @@
         [value]="utmCampaign()"
         (input)="onInputChange('utmCampaign', $any($event.target).value)"
         placeholder="spring_sale, product_launch..."
-        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
       />
     </div>
 
@@ -67,7 +67,7 @@
         [value]="utmTerm()"
         (input)="onInputChange('utmTerm', $any($event.target).value)"
         placeholder="running+shoes, keyword..."
-        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
       />
     </div>
 
@@ -78,7 +78,7 @@
         [value]="utmContent()"
         (input)="onInputChange('utmContent', $any($event.target).value)"
         placeholder="hero_banner, sidebar_link..."
-        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="w-full px-4 py-3 bg-[#eeefe9] border border-[#b6b7af] rounded-md text-[#23251d] placeholder:text-[#9ea096] focus:outline-none focus:ring-2 focus:ring-posthog-amber/50"
       />
     </div>
   </div>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { Nav } from './components/layout/nav/nav';
   styleUrl: './app.css',
 })
 export class App {
+  private seo = inject(SeoService);
   protected title = 'Image Tools';
 }

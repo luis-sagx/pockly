@@ -1,0 +1,17 @@
+{
+  "name": "Pockly Calculator",
+  "short_name": "Calculator",
+  "description": "Free online calculators — percentages, currency, units, and more",
+  "theme_color": "#fdfdf8",
+  "background_color": "#fdfdf8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

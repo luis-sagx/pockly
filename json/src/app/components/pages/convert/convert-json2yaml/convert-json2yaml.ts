@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { OutputBox } from '../../../ui/output-box/output-box';
 import { IconComponent } from '../../../ui/icon/icon';
-import { jsonToYaml, getDownloadInfo, downloadFile } from '../convert.service';
+import { jsonToYaml, getDownloadInfo, downloadFile, validateInputSize } from '../convert.service';
 import { LanguageService } from '../../../../services/language.service';
 
 @Component({
@@ -16,16 +16,32 @@ export class ConvertJson2Yaml {
   input = signal('');
   output = signal('');
   error = signal<string | null>(null);
+  processing = signal(false);
 
   t = computed(() => this.languageService.getTranslations());
 
   convert() {
     this.error.set(null);
+    const val = this.input();
+    if (!val.trim()) { this.output.set(''); return; }
+    const sizeErr = validateInputSize(val);
+    if (sizeErr) { this.error.set(sizeErr); return; }
+    this.processing.set(true);
     try {
-      const val = this.input();
-      if (!val.trim()) { this.output.set(''); return; }
-      this.output.set(jsonToYaml(val));
-    } catch (err: any) { this.error.set(err.message); }
+      // Use setTimeout to allow UI to update before heavy computation
+      setTimeout(() => {
+        try {
+          this.output.set(jsonToYaml(val));
+        } catch (err: any) {
+          this.error.set(err.message);
+        } finally {
+          this.processing.set(false);
+        }
+      }, 50);
+    } catch (err: any) {
+      this.error.set(err.message);
+      this.processing.set(false);
+    }
   }
 
   download() {

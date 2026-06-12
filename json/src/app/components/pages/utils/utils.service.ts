@@ -10,6 +10,16 @@
  *    and "changed" sections
  */
 
+/** Maximum input size (500 kB) to prevent main-thread freezes. */
+export const MAX_INPUT_SIZE = 500 * 1024;
+
+export function validateInputSize(input: string): string | null {
+  if (input.length > MAX_INPUT_SIZE) {
+    return `Input exceeds ${MAX_INPUT_SIZE / 1024} kB limit. Please reduce the size.`;
+  }
+  return null;
+}
+
 export function formatJson(jsonStr: string): string {
   return JSON.stringify(JSON.parse(jsonStr), null, 2);
 }

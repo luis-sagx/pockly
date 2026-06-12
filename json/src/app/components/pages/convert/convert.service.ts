@@ -3,6 +3,16 @@
  * All methods are pure functions — no Angular deps needed.
  */
 
+/** Maximum input size (500 kB) to prevent main-thread freezes. */
+export const MAX_INPUT_SIZE = 500 * 1024;
+
+export function validateInputSize(input: string): string | null {
+  if (input.length > MAX_INPUT_SIZE) {
+    return `Input exceeds ${MAX_INPUT_SIZE / 1024} kB limit. Please reduce the size.`;
+  }
+  return null;
+}
+
 export function csvToJson(csv: string, delimiter: string): string {
   const lines = csv.trim().split('\n');
   if (!lines.length) return '[]';
@@ -106,8 +116,17 @@ function toYaml(obj: any, indent: number): string {
   if (typeof obj === 'boolean') return obj ? 'true' : 'false';
   if (typeof obj === 'number') return String(obj);
   if (typeof obj === 'string') {
-    if (obj.includes('\n') || obj.includes(':') || obj.includes('#'))
-      return `"${obj.replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`;
+    // Quote strings that contain YAML-significant characters or look like special values
+    if (
+      obj.includes('\n') ||
+      obj.includes(':') ||
+      obj.includes('#') ||
+      /^[\-\[\]\{\}\*\&\!\|>%@`'"]/.test(obj) ||
+      /^\s/.test(obj) ||
+      /^(true|false|yes|no|on|off|null|~)$/i.test(obj) ||
+      /^[0-9.eE+\-]+$/.test(obj)
+    )
+      return `"${obj.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`;
     return obj;
   }
   if (Array.isArray(obj)) {

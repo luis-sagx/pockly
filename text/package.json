@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:text": "node dist/text/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "packageManager": "pnpm@8.6.0",
@@ -27,7 +26,6 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@supabase/supabase-js": "^2.107.0",
     "autoprefixer": "^10.5.0",
-    "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -35,7 +33,6 @@
     "@angular/build": "^21.2.7",
     "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "^21.2.0",
-    "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
     "jsdom": "^28.0.0",
     "postcss": "^8.5.10",

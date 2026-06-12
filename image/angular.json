@@ -69,19 +69,6 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
-        },
-        "server": {
-          "builder": "@angular/build:server",
-          "options": {
-            "main": "src/main.server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "outputPath": "dist/image/server"
-          },
-          "configurations": {
-            "production": {},
-            "development": {}
-          },
-          "defaultConfiguration": "production"
         }
       }
     }

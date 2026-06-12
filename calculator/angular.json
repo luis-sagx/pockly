@@ -57,9 +57,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": {
-            "poll": 2000
-          },
+          "options": {},
           "configurations": {
             "production": {
               "buildTarget": "calculator:build:production"

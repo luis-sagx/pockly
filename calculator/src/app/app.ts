@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -19,6 +19,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { Nav } from './components/layout/nav/nav';
   styleUrl: './app.css',
 })
 export class App {
+  private seo = inject(SeoService);
   protected title = 'Calculator Tools';
 
   constructor(library: FaIconLibrary) {

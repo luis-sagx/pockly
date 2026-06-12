@@ -1,0 +1,5 @@
+# https://calculator.pockly.vercel.app/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://calculator.pockly.vercel.app/sitemap.xml

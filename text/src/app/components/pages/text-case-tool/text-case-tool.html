@@ -16,7 +16,7 @@
   />
   @if (hasError) {
     <p class="flex items-center gap-2 text-sm font-semibold text-red-600">
-      <i class="fas fa-exclamation-triangle"></i> {{ t().pleaseEnterValidText }}
+      <fa-icon [icon]="faExclamationTriangle"></fa-icon> {{ t().pleaseEnterValidText }}
     </p>
   }
   <div class="flex flex-wrap gap-2">
@@ -24,25 +24,25 @@
       (click)="toUpper()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
     >
-      <i class="fas fa-arrow-up-a-z"></i> {{ t().uppercase }}
+      <fa-icon [icon]="faArrowUpAZ"></fa-icon> {{ t().uppercase }}
     </button>
     <button
       (click)="toLower()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
     >
-      <i class="fas fa-arrow-down-a-z"></i> {{ t().lowercase }}
+      <fa-icon [icon]="faArrowDownAZ"></fa-icon> {{ t().lowercase }}
     </button>
     <button
       (click)="toCapital()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
     >
-      <i class="fas fa-a"></i> {{ t().capitalize }}
+      <fa-icon [icon]="faA"></fa-icon> {{ t().capitalize }}
     </button>
     <button
       (click)="clear()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
-      <i class="fas fa-trash"></i> {{ t().clear }}
+      <fa-icon [icon]="faTrash"></fa-icon> {{ t().clear }}
     </button>
   </div>
   <div class="flex flex-col gap-2">

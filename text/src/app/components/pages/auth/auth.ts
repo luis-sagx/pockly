@@ -1,17 +1,22 @@
 import { Component, inject, computed, signal, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { SupabaseService } from '../../../services/supabase.service';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, FaIconComponent],
   templateUrl: './auth.html',
   styleUrl: './auth.css',
 })
 export class Auth implements OnInit {
+  readonly faSignInAlt = faSignInAlt;
+  readonly faUserPlus = faUserPlus;
+
   private supabaseService = inject(SupabaseService);
   private languageService = inject(LanguageService);
   private router = inject(Router);

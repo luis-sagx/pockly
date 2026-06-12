@@ -9,7 +9,7 @@
           class="p-1.5 text-olive-ink/40 hover:text-olive-ink rounded-lg hover:bg-olive-cream transition"
           [attr.aria-label]="t().cancel"
         >
-          <i class="fas fa-times"></i>
+          <fa-icon [icon]="faTimes"></fa-icon>
         </button>
       </div>
 
@@ -94,7 +94,7 @@
                   class="opacity-0 group-hover:opacity-100 p-1 text-olive-ink/30 hover:text-red-500 rounded transition-opacity flex-shrink-0"
                   aria-label="Remove item"
                 >
-                  <i class="fas fa-times text-xs"></i>
+                  <fa-icon [icon]="faTimes" class="text-xs"></fa-icon>
                 </button>
               </div>
             } @empty {
@@ -117,7 +117,7 @@
               [disabled]="!newItemText().trim()"
               class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white bg-olive-deep rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition"
             >
-              <i class="fas fa-plus"></i>
+              <fa-icon [icon]="faPlus"></fa-icon>
             </button>
           </div>
         </div>
@@ -137,7 +137,7 @@
             [disabled]="!editTitle().trim()"
             class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-olive-deep rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
-            <i class="fas fa-save text-xs"></i> {{ t().saved }}
+            <fa-icon [icon]="faSave" class="text-xs"></fa-icon> {{ t().saved }}
           </button>
         </div>
       </div>

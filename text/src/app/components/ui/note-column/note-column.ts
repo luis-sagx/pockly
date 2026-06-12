@@ -4,6 +4,8 @@ import {
   CdkDragDrop,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faInbox } from '@fortawesome/free-solid-svg-icons';
 import { Priority, Note } from '../../pages/quick-notes/note.model';
 import { NoteCard } from '../note-card/note-card';
 import { LanguageService } from '../../../services/language.service';
@@ -11,11 +13,13 @@ import { LanguageService } from '../../../services/language.service';
 @Component({
   selector: 'app-note-column',
   standalone: true,
-  imports: [DragDropModule, NoteCard],
+  imports: [DragDropModule, NoteCard, FaIconComponent],
   templateUrl: './note-column.html',
   styleUrl: './note-column.css',
 })
 export class NoteColumn {
+  readonly faInbox = faInbox;
+
   @Input({ required: true }) priority!: Priority;
   @Input({ required: true }) notes!: Note[];
 

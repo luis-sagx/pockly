@@ -2,6 +2,8 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputBox } from '../../ui/input-box/input-box';
 import { LanguageService } from '../../../services/language.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faCodeCompare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface DiffLine {
   type: 'added' | 'removed' | 'unchanged';
@@ -11,10 +13,13 @@ interface DiffLine {
 @Component({
   selector: 'app-diff-checker',
   standalone: true,
-  imports: [CommonModule, InputBox],
+  imports: [CommonModule, InputBox, FaIconComponent],
   templateUrl: './diff-checker.html',
 })
 export class DiffChecker {
+  readonly faCodeCompare = faCodeCompare;
+  readonly faTrash = faTrash;
+
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations());

@@ -1,15 +1,20 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CopyButton } from '../../ui/copy-button/copy-button';
 import { LanguageService } from '../../../services/language.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faKey, faSync } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-password-generator',
   standalone: true,
-  imports: [CopyButton],
+  imports: [CopyButton, FaIconComponent],
   templateUrl: './password-generator.html',
   styleUrl: './password-generator.css',
 })
 export class PasswordGenerator {
+  readonly faKey = faKey;
+  readonly faSync = faSync;
+
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations());

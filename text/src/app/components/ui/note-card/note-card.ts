@@ -1,16 +1,23 @@
 import { Component, Input, Output, EventEmitter, inject, computed, signal } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faCheckSquare, faCheck, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Note } from '../../pages/quick-notes/note.model';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-note-card',
   standalone: true,
-  imports: [DragDropModule],
+  imports: [DragDropModule, FaIconComponent],
   templateUrl: './note-card.html',
   styleUrl: './note-card.css',
 })
 export class NoteCard {
+  readonly faCheckSquare = faCheckSquare;
+  readonly faCheck = faCheck;
+  readonly faTimes = faTimes;
+  readonly faTrash = faTrash;
+
   @Input({ required: true }) note!: Note;
   @Output() clicked = new EventEmitter<string>();
   @Output() deleted = new EventEmitter<string>();

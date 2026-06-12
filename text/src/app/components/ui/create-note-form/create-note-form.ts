@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, inject, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faArrowDown, faMinus, faArrowUp, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Priority } from '../../pages/quick-notes/note.model';
 import { LanguageService } from '../../../services/language.service';
 
@@ -14,11 +16,17 @@ export interface CreateNoteData {
 @Component({
   selector: 'app-create-note-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, FaIconComponent],
   templateUrl: './create-note-form.html',
   styleUrl: './create-note-form.css',
 })
 export class CreateNoteForm {
+  readonly faArrowDown = faArrowDown;
+  readonly faMinus = faMinus;
+  readonly faArrowUp = faArrowUp;
+  readonly faPlus = faPlus;
+  readonly faTimes = faTimes;
+
   @Output() created = new EventEmitter<CreateNoteData>();
   @Output() cancelled = new EventEmitter<void>();
 

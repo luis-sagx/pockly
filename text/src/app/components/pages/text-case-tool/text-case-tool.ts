@@ -2,15 +2,29 @@ import { Component, inject, computed } from '@angular/core';
 import { OutputBox } from '../../ui/output-box/output-box';
 import { InputBox } from '../../ui/input-box/input-box';
 import { LanguageService } from '../../../services/language.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import {
+  faExclamationTriangle,
+  faArrowUpAZ,
+  faArrowDownAZ,
+  faA,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-text-case-tool',
   standalone: true,
-  imports: [OutputBox, InputBox],
+  imports: [OutputBox, InputBox, FaIconComponent],
   templateUrl: './text-case-tool.html',
   styleUrl: './text-case-tool.css',
 })
 export class TextCaseTool {
+  readonly faExclamationTriangle = faExclamationTriangle;
+  readonly faArrowUpAZ = faArrowUpAZ;
+  readonly faArrowDownAZ = faArrowDownAZ;
+  readonly faA = faA;
+  readonly faTrash = faTrash;
+
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations());

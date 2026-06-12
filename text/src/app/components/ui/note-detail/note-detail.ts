@@ -13,6 +13,8 @@ import {
   AfterViewChecked,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faTimes, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Note, ChecklistItem } from '../../pages/quick-notes/note.model';
 import { generateId } from '../../pages/quick-notes/note.model';
 import { LanguageService } from '../../../services/language.service';
@@ -20,11 +22,15 @@ import { LanguageService } from '../../../services/language.service';
 @Component({
   selector: 'app-note-detail',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, FaIconComponent],
   templateUrl: './note-detail.html',
   styleUrl: './note-detail.css',
 })
 export class NoteDetail implements OnChanges {
+  readonly faTimes = faTimes;
+  readonly faPlus = faPlus;
+  readonly faSave = faSave;
+
   @Input() note: Note | null = null;
   @Input() open = false;
   @Output() saved = new EventEmitter<Note>();

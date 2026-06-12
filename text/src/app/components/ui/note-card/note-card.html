@@ -33,7 +33,7 @@
   <!-- Checklist badge -->
   @if (checklistBadge) {
     <div class="flex items-center gap-1 mt-2">
-      <i class="fas fa-check-square text-xs text-olive-ink/40"></i>
+      <fa-icon [icon]="faCheckSquare" class="text-xs text-olive-ink/40"></fa-icon>
       <span class="text-xs text-olive-ink/50">{{ checklistBadge }}</span>
     </div>
   }
@@ -50,14 +50,14 @@
         class="px-2 py-1 text-[11px] font-semibold text-white bg-red-600 hover:bg-red-700 rounded transition"
         [attr.aria-label]="t().deleteNote"
       >
-        <i class="fas fa-check"></i>
+        <fa-icon [icon]="faCheck"></fa-icon>
       </button>
       <button
         (click)="cancelDelete($event)"
         class="px-2 py-1 text-[11px] font-semibold text-olive-ink bg-olive-lightSage hover:bg-olive-cream rounded transition"
         [attr.aria-label]="t().cancel"
       >
-        <i class="fas fa-times"></i>
+        <fa-icon [icon]="faTimes"></fa-icon>
       </button>
     </div>
   } @else {
@@ -66,7 +66,7 @@
       (click)="onDelete($event)"
       [attr.aria-label]="t().deleteNote"
     >
-      <i class="fas fa-trash text-xs"></i>
+      <fa-icon [icon]="faTrash" class="text-xs"></fa-icon>
     </button>
   }
 </div>

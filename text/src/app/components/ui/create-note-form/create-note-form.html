@@ -60,7 +60,7 @@
         [class.text-olive-ink/60]="priority() !== 'low'"
         [class.hover:border-green-300]="priority() !== 'low'"
       >
-        <i class="fas fa-arrow-down mr-1"></i>
+        <fa-icon [icon]="faArrowDown" class="mr-1"></fa-icon>
         {{ t().priorityLow }}
       </button>
 
@@ -75,7 +75,7 @@
         [class.text-olive-ink/60]="priority() !== 'medium'"
         [class.hover:border-amber-300]="priority() !== 'medium'"
       >
-        <i class="fas fa-minus mr-1"></i>
+        <fa-icon [icon]="faMinus" class="mr-1"></fa-icon>
         {{ t().priorityMedium }}
       </button>
 
@@ -90,7 +90,7 @@
         [class.text-olive-ink/60]="priority() !== 'high'"
         [class.hover:border-red-300]="priority() !== 'high'"
       >
-        <i class="fas fa-arrow-up mr-1"></i>
+        <fa-icon [icon]="faArrowUp" class="mr-1"></fa-icon>
         {{ t().priorityHigh }}
       </button>
     </div>
@@ -104,14 +104,14 @@
       [disabled]="!title().trim()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-olive-deep rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition"
     >
-      <i class="fas fa-plus text-xs"></i> {{ t().addNote }}
+      <fa-icon [icon]="faPlus" class="text-xs"></fa-icon> {{ t().addNote }}
     </button>
     <button
       type="button"
       (click)="cancel()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream transition"
     >
-      <i class="fas fa-times text-xs"></i> {{ t().cancel }}
+      <fa-icon [icon]="faTimes" class="text-xs"></fa-icon> {{ t().cancel }}
     </button>
   </div>
 </div>

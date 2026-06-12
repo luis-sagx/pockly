@@ -30,13 +30,13 @@
       (click)="computeDiff()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-olive-deep rounded-lg hover:opacity-80"
     >
-      <i class="fas fa-code-compare"></i> {{ t().compareBtn }}
+      <fa-icon [icon]="faCodeCompare"></fa-icon> {{ t().compareBtn }}
     </button>
     <button
       (click)="clear()"
       class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-olive-ink transition bg-olive-lightSage rounded-lg hover:bg-olive-cream hover:text-posthog-orange"
     >
-      <i class="fas fa-trash"></i> {{ t().clear }}
+      <fa-icon [icon]="faTrash"></fa-icon> {{ t().clear }}
     </button>
   </div>
   @if (hasDiff()) {

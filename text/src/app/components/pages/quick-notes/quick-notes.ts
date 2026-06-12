@@ -10,6 +10,8 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { LanguageService } from '../../../services/language.service';
 import { SupabaseService } from '../../../services/supabase.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -31,11 +33,13 @@ const DEBOUNCE_MS = 500;
 @Component({
   selector: 'app-quick-notes',
   standalone: true,
-  imports: [DragDropModule, NoteColumn, CreateNoteForm, NoteDetail],
+  imports: [DragDropModule, NoteColumn, CreateNoteForm, NoteDetail, FaIconComponent],
   templateUrl: './quick-notes.html',
   styleUrl: './quick-notes.css',
 })
 export class QuickNotes implements OnInit, OnDestroy {
+  readonly faPlus = faPlus;
+
   private languageService = inject(LanguageService);
   private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;

@@ -26,11 +26,6 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "externalDependencies": [
-              "@imgly/background-removal",
-              "onnxruntime-web",
-              "onnxruntime-web/webgpu"
             ]
           },
           "configurations": {

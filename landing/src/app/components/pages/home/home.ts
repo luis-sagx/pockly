@@ -12,7 +12,6 @@ import {
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
-  styleUrl: './home.css',
 })
 export class Home implements OnInit {
   private seo = inject(SeoService);

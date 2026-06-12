@@ -1,22 +1,6 @@
 {
+  "framework": "angular",
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist/pockly/browser",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Permissions-Policy",
-          "value": ""
-        }
-      ]
-    }
-  ]
+  "installCommand": "pnpm install --frozen-lockfile"
 }

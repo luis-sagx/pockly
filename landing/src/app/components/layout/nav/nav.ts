@@ -7,7 +7,6 @@ import { LanguageService } from '../../../services/language.service';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './nav.html',
-  styleUrl: './nav.css',
 })
 export class Nav {
   private languageService = inject(LanguageService);

@@ -12,7 +12,6 @@ import {
   selector: 'app-footer',
   standalone: true,
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
 })
 export class Footer {
   private languageService = inject(LanguageService);

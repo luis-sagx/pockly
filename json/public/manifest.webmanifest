@@ -1,0 +1,17 @@
+{
+  "name": "Pockly JSON Tools",
+  "short_name": "JSON Tools",
+  "description": "Free online JSON utilities — format, validate, convert, and more",
+  "theme_color": "#fdfdf8",
+  "background_color": "#fdfdf8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -60,7 +60,7 @@ export class BackgroundRemover implements OnDestroy {
 
   async removeBackground() {
     if (!this.originalFile) {
-      this.error.set('Please select an image first.');
+      this.error.set(this.languageService.getCurrentLanguage() === 'es' ? 'Por favor selecciona una imagen primero.' : 'Please select an image first.');
       return;
     }
     this.loading.set(true);

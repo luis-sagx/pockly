@@ -1,12 +1,13 @@
 import { Component, inject, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { LanguageService } from '../../../services/language.service';
 import { SupabaseService } from '../../../services/supabase.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FaIconComponent],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })

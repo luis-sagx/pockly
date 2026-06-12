@@ -14,6 +14,10 @@ import {
   faCodeBranch,
   faKey,
   faTh,
+  faSignOutAlt,
+  faUserCircle,
+  faCopy,
+  faCheck,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -34,6 +38,10 @@ this.faLib.addIcons(
       faCodeBranch,
       faKey,
       faTh,
+      faSignOutAlt,
+      faUserCircle,
+      faCopy,
+      faCheck,
     );
   }
 }

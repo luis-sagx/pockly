@@ -1,8 +1,9 @@
 import { Component, Input, signal } from '@angular/core';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-copy-button',
-  imports: [],
+  imports: [FaIconComponent],
   templateUrl: './copy-button.html',
   styleUrl: './copy-button.css'
 })

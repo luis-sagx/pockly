@@ -56,14 +56,14 @@
             <span class="max-w-[120px] truncate text-xs">
               {{ displayName() }}
             </span>
-            <i class="fas fa-sign-out-alt text-xs"></i>
+            <fa-icon [icon]="['fas', 'sign-out-alt']" class="text-xs"></fa-icon>
           </button>
         } @else {
           <a
             routerLink="/sign-in"
             class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
           >
-            <i class="fas fa-user-circle"></i>
+            <fa-icon [icon]="['fas', 'user-circle']"></fa-icon>
             {{ t().signIn }}
           </a>
         }

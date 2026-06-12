@@ -3,8 +3,8 @@
   class="flex items-center gap-1 px-3 py-1 text-sm font-semibold transition border rounded-lg text-posthog-orange bg-posthog-orange/10 hover:bg-posthog-orange/20 border-posthog-orange/30"
 >
   @if (!copied()) {
-  <span><i class="fa-solid fa-copy text-posthog-orange"></i> Copy</span>
+  <span><fa-icon [icon]="['fas', 'copy']" class="text-posthog-orange"></fa-icon> Copy</span>
   } @else {
-  <span><i class="fa-solid fa-check text-posthog-orange"></i> Copied</span>
+  <span><fa-icon [icon]="['fas', 'check']" class="text-posthog-orange"></fa-icon> Copied</span>
   }
 </button>

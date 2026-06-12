@@ -18,6 +18,8 @@
         <button
           (click)="openDropdown() === 'convert' ? openDropdown.set(null) : openDropdownMenu('convert')"
           class="flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          [attr.aria-haspopup]="true"
+          [attr.aria-expanded]="openDropdown() === 'convert'"
         >
           {{ t().navConvert }}
           <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'convert'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,8 +32,8 @@
             (mouseenter)="cancelCloseTimer()"
             (mouseleave)="scheduleClose()"
           >
-            <div class="w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a routerLink="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
+            <div class="w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden" role="menu">
+              <a role="menuitem" routerLink="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
               <a routerLink="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
               <a routerLink="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
               <a routerLink="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
@@ -47,6 +49,8 @@
         <button
           (click)="openDropdown() === 'utils' ? openDropdown.set(null) : openDropdownMenu('utils')"
           class="flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
+          [attr.aria-haspopup]="true"
+          [attr.aria-expanded]="openDropdown() === 'utils'"
         >
           {{ t().navUtils }}
           <svg class="w-3 h-3 ml-0.5 transition-transform" [class.rotate-180]="openDropdown() === 'utils'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,8 +63,8 @@
             (mouseenter)="cancelCloseTimer()"
             (mouseleave)="scheduleClose()"
           >
-            <div class="w-40 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a routerLink="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFormat }}</a>
+            <div class="w-40 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden" role="menu">
+              <a role="menuitem" routerLink="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFormat }}</a>
               <a routerLink="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navMinify }}</a>
               <a routerLink="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navSortKeys }}</a>
               <a routerLink="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navValidate }}</a>
@@ -78,7 +82,8 @@
     <button
       (click)="toggleMobileMenu()"
       class="md:hidden p-2 rounded-lg text-olive-ink hover:bg-olive-cream transition"
-      aria-label="Toggle menu"
+      [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+      [attr.aria-expanded]="mobileMenuOpen()"
     >
       @if (!mobileMenuOpen()) {
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

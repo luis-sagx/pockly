@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 export interface PageMeta {
@@ -177,8 +178,11 @@ export class SeoService {
   private title = inject(Title);
   private meta = inject(Meta);
   private router = inject(Router);
+  private document = inject(DOCUMENT);
 
   constructor() {
+    this.updateFromRoute();
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.updateFromRoute());
@@ -222,7 +226,19 @@ export class SeoService {
     }
 
     if (config.canonicalUrl) {
-      this.meta.updateTag({ rel: 'canonical', content: config.canonicalUrl });
+      // Remove stale <meta rel="canonical"> from old implementation
+      const staleMetaCanonical = this.document.head.querySelector('meta[rel="canonical"]');
+      if (staleMetaCanonical) staleMetaCanonical.remove();
+
+      const existingLink = this.document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (existingLink) {
+        existingLink.href = config.canonicalUrl;
+      } else {
+        const link = this.document.createElement('link');
+        link.rel = 'canonical';
+        link.href = config.canonicalUrl;
+        this.document.head.appendChild(link);
+      }
     }
   }
 }

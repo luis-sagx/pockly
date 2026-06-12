@@ -5,7 +5,14 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { LanguageService } from '../../../services/language.service';
 
 interface Rates { [key: string]: number; }
+interface CachedRates {
+  rates: Rates;
+  fetchedAt: number; // epoch ms
+  lastUpdated: string;
+}
 const API_URL = 'https://open.er-api.com/v6/latest/USD';
+const CACHE_KEY = 'currency-converter-rates';
+const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
 const DEBOUNCE_MS = 300;
 const COMMON_CURRENCIES = [
   { code: 'USD', name: 'US Dollar', country: 'United States' },
@@ -46,7 +53,18 @@ export class CurrencyConverter implements OnInit, OnDestroy {
   error = signal('');
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
-  async ngOnInit(): Promise<void> { await this.fetchRates(); }
+  async ngOnInit(): Promise<void> {
+    // Try cache first
+    const cached = this.readCache();
+    if (cached) {
+      this.rates.set(cached.rates);
+      this.lastUpdated.set(cached.lastUpdated);
+      this.calculate();
+      return;
+    }
+    await this.fetchRates();
+  }
+
   ngOnDestroy(): void { if (this.debounceTimer) clearTimeout(this.debounceTimer); }
 
   async fetchRates(): Promise<void> {
@@ -58,8 +76,12 @@ export class CurrencyConverter implements OnInit, OnDestroy {
       if (!response.ok) throw new Error('Failed to fetch rates');
       const data = await response.json();
       const rateMap: Rates = { USD: 1, ...data.rates };
+      const updateDate = data.time_last_update_utc
+        ? new Date(data.time_last_update_utc).toLocaleDateString()
+        : '';
       this.rates.set(rateMap);
-      if (data.time_last_update_utc) this.lastUpdated.set(new Date(data.time_last_update_utc).toLocaleDateString());
+      this.lastUpdated.set(updateDate);
+      this.writeCache(rateMap, updateDate);
       this.calculate();
     } catch (e) { this.error.set(this.t().failedToLoadRates); }
     finally { this.loading.set(false); }
@@ -78,4 +100,28 @@ export class CurrencyConverter implements OnInit, OnDestroy {
   }
 
   swap(): void { const from = this.fromCurrency(); const to = this.toCurrency(); this.fromCurrency.set(to); this.toCurrency.set(from); this.calculate(); }
+
+  private readCache(): CachedRates | null {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const cache: CachedRates = JSON.parse(raw);
+      if (Date.now() - cache.fetchedAt > CACHE_TTL_MS) {
+        localStorage.removeItem(CACHE_KEY);
+        return null;
+      }
+      return cache;
+    } catch {
+      return null;
+    }
+  }
+
+  private writeCache(rates: Rates, lastUpdated: string): void {
+    try {
+      const cache: CachedRates = { rates, fetchedAt: Date.now(), lastUpdated };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+    } catch {
+      // localStorage may be full or unavailable
+    }
+  }
 }

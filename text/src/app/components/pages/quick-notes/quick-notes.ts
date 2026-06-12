@@ -40,6 +40,7 @@ export class QuickNotes implements OnInit, OnDestroy {
   private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;
   t = computed(() => this.languageService.getTranslations());
+  syncError = this.supabaseService.syncError;
 
   notes = signal<Note[]>([]);
   activeNote = signal<Note | null>(null);

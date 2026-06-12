@@ -14,6 +14,7 @@ export class SupabaseService {
   user = signal<User | null>(null);
   session = signal<Session | null>(null);
   isLoggedIn = computed(() => !!this.session());
+  syncError = signal('');
   displayName = computed(() => {
     const u = this.user();
     if (!u) return '';
@@ -100,9 +101,11 @@ export class SupabaseService {
 
     if (error) {
       console.warn('Failed to fetch notes from Supabase:', error.message);
+      this.syncError.set('Sync failed, notes stored locally');
       return [];
     }
 
+    this.syncError.set('');
     return (data || []).map(this.mapRowToNote);
   }
 
@@ -123,8 +126,10 @@ export class SupabaseService {
 
     if (error) {
       console.warn('Failed to create note in Supabase:', error.message);
+      this.syncError.set('Sync failed, notes stored locally');
       return false;
     }
+    this.syncError.set('');
     return true;
   }
 
@@ -145,8 +150,10 @@ export class SupabaseService {
 
     if (error) {
       console.warn('Failed to update note in Supabase:', error.message);
+      this.syncError.set('Sync failed, notes stored locally');
       return false;
     }
+    this.syncError.set('');
     return true;
   }
 
@@ -157,8 +164,10 @@ export class SupabaseService {
 
     if (error) {
       console.warn('Failed to delete note from Supabase:', error.message);
+      this.syncError.set('Sync failed, notes stored locally');
       return false;
     }
+    this.syncError.set('');
     return true;
   }
 

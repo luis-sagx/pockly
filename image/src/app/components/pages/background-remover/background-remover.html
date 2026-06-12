@@ -43,6 +43,9 @@
           >
             <fa-icon [icon]="['fas', 'spinner']" class="spinner fa-spin"></fa-icon
             ><span class="text-sm">{{ t().removing }}</span>
+            @if (progressMessage()) {
+              <span class="text-xs text-olive-placeholder">{{ progressMessage() }}</span>
+            }
           </div>
         } @else {
           <div

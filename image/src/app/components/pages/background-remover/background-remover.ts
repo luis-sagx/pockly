@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faDownload,
@@ -18,7 +18,7 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
   templateUrl: './background-remover.html',
   styleUrl: './background-remover.css',
 })
-export class BackgroundRemover {
+export class BackgroundRemover implements OnDestroy {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations());
 
@@ -35,6 +35,7 @@ export class BackgroundRemover {
   error = signal('');
   resultBlob: Blob | null = null;
   private originalFile: File | null = null;
+  private resultObjectUrl: string | null = null;
 
   onFilesSelected(files: File[]) {
     const file = files[0];
@@ -73,7 +74,10 @@ export class BackgroundRemover {
         output: { format: 'image/png', quality: 0.9 },
       });
       this.resultBlob = resultBlob;
+      // Revoke previous object URL before creating a new one
+      this.revokeObjectUrl();
       const url = URL.createObjectURL(resultBlob);
+      this.resultObjectUrl = url;
       this.resultDataUrl.set(url);
       this.progressMessage.set('');
     } catch (e: any) {
@@ -93,12 +97,25 @@ export class BackgroundRemover {
     a.click();
     URL.revokeObjectURL(a.href);
   }
+
   clear() {
+    this.revokeObjectUrl();
     this.originalPreview.set('');
     this.resultDataUrl.set('');
     this.originalFile = null;
     this.resultBlob = null;
     this.error.set('');
     this.progressMessage.set('');
+  }
+
+  ngOnDestroy() {
+    this.revokeObjectUrl();
+  }
+
+  private revokeObjectUrl() {
+    if (this.resultObjectUrl) {
+      URL.revokeObjectURL(this.resultObjectUrl);
+      this.resultObjectUrl = null;
+    }
   }
 }

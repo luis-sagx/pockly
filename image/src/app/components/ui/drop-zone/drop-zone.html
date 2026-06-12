@@ -28,3 +28,6 @@
     (change)="onFileSelected($event)"
   />
 </label>
+@if (error()) {
+  <p class="mt-2 text-sm font-semibold text-red-600">{{ error() }}</p>
+}

@@ -12,9 +12,12 @@ export class DropZone {
   @Input() subText: string = 'or click to browse (PNG, JPG, WEBP)';
   @Input() accept: string = 'image/*';
   @Input() multiple: boolean = false;
+  @Input() maxFileSize: number = 50 * 1024 * 1024; // 50 MB default
+  @Input() maxFileSizeError: string = 'File is too large. Maximum size is 50 MB.';
   @Output() fileSelected = new EventEmitter<File[]>();
 
   isDragOver = signal(false);
+  error = signal('');
 
   onDrop(event: DragEvent): void {
     event.preventDefault();
@@ -40,10 +43,17 @@ export class DropZone {
   }
 
   private emitFiles(files: File[]): void {
-    const validFiles = this.multiple
-      ? files.filter((file) => this.isAcceptedFile(file))
-      : files.filter((file) => this.isAcceptedFile(file)).slice(0, 1);
-    if (validFiles.length) this.fileSelected.emit(validFiles);
+    this.error.set('');
+    const validFiles = files.filter((file) => {
+      if (!this.isAcceptedFile(file)) return false;
+      if (file.size > this.maxFileSize) {
+        this.error.set(this.maxFileSizeError);
+        return false;
+      }
+      return true;
+    });
+    const selected = this.multiple ? validFiles : validFiles.slice(0, 1);
+    if (selected.length) this.fileSelected.emit(selected);
   }
 
   private isAcceptedFile(file: File): boolean {

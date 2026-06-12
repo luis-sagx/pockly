@@ -1,0 +1,8 @@
+packages:
+  - 'packages/*'
+  - 'landing'
+  - 'text'
+  - 'json'
+  - 'image'
+  - 'calculator'
+  - 'url'

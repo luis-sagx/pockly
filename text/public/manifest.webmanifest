@@ -1,0 +1,17 @@
+{
+  "name": "Pockly Text Tools",
+  "short_name": "Text Tools",
+  "description": "Free online text utilities — word counter, diff checker, password generator, and quick notes",
+  "theme_color": "#fdfdf8",
+  "background_color": "#fdfdf8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
+import { SeoService } from './services/seo.service';
 
 // Import icons
 import {
@@ -27,6 +28,7 @@ import {
   styleUrl: './app.css',
 })
 export class App {
+  private seo = inject(SeoService);
   private faLib = inject(FaIconLibrary);
 
   constructor() {

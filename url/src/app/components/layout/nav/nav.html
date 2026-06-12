@@ -1,28 +1,28 @@
 <nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
   <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/">
+    <a class="flex items-center gap-3 group" routerLink="/">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
     <!-- Nav Links a la derecha -->
     <div class="flex items-center gap-1">
-      <a href="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navHome }}
       </a>
-      <a href="/qr-generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/qr-generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navQrGenerator }}
       </a>
-      <a href="/url-encoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-encoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlEncoder }}
       </a>
-      <a href="/url-decoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-decoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlDecoder }}
       </a>
-      <a href="/utm-builder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/utm-builder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUtmBuilder }}
       </a>
-      <a href="/url-cleaner" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-cleaner" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlCleaner }}
       </a>
     </div>

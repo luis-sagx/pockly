@@ -1,17 +1,12 @@
 import { Routes } from '@angular/router';
 import { Home } from './components/pages/home/home';
-import { QrGenerator } from './components/pages/qr-generator/qr-generator';
-import { UrlEncoder } from './components/pages/url-encoder/url-encoder';
-import { UrlDecoder } from './components/pages/url-decoder/url-decoder';
-import { UtmBuilder } from './components/pages/utm-builder/utm-builder';
-import { UrlCleaner } from './components/pages/url-cleaner/url-cleaner';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'qr-generator', component: QrGenerator },
-  { path: 'url-encoder', component: UrlEncoder },
-  { path: 'url-decoder', component: UrlDecoder },
-  { path: 'utm-builder', component: UtmBuilder },
-  { path: 'url-cleaner', component: UrlCleaner },
+  { path: 'qr-generator', loadComponent: () => import('./components/pages/qr-generator/qr-generator').then(m => m.QrGenerator) },
+  { path: 'url-encoder', loadComponent: () => import('./components/pages/url-encoder/url-encoder').then(m => m.UrlEncoder) },
+  { path: 'url-decoder', loadComponent: () => import('./components/pages/url-decoder/url-decoder').then(m => m.UrlDecoder) },
+  { path: 'utm-builder', loadComponent: () => import('./components/pages/utm-builder/utm-builder').then(m => m.UtmBuilder) },
+  { path: 'url-cleaner', loadComponent: () => import('./components/pages/url-cleaner/url-cleaner').then(m => m.UrlCleaner) },
   { path: '**', redirectTo: '/' },
 ];

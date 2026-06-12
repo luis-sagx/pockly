@@ -3,38 +3,38 @@
 >
   <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" href="/" (click)="closeMenu()">
+    <a class="flex items-center gap-3 group" routerLink="/" (click)="closeMenu()">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
     <!-- Nav Links hidden on mobile, visible on md+ -->
     <div class="hidden items-center gap-1 md:flex">
       <a
-        href="/"
+        routerLink="/"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navHome }}
       </a>
       <a
-        href="/image-to-base64"
+        routerLink="/image-to-base64"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navImageToBase64 }}
       </a>
       <a
-        href="/base64-to-image"
+        routerLink="/base64-to-image"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navBase64ToImage }}
       </a>
       <a
-        href="/remove-background"
+        routerLink="/remove-background"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navRemoveBackground }}
       </a>
       <a
-        href="/resize-dimensions"
+        routerLink="/resize-dimensions"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navResize }}
@@ -45,23 +45,23 @@
         </span>
         <div class="absolute left-0 hidden group-hover:block pt-1 min-w-[180px] z-50">
           <div class="flex flex-col py-2 border rounded-lg shadow-lg bg-olive-parchment border-olive-border">
-            <a href="/convert-to-png" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PNG</a>
-            <a href="/convert-to-jpeg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">JPEG</a>
-            <a href="/convert-to-webp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">WebP</a>
-            <a href="/convert-to-bmp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">BMP</a>
-            <a href="/convert-to-svg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">SVG</a>
-            <a href="/convert-to-pdf" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PDF</a>
+            <a routerLink="/convert-to-png" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PNG</a>
+            <a routerLink="/convert-to-jpeg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">JPEG</a>
+            <a routerLink="/convert-to-webp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">WebP</a>
+            <a routerLink="/convert-to-bmp" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">BMP</a>
+            <a routerLink="/convert-to-svg" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">SVG</a>
+            <a routerLink="/convert-to-pdf" class="px-4 py-2 text-sm font-semibold transition-colors text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">PDF</a>
           </div>
         </div>
       </div>
       <a
-        href="/compress-by-weight"
+        routerLink="/compress-by-weight"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navCompress }}
       </a>
       <a
-        href="/crop-image"
+        routerLink="/crop-image"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navCrop }}
@@ -100,91 +100,91 @@
     >
       <div class="flex flex-col px-4 py-2 gap-1">
         <a
-          href="/"
+          routerLink="/"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navHome }}
         </a>
         <a
-          href="/image-to-base64"
+          routerLink="/image-to-base64"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navImageToBase64 }}
         </a>
         <a
-          href="/base64-to-image"
+          routerLink="/base64-to-image"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navBase64ToImage }}
         </a>
         <a
-          href="/remove-background"
+          routerLink="/remove-background"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navRemoveBackground }}
         </a>
         <a
-          href="/resize-dimensions"
+          routerLink="/resize-dimensions"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navResize }}
         </a>
         <a
-          href="/convert-to-png"
+          routerLink="/convert-to-png"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to PNG
         </a>
         <a
-          href="/convert-to-jpeg"
+          routerLink="/convert-to-jpeg"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to JPEG
         </a>
         <a
-          href="/convert-to-webp"
+          routerLink="/convert-to-webp"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to WebP
         </a>
         <a
-          href="/convert-to-bmp"
+          routerLink="/convert-to-bmp"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to BMP
         </a>
         <a
-          href="/convert-to-svg"
+          routerLink="/convert-to-svg"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to SVG
         </a>
         <a
-          href="/convert-to-pdf"
+          routerLink="/convert-to-pdf"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           Convert to PDF
         </a>
         <a
-          href="/compress-by-weight"
+          routerLink="/compress-by-weight"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >
           {{ t().navCompress }}
         </a>
         <a
-          href="/crop-image"
+          routerLink="/crop-image"
           (click)="closeMenu()"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
         >

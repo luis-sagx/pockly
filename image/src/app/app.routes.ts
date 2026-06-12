@@ -1,34 +1,21 @@
 import { Routes } from '@angular/router';
-import { BackgroundRemover } from './components/pages/background-remover/background-remover';
-import { Base64Tool } from './components/pages/base64-tool/base64-tool';
-import { Compress } from './components/pages/compress/compress';
-import { ConvertToBmp } from './components/pages/convert-to-bmp/convert-to-bmp';
-import { ConvertToJpeg } from './components/pages/convert-to-jpeg/convert-to-jpeg';
-import { ConvertToPdf } from './components/pages/convert-to-pdf/convert-to-pdf';
-import { ConvertToPng } from './components/pages/convert-to-png/convert-to-png';
-import { ConvertToSvg } from './components/pages/convert-to-svg/convert-to-svg';
-import { ConvertToWebp } from './components/pages/convert-to-webp/convert-to-webp';
-import { Crop } from './components/pages/crop/crop';
 import { Home } from './components/pages/home/home';
-import { ImageResize } from './components/pages/image-resize/image-resize';
-import { LicensesAttributions } from './components/pages/licenses-attributions/licenses-attributions';
-import { TextImage } from './components/pages/text-image/text-image';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'image-to-base64', component: Base64Tool },
-  { path: 'base64-to-image', component: TextImage },
-  { path: 'remove-background', component: BackgroundRemover },
-  { path: 'resize-dimensions', component: ImageResize },
-  { path: 'compress-by-weight', component: Compress },
-  { path: 'crop-image', component: Crop },
-  { path: 'convert-to-png', component: ConvertToPng },
-  { path: 'convert-to-jpeg', component: ConvertToJpeg },
-  { path: 'convert-to-webp', component: ConvertToWebp },
-  { path: 'convert-to-bmp', component: ConvertToBmp },
-  { path: 'convert-to-svg', component: ConvertToSvg },
-  { path: 'convert-to-pdf', component: ConvertToPdf },
-  { path: 'licenses-attributions', component: LicensesAttributions },
+  { path: 'image-to-base64', loadComponent: () => import('./components/pages/base64-tool/base64-tool').then(m => m.Base64Tool) },
+  { path: 'base64-to-image', loadComponent: () => import('./components/pages/text-image/text-image').then(m => m.TextImage) },
+  { path: 'remove-background', loadComponent: () => import('./components/pages/background-remover/background-remover').then(m => m.BackgroundRemover) },
+  { path: 'resize-dimensions', loadComponent: () => import('./components/pages/image-resize/image-resize').then(m => m.ImageResize) },
+  { path: 'compress-by-weight', loadComponent: () => import('./components/pages/compress/compress').then(m => m.Compress) },
+  { path: 'crop-image', loadComponent: () => import('./components/pages/crop/crop').then(m => m.Crop) },
+  { path: 'convert-to-png', loadComponent: () => import('./components/pages/convert-to-png/convert-to-png').then(m => m.ConvertToPng) },
+  { path: 'convert-to-jpeg', loadComponent: () => import('./components/pages/convert-to-jpeg/convert-to-jpeg').then(m => m.ConvertToJpeg) },
+  { path: 'convert-to-webp', loadComponent: () => import('./components/pages/convert-to-webp/convert-to-webp').then(m => m.ConvertToWebp) },
+  { path: 'convert-to-bmp', loadComponent: () => import('./components/pages/convert-to-bmp/convert-to-bmp').then(m => m.ConvertToBmp) },
+  { path: 'convert-to-svg', loadComponent: () => import('./components/pages/convert-to-svg/convert-to-svg').then(m => m.ConvertToSvg) },
+  { path: 'convert-to-pdf', loadComponent: () => import('./components/pages/convert-to-pdf/convert-to-pdf').then(m => m.ConvertToPdf) },
+  { path: 'licenses-attributions', loadComponent: () => import('./components/pages/licenses-attributions/licenses-attributions').then(m => m.LicensesAttributions) },
   { path: 'convert-formats', redirectTo: 'convert-to-png', pathMatch: 'full' },
   { path: 'format-converter', redirectTo: 'convert-to-png', pathMatch: 'full' },
   { path: 'base64', redirectTo: 'image-to-base64', pathMatch: 'full' },

@@ -1,0 +1,17 @@
+{
+  "name": "Pockly URL Tools",
+  "short_name": "URL Tools",
+  "description": "Free online URL utilities — QR generator, encoder/decoder, UTM builder, and URL cleaner",
+  "theme_color": "#fdfdf8",
+  "background_color": "#fdfdf8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

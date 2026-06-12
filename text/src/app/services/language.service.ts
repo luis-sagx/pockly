@@ -11,8 +11,6 @@ export interface Translations {
   navDiffChecker: string;
   navPasswordGenerator: string;
   navQuickNotes: string;
-  navSpellChecker: string;
-
   // Footer
   freeOnlineTools: string;
   noSignupNoAds: string;
@@ -112,26 +110,6 @@ export interface Translations {
   noteUpdated: string;
   noteDeleted: string;
 
-  // Spell Checker
-  spellChecker: string;
-  spellCheckerDesc: string;
-  checkSpelling: string;
-  spellChecking: string;
-  spellingErrors: string;
-  errorCount: string;
-  clickToReplace: string;
-  suggestions: string;
-  correctedText: string;
-  noErrorsFound: string;
-  selectLanguage: string;
-  loadingDictionary: string;
-  dictionaryLoadError: string;
-  uploadFile: string;
-  fileLoaded: string;
-  supportedFormats: string;
-  undo: string;
-  sourceText: string;
-
   // Auth
   signIn: string;
   createAccount: string;
@@ -164,7 +142,6 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Diff Checker',
     navPasswordGenerator: 'Password Generator',
     navQuickNotes: 'Quick Notes',
-    navSpellChecker: 'Spell Checker',
 
     // Footer
     freeOnlineTools: 'Free online tools to boost your productivity.',
@@ -267,26 +244,6 @@ const translations: Record<Language, Translations> = {
     noteUpdated: 'Note updated',
     noteDeleted: 'Note deleted',
 
-    // Spell Checker
-    spellChecker: 'Spell Checker',
-    spellCheckerDesc: 'Check spelling and get suggestions in multiple languages',
-    checkSpelling: 'Check Spelling',
-    spellChecking: 'Checking...',
-    spellingErrors: 'Spelling Errors',
-    errorCount: 'errors',
-    clickToReplace: 'Click to replace',
-    suggestions: 'Suggestions',
-    correctedText: 'Corrected Text',
-    noErrorsFound: 'No spelling errors found!',
-    selectLanguage: 'Language',
-    loadingDictionary: 'Loading dictionary...',
-    dictionaryLoadError: 'Failed to load dictionary',
-    uploadFile: 'Upload a file',
-    fileLoaded: 'File loaded',
-    supportedFormats: 'Supported: TXT, MD, TEXT (plain text files)',
-    undo: 'Undo',
-    sourceText: 'Source Text',
-
     // Auth
     signIn: 'Login',
     createAccount: 'Create account',
@@ -317,7 +274,6 @@ const translations: Record<Language, Translations> = {
     navDiffChecker: 'Comparador',
     navPasswordGenerator: 'Contraseñas',
     navQuickNotes: 'Notas',
-    navSpellChecker: 'Corrector',
 
     // Footer
     freeOnlineTools: 'Herramientas online gratuitas para tu productividad.',
@@ -420,26 +376,6 @@ const translations: Record<Language, Translations> = {
     noteCreated: 'Nota creada',
     noteUpdated: 'Nota actualizada',
     noteDeleted: 'Nota eliminada',
-
-    // Spell Checker
-    spellChecker: 'Corrector Ortográfico',
-    spellCheckerDesc: 'Verifica ortografía y obtén sugerencias en múltiples idiomas',
-    checkSpelling: 'Verificar Ortografía',
-    spellChecking: 'Verificando...',
-    spellingErrors: 'Errores Ortográficos',
-    errorCount: 'errores',
-    clickToReplace: 'Click para reemplazar',
-    suggestions: 'Sugerencias',
-    correctedText: 'Texto Corregido',
-    noErrorsFound: '¡No se encontraron errores ortográficos!',
-    selectLanguage: 'Idioma',
-    loadingDictionary: 'Cargando diccionario...',
-    dictionaryLoadError: 'Error al cargar diccionario',
-    uploadFile: 'Subir un archivo',
-    fileLoaded: 'Archivo cargado',
-    supportedFormats: 'Soportados: TXT, MD, TEXT (archivos de texto plano)',
-    undo: 'Deshacer',
-    sourceText: 'Texto Origen',
 
     // Auth
     signIn: 'Ingresar',

@@ -45,13 +45,6 @@
       >
         {{ t().navQuickNotes }}
       </a>
-      <a
-        href="/spell-checker"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        {{ t().navSpellChecker }}
-      </a>
-
       <!-- Desktop auth button -->
       <div class="ml-3 pl-3 border-l border-olive-light/50">
         @if (isLoggedIn()) {
@@ -160,13 +153,6 @@
           (click)="closeMenu()"
         >
           {{ t().navQuickNotes }}
-        </a>
-        <a
-          href="/spell-checker"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
-          {{ t().navSpellChecker }}
         </a>
       </div>
     </div>

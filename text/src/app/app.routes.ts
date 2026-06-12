@@ -5,7 +5,6 @@ import { WordCount } from './components/pages/word-count/word-count';
 import { DiffChecker } from './components/pages/diff-checker/diff-checker';
 import { PasswordGenerator } from './components/pages/password-generator/password-generator';
 import { QuickNotes } from './components/pages/quick-notes/quick-notes';
-import { SpellChecker } from './components/pages/spell-checker/spell-checker';
 import { Auth } from './components/pages/auth/auth';
 
 export const routes: Routes = [
@@ -16,6 +15,5 @@ export const routes: Routes = [
   { path: 'diff-checker', component: DiffChecker },
   { path: 'password-generator', component: PasswordGenerator },
   { path: 'quick-notes', component: QuickNotes },
-  { path: 'spell-checker', component: SpellChecker },
   { path: '**', redirectTo: '/' },
 ];

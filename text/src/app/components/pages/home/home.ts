@@ -8,7 +8,6 @@ import {
   faCodeBranch,
   faKey,
   faPenToSquare,
-  faSpellCheck,
 } from '@fortawesome/free-solid-svg-icons';
 
 interface Tool {
@@ -33,7 +32,7 @@ export class Home implements OnInit {
   private languageService = inject(LanguageService);
 
   constructor() {
-    this.library.addIcons(faHashtag, faTextHeight, faCodeBranch, faKey, faPenToSquare, faSpellCheck);
+    this.library.addIcons(faHashtag, faTextHeight, faCodeBranch, faKey, faPenToSquare);
   }
 
   // Signal para el filtro actual
@@ -81,14 +80,6 @@ export class Home implements OnInit {
       icon: 'pen-to-square',
       descriptionKey: 'quickNotesDesc',
       category: 'Utilities',
-    },
-    {
-      id: 'spellchecker',
-      labelKey: 'spellChecker',
-      path: '/spell-checker',
-      icon: 'spell-check',
-      descriptionKey: 'spellCheckerDesc',
-      category: 'Text',
     },
   ];
 

@@ -36,6 +36,7 @@ export class Crop implements AfterViewInit, OnDestroy {
   originalFileName = signal('');
   cropper: Cropper | null = null;
   private objectUrl: string | null = null;
+  processing = signal(false);
 
   width = signal(0);
   height = signal(0);
@@ -201,16 +202,23 @@ export class Crop implements AfterViewInit, OnDestroy {
   /* --------------- Crop & download --------------- */
   cropImage(): void {
     if (!this.cropper) return;
+    this.processing.set(true);
 
     const selection = this.cropper.getCropperSelection();
     const cropperImage = this.cropper.getCropperImage();
     const cropperCanvas = this.cropper.getCropperCanvas();
-    if (!selection || !cropperImage || !cropperCanvas) return;
+    if (!selection || !cropperImage || !cropperCanvas) {
+      this.processing.set(false);
+      return;
+    }
 
     const img = cropperImage.$image;
     const naturalW = img.naturalWidth;
     const naturalH = img.naturalHeight;
-    if (!naturalW || !naturalH) return;
+    if (!naturalW || !naturalH) {
+      this.processing.set(false);
+      return;
+    }
 
     // Read the ACTUAL visual geometry from the DOM instead of trusting
     // the transform matrix (which can be stale or incorrectly composed).
@@ -219,7 +227,10 @@ export class Crop implements AfterViewInit, OnDestroy {
 
     const canvasW = canvasRect.width;
     const canvasH = canvasRect.height;
-    if (!canvasW || !canvasH) return;
+    if (!canvasW || !canvasH) {
+      this.processing.set(false);
+      return;
+    }
 
     // Where the image sits inside the canvas (CSS pixels)
     const imageLeft = imageRect.left - canvasRect.left;
@@ -258,6 +269,7 @@ export class Crop implements AfterViewInit, OnDestroy {
 
     canvas.toBlob(
       (blob: Blob | null) => {
+        this.processing.set(false);
         if (!blob) return;
         const name = this.originalFileName()
           ? this.originalFileName().replace(/\.\w+$/, '_cropped.png')

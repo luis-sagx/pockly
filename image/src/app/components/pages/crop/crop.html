@@ -94,8 +94,11 @@
     </div>
 
     <!-- Action buttons -->
+    @if (processing()) {
+      <p class="text-sm text-olive-ink/60 animate-pulse">Processing…</p>
+    }
     <div class="flex flex-wrap gap-2">
-      <button (click)="cropImage()" class="btn-primary">
+      <button (click)="cropImage()" [disabled]="processing()" class="btn-primary">
         <fa-icon [icon]="['fas', 'crop-simple']" class="w-4 h-4"></fa-icon>
         {{ labels().cropBtn }}
       </button>

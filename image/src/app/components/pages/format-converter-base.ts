@@ -66,6 +66,12 @@ export abstract class BaseFormatConverter {
       this.error.set('Choose at least one image.');
       return;
     }
+    const maxSize = 50 * 1024 * 1024; // 50 MB
+    const oversized = files.find((f) => f.size > maxSize);
+    if (oversized) {
+      this.error.set(`${oversized.name} exceeds the 50 MB size limit.`);
+      return;
+    }
     this.loading.set(true);
     this.error.set('');
     this.resultDataUrl.set('');

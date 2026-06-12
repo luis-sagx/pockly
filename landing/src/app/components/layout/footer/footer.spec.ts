@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { POCKLY_TRANSLATIONS } from '@pockly/shared';
+import { landingTranslations } from '../../../translations';
 
 import { Footer } from './footer';
 
@@ -8,9 +10,9 @@ describe('Footer', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Footer]
-    })
-    .compileComponents();
+      imports: [Footer],
+      providers: [{ provide: POCKLY_TRANSLATIONS, useValue: landingTranslations }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Footer);
     component = fixture.componentInstance;

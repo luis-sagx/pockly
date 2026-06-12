@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { POCKLY_TRANSLATIONS } from '@pockly/shared';
+import { landingTranslations } from '../../../translations';
 
 import { Nav } from './nav';
 
@@ -10,7 +12,10 @@ describe('Nav', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Nav],
-      providers: [provideRouter([])],
+      providers: [
+        provideRouter([]),
+        { provide: POCKLY_TRANSLATIONS, useValue: landingTranslations },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Nav);

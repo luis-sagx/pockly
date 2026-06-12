@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { POCKLY_TRANSLATIONS } from '@pockly/shared';
 import { Crop } from './crop';
 
 describe('Crop', () => {
@@ -9,6 +10,7 @@ describe('Crop', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Crop],
+      providers: [{ provide: POCKLY_TRANSLATIONS, useValue: {} }],
     }).compileComponents();
 
     TestBed.inject(FaIconLibrary);

@@ -4,12 +4,25 @@
   "description": "Shared Angular components, services, and styles for Pockly apps",
   "private": true,
   "type": "module",
-  "main": "./src/public-api.ts",
+  "main": "./dist/public-api.js",
+  "module": "./dist/public-api.js",
+  "types": "./dist/public-api.d.ts",
   "exports": {
-    ".": "./src/public-api.ts"
+    ".": {
+      "types": "./dist/public-api.d.ts",
+      "default": "./dist/public-api.js"
+    }
+  },
+  "scripts": {
+    "build": "ngc -p tsconfig.lib.json"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "typescript": "~5.9.2"
   },
   "peerDependencies": {
     "@angular/common": "^21.2.0",

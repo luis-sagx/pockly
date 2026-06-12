@@ -1,13 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
+import { POCKLY_SEO_CONFIG, POCKLY_TRANSLATIONS } from '@pockly/shared';
 import { App } from './app';
 import { Home } from './components/pages/home/home';
+import { landingTranslations } from './translations';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter([{ path: '', component: Home }])],
+      providers: [
+        provideRouter([{ path: '', component: Home }]),
+        { provide: POCKLY_SEO_CONFIG, useValue: { baseUrl: '', ogImage: '', pageConfigs: {} } },
+        { provide: POCKLY_TRANSLATIONS, useValue: landingTranslations },
+      ],
     }).compileComponents();
   });
 

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { POCKLY_SEO_CONFIG, POCKLY_TRANSLATIONS } from '@pockly/shared';
+import { landingTranslations } from '../../../translations';
 
 import { Home } from './home';
 
@@ -10,7 +12,11 @@ describe('Home', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Home],
-      providers: [provideRouter([])],
+      providers: [
+        provideRouter([]),
+        { provide: POCKLY_SEO_CONFIG, useValue: { baseUrl: '', ogImage: '', pageConfigs: {} } },
+        { provide: POCKLY_TRANSLATIONS, useValue: landingTranslations },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Home);

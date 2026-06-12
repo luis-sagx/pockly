@@ -9,7 +9,6 @@
     ]
   },
   "include": [
-    "../packages/shared/src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.spec.ts"
   ]

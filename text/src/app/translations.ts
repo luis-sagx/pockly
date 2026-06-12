@@ -1,8 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
-import { effect, Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-
-export type Language = 'en' | 'es';
-
 export interface Translations {
   // Nav
   navHome: string;
@@ -134,7 +129,7 @@ export interface Translations {
   googleNotConfigured: string;
 }
 
-const translations: Record<Language, Translations> = {
+export const textTranslations: Record<string, Record<string, string>> = {
   en: {
     // Nav
     navHome: 'Home',
@@ -347,7 +342,7 @@ const translations: Record<Language, Translations> = {
     // Quick Notes
     writeAndAutoSaveNotes: 'Escribe y guarda tus notas al instante.',
     startTypingNotes:
-      'Empieza a escribir tus notas aquí... Se guardarán automáticamente en el almacenamiento local de tu navegador.',
+      'Empezá a escribir tus notas aquí... Se guardarán automáticamente en el almacenamiento local de tu navegador.',
     saved: 'Guardado',
     areYouSure: '¿Estás seguro?',
     yesClear: 'Sí, limpiar',
@@ -400,85 +395,7 @@ const translations: Record<Language, Translations> = {
     accountCreated: '¡Cuenta creada! Ya podés iniciar sesión.',
     checkEmail: '¡Cuenta creada! Revisá tu email para confirmarla.',
     backToTools: '← Volver a las herramientas',
-    googleNotConfigured: 'Google no está configurado. Habilitá el proveedor en el dashboard de Supabase.',
+    googleNotConfigured:
+      'Google no está configurado. Habilitá el proveedor en el dashboard de Supabase.',
   },
 };
-
-export interface LanguageOption {
-  code: Language;
-  name: string;
-  nativeName: string;
-}
-
-const languages: LanguageOption[] = [
-  { code: 'en', name: 'English', nativeName: 'English' },
-  { code: 'es', name: 'Spanish', nativeName: 'Español' },
-];
-
-const STORAGE_KEY = 'pockly-language';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class LanguageService {
-  private readonly _language = signal<Language>('en');
-  private isBrowser: boolean;
-
-  readonly language = this._language.asReadonly();
-
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
-    this.isBrowser = isPlatformBrowser(platformId);
-
-    if (this.isBrowser) {
-      this._language.set(this.getInitialLanguage());
-    }
-
-    effect(() => {
-      if (this.isBrowser) {
-        localStorage.setItem(STORAGE_KEY, this._language());
-      }
-    });
-  }
-
-  private getInitialLanguage(): Language {
-    const stored = localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (stored && translations[stored]) {
-      return stored;
-    }
-
-    const browserLang = navigator.language.toLowerCase();
-    for (const lang of Object.keys(translations)) {
-      if (browserLang.startsWith(lang)) {
-        return lang as Language;
-      }
-    }
-    return 'en';
-  }
-
-  setLanguage(lang: Language): void {
-    if (translations[lang]) {
-      this._language.set(lang);
-    }
-  }
-
-  toggleLanguage(): void {
-    this._language.update((current) => (current === 'en' ? 'es' : 'en'));
-  }
-
-  getLabel(lang: Language): string {
-    const option = languages.find((l) => l.code === lang);
-    return option ? option.nativeName : lang;
-  }
-
-  getTranslations(): Translations {
-    return translations[this._language()];
-  }
-
-  getAvailableLanguages(): LanguageOption[] {
-    return languages;
-  }
-
-  getCurrentLanguage(): Language {
-    return this._language();
-  }
-}

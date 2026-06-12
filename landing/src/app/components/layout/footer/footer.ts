@@ -4,9 +4,12 @@ import {
   Language,
   LanguageOption,
   LanguageService,
+} from '@pockly/shared';
+import {
   getCategoryTitleKey,
   getLinkLabelKey,
-} from '../../../services/language.service';
+} from '../../../translations-helpers';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-footer',
@@ -20,7 +23,7 @@ export class Footer {
   language = this.languageService.language;
   availableLanguages: LanguageOption[] = this.languageService.getAvailableLanguages();
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   readonly translatedCategories = computed(() => {
     const translations = this.t();

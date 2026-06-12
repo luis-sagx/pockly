@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +17,7 @@ export class Nav {
   mobileMenuOpen = signal(false);
   private closeTimer: ReturnType<typeof setTimeout> | null = null;
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   openDropdownMenu(name: string) {
     this.cancelCloseTimer();

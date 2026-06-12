@@ -17,7 +17,8 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Note, ChecklistItem } from '../../pages/quick-notes/note.model';
 import { generateId } from '../../pages/quick-notes/note.model';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-note-detail',
@@ -39,7 +40,7 @@ export class NoteDetail implements OnChanges {
   @ViewChild('modalBody') modalBody?: ElementRef<HTMLElement>;
 
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   editTitle = signal('');
   editDescription = signal('');

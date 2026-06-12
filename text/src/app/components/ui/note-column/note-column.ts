@@ -8,7 +8,8 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faInbox } from '@fortawesome/free-solid-svg-icons';
 import { Priority, Note } from '../../pages/quick-notes/note.model';
 import { NoteCard } from '../note-card/note-card';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-note-column',
@@ -33,7 +34,7 @@ export class NoteColumn {
   @Output() reordered = new EventEmitter<Note[]>();
 
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   get columnTitle(): string {
     switch (this.priority) {

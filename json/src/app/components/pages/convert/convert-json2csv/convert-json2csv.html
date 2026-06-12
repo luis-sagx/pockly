@@ -38,7 +38,7 @@
   @if (output()) {
     <div class="flex flex-col gap-2">
       <label class="text-sm font-semibold text-olive-ink">{{ t().csvOutput }}</label>
-      <app-output-box [text]="output()" />
+      <app-output-box [text]="output()" [label]="t().output" [emptyLabel]="t().noResultsYet" />
     </div>
   }
 </div>

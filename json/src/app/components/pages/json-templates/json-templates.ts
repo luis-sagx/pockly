@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../ui/icon/icon';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 interface JsonTemplate {
   name: string;
@@ -60,7 +61,7 @@ export class JsonTemplates {
   activeCategory = signal<'all' | 'simple' | 'common' | 'complex'>('all');
   copied = signal(false);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   get filteredTemplates() {
     const cat = this.activeCategory();

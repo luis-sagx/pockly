@@ -1,7 +1,8 @@
 import { Component, inject, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { SupabaseService } from '../../../services/supabase.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { SupabaseService } from '../../../services/supabase.service';
 export class Nav {
   private languageService = inject(LanguageService);
   private supabaseService = inject(SupabaseService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   // Auth
   isLoggedIn = this.supabaseService.isLoggedIn;

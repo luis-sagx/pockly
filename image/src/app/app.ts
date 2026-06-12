@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
-import { SeoService } from './services/seo.service';
+import { SeoService } from '@pockly/shared';
+import type { Translations } from './translations';
 
 @Component({
   selector: 'app-root',

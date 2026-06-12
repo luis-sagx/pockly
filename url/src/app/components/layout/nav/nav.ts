@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ import { LanguageService } from '../../../services/language.service';
 export class NavComponent {
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   isMenuOpen = signal(false);
 

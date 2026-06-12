@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal, computed, effect } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService } from '../../../services/seo.service';
-import { LanguageService } from '../../../services/language.service';
+import { SeoService, LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faHashtag,
@@ -40,7 +40,7 @@ export class Home implements OnInit {
   // Signal para el filtro actual
   filter = signal<string>('all');
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   tools: Tool[] = [
     {
@@ -91,8 +91,8 @@ export class Home implements OnInit {
     if (currentFilter === 'all') {
       return this.tools.map(tool => ({
         ...tool,
-        label: translations[tool.labelKey] as string,
-        description: translations[tool.descriptionKey] as string
+        label: translations[tool.labelKey as keyof Translations] as string,
+        description: translations[tool.descriptionKey as keyof Translations] as string
       }));
     }
     // Map filter names to category names
@@ -105,8 +105,8 @@ export class Home implements OnInit {
       .filter((tool) => tool.category === categoryMap[currentFilter])
       .map(tool => ({
         ...tool,
-        label: translations[tool.labelKey] as string,
-        description: translations[tool.descriptionKey] as string
+        label: translations[tool.labelKey as keyof Translations] as string,
+        description: translations[tool.descriptionKey as keyof Translations] as string
       }));
   });
 

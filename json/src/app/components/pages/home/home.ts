@@ -1,7 +1,8 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService } from '../../../services/seo.service';
-import { LanguageService } from '../../../services/language.service';
+import { SeoService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { LanguageService } from '@pockly/shared';
 import { IconComponent } from '../../ui/icon/icon';
 
 interface Tool {
@@ -25,7 +26,7 @@ export class Home implements OnInit {
 
   filter = signal<string>('all');
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   tools: Tool[] = [
     // Create

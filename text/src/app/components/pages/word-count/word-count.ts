@@ -1,6 +1,6 @@
 import { Component, signal, computed, inject } from '@angular/core';
-import { InputBox } from '../../ui/input-box/input-box';
-import { LanguageService } from '../../../services/language.service';
+import { InputBox, LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +18,7 @@ export class WordCount {
 
   inputText = signal('');
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   wordCount = computed(() => this.inputText().trim() ? this.inputText().trim().split(/\s+/).length : 0);
   charCount = computed(() => this.inputText().length);

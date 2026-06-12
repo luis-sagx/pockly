@@ -1,8 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '../../../ui/output-box/output-box';
+import { OutputBox } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 import { IconComponent } from '../../../ui/icon/icon';
 import { jsonToDelimited, getDownloadInfo, downloadFile } from '../convert.service';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
 
 @Component({
   selector: 'app-convert-json2tsv',
@@ -17,7 +18,7 @@ export class ConvertJson2Tsv {
   output = signal('');
   error = signal<string | null>(null);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   convert() {
     this.error.set(null);

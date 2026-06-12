@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../../ui/icon/icon';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 
 @Component({
   selector: 'app-utils-validate',
@@ -15,7 +16,7 @@ export class UtilsValidate {
   output = signal('');
   error = signal<string | null>(null);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   apply() {
     this.error.set(null);

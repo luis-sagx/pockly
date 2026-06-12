@@ -10,7 +10,8 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
@@ -22,7 +23,7 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
 })
 export class ImageResize {
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faExpand, faDownload, faImage, faTrash, faSpinner, faGear);

@@ -6,14 +6,14 @@
     <app-copy-button [textToCopy]="text" />
   </div>
 
-  <h4 class="mb-2 font-bold text-olive-deep font-display">Text</h4>
+  <h4 class="mb-2 font-bold text-olive-deep font-display">{{ label || 'Text' }}</h4>
 
   <div class="text-sm overflow-x-auto text-olive-ink">
     <pre class="whitespace-pre-wrap break-all">{{ text }}</pre>
   </div>
   } @else {
   <div class="flex items-center justify-center h-full">
-    <p class="font-mono text-sm text-olive-placeholder">No results yet</p>
+    <p class="font-mono text-sm text-olive-placeholder">{{ emptyLabel || 'No results yet' }}</p>
   </div>
   }
 </div>

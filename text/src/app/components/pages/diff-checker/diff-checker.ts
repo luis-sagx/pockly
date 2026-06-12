@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputBox } from '../../ui/input-box/input-box';
-import { LanguageService } from '../../../services/language.service';
+import { InputBox, LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCodeCompare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,7 +22,7 @@ export class DiffChecker {
 
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   leftText = signal('');
   rightText = signal('');

@@ -1,8 +1,9 @@
 import { Component, signal, computed, OnDestroy, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faQrcode, faDownload, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { InputBox } from '../../ui/input-box/input-box';
-import { LanguageService } from '../../../services/language.service';
+import { InputBox } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { LanguageService } from '@pockly/shared';
 
 @Component({
   selector: 'app-qr-generator',
@@ -14,7 +15,7 @@ export class QrGenerator implements OnDestroy {
   private library = inject(FaIconLibrary);
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   inputText = signal('');
   qrDataUrl = signal('');

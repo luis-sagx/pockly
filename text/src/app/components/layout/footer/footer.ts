@@ -1,5 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
-import { LanguageService, LanguageOption, Language } from '../../../services/language.service';
+import { LanguageService, LanguageOption, Language } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +14,7 @@ export class Footer {
   language = this.languageService.language;
   availableLanguages: LanguageOption[] = this.languageService.getAvailableLanguages();
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   onLanguageChange(event: Event): void {
     const select = event.target as HTMLSelectElement;

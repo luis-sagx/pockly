@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
-import { SeoService } from '../../../services/seo.service';
-import { LanguageService } from '../../../services/language.service';
+import { SeoService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { LanguageService } from '@pockly/shared';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -14,7 +15,7 @@ export class Home implements OnInit {
   private seo = inject(SeoService);
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   filter = signal<string>('all');
 

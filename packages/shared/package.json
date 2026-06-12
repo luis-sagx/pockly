@@ -8,14 +8,23 @@
   "exports": {
     ".": "./src/public-api.ts"
   },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
-    "@fortawesome/angular-fontawesome": "*"
+    "@fortawesome/angular-fontawesome": "*",
+    "@fortawesome/free-solid-svg-icons": "*",
+    "rxjs": "~7.8.0"
   },
   "peerDependenciesMeta": {
     "@fortawesome/angular-fontawesome": {
+      "optional": true
+    },
+    "@fortawesome/free-solid-svg-icons": {
       "optional": true
     }
   }

@@ -1,8 +1,9 @@
+import type { Translations } from '../translations';
 import { Injectable, computed, inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { LanguageService } from './language.service';
+import { LanguageService } from '@pockly/shared';
 
 export interface PageMeta {
   title: string;
@@ -27,7 +28,7 @@ export class SeoService {
   private languageService = inject(LanguageService);
 
   readonly homeMeta = computed(() => {
-    const t = this.languageService.getTranslations();
+    const t = this.languageService.getTranslations() as unknown as Translations;
     return {
       title: t.seoTitle,
       description: t.seoDescription,

@@ -1,4 +1,14 @@
-// TODO: Extract canonical output-box from url/text/json/image apps.
-// Currently duplicated across 4+ apps with minor variations.
-// Pending consolidation as part of P2-3 workspace dedup.
-export class OutputBox {}
+import { Component, Input } from '@angular/core';
+import { CopyButton } from '../copy-button/copy-button';
+
+@Component({
+  selector: 'app-output-box',
+  standalone: true,
+  imports: [CopyButton],
+  templateUrl: './output-box.html',
+})
+export class OutputBox {
+  @Input() text: string = '';
+  @Input() label?: string;
+  @Input() emptyLabel?: string;
+}

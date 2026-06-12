@@ -13,7 +13,8 @@ import {
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCropSimple, faDownload, faImage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Cropper from 'cropperjs';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
@@ -29,7 +30,7 @@ export class Crop implements AfterViewInit, OnDestroy {
 
   @ViewChild('image') imageRef!: ElementRef<HTMLImageElement>;
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   // --- state ---
   originalSrc = signal('');

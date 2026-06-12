@@ -2,7 +2,8 @@ import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 
 interface UnitDef {
   key: string;
@@ -34,7 +35,7 @@ const unitKeyMap: Record<string, UnitTranslationKey> = {
 export class TemperatureConverter implements OnInit {
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   fromUnit = signal('celsius');
   toUnit = signal('fahrenheit');

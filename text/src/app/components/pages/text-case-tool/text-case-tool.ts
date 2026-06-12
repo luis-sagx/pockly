@@ -1,7 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
-import { OutputBox } from '../../ui/output-box/output-box';
-import { InputBox } from '../../ui/input-box/input-box';
-import { LanguageService } from '../../../services/language.service';
+import { OutputBox, InputBox, LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   faExclamationTriangle,
@@ -27,7 +26,7 @@ export class TextCaseTool {
 
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   inputText = '';
   outputText = '';

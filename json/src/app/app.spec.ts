@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { App } from './app';
-import { LanguageService } from './services/language.service';
+import { LanguageService } from '@pockly/shared';
 
 describe('App', () => {
   beforeEach(async () => {

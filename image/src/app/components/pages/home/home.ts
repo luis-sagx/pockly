@@ -16,8 +16,9 @@ import {
   faScissors,
   faTextHeight,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '../../../services/language.service';
-import { SeoService } from '../../../services/seo.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { SeoService } from '@pockly/shared';
 
 interface Tool {
   id: string;
@@ -41,7 +42,7 @@ export class Home implements OnInit {
   private languageService = inject(LanguageService);
   private router = inject(Router);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   constructor() {
     this.library.addIcons(
@@ -168,8 +169,8 @@ export class Home implements OnInit {
     const translations = this.t();
     const translatedTools = this.toolsData.map((tool) => ({
       id: tool.id,
-      label: translations[tool.labelKey],
-      description: translations[tool.descKey],
+      label: translations[tool.labelKey as keyof Translations],
+      description: translations[tool.descKey as keyof Translations],
       path: tool.path,
       icon: tool.icon,
       category: tool.category,

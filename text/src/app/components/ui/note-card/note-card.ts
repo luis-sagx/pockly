@@ -3,7 +3,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCheckSquare, faCheck, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Note } from '../../pages/quick-notes/note.model';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-note-card',
@@ -23,7 +24,7 @@ export class NoteCard {
   @Output() deleted = new EventEmitter<string>();
 
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   showDeleteConfirm = signal(false);
 

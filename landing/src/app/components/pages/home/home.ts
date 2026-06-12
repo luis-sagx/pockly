@@ -1,12 +1,13 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { PROJECT_CATEGORIES, type ProjectCategory } from '../../../config/projects';
-import { SeoService } from '../../../services/seo.service';
+import { SeoService } from '@pockly/shared';
+import { LanguageService } from '@pockly/shared';
 import {
-  LanguageService,
   getCategoryTitleKey,
   getLinkLabelKey,
   getLinkDescriptionKey,
-} from '../../../services/language.service';
+} from '../../../translations-helpers';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class Home implements OnInit {
   private seo = inject(SeoService);
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   private readonly featuredCategoryKeys = ['text', 'image', 'json', 'url', 'calculator'] as const;
 
@@ -41,7 +42,7 @@ export class Home implements OnInit {
   });
 
   readonly filterOptions = computed(() => {
-    const t = this.languageService.getTranslations();
+    const t = this.languageService.getTranslations() as unknown as Translations;
     return [
       { label: t.filterAll, value: 'all' as const },
       { label: t.filterText, value: 'text' as const },
@@ -75,7 +76,7 @@ export class Home implements OnInit {
   }
 
   ngOnInit() {
-    const t = this.languageService.getTranslations();
+    const t = this.languageService.getTranslations() as unknown as Translations;
     this.seo.setMeta({
       title: t.seoTitle,
       description: t.seoDescription,

@@ -10,7 +10,8 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import imageCompression from 'browser-image-compression';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
@@ -22,7 +23,7 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
 })
 export class Compress {
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faDownload, faImage, faSpinner, faTrash, faCircleExclamation);

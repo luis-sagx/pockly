@@ -4,7 +4,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 import { Footer } from './components/layout/footer/footer';
 import { Nav } from './components/layout/nav/nav';
-import { SeoService } from './services/seo.service';
+import { SeoService } from '@pockly/shared';
 
 // Import icons
 import {

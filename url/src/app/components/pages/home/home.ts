@@ -1,7 +1,8 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService } from '../../../services/seo.service';
-import { LanguageService } from '../../../services/language.service';
+import { SeoService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { LanguageService } from '@pockly/shared';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faQrcode, faCode, faBullseye, faBroom, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
@@ -66,7 +67,7 @@ export class Home implements OnInit {
   private languageService = inject(LanguageService);
   private router = inject(Router);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   constructor() {
     this.library.addIcons(faQrcode, faCode, faBullseye, faBroom, faLockOpen);

@@ -9,7 +9,8 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FormatConverterService } from '../../services/format-converter.service';
-import { LanguageService } from '../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../translations';
 
 export abstract class BaseFormatConverter {
   protected abstract outputFormat: string;
@@ -17,7 +18,7 @@ export abstract class BaseFormatConverter {
   protected abstract pageDescription: string;
 
   protected languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   readonly pageTitleText = computed(() => {
     return (this.t() as unknown as Record<string, string>)[this.pageTitle] ?? this.pageTitle;

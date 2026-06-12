@@ -1,6 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 
 @Component({
   selector: 'app-what-percent',
@@ -12,7 +13,7 @@ import { LanguageService } from '../../../../services/language.service';
 export class WhatPercent {
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   x = signal(0);
   y = signal(0);

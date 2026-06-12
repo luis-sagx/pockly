@@ -1,24 +1,12 @@
-import { Injectable, inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Title, Meta } from '@angular/platform-browser';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-
-export interface PageMeta {
-  title: string;
-  description: string;
-  keywords?: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
-  noindex?: boolean;
-  canonicalUrl?: string;
-}
+import type { SeoConfig } from '@pockly/shared';
 
 const BASE_URL = 'https://calculator.pockly.vercel.app';
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
-const PAGE_CONFIGS: Record<string, PageMeta> = {
+export const calculatorSeoConfig: SeoConfig = {
+  baseUrl: BASE_URL,
+  ogImage: OG_IMAGE,
+  pageConfigs: {
   '': {
     title: 'Calculator Tools - Free Online Calculators',
     description:
@@ -99,74 +87,5 @@ const PAGE_CONFIGS: Record<string, PageMeta> = {
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/speed-converter`,
   },
+  },
 };
-
-@Injectable({ providedIn: 'root' })
-export class SeoService {
-  private title = inject(Title);
-  private meta = inject(Meta);
-  private router = inject(Router);
-  private document = inject(DOCUMENT);
-
-  constructor() {
-    this.updateFromRoute();
-
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => this.updateFromRoute());
-  }
-
-  private updateFromRoute() {
-    const url = this.router.url.split('?')[0].replace(/^\//, '') || '';
-    const config = this.getConfigForPath(url);
-    this.setMeta(config);
-  }
-
-  private getConfigForPath(url: string): PageMeta {
-    const exactMatch = PAGE_CONFIGS[url];
-    if (exactMatch) return exactMatch;
-
-    const basePath = url.split('/')[0];
-    const parentMatch = PAGE_CONFIGS[basePath];
-    if (parentMatch && PAGE_CONFIGS[basePath]) return parentMatch;
-
-    return PAGE_CONFIGS[''];
-  }
-
-  setMeta(config: PageMeta) {
-    this.title.setTitle(config.title);
-
-    this.meta.updateTag({ name: 'description', content: config.description });
-
-    if (config.keywords) {
-      this.meta.updateTag({ name: 'keywords', content: config.keywords });
-    } else {
-      this.meta.removeTag('name="keywords"');
-    }
-
-    this.meta.updateTag({ name: 'robots', content: config.noindex ? 'noindex,nofollow' : 'index,follow' });
-
-    this.meta.updateTag({ property: 'og:title', content: config.ogTitle || config.title });
-    this.meta.updateTag({ property: 'og:description', content: config.ogDescription || config.description });
-
-    if (config.ogImage) {
-      this.meta.updateTag({ property: 'og:image', content: config.ogImage });
-    }
-
-    if (config.canonicalUrl) {
-      // Remove stale <meta rel="canonical"> from old implementation
-      const staleMetaCanonical = this.document.head.querySelector('meta[rel="canonical"]');
-      if (staleMetaCanonical) staleMetaCanonical.remove();
-
-      const existingLink = this.document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-      if (existingLink) {
-        existingLink.href = config.canonicalUrl;
-      } else {
-        const link = this.document.createElement('link');
-        link.rel = 'canonical';
-        link.href = config.canonicalUrl;
-        this.document.head.appendChild(link);
-      }
-    }
-  }
-}

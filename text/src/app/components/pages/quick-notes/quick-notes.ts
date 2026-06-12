@@ -12,7 +12,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { SupabaseService } from '../../../services/supabase.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoteColumn } from '../../ui/note-column/note-column';
@@ -43,7 +44,7 @@ export class QuickNotes implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
   private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
   syncError = this.supabaseService.syncError;
 
   notes = signal<Note[]>([]);

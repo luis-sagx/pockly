@@ -8,8 +8,9 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '../../../services/language.service';
-import { InputBox } from '../../ui/input-box/input-box';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
+import { InputBox } from '@pockly/shared';
 
 @Component({
   selector: 'app-text-image',
@@ -20,7 +21,7 @@ import { InputBox } from '../../ui/input-box/input-box';
 })
 export class TextImage {
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
   constructor(
     library: FaIconLibrary,
     private ngZone: NgZone,

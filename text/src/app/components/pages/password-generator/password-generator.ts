@@ -1,6 +1,6 @@
 import { Component, signal, computed, inject } from '@angular/core';
-import { CopyButton } from '../../ui/copy-button/copy-button';
-import { LanguageService } from '../../../services/language.service';
+import { CopyButton, LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faKey, faSync } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,7 +17,7 @@ export class PasswordGenerator {
 
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   length = signal(16);
   includeUppercase = signal(true);

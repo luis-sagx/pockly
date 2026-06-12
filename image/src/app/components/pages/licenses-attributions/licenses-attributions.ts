@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-licenses-attributions',
@@ -14,7 +15,7 @@ export class LicensesAttributions {
 
   language = this.languageService.language;
   updatedAt = '2026-05-24';
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   get title(): string {
     return this.language() === 'es' ? 'Licencias y atribuciones' : 'Licenses & Attributions';

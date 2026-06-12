@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { SupabaseService } from '../../../services/supabase.service';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +21,7 @@ export class Auth implements OnInit {
   private supabaseService = inject(SupabaseService);
   private languageService = inject(LanguageService);
   private router = inject(Router);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   isSignUp = signal(false);
 

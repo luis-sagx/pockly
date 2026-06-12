@@ -1,7 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../../ui/icon/icon';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 
 interface ConvertTool {
   id: string;
@@ -18,7 +19,7 @@ interface ConvertTool {
 export class ConvertIndex {
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   readonly tools: ConvertTool[] = [
     { id: 'csvToJson', path: '/convert/csv-to-json', icon: 'shuffle' },

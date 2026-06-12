@@ -1,7 +1,5 @@
-import { isPlatformBrowser } from '@angular/common';
-import { effect, Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
-export type Language = 'en' | 'es';
+// Language type imported from @pockly/shared
 
 export interface Translations {
   // Nav
@@ -126,7 +124,7 @@ export interface Translations {
   unit_knot: string;
 }
 
-const translations: Record<Language, Translations> = {
+export const calculatorTranslations: Record<string, Record<string, string>> = {
   en: {
     // Nav
     navHome: 'Home',
@@ -379,81 +377,3 @@ const translations: Record<Language, Translations> = {
   },
 };
 
-export interface LanguageOption {
-  code: Language;
-  name: string;
-  nativeName: string;
-}
-
-const languages: LanguageOption[] = [
-  { code: 'en', name: 'English', nativeName: 'English' },
-  { code: 'es', name: 'Spanish', nativeName: 'Español' },
-];
-
-const STORAGE_KEY = 'pockly-language';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class LanguageService {
-  private readonly _language = signal<Language>('en');
-  private isBrowser: boolean;
-
-  readonly language = this._language.asReadonly();
-
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
-    this.isBrowser = isPlatformBrowser(platformId);
-
-    if (this.isBrowser) {
-      this._language.set(this.getInitialLanguage());
-    }
-
-    effect(() => {
-      if (this.isBrowser) {
-        localStorage.setItem(STORAGE_KEY, this._language());
-      }
-    });
-  }
-
-  private getInitialLanguage(): Language {
-    const stored = localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (stored && translations[stored]) {
-      return stored;
-    }
-
-    const browserLang = navigator.language.toLowerCase();
-    for (const lang of Object.keys(translations)) {
-      if (browserLang.startsWith(lang)) {
-        return lang as Language;
-      }
-    }
-    return 'en';
-  }
-
-  setLanguage(lang: Language): void {
-    if (translations[lang]) {
-      this._language.set(lang);
-    }
-  }
-
-  toggleLanguage(): void {
-    this._language.update((current) => (current === 'en' ? 'es' : 'en'));
-  }
-
-  getLabel(lang: Language): string {
-    const option = languages.find((l) => l.code === lang);
-    return option ? option.nativeName : lang;
-  }
-
-  getTranslations(): Translations {
-    return translations[this._language()];
-  }
-
-  getAvailableLanguages(): LanguageOption[] {
-    return languages;
-  }
-
-  getCurrentLanguage(): Language {
-    return this._language();
-  }
-}

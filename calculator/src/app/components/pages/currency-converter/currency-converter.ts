@@ -2,7 +2,8 @@ import { Component, signal, computed, OnInit, OnDestroy, inject } from '@angular
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 interface Rates { [key: string]: number; }
 interface CachedRates {
@@ -40,7 +41,7 @@ const COMMON_CURRENCIES = [
 export class CurrencyConverter implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   currencies = COMMON_CURRENCIES;
   rates = signal<Rates>({});

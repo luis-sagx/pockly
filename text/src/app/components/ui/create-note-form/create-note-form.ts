@@ -3,7 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faArrowDown, faMinus, faArrowUp, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Priority } from '../../pages/quick-notes/note.model';
-import { LanguageService } from '../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
+import type { Translations } from '../../../translations';
 
 export interface CreateNoteData {
   title: string;
@@ -31,7 +32,7 @@ export class CreateNoteForm {
   @Output() cancelled = new EventEmitter<void>();
 
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   title = signal('');
   description = signal('');

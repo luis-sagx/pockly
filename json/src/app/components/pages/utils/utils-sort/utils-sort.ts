@@ -1,8 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '../../../ui/output-box/output-box';
+import { OutputBox } from '@pockly/shared';
+import type { Translations } from '../../../../translations';
 import { IconComponent } from '../../../ui/icon/icon';
 import { sortJsonKeys } from '../utils.service';
-import { LanguageService } from '../../../../services/language.service';
+import { LanguageService } from '@pockly/shared';
 
 @Component({
   selector: 'app-utils-sort',
@@ -17,7 +18,7 @@ export class UtilsSort {
   output = signal('');
   error = signal<string | null>(null);
 
-  t = computed(() => this.languageService.getTranslations());
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
   apply() {
     this.error.set(null);

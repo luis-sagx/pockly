@@ -6,12 +6,12 @@ This is a flat multi-app repo. Each directory is an **independent Angular applic
 
 | Directory    | Angular | SSR | Test runner                  |
 | ------------ | ------- | --- | ---------------------------- |
-| `landing/`   | 20      | No  | Karma (`@angular/build:karma`) |
-| `image/`     | 21.2    | Yes | unit-test (`@angular/build:unit-test`) |
-| `json/`      | 21.2    | Yes | unit-test                    |
-| `text/`      | 21.2    | Yes | unit-test                    |
-| `url/`       | 21.2    | Yes | unit-test                    |
-| `calculator/`| 21.2    | Yes | unit-test                    |
+| `landing/`   | 21.2    | No  | unit-test (`@angular/build:unit-test`) |
+| `image/`     | 21.2    | No  | unit-test (`@angular/build:unit-test`) |
+| `json/`      | 21.2    | No  | unit-test                    |
+| `text/`      | 21.2    | No  | unit-test                    |
+| `url/`       | 21.2    | No  | unit-test                    |
+| `calculator/`| 21.2    | No  | unit-test                    |
 
 All commands MUST be run from inside the target app's directory. There is no root-level workspace orchestration.
 
@@ -29,22 +29,19 @@ pnpm run build:ssr # full build + server bundle
 
 `landing` is the main marketing site (routes to `/` only). All other apps host tool collections with multi-route setup.
 
-## Angular versions matter
+## Angular versions
 
-- `landing/` uses Angular 20. Do NOT use Angular 21 APIs or builders there.
-- All other apps use Angular 21.2 with SSR. They share a similar structure but have separate `package.json`, `angular.json`, and `tsconfig` files.
+- All apps use Angular 21.2. They share a similar structure but have separate `package.json`, `angular.json`, and `tsconfig` files.
 
 ## Testing
 
-- **landing**: Karma-based. Config in `landing/karma.conf.js` (if present). Run with `pnpm test` from `landing/`.
-- **others**: Use Angular's unit-test builder (`@angular/build:unit-test`). Also `pnpm test`.
+- All apps use Angular's unit-test builder (`@angular/build:unit-test`). Run with `pnpm test` from the app directory.
 - Tests are sparse. Most apps only have `app.spec.ts`. `image/` and `landing/` have additional component spec files.
 - No vitest or jest - ignore `vitest` in devDependencies, it's unused.
 
-## SSR (image, json, text, url, calculator)
+## SSR / Prerendering
 
-SSR entrypoint: `src/main.server.ts`. Express server configured per angular.json.
-After build, serve with: `pnpm run serve:ssr` (or the project-specific variant like `pnpm run serve:ssr:image`).
+All apps use `outputMode: "static"` for SSG prerendering. No Express server required — deployments are fully static. The `src/main.server.ts` entry point is used by the build pipeline for prerendering routes at build time.
 
 ## Styles
 

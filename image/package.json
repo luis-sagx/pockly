@@ -24,6 +24,7 @@
     "@angular/platform-server": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@angular/ssr": "^21.2.7",
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@imgly/background-removal": "^1.7.0",

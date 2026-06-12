@@ -29,6 +29,9 @@ dependencies:
   '@angular/ssr':
     specifier: ^21.2.7
     version: 21.2.11(@angular/common@21.2.13)(@angular/core@21.2.13)(@angular/platform-server@21.2.13)(@angular/router@21.2.13)
+  '@fontsource-variable/ibm-plex-sans':
+    specifier: ^5.2.8
+    version: 5.2.8
   '@fortawesome/angular-fontawesome':
     specifier: ^4.0.0
     version: 4.0.0(@angular/core@21.2.13)
@@ -1174,6 +1177,10 @@ packages:
       '@noble/hashes':
         optional: true
     dev: true
+
+  /@fontsource-variable/ibm-plex-sans@5.2.8:
+    resolution: {integrity: sha512-n5PF2iFa0CZT0QYTPzxvZ39opC9LnU0zdoRccoADbs+Dtsd+lbXOZF7RNuIPHcQX1dKjF63sxnRImQIB5eD0Ag==}
+    dev: false
 
   /@fortawesome/angular-fontawesome@4.0.0(@angular/core@21.2.13):
     resolution: {integrity: sha512-TCqHqT5ovFY1A4RgMpoBUgS+RX3OVs39+CzHFgzDhbCPAopOa26J748TZJcuZwJAvGAk9tbWeVEmWuLByINAeg==}

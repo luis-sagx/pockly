@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, signal, computed, effect } from '@angular/core';
+import { Router } from '@angular/router';
 import { SeoService } from '../../../services/seo.service';
 import { LanguageService } from '../../../services/language.service';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -30,6 +31,7 @@ export class Home implements OnInit {
   private seo = inject(SeoService);
   private library = inject(FaIconLibrary);
   private languageService = inject(LanguageService);
+  private router = inject(Router);
 
   constructor() {
     this.library.addIcons(faHashtag, faTextHeight, faCodeBranch, faKey, faPenToSquare);
@@ -117,6 +119,6 @@ export class Home implements OnInit {
   }
 
   navigate(path: string) {
-    window.location.href = path;
+    this.router.navigate([path]);
   }
 }

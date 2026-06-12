@@ -1,19 +1,13 @@
 import { Routes } from '@angular/router';
 import { Home } from './components/pages/home/home';
-import { TextCaseTool } from './components/pages/text-case-tool/text-case-tool';
-import { WordCount } from './components/pages/word-count/word-count';
-import { DiffChecker } from './components/pages/diff-checker/diff-checker';
-import { PasswordGenerator } from './components/pages/password-generator/password-generator';
-import { QuickNotes } from './components/pages/quick-notes/quick-notes';
-import { Auth } from './components/pages/auth/auth';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'sign-in', component: Auth },
-  { path: 'text-case', component: TextCaseTool },
-  { path: 'word-count', component: WordCount },
-  { path: 'diff-checker', component: DiffChecker },
-  { path: 'password-generator', component: PasswordGenerator },
-  { path: 'quick-notes', component: QuickNotes },
+  { path: 'sign-in', loadComponent: () => import('./components/pages/auth/auth').then(m => m.Auth) },
+  { path: 'text-case', loadComponent: () => import('./components/pages/text-case-tool/text-case-tool').then(m => m.TextCaseTool) },
+  { path: 'word-count', loadComponent: () => import('./components/pages/word-count/word-count').then(m => m.WordCount) },
+  { path: 'diff-checker', loadComponent: () => import('./components/pages/diff-checker/diff-checker').then(m => m.DiffChecker) },
+  { path: 'password-generator', loadComponent: () => import('./components/pages/password-generator/password-generator').then(m => m.PasswordGenerator) },
+  { path: 'quick-notes', loadComponent: () => import('./components/pages/quick-notes/quick-notes').then(m => m.QuickNotes) },
   { path: '**', redirectTo: '/' },
 ];

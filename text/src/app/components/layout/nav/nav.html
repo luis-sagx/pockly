@@ -3,7 +3,7 @@
 >
   <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group flex-shrink-0" href="/">
+    <a class="flex items-center gap-3 group flex-shrink-0" routerLink="/">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
@@ -16,31 +16,31 @@
         {{ t().navHome }}
       </a>
       <a
-        href="/word-count"
+        routerLink="/word-count"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navWordCount }}
       </a>
       <a
-        href="/text-case"
+        routerLink="/text-case"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navTextCase }}
       </a>
       <a
-        href="/diff-checker"
+        routerLink="/diff-checker"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navDiffChecker }}
       </a>
       <a
-        href="/password-generator"
+        routerLink="/password-generator"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navPasswordGenerator }}
       </a>
       <a
-        href="/quick-notes"
+        routerLink="/quick-notes"
         class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
       >
         {{ t().navQuickNotes }}
@@ -78,14 +78,14 @@
           class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-red-600 rounded-lg hover:bg-olive-cream transition"
           title="Sign out"
         >
-          <i class="fas fa-sign-out-alt text-xs"></i>
+            <fa-icon [icon]="['fas', 'sign-out-alt']" class="text-xs"></fa-icon>
         </button>
       } @else {
         <a
           routerLink="/sign-in"
           class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
         >
-          <i class="fas fa-user-circle"></i>
+          <fa-icon [icon]="['fas', 'user-circle']"></fa-icon>
         </a>
       }
 
@@ -113,42 +113,42 @@
     <div class="md:hidden border-t border-olive-border bg-olive-parchment">
       <div class="flex flex-col px-4 py-2">
         <a
-          href="/"
+          routerLink="/"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navHome }}
         </a>
         <a
-          href="/word-count"
+          routerLink="/word-count"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navWordCount }}
         </a>
         <a
-          href="/text-case"
+          routerLink="/text-case"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navTextCase }}
         </a>
         <a
-          href="/diff-checker"
+          routerLink="/diff-checker"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navDiffChecker }}
         </a>
         <a
-          href="/password-generator"
+          routerLink="/password-generator"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >
           {{ t().navPasswordGenerator }}
         </a>
         <a
-          href="/quick-notes"
+          routerLink="/quick-notes"
           class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
           (click)="closeMenu()"
         >

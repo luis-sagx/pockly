@@ -7,7 +7,12 @@ export const routes: Routes = [
     component: Home,
   },
   {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/404',
   },
 ];

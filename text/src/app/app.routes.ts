@@ -9,5 +9,10 @@ export const routes: Routes = [
   { path: 'diff-checker', loadComponent: () => import('./components/pages/diff-checker/diff-checker').then(m => m.DiffChecker) },
   { path: 'password-generator', loadComponent: () => import('./components/pages/password-generator/password-generator').then(m => m.PasswordGenerator) },
   { path: 'quick-notes', loadComponent: () => import('./components/pages/quick-notes/quick-notes').then(m => m.QuickNotes) },
-  { path: '**', redirectTo: '/' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', redirectTo: '/404' },
 ];

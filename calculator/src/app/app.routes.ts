@@ -12,5 +12,10 @@ export const routes: Routes = [
   { path: 'temperature-converter', loadComponent: () => import('./components/pages/unit-converter/temperature-converter/temperature-converter').then(m => m.TemperatureConverter) },
   { path: 'volume-converter', loadComponent: () => import('./components/pages/unit-converter/volume-converter/volume-converter').then(m => m.VolumeConverter) },
   { path: 'speed-converter', loadComponent: () => import('./components/pages/unit-converter/speed-converter/speed-converter').then(m => m.SpeedConverter) },
-  { path: '**', redirectTo: '/' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', redirectTo: '/404' },
 ];

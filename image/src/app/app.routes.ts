@@ -23,5 +23,10 @@ export const routes: Routes = [
   { path: 'background-remover', redirectTo: 'remove-background', pathMatch: 'full' },
   { path: 'image-resize', redirectTo: 'resize-dimensions', pathMatch: 'full' },
   { path: 'compress', redirectTo: 'compress-by-weight', pathMatch: 'full' },
-  { path: '**', redirectTo: '/' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', redirectTo: '/404' },
 ];

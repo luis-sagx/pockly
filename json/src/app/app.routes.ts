@@ -26,5 +26,10 @@ export const routes: Routes = [
   { path: 'utils/diff', loadComponent: () => import('./components/pages/utils/utils-diff/utils-diff').then(m => m.UtilsDiff) },
   { path: 'utils/query', loadComponent: () => import('./components/pages/utils/utils-query/utils-query').then(m => m.UtilsQuery) },
 
-  { path: '**', redirectTo: '/' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', redirectTo: '/404' },
 ];

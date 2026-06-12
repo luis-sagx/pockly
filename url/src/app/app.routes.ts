@@ -8,5 +8,10 @@ export const routes: Routes = [
   { path: 'url-decoder', loadComponent: () => import('./components/pages/url-decoder/url-decoder').then(m => m.UrlDecoder) },
   { path: 'utm-builder', loadComponent: () => import('./components/pages/utm-builder/utm-builder').then(m => m.UtmBuilder) },
   { path: 'url-cleaner', loadComponent: () => import('./components/pages/url-cleaner/url-cleaner').then(m => m.UrlCleaner) },
-  { path: '**', redirectTo: '/' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./components/pages/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', redirectTo: '/404' },
 ];

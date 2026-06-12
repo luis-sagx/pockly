@@ -3,15 +3,15 @@
 >
   <div class="flex items-center justify-between px-4 sm:px-6 py-2 mx-auto max-w-7xl">
     <!-- Logo -->
-    <a class="flex items-center gap-3 group shrink-0" href="/">
+    <a class="flex items-center gap-3 group shrink-0" routerLink="/">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
     <!-- Desktop nav links -->
     <div class="hidden md:flex items-center gap-1">
-      <a href="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navHome }}</a>
-      <a href="/generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navGenerator }}</a>
-      <a href="/templates" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navTemplates }}</a>
+      <a routerLink="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navHome }}</a>
+      <a routerLink="/generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navGenerator }}</a>
+      <a routerLink="/templates" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">{{ t().navTemplates }}</a>
 
       <!-- Convert Dropdown -->
       <div class="relative" (mouseenter)="openDropdownMenu('convert')" (mouseleave)="scheduleClose()">
@@ -31,12 +31,12 @@
             (mouseleave)="scheduleClose()"
           >
             <div class="w-44 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a href="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
-              <a href="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
-              <a href="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
-              <a href="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
-              <a href="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
-              <a href="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
+              <a routerLink="/convert/csv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
+              <a routerLink="/convert/tsv-to-json" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
+              <a routerLink="/convert/json-to-csv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
+              <a routerLink="/convert/json-to-tsv" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
+              <a routerLink="/convert/json-to-xml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
+              <a routerLink="/convert/json-to-yaml" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
             </div>
           </div>
         }
@@ -60,14 +60,14 @@
             (mouseleave)="scheduleClose()"
           >
             <div class="w-40 bg-white border border-olive-border rounded-lg shadow-lg overflow-hidden">
-              <a href="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFormat }}</a>
-              <a href="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navMinify }}</a>
-              <a href="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navSortKeys }}</a>
-              <a href="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navValidate }}</a>
-              <a href="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFlatten }}</a>
-              <a href="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navUnflatten }}</a>
-              <a href="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navDiff }}</a>
-              <a href="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navQuery }}</a>
+              <a routerLink="/utils/format" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFormat }}</a>
+              <a routerLink="/utils/minify" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navMinify }}</a>
+              <a routerLink="/utils/sort" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navSortKeys }}</a>
+              <a routerLink="/utils/validate" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navValidate }}</a>
+              <a routerLink="/utils/flatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navFlatten }}</a>
+              <a routerLink="/utils/unflatten" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navUnflatten }}</a>
+              <a routerLink="/utils/diff" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navDiff }}</a>
+              <a routerLink="/utils/query" class="block px-4 py-2 text-sm text-olive-ink hover:bg-olive-cream hover:text-posthog-orange">{{ t().navQuery }}</a>
             </div>
           </div>
         }
@@ -96,9 +96,9 @@
   @if (mobileMenuOpen()) {
     <div class="md:hidden border-t border-olive-border bg-olive-parchment">
       <div class="flex flex-col py-2 px-4">
-        <a href="/" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navHome }}</a>
-        <a href="/generator" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navGenerator }}</a>
-        <a href="/templates" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navTemplates }}</a>
+        <a routerLink="/" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navHome }}</a>
+        <a routerLink="/generator" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navGenerator }}</a>
+        <a routerLink="/templates" (click)="closeMobileMenu()" class="py-2.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange">{{ t().navTemplates }}</a>
 
         <!-- Convert mobile -->
         <button
@@ -112,12 +112,12 @@
         </button>
         @if (openDropdown() === 'convert-mobile') {
           <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
-            <a href="/convert/csv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
-            <a href="/convert/tsv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
-            <a href="/convert/json-to-csv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
-            <a href="/convert/json-to-tsv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
-            <a href="/convert/json-to-xml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
-            <a href="/convert/json-to-yaml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
+            <a routerLink="/convert/csv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navCsvToJson }}</a>
+            <a routerLink="/convert/tsv-to-json" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navTsvToJson }}</a>
+            <a routerLink="/convert/json-to-csv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToCsv }}</a>
+            <a routerLink="/convert/json-to-tsv" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToTsv }}</a>
+            <a routerLink="/convert/json-to-xml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToXml }}</a>
+            <a routerLink="/convert/json-to-yaml" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navJsonToYaml }}</a>
           </div>
         }
 
@@ -133,14 +133,14 @@
         </button>
         @if (openDropdown() === 'utils-mobile') {
           <div class="ml-3 flex flex-col border-l-2 border-olive-border pl-3">
-            <a href="/utils/format" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFormat }}</a>
-            <a href="/utils/minify" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navMinify }}</a>
-            <a href="/utils/sort" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navSortKeys }}</a>
-            <a href="/utils/validate" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navValidate }}</a>
-            <a href="/utils/flatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFlatten }}</a>
-            <a href="/utils/unflatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navUnflatten }}</a>
-            <a href="/utils/diff" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navDiff }}</a>
-            <a href="/utils/query" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navQuery }}</a>
+            <a routerLink="/utils/format" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFormat }}</a>
+            <a routerLink="/utils/minify" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navMinify }}</a>
+            <a routerLink="/utils/sort" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navSortKeys }}</a>
+            <a routerLink="/utils/validate" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navValidate }}</a>
+            <a routerLink="/utils/flatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navFlatten }}</a>
+            <a routerLink="/utils/unflatten" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navUnflatten }}</a>
+            <a routerLink="/utils/diff" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navDiff }}</a>
+            <a routerLink="/utils/query" (click)="closeMobileMenu()" class="py-2 text-sm text-olive-ink hover:text-posthog-orange">{{ t().navQuery }}</a>
           </div>
         }
       </div>

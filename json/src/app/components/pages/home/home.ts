@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Router } from '@angular/router';
 import { SeoService } from '../../../services/seo.service';
 import { LanguageService } from '../../../services/language.service';
 import { IconComponent } from '../../ui/icon/icon';
@@ -20,6 +21,7 @@ interface Tool {
 export class Home implements OnInit {
   private seo = inject(SeoService);
   private languageService = inject(LanguageService);
+  private router = inject(Router);
 
   filter = signal<string>('all');
 
@@ -66,7 +68,7 @@ export class Home implements OnInit {
   }
 
   navigate(path: string) {
-    window.location.href = path;
+    this.router.navigate([path]);
   }
 
   setFilter(category: string) {

@@ -1,30 +1,77 @@
 <nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
   <div class="flex items-center justify-between px-6 py-2 mx-auto max-w-7xl">
     <!-- Logo a la izquierda -->
-    <a class="flex items-center gap-3 group" routerLink="/">
+    <a class="flex items-center gap-3 group" routerLink="/" (click)="closeMenu()">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
-    <!-- Nav Links a la derecha -->
-    <div class="flex items-center gap-1">
-      <a routerLink="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+    <!-- Nav Links hidden on mobile, visible on md+ -->
+    <div class="hidden items-center gap-1 md:flex">
+      <a routerLink="/" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navHome }}
       </a>
-      <a routerLink="/qr-generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/qr-generator" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navQrGenerator }}
       </a>
-      <a routerLink="/url-encoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-encoder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlEncoder }}
       </a>
-      <a routerLink="/url-decoder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-decoder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlDecoder }}
       </a>
-      <a routerLink="/utm-builder" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/utm-builder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUtmBuilder }}
       </a>
-      <a routerLink="/url-cleaner" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+      <a routerLink="/url-cleaner" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navUrlCleaner }}
       </a>
     </div>
+
+    <!-- Hamburger button visible only on mobile -->
+    <button
+      (click)="toggleMenu()"
+      class="md:hidden focus:outline-none focus:ring-2 focus:ring-olive-ink rounded p-1"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="w-6 h-6 text-olive-ink transition-transform duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        @if (isMenuOpen()) {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        } @else {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        }
+      </svg>
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  @if (isMenuOpen()) {
+    <div class="md:hidden border-t bg-olive-parchment border-olive-border">
+      <div class="flex flex-col px-4 py-2 gap-1">
+        <a routerLink="/" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navHome }}
+        </a>
+        <a routerLink="/qr-generator" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navQrGenerator }}
+        </a>
+        <a routerLink="/url-encoder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navUrlEncoder }}
+        </a>
+        <a routerLink="/url-decoder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navUrlDecoder }}
+        </a>
+        <a routerLink="/utm-builder" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navUtmBuilder }}
+        </a>
+        <a routerLink="/url-cleaner" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
+          {{ t().navUrlCleaner }}
+        </a>
+      </div>
+    </div>
+  }
 </nav>

@@ -5,12 +5,12 @@
 
 @layer base {
   html {
-    @apply bg-olive-parchment;
+    @apply bg-parchment;
   }
 
   body {
     font-family: "IBM Plex Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    @apply bg-olive-parchment text-olive-ink antialiased;
+    @apply bg-parchment text-olive-ink antialiased;
   }
 }
 

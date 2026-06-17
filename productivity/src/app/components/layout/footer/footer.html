@@ -1,0 +1,19 @@
+<footer class="py-6 border-t bg-olive-parchment border-olive-border">
+  <div class="flex flex-col items-center justify-center gap-4 text-center">
+    <img src="logo.png" alt="Pockly" class="w-auto h-12" />
+    <p class="text-xs text-olive-ink/70">{{ t().freeOnlineTools }}</p>
+    <div class="text-xs text-olive-ink/60">
+      <span class="font-semibold">{{ t().moreTools }}</span>
+      <a href="https://pockly.vercel.app" class="ml-2 underline hover:text-olive-ink">Home</a>
+      <a href="https://text.pockly.vercel.app" class="ml-2 underline hover:text-olive-ink">Text</a>
+      <a href="https://json.pockly.vercel.app" class="ml-2 underline hover:text-olive-ink">JSON</a>
+      <a href="https://image.pockly.vercel.app" class="ml-2 underline hover:text-olive-ink">Image</a>
+    </div>
+    <label class="text-xs text-olive-ink/60">
+      {{ t().languageLabel }}:
+      <select (change)="onLanguageChange($event)" [value]="language()" class="px-2 py-1 ml-1 text-xs border rounded bg-olive-cream border-olive-light text-olive-ink">
+        @for (lang of availableLanguages; track lang.code) { <option [value]="lang.code">{{ lang.nativeName }}</option> }
+      </select>
+    </label>
+  </div>
+</footer>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://productivity.pockly.vercel.app/sitemap.xml

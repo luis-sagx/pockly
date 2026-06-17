@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-8 px-4 pb-12">
+  <section class="flex flex-col items-center justify-between max-w-6xl gap-8 mx-auto md:flex-row md:gap-12">
+    <img src="/pet.png" alt="Pockly pet" class="object-contain order-2 w-48 h-48 md:w-64 md:h-64 md:order-1" />
+    <div class="order-1 max-w-4xl md:order-2">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-olive-deep font-display leading-[1.20]" style="letter-spacing: -0.75px">{{ t().heroTitle }}</h1>
+      <p class="mt-6 text-lg leading-relaxed text-olive-ink/80">{{ t().heroSubtitle }}</p>
+    </div>
+  </section>
+  <div class="flex flex-wrap justify-center gap-2">
+    @for (tab of [{ id: 'all', label: t().allTools }, { id: 'daily', label: t().dailyPlanning }, { id: 'routines', label: t().routines }, { id: 'capture', label: t().capture }]; track tab.id) {
+      <button (click)="filter.set(tab.id)" class="px-4 py-2 text-sm font-semibold rounded-lg transition" [class.bg-olive-deep]="filter() === tab.id" [class.text-white]="filter() === tab.id" [class.bg-olive-lightSage]="filter() !== tab.id" [class.text-olive-ink]="filter() !== tab.id">{{ tab.label }}</button>
+    }
+  </div>
+  <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+    @for (tool of filteredTools(); track tool.id) {
+      <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left transition-all border rounded-lg cursor-pointer group bg-olive-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream">
+        <span class="flex items-center justify-center w-10 h-10 mb-4 text-xl rounded bg-olive-lightSage text-olive-deep group-hover:text-posthog-orange">{{ tool.icon }}</span>
+        <span class="text-base font-bold text-olive-deep">{{ t()[tool.labelKey] }}</span>
+        <p class="mt-2 text-sm text-olive-ink/70">{{ t()[tool.descKey] }}</p>
+      </button>
+    }
+  </div>
+</div>

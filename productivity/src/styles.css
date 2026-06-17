@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@fontsource-variable/ibm-plex-sans';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply bg-olive-parchment; }
+  body {
+    font-family: "IBM Plex Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    @apply bg-olive-parchment text-olive-ink antialiased;
+  }
+}
+
+@layer components {
+  .page-shell { @apply w-full max-w-7xl px-6 py-12 mx-auto; }
+  .page-card { @apply border border-olive-border rounded-lg bg-olive-parchment; }
+  .btn-primary { @apply px-4 py-2 text-sm font-semibold text-white transition rounded-md bg-olive-deep hover:opacity-75; }
+  .btn-secondary { @apply px-4 py-2 text-sm font-semibold transition rounded-md bg-olive-lightSage text-olive-ink hover:bg-olive-cream hover:text-posthog-orange; }
+  .field { @apply w-full px-3 py-2 text-sm border rounded bg-olive-cream border-olive-light text-olive-deep placeholder:text-olive-placeholder focus:outline-none focus:ring-2 focus:ring-blue-500/50; }
+}

@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-6">
+  <header><h1 class="text-3xl font-bold text-olive-deep">{{ t().habits }}</h1><p class="mt-1 text-sm text-olive-ink/70">{{ t().habitsDesc }}</p></header>
+  <section class="flex flex-col gap-3 p-4 page-card bg-olive-cream sm:flex-row"><input class="field" [placeholder]="t().habitName" [ngModel]="habitName()" (ngModelChange)="habitName.set($event)" (keydown.enter)="addHabit()" /><button class="btn-primary" (click)="addHabit()">{{ t().addHabit }}</button></section>
+  <section class="flex flex-col gap-3">
+    @for (habit of habits(); track habit.id) {
+      <article class="grid gap-4 p-4 page-card md:grid-cols-[1fr_auto_auto] md:items-center">
+        <div><h2 class="font-bold text-olive-deep">{{ habit.name }}</h2><p class="text-xs text-olive-ink/60">{{ t().currentStreak }}: {{ streak(habit.id) }} {{ t().days }}</p></div>
+        <div class="flex gap-2">
+          @for (day of days; track day) {
+            <button class="flex items-center justify-center w-9 h-9 text-xs font-semibold border rounded-full border-olive-border" [class.bg-olive-deep]="done(habit.id, day)" [class.text-white]="done(habit.id, day)" [class.ring-2]="isToday(day)" [class.ring-posthog-orange]="isToday(day)" (click)="toggle(habit.id, day)" [attr.aria-label]="habit.name + ' ' + day">{{ day.slice(8) }}</button>
+          }
+        </div>
+        <button class="btn-secondary" (click)="archive(habit.id)">{{ t().archive }}</button>
+      </article>
+    } @empty { <p class="p-8 text-sm text-center page-card text-olive-ink/60">{{ t().noHabits }}</p> }
+  </section>
+</div>

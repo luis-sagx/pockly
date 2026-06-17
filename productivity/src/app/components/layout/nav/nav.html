@@ -1,0 +1,26 @@
+<nav class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border">
+  <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
+    <a routerLink="/" class="flex items-center gap-3"><img src="logo.png" alt="Pockly" class="w-auto h-9 sm:h-12" /></a>
+    <div class="items-center hidden gap-1 md:flex">
+      <a routerLink="/" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navHome }}</a>
+      <a routerLink="/board" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navBoard }}</a>
+      <a routerLink="/habits" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navHabits }}</a>
+      <a routerLink="/scratchpad" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navScratchpad }}</a>
+      <a routerLink="/sign-in" class="ml-2 btn-secondary">{{ t().signIn }}</a>
+    </div>
+    <button class="p-2 rounded md:hidden text-olive-ink hover:bg-olive-cream" (click)="toggleMenu()" [attr.aria-expanded]="open()" aria-label="Toggle menu">
+      @if (open()) { ✕ } @else { ☰ }
+    </button>
+  </div>
+  @if (open()) {
+    <div class="border-t md:hidden border-olive-border bg-olive-parchment">
+      <div class="flex flex-col px-4 py-2">
+        <a routerLink="/" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navHome }}</a>
+        <a routerLink="/board" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navBoard }}</a>
+        <a routerLink="/habits" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navHabits }}</a>
+        <a routerLink="/scratchpad" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().navScratchpad }}</a>
+        <a routerLink="/sign-in" (click)="closeMenu()" class="px-3 py-2 text-sm font-semibold rounded text-olive-ink hover:text-posthog-orange hover:bg-olive-cream">{{ t().signIn }}</a>
+      </div>
+    </div>
+  }
+</nav>

@@ -27,6 +27,7 @@ describe('Footer', () => {
     expect(component.categories.map((category) => category.key)).toEqual([
       'json',
       'text',
+      'productivity',
       'image',
       'calculator',
       'url',

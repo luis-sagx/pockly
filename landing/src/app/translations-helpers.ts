@@ -6,6 +6,7 @@ export const CATEGORY_TITLE_KEYS: Record<string, keyof Translations> = {
   image: 'catTitleImage',
   url: 'catTitleUrl',
   calculator: 'catTitleCalculator',
+  productivity: 'catTitleProductivity',
 };
 
 export const LABEL_TO_SUFFIX: Record<string, Record<string, string>> = {
@@ -21,7 +22,12 @@ export const LABEL_TO_SUFFIX: Record<string, Record<string, string>> = {
     'Diff Checker': 'diff',
     'Password Generator': 'password',
     'Quick Notes': 'notes',
-    'Spell Checker': 'spell',
+
+  },
+  productivity: {
+    Board: 'board',
+    Habits: 'habits',
+    Scratchpad: 'scratchpad',
   },
   image: {
     'Image to Base64': 'base64to',

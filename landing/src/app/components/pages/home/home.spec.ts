@@ -28,9 +28,10 @@ describe('Home', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should expose the five landing categories', () => {
+  it('should expose the six landing categories', () => {
     expect(component.featuredCategories.map((category) => category.key)).toEqual([
       'text',
+      'productivity',
       'image',
       'json',
       'url',

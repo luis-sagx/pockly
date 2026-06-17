@@ -16,7 +16,14 @@ A modern, fast, and lightweight **online toolkit** for everyday development and 
 | **Word Counter**   | Count words, characters, sentences, and paragraphs with instant feedback and export | `/word-count`   |
 | **Text Case Tool** | Convert between UPPERCASE, lowercase, Title Case, Sentence case, and more           | `/text-case`    |
 | **Diff Checker**   | Compare two texts side-by-side with clear highlighting and export                   | `/diff-checker` |
-| **Quick Notes**    | Free online notepad. Save notes instantly, no login required                        | `/quick-notes`  |
+
+### 🗓️ Productivity Tools
+
+| Tool | Description | URL |
+| ---- | ----------- | --- |
+| **Board** | Personal task board organized by Today, This week, and Someday | `/board` |
+| **Habits** | Daily habit tracker with local-day streaks | `/habits` |
+| **Scratchpad** | Single fast autosaving markdown pad | `/scratchpad` |
 
 ### 📦 JSON Tools
 
@@ -138,7 +145,9 @@ src/
 | Text     | Word Counter       | `/word-count`            |
 | Text     | Text Case          | `/text-case`             |
 | Text     | Diff Checker       | `/diff-checker`          |
-| Text     | Quick Notes        | `/quick-notes`           |
+| Productivity | Board | `/board` |
+| Productivity | Habits | `/habits` |
+| Productivity | Scratchpad | `/scratchpad` |
 | JSON     | Generator          | `/json-generator`        |
 | JSON     | Templates          | `/json/templates`        |
 | JSON     | Convert            | `/json/convert`          |

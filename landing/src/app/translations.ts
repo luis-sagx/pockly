@@ -15,6 +15,7 @@ export interface Translations {
   heroSubtitle: string;
   filterAll: string;
   filterText: string;
+  filterProductivity: string;
   filterImage: string;
   filterJson: string;
   filterUrl: string;
@@ -31,6 +32,7 @@ export interface Translations {
   catTitleImage: string;
   catTitleUrl: string;
   catTitleCalculator: string;
+  catTitleProductivity: string;
 
   // Link labels — JSON
   linkLabel_json_generator: string;
@@ -45,6 +47,11 @@ export interface Translations {
   linkLabel_text_password: string;
   linkLabel_text_notes: string;
   linkLabel_text_spell: string;
+
+  // Link labels — Productivity
+  linkLabel_productivity_board: string;
+  linkLabel_productivity_habits: string;
+  linkLabel_productivity_scratchpad: string;
 
   // Link labels — Image
   linkLabel_image_base64to: string;
@@ -87,6 +94,11 @@ export interface Translations {
   linkDesc_text_notes: string;
   linkDesc_text_spell: string;
 
+  // Link descriptions — Productivity
+  linkDesc_productivity_board: string;
+  linkDesc_productivity_habits: string;
+  linkDesc_productivity_scratchpad: string;
+
   // Link descriptions — Image
   linkDesc_image_base64to: string;
   linkDesc_image_base64from: string;
@@ -128,6 +140,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
       'Open the full collection of text, image, JSON, URL and calculator tools from a single hub. Every card below takes you straight to the matching app.',
     filterAll: 'All',
     filterText: 'Text',
+    filterProductivity: 'Productivity',
     filterImage: 'Image',
     filterJson: 'JSON',
     filterUrl: 'URL',
@@ -144,6 +157,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     catTitleImage: 'Image Tools',
     catTitleUrl: 'URL Tools',
     catTitleCalculator: 'Calculator Tools',
+    catTitleProductivity: 'Productivity Tools',
 
     // Link labels — JSON
     linkLabel_json_generator: 'Generator',
@@ -158,6 +172,11 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_text_password: 'Password Generator',
     linkLabel_text_notes: 'Quick Notes',
     linkLabel_text_spell: 'Spell Checker',
+
+    // Link labels — Productivity
+    linkLabel_productivity_board: 'Board',
+    linkLabel_productivity_habits: 'Habits',
+    linkLabel_productivity_scratchpad: 'Scratchpad',
 
     // Link labels — Image
     linkLabel_image_base64to: 'Image to Base64',
@@ -204,6 +223,11 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_text_notes: 'Private notes with auto-save to local storage',
     linkDesc_text_spell: 'Check spelling and grammar in your text',
 
+    // Link descriptions — Productivity
+    linkDesc_productivity_board: 'Organize tasks by Today, This week and Someday',
+    linkDesc_productivity_habits: 'Track recurring routines and daily streaks',
+    linkDesc_productivity_scratchpad: 'Capture loose thoughts in a fast autosaving pad',
+
     // Link descriptions — Image
     linkDesc_image_base64to: 'Encode any image to a Base64 data URI',
     linkDesc_image_base64from: 'Decode a Base64 string back to an image',
@@ -246,6 +270,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
       'Abre la colección completa de herramientas de texto, imagen, JSON, URL y calculadora desde un solo hub. Cada tarjeta te lleva directo a la app correspondiente.',
     filterAll: 'Todas',
     filterText: 'Texto',
+    filterProductivity: 'Productividad',
     filterImage: 'Imagen',
     filterJson: 'JSON',
     filterUrl: 'URL',
@@ -263,6 +288,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     catTitleImage: 'Herramientas de imagen',
     catTitleUrl: 'Herramientas URL',
     catTitleCalculator: 'Herramientas de calculadora',
+    catTitleProductivity: 'Herramientas de productividad',
 
     // Link labels — JSON
     linkLabel_json_generator: 'Generador',
@@ -277,6 +303,11 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_text_password: 'Generador de contraseñas',
     linkLabel_text_notes: 'Notas rápidas',
     linkLabel_text_spell: 'Corrector ortográfico',
+
+    // Link labels — Productivity
+    linkLabel_productivity_board: 'Tablero',
+    linkLabel_productivity_habits: 'Hábitos',
+    linkLabel_productivity_scratchpad: 'Bloc rápido',
 
     // Link labels — Image
     linkLabel_image_base64to: 'Imagen a Base64',
@@ -323,6 +354,11 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_text_notes:
       'Notas privadas con guardado automático en el navegador',
     linkDesc_text_spell: 'Revisa ortografía y gramática en tu texto',
+
+    // Link descriptions — Productivity
+    linkDesc_productivity_board: 'Organiza tareas por Hoy, Esta semana y Algún día',
+    linkDesc_productivity_habits: 'Registra rutinas recurrentes y rachas diarias',
+    linkDesc_productivity_scratchpad: 'Captura ideas sueltas en un bloc rápido con autosave',
 
     // Link descriptions — Image
     linkDesc_image_base64to:

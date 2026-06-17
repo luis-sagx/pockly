@@ -62,15 +62,26 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
         url: 'https://pockly-text.vercel.app/password-generator',
         description: 'Create strong, customisable passwords',
       },
+    ],
+  },
+  {
+    key: 'productivity',
+    title: 'Productivity Tools',
+    links: [
       {
-        label: 'Quick Notes',
-        url: 'https://pockly-text.vercel.app/quick-notes',
-        description: 'Private notes with auto-save to local storage',
+        label: 'Board',
+        url: 'https://productivity.pockly.vercel.app/board',
+        description: 'Organize tasks by Today, This week and Someday',
       },
       {
-        label: 'Spell Checker',
-        url: 'https://pockly-text.vercel.app/spell-checker',
-        description: 'Check spelling and grammar in your text',
+        label: 'Habits',
+        url: 'https://productivity.pockly.vercel.app/habits',
+        description: 'Track recurring routines and daily streaks',
+      },
+      {
+        label: 'Scratchpad',
+        url: 'https://productivity.pockly.vercel.app/scratchpad',
+        description: 'Capture loose thoughts in a fast autosaving pad',
       },
     ],
   },

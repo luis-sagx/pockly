@@ -20,9 +20,9 @@ export class Home implements OnInit {
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
-  private readonly featuredCategoryKeys = ['text', 'image', 'json', 'url', 'calculator'] as const;
+  private readonly featuredCategoryKeys = ['text', 'productivity', 'image', 'json', 'url', 'calculator'] as const;
 
-  readonly filter = signal<'all' | 'text' | 'image' | 'json' | 'url' | 'calculator'>('all');
+  readonly filter = signal<'all' | 'text' | 'productivity' | 'image' | 'json' | 'url' | 'calculator'>('all');
 
   readonly featuredCategories: ProjectCategory[] = this.featuredCategoryKeys
     .map((key) => PROJECT_CATEGORIES.find((category) => category.key === key))
@@ -46,6 +46,7 @@ export class Home implements OnInit {
     return [
       { label: t.filterAll, value: 'all' as const },
       { label: t.filterText, value: 'text' as const },
+      { label: t.filterProductivity, value: 'productivity' as const },
       { label: t.filterImage, value: 'image' as const },
       { label: t.filterJson, value: 'json' as const },
       { label: t.filterUrl, value: 'url' as const },
@@ -65,6 +66,7 @@ export class Home implements OnInit {
 
   readonly categoryIcons: Record<string, string> = {
     text: 'fa-font',
+    productivity: 'fa-calendar-check',
     image: 'fa-image',
     json: 'fa-code',
     url: 'fa-link',

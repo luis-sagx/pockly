@@ -23,3 +23,14 @@ export function currentStreak(logDates: string[], today = new Date()): number {
   }
   return streak;
 }
+
+export function habitStats(logDates: string[], today = new Date()) {
+  const last7 = lastNDays(7, today);
+  const completedLast7Days = last7.filter((day) => logDates.includes(day)).length;
+  return {
+    streak: currentStreak(logDates, today),
+    completedLast7Days,
+    weeklyCompletionRate: Math.round((completedLast7Days / 7) * 100),
+    totalCheckIns: logDates.length,
+  };
+}

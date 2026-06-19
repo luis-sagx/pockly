@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { currentStreak, getLocalDateKey, lastNDays } from './habit.utils';
+import { currentStreak, getLocalDateKey, habitStats, lastNDays } from './habit.utils';
 
 describe('habit utilities', () => {
   it('formats local dates as YYYY-MM-DD', () => {
@@ -13,5 +13,16 @@ describe('habit utilities', () => {
   it('computes consecutive streaks ending today', () => {
     expect(currentStreak(['2026-06-14', '2026-06-15', '2026-06-16'], new Date(2026, 5, 16))).toBe(3);
     expect(currentStreak(['2026-06-14', '2026-06-16'], new Date(2026, 5, 16))).toBe(1);
+  });
+
+  it('builds daily stats for the last 7 days', () => {
+    expect(
+      habitStats(['2026-06-10', '2026-06-12', '2026-06-13', '2026-06-15', '2026-06-16'], new Date(2026, 5, 16)),
+    ).toEqual({
+      streak: 2,
+      completedLast7Days: 5,
+      weeklyCompletionRate: 71,
+      totalCheckIns: 5,
+    });
   });
 });

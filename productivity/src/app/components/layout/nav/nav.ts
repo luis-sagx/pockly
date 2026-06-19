@@ -1,13 +1,36 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
+import { SupabaseService } from '../../../services/supabase.service';
 
-@Component({ selector: 'app-nav', imports: [RouterLink], templateUrl: './nav.html', styleUrl: './nav.css' })
+@Component({
+  selector: 'app-nav',
+  standalone: true,
+  imports: [RouterLink, FaIconComponent],
+  templateUrl: './nav.html',
+  styleUrl: './nav.css',
+})
 export class Nav {
   private languageService = inject(LanguageService);
-  readonly t = computed(() => this.languageService.getTranslations() as unknown as Translations);
-  readonly open = signal(false);
-  toggleMenu(): void { this.open.update((value) => !value); }
-  closeMenu(): void { this.open.set(false); }
+  private supabaseService = inject(SupabaseService);
+  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  isLoggedIn = this.supabaseService.isLoggedIn;
+  displayName = this.supabaseService.displayName;
+
+  isMenuOpen = signal(false);
+
+  toggleMenu() {
+    this.isMenuOpen.update((v) => !v);
+  }
+
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
+
+  signOut(): void {
+    this.supabaseService.signOut();
+  }
 }

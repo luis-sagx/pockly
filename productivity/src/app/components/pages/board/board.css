@@ -1,1 +1,7 @@
-:host { display: block; }
+:host {
+  display: block;
+}
+
+.columns-container {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-4;
+}

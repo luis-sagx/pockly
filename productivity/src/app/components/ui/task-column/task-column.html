@@ -1,0 +1,41 @@
+<div
+  cdkDropList
+  [cdkDropListData]="tasks"
+  (cdkDropListEntered)="onDragEntered()"
+  (cdkDropListExited)="onDragExited()"
+  (cdkDropListDropped)="onDrop($event)"
+  class="flex flex-col gap-2 min-h-[200px] p-3 rounded-lg border-2 border-dashed transition-colors"
+  [class.border-blue-400]="isDragging"
+  [class.border-transparent]="!isDragging"
+>
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="font-semibold text-sm" [class]="headerColorClass">
+      {{ columnTitle }}
+    </h3>
+    <span class="text-xs text-olive-ink/60 bg-olive-cream px-2 py-0.5 rounded-full">
+      {{ tasks.length }}
+    </span>
+  </div>
+
+  <div
+    class="h-0.5 w-full mb-1"
+    [class.bg-posthog-orange]="horizon === 'today'"
+    [class.bg-amber-400]="horizon === 'week'"
+    [class.bg-green-500]="horizon === 'someday'"
+  ></div>
+
+  @for (task of tasks; track task.id) {
+    <app-task-card
+      [task]="task"
+      (clicked)="onCardClicked($event)"
+      (deleted)="onCardDeleted($event)"
+    />
+  }
+
+  @empty {
+    <div class="text-center text-olive-ink/40 py-8 flex flex-col items-center gap-2">
+      <fa-icon [icon]="faInbox" class="text-2xl"></fa-icon>
+      <p class="text-sm">{{ t().noNotesInColumn }}</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,63 @@
+<div
+  cdkDrag
+  [cdkDragData]="task"
+  [cdkDragDisabled]="showDeleteConfirm()"
+  class="task-card group relative cursor-pointer border-l-4"
+  [class]="priorityColorClass"
+  (click)="onClick()"
+>
+  <span
+    class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded mb-1.5 max-w-full truncate"
+    [class]="priorityBadgeClass"
+  >
+    {{ task.priority === 'high' ? t().priorityHigh : task.priority === 'medium' ? t().priorityMedium : t().priorityLow }}
+  </span>
+
+  <h4 class="font-semibold text-sm text-olive-deep line-clamp-2 pr-8">
+    {{ task.title }}
+  </h4>
+
+  @if (task.description) {
+    <p class="text-xs text-olive-ink/50 line-clamp-1 mt-1">
+      {{ task.description }}
+    </p>
+  }
+
+  @if (checklistBadge) {
+    <div class="flex items-center gap-1 mt-2">
+      <fa-icon [icon]="faCheckSquare" class="text-xs text-olive-ink/40"></fa-icon>
+      <span class="text-xs text-olive-ink/50">{{ checklistBadge }}</span>
+    </div>
+  }
+
+  @if (showDeleteConfirm()) {
+    <div
+      class="absolute inset-0 flex items-center justify-center gap-1.5 bg-white/95 rounded-lg p-1.5"
+      (click)="$event.stopPropagation()"
+    >
+      <span class="text-[11px] font-semibold text-red-600">{{ t().deleteNoteConfirm }}</span>
+      <button
+        (click)="confirmDelete($event)"
+        class="px-2 py-1 text-[11px] font-semibold text-white bg-red-600 hover:bg-red-700 rounded transition"
+        [attr.aria-label]="t().deleteTask"
+      >
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </button>
+      <button
+        (click)="cancelDelete($event)"
+        class="px-2 py-1 text-[11px] font-semibold text-olive-ink bg-olive-lightSage hover:bg-olive-cream rounded transition"
+        [attr.aria-label]="t().cancel"
+      >
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+  } @else {
+    <button
+      class="absolute top-2 right-2 opacity-60 hover:opacity-100 transition-opacity p-1 text-olive-ink/90 hover:text-red-500 rounded"
+      (click)="onDelete($event)"
+      [attr.aria-label]="t().deleteTask"
+    >
+      <fa-icon [icon]="faTrash" class="text-xs"></fa-icon>
+    </button>
+  }
+</div>

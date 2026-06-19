@@ -1,0 +1,163 @@
+@if (open && task) {
+  <div class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" (click)="onBackdropClick($event)">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between p-4 border-b border-olive-light/30 flex-shrink-0">
+        <h3 class="text-lg font-semibold text-olive-deep">{{ t().editNote }}</h3>
+        <button
+          (click)="close()"
+          class="p-1.5 text-olive-ink/40 hover:text-olive-ink rounded-lg hover:bg-olive-cream transition"
+          [attr.aria-label]="t().cancel"
+        >
+          <fa-icon [icon]="faTimes"></fa-icon>
+        </button>
+      </div>
+
+      <div #modalBody class="flex-1 overflow-y-auto p-4 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-olive-ink/70 mb-1">
+            {{ t().noteTitle }}
+          </label>
+          <input
+            type="text"
+            [ngModel]="editTitle()"
+            (ngModelChange)="editTitle.set($event)"
+            maxlength="200"
+            class="w-full px-3 py-2 text-sm border border-olive-light rounded-lg text-olive-deep focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-olive-ink/70 mb-1">
+            {{ t().noteDescription }}
+          </label>
+          <textarea
+            [ngModel]="editDescription()"
+            (ngModelChange)="editDescription.set($event)"
+            rows="3"
+            class="w-full px-3 py-2 text-sm border border-olive-light rounded-lg text-olive-deep focus:outline-none focus:ring-2 focus:ring-posthog-orange/50 resize-none"
+          ></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-olive-ink/70 mb-2">
+            {{ t().priority }}
+          </label>
+          <div class="flex gap-2">
+            <button
+              type="button"
+              (click)="editPriority.set('low')"
+              class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors"
+              [class.border-green-500]="editPriority() === 'low'"
+              [class.bg-green-50]="editPriority() === 'low'"
+              [class.text-green-700]="editPriority() === 'low'"
+              [class.border-olive-light]="editPriority() !== 'low'"
+            >
+              <fa-icon [icon]="faArrowDown" class="mr-1"></fa-icon>{{ t().priorityLow }}
+            </button>
+            <button
+              type="button"
+              (click)="editPriority.set('medium')"
+              class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors"
+              [class.border-amber-500]="editPriority() === 'medium'"
+              [class.bg-amber-50]="editPriority() === 'medium'"
+              [class.text-amber-700]="editPriority() === 'medium'"
+              [class.border-olive-light]="editPriority() !== 'medium'"
+            >
+              <fa-icon [icon]="faMinus" class="mr-1"></fa-icon>{{ t().priorityMedium }}
+            </button>
+            <button
+              type="button"
+              (click)="editPriority.set('high')"
+              class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors"
+              [class.border-red-500]="editPriority() === 'high'"
+              [class.bg-red-50]="editPriority() === 'high'"
+              [class.text-red-700]="editPriority() === 'high'"
+              [class.border-olive-light]="editPriority() !== 'high'"
+            >
+              <fa-icon [icon]="faArrowUp" class="mr-1"></fa-icon>{{ t().priorityHigh }}
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-semibold text-olive-ink/70">{{ t().horizon }}:</span>
+          <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-olive-lightSage text-olive-deep">
+            {{ task.horizon === 'today' ? t().today : task.horizon === 'week' ? t().thisWeek : t().someday }}
+          </span>
+        </div>
+
+        <div class="flex flex-col">
+          <label class="block text-xs font-semibold text-olive-ink/70 mb-2">
+            {{ t().checklist }} ({{ editChecklist().length }})
+          </label>
+
+          <div class="space-y-1.5 mb-3">
+            @for (item of editChecklist(); track item.id) {
+              <div class="flex items-center gap-2 group">
+                <input
+                  type="checkbox"
+                  [checked]="item.checked"
+                  (change)="toggleChecklistItem(item.id)"
+                  class="rounded border-olive-light text-olive-deep focus:ring-posthog-orange/50"
+                />
+                <span
+                  class="flex-1 text-sm break-words"
+                  [class.line-through]="item.checked"
+                  [class.text-olive-ink/50]="item.checked"
+                  [class.text-olive-deep]="!item.checked"
+                >
+                  {{ item.text }}
+                </span>
+                <button
+                  (click)="removeChecklistItem(item.id)"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-olive-ink/30 hover:text-red-500 rounded transition-opacity flex-shrink-0"
+                  [attr.aria-label]="t().removeItem"
+                >
+                  <fa-icon [icon]="faTimes" class="text-xs"></fa-icon>
+                </button>
+              </div>
+            } @empty {
+              <p class="text-sm text-olive-ink/40 py-2">{{ t().noChecklistItems }}</p>
+            }
+          </div>
+
+          <div class="flex gap-2 sticky bottom-0 bg-white pt-1 -mx-1 px-1">
+            <input
+              type="text"
+              [ngModel]="newItemText()"
+              (ngModelChange)="newItemText.set($event)"
+              (keydown.enter)="addChecklistItem()"
+              [placeholder]="t().addChecklistItem"
+              class="flex-1 min-w-0 px-3 py-1.5 text-sm border border-olive-light rounded-lg text-olive-deep placeholder:text-olive-placeholder focus:outline-none focus:ring-2 focus:ring-posthog-orange/50"
+            />
+            <button
+              (click)="addChecklistItem()"
+              [disabled]="!newItemText().trim()"
+              class="flex-shrink-0 px-3 py-1.5 text-sm font-medium text-white bg-olive-deep rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+              <fa-icon [icon]="faPlus"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end p-4 border-t border-olive-light/30">
+        <div class="flex items-center gap-2">
+          <button
+            (click)="close()"
+            class="px-4 py-2 text-sm font-semibold text-olive-ink bg-olive-lightSage rounded-lg hover:bg-olive-cream transition"
+          >
+            {{ t().cancel }}
+          </button>
+          <button
+            (click)="save()"
+            [disabled]="!editTitle().trim()"
+            class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-olive-deep rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition"
+          >
+            <fa-icon [icon]="faSave" class="text-xs"></fa-icon> {{ t().saved }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

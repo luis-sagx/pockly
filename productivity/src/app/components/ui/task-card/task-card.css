@@ -1,0 +1,12 @@
+.task-card {
+  @apply bg-white rounded-lg shadow-sm border border-olive-light/30 p-3;
+  @apply hover:shadow-md transition-shadow duration-200;
+}
+
+.task-card.cdk-drag-preview {
+  @apply shadow-xl opacity-90 rotate-1;
+}
+
+.task-card.cdk-drag-placeholder {
+  @apply opacity-30 border-2 border-dashed border-blue-300;
+}

@@ -14,7 +14,7 @@
   <div class="grid w-full max-w-4xl gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
     @for (tool of filteredTools(); track tool.id) {
       <button (click)="navigate(tool.path)" class="flex flex-col items-start p-6 text-left transition-all border rounded-lg cursor-pointer group bg-olive-parchment border-olive-border hover:border-posthog-orange hover:bg-olive-cream">
-        <span class="flex items-center justify-center w-10 h-10 mb-4 text-xl rounded bg-olive-lightSage text-olive-deep group-hover:text-posthog-orange">{{ tool.icon }}</span>
+        <span class="flex items-center justify-center w-10 h-10 mb-4 text-xl rounded bg-olive-lightSage text-olive-deep group-hover:text-posthog-orange"><fa-icon [icon]="tool.icon" /></span>
         <span class="text-base font-bold text-olive-deep">{{ t()[tool.labelKey] }}</span>
         <p class="mt-2 text-sm text-olive-ink/70">{{ t()[tool.descKey] }}</p>
       </button>

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, inject, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faArrowDown, faMinus, faArrowUp, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Priority } from '../../pages/board/task.model';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
@@ -21,9 +21,6 @@ export interface CreateTaskData {
   styleUrl: './create-task-form.css',
 })
 export class CreateTaskForm {
-  readonly faArrowDown = faArrowDown;
-  readonly faMinus = faMinus;
-  readonly faArrowUp = faArrowUp;
   readonly faPlus = faPlus;
   readonly faTimes = faTimes;
 

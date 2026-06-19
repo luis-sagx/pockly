@@ -19,9 +19,9 @@
 
   <div
     class="h-0.5 w-full mb-1"
-    [class.bg-posthog-orange]="horizon === 'today'"
-    [class.bg-amber-400]="horizon === 'week'"
-    [class.bg-green-500]="horizon === 'someday'"
+    [class.bg-blue-500]="horizon === 'today'"
+    [class.bg-orange-500]="horizon === 'week'"
+    [class.bg-slate-400]="horizon === 'someday'"
   ></div>
 
   @for (task of tasks; track task.id) {

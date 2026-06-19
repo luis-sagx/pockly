@@ -8,7 +8,6 @@ import {
   faTextHeight,
   faCodeBranch,
   faKey,
-  faPenToSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
 interface Tool {
@@ -34,7 +33,7 @@ export class Home implements OnInit {
   private router = inject(Router);
 
   constructor() {
-    this.library.addIcons(faHashtag, faTextHeight, faCodeBranch, faKey, faPenToSquare);
+    this.library.addIcons(faHashtag, faTextHeight, faCodeBranch, faKey);
   }
 
   // Signal para el filtro actual
@@ -73,14 +72,6 @@ export class Home implements OnInit {
       path: '/password-generator',
       icon: 'key',
       descriptionKey: 'passwordGeneratorDesc',
-      category: 'Utilities',
-    },
-    {
-      id: 'quicknotes',
-      labelKey: 'quickNotes',
-      path: '/quick-notes',
-      icon: 'pen-to-square',
-      descriptionKey: 'quickNotesDesc',
       category: 'Utilities',
     },
   ];

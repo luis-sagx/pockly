@@ -2,157 +2,66 @@
   class="fixed top-0 left-0 z-50 w-full border-b bg-olive-parchment/95 backdrop-blur-sm border-olive-border"
 >
   <div class="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl">
-    <!-- Logo a la izquierda -->
     <a class="flex items-center gap-3 group flex-shrink-0" routerLink="/">
       <img src="logo.png" alt="logo" class="w-auto h-9 sm:h-12" />
     </a>
 
-    <!-- Desktop: Nav Links + Auth -->
+    <!-- Desktop nav links -->
     <div class="hidden md:flex items-center gap-1">
-      <a
-        routerLink="/"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
+      <a routerLink="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navHome }}
       </a>
-      <a
-        routerLink="/word-count"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
+      <a routerLink="/word-count" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navWordCount }}
       </a>
-      <a
-        routerLink="/text-case"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
+      <a routerLink="/text-case" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navTextCase }}
       </a>
-      <a
-        routerLink="/diff-checker"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
+      <a routerLink="/diff-checker" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navDiffChecker }}
       </a>
-      <a
-        routerLink="/password-generator"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
+      <a routerLink="/password-generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navPasswordGenerator }}
       </a>
-      <a
-        routerLink="/quick-notes"
-        class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-      >
-        {{ t().navQuickNotes }}
-      </a>
-      <!-- Desktop auth button -->
-      <div class="ml-3 pl-3 border-l border-olive-light/50">
-        @if (isLoggedIn()) {
-          <button
-            (click)="signOut()"
-            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink/70 hover:text-red-600 rounded-lg hover:bg-olive-cream transition"
-            title="Sign out"
-          >
-            <span class="max-w-[120px] truncate text-xs">
-              {{ displayName() }}
-            </span>
-            <fa-icon [icon]="['fas', 'sign-out-alt']" class="text-xs"></fa-icon>
-          </button>
-        } @else {
-          <a
-            routerLink="/sign-in"
-            class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
-          >
-            <fa-icon [icon]="['fas', 'user-circle']"></fa-icon>
-            {{ t().signIn }}
-          </a>
-        }
-      </div>
     </div>
 
-    <!-- Mobile: Auth + Hamburger -->
-    <div class="flex md:hidden items-center gap-2">
-      @if (isLoggedIn()) {
-        <button
-          (click)="signOut()"
-          class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-red-600 rounded-lg hover:bg-olive-cream transition"
-          title="Sign out"
-        >
-            <fa-icon [icon]="['fas', 'sign-out-alt']" class="text-xs"></fa-icon>
-        </button>
+    <!-- Mobile hamburger -->
+    <button
+      class="flex md:hidden p-2 rounded text-olive-ink hover:bg-olive-cream"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-label="Toggle menu"
+    >
+      @if (isMenuOpen()) {
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       } @else {
-        <a
-          routerLink="/sign-in"
-          class="flex items-center gap-1.5 px-2 py-1.5 text-sm font-semibold text-olive-ink hover:text-posthog-orange rounded-lg hover:bg-olive-cream transition"
-        >
-          <fa-icon [icon]="['fas', 'user-circle']"></fa-icon>
-        </a>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       }
-
-      <button
-        class="flex p-2 rounded text-olive-ink hover:bg-olive-cream"
-        (click)="toggleMenu()"
-        [attr.aria-expanded]="isMenuOpen()"
-        aria-label="Toggle menu"
-      >
-        @if (isMenuOpen()) {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        } @else {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        }
-      </button>
-    </div>
+    </button>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
+  <!-- Mobile dropdown -->
   @if (isMenuOpen()) {
     <div class="md:hidden border-t border-olive-border bg-olive-parchment">
       <div class="flex flex-col px-4 py-2">
-        <a
-          routerLink="/"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
+        <a routerLink="/" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream" (click)="closeMenu()">
           {{ t().navHome }}
         </a>
-        <a
-          routerLink="/word-count"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
+        <a routerLink="/word-count" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream" (click)="closeMenu()">
           {{ t().navWordCount }}
         </a>
-        <a
-          routerLink="/text-case"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
+        <a routerLink="/text-case" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream" (click)="closeMenu()">
           {{ t().navTextCase }}
         </a>
-        <a
-          routerLink="/diff-checker"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
+        <a routerLink="/diff-checker" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream" (click)="closeMenu()">
           {{ t().navDiffChecker }}
         </a>
-        <a
-          routerLink="/password-generator"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
+        <a routerLink="/password-generator" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream" (click)="closeMenu()">
           {{ t().navPasswordGenerator }}
-        </a>
-        <a
-          routerLink="/quick-notes"
-          class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream"
-          (click)="closeMenu()"
-        >
-          {{ t().navQuickNotes }}
         </a>
       </div>
     </div>

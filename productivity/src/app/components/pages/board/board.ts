@@ -21,7 +21,6 @@ import { TaskColumn } from '../../ui/task-column/task-column';
 import { CreateTaskForm, CreateTaskData } from '../../ui/create-task-form/create-task-form';
 import { TaskDetail } from '../../ui/task-detail/task-detail';
 import { Task, Priority, Horizon, BoardState, STORAGE_KEY, CURRENT_VERSION, generateId } from './task.model';
-import { importLegacyNotes } from './board.utils';
 
 const DEBOUNCE_MS = 500;
 
@@ -45,7 +44,6 @@ export class Board implements OnInit, OnDestroy {
   activeTask = signal<Task | null>(null);
   showCreateForm = signal(false);
   showDetail = signal(false);
-  importText = signal('');
 
   somedayTasks = computed(() => this.tasks().filter((task) => task.horizon === 'someday'));
   weekTasks = computed(() => this.tasks().filter((task) => task.horizon === 'week'));
@@ -179,19 +177,6 @@ export class Board implements OnInit, OnDestroy {
   onDetailClosed(): void {
     this.showDetail.set(false);
     this.activeTask.set(null);
-  }
-
-  importJson(): void {
-    const raw = this.importText().trim();
-    if (!raw) return;
-    const imported = importLegacyNotes(raw);
-    const existing = new Set(this.tasks().map((task) => task.id));
-    this.tasks.update((tasks) => [...imported.filter((task) => !existing.has(task.id)), ...tasks]);
-    this.importText.set('');
-  }
-
-  exportJson(): void {
-    this.importText.set(JSON.stringify({ version: CURRENT_VERSION, tasks: this.tasks() }, null, 2));
   }
 
   private loadFromStorage(): void {

@@ -1,11 +1,22 @@
-import { Component, Input, Output, EventEmitter, inject, computed } from '@angular/core';
-import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faInbox } from '@fortawesome/free-solid-svg-icons';
-import { Horizon, Task } from '../../pages/board/task.model';
-import { TaskCard } from '../task-card/task-card';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
+import { Horizon, Task } from '../../pages/board/task.model';
+import { TaskCard } from '../task-card/task-card';
 
 @Component({
   selector: 'app-task-column',
@@ -30,7 +41,9 @@ export class TaskColumn {
   @Output() reordered = new EventEmitter<Task[]>();
 
   private languageService = inject(LanguageService);
-  t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+  t = computed(
+    () => this.languageService.getTranslations() as unknown as Translations,
+  );
 
   isDragging = false;
 
@@ -48,11 +61,11 @@ export class TaskColumn {
   get headerColorClass(): string {
     switch (this.horizon) {
       case 'today':
-        return 'text-posthog-orange';
+        return 'text-blue-600';
       case 'week':
-        return 'text-amber-600';
+        return 'text-orange-600';
       case 'someday':
-        return 'text-green-700';
+        return 'text-slate-500';
     }
   }
 

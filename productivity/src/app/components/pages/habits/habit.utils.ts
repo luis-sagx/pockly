@@ -5,6 +5,36 @@ export function getLocalDateKey(date = new Date()): string {
   return `${year}-${month}-${day}`;
 }
 
+export function getWeekStart(date = new Date()): Date {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  const day = d.getDay(); // 0 = Sunday
+  const diff = day === 0 ? -6 : 1 - day; // shift to Monday
+  d.setDate(d.getDate() + diff);
+  return d;
+}
+
+export function getWeekDays(weekStart: Date): string[] {
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(weekStart);
+    d.setDate(weekStart.getDate() + i);
+    return getLocalDateKey(d);
+  });
+}
+
+export function currentWeekDays(today = new Date()): Array<{ date: string; label: string; dayNum: string }> {
+  const days = getWeekDays(getWeekStart(today));
+  return days.map((date) => {
+    const [y, m, d] = date.split('-').map(Number);
+    const dt = new Date(y, m - 1, d);
+    return {
+      date,
+      label: new Intl.DateTimeFormat('en', { weekday: 'short' }).format(dt),
+      dayNum: String(d),
+    };
+  });
+}
+
 export function lastNDays(count: number, today = new Date()): string[] {
   return Array.from({ length: count }, (_, index) => {
     const date = new Date(today);
@@ -22,6 +52,23 @@ export function currentStreak(logDates: string[], today = new Date()): number {
     cursor.setDate(cursor.getDate() - 1);
   }
   return streak;
+}
+
+export function weeklyHistory(
+  logDates: string[],
+  numWeeks = 16,
+  today = new Date()
+): Array<{ weekLabel: string; completed: number }> {
+  const logSet = new Set(logDates);
+  const weekStart = getWeekStart(today);
+  return Array.from({ length: numWeeks }, (_, i) => {
+    const ws = new Date(weekStart);
+    ws.setDate(weekStart.getDate() - (numWeeks - 1 - i) * 7);
+    const days = getWeekDays(ws);
+    const completed = days.filter((d) => logSet.has(d)).length;
+    const label = ws.toLocaleDateString('en', { month: 'short', day: 'numeric' });
+    return { weekLabel: label, completed };
+  });
 }
 
 export function habitStats(logDates: string[], today = new Date()) {

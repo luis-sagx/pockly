@@ -56,21 +56,8 @@
     />
   </div>
 
-  <div class="p-4 border rounded-lg bg-olive-cream border-olive-light/40">
-    <h3 class="mb-2 text-sm font-semibold text-olive-deep">{{ t().importJson }} / {{ t().exportJson }}</h3>
-    <textarea
-      class="w-full font-mono field"
-      rows="5"
-      [ngModel]="importText()"
-      (ngModelChange)="importText.set($event)"
-    ></textarea>
-    <div class="flex gap-2 mt-3">
-      <button class="btn-secondary" (click)="importJson()">{{ t().importJson }}</button>
-      <button class="btn-secondary" (click)="exportJson()">{{ t().exportJson }}</button>
-    </div>
-  </div>
 
-  @if (showDetail() && activeTask()) {
+@if (showDetail() && activeTask()) {
     <app-task-detail
       [task]="activeTask()"
       [open]="showDetail()"

@@ -4,48 +4,75 @@
     <p class="mt-1 text-sm text-olive-ink/70">{{ t().habitsDesc }}</p>
   </header>
 
-  <section class="bg-olive-cream rounded-lg border border-olive-light/40 p-4 flex flex-col gap-3 sm:flex-row">
+  <section class="bg-olive-cream rounded-lg border border-olive-light/40 p-4 flex items-center gap-3">
     <input
-      class="field"
+      class="field flex-1 min-w-0"
       [placeholder]="t().habitName"
       [ngModel]="habitName()"
       (ngModelChange)="habitName.set($event)"
       (keydown.enter)="addHabit()"
     />
-    <button class="btn-primary" (click)="addHabit()">{{ t().addHabit }}</button>
+    <button class="btn-primary whitespace-nowrap flex-shrink-0" (click)="addHabit()">{{ t().addHabit }}</button>
   </section>
 
   <section class="flex flex-col gap-4">
     @for (habit of habits(); track habit.id) {
       <article class="page-card p-4 bg-olive-parchment flex flex-col gap-4">
-        <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-          <div>
-            <h3 class="text-lg font-semibold text-olive-deep">{{ habit.name }}</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep">{{ t().currentStreak }}: {{ stats(habit.id).streak }} {{ t().days }}</span>
-              <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep">{{ t().completedLast7Days }}: {{ stats(habit.id).completedLast7Days }}/7</span>
-              <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep">{{ t().weeklyCompletionRate }}: {{ stats(habit.id).weeklyCompletionRate }}%</span>
-              <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep">{{ t().totalCheckIns }}: {{ stats(habit.id).totalCheckIns }}</span>
-            </div>
-          </div>
-          <button class="btn-secondary self-start" (click)="archive(habit.id)">{{ t().archive }}</button>
+
+        <!-- Header -->
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-olive-deep">{{ habit.name }}</h3>
+          <button class="btn-secondary text-xs py-1 px-3" (click)="archive(habit.id)">{{ t().archive }}</button>
         </div>
 
-        <div class="grid grid-cols-7 gap-2">
-          @for (day of days; track day) {
+        <!-- Current week toggles -->
+        <div class="grid grid-cols-7 gap-1.5">
+          @for (day of weekDays; track day.date) {
             <button
-              class="flex flex-col items-center justify-center gap-1 rounded-lg border border-olive-border p-2 text-xs transition"
-              [class.bg-olive-deep]="done(habit.id, day)"
-              [class.text-white]="done(habit.id, day)"
-              [class.bg-olive-cream]="!done(habit.id, day)"
-              (click)="toggle(habit.id, day)"
-              [attr.aria-label]="habit.name + ' ' + day"
+              class="flex flex-col items-center justify-center gap-0.5 rounded-lg border p-2 text-xs transition"
+              [class.bg-olive-deep]="done(habit.id, day.date)"
+              [class.border-olive-deep]="done(habit.id, day.date)"
+              [class.text-white]="done(habit.id, day.date)"
+              [class.bg-olive-cream]="!done(habit.id, day.date)"
+              [class.border-olive-border]="!done(habit.id, day.date)"
+              [class.text-olive-ink]="!done(habit.id, day.date)"
+              (click)="toggle(habit.id, day.date)"
+              [attr.aria-label]="habit.name + ' ' + day.date"
             >
-              <span class="font-semibold">{{ day.slice(8) }}</span>
-              <span class="text-[10px] opacity-80">{{ day.slice(5, 7) }}</span>
+              <span class="text-[10px] font-medium opacity-70">{{ day.label }}</span>
+              <span class="font-semibold">{{ day.dayNum }}</span>
             </button>
           }
         </div>
+
+        <!-- Stats chips -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep font-medium flex items-center gap-1">
+            <fa-icon [icon]="faBolt" class="text-[10px]"></fa-icon>
+            {{ stats(habit.id).streak }} {{ t().days }}
+          </span>
+          <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep font-medium">
+            {{ t().weeklyCompletionRate }}: {{ stats(habit.id).weeklyCompletionRate }}%
+          </span>
+          <span class="px-2 py-1 rounded-full bg-olive-lightSage text-olive-deep font-medium">
+            {{ t().totalCheckIns }}: {{ stats(habit.id).totalCheckIns }}
+          </span>
+        </div>
+
+        <!-- Weekly history heatmap -->
+        <div>
+          <p class="text-xs text-olive-ink/50 mb-1.5">{{ t().habitHistory }}</p>
+          <div class="flex gap-1 flex-wrap">
+            @for (week of weekHistory(habit.id); track week.weekLabel) {
+              <div
+                class="w-5 h-5 rounded-sm flex-shrink-0 cursor-default transition-opacity hover:opacity-80"
+                [title]="week.weekLabel + ': ' + week.completed + '/7'"
+                [style.background-color]="heatColor(week.completed)"
+              ></div>
+            }
+          </div>
+        </div>
+
       </article>
     } @empty {
       <p class="p-8 text-sm text-center page-card text-olive-ink/60">{{ t().noHabits }}</p>

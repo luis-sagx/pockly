@@ -12,6 +12,7 @@ This is a flat multi-app repo. Each directory is an **independent Angular applic
 | `text/`      | 21.2    | No  | unit-test                    |
 | `url/`       | 21.2    | No  | unit-test                    |
 | `calculator/`| 21.2    | No  | unit-test                    |
+| `productivity/`| 21.2 | No | unit-test |
 
 All commands MUST be run from inside the target app's directory. There is no root-level workspace orchestration.
 

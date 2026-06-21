@@ -189,7 +189,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
 
     seoTitle: 'Pockly - Free Online Tools for Daily Productivity',
     seoDescription:
-      'Free online productivity tools: word counter, JSON generator, background remover, image resizer, format converter, text case tool, and more.',
+      'Free online tools for text, JSON, images, URLs, calculators, and personal productivity.',
 
     // Category titles
     catTitleJson: 'JSON Tools',

@@ -6,6 +6,7 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const landingSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly',
   pageConfigs: {
     '': {
       title: 'Pockly - Free Online Tools for Daily Productivity',

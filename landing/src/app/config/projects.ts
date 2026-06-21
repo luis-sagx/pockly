@@ -26,74 +26,15 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
         description: 'Ready-to-use datasets for testing and prototyping',
       },
       {
-        label: 'CSV to JSON',
-        url: 'https://pockly-json.vercel.app/convert/csv-to-json',
-        description: 'Convert CSV rows into JSON arrays',
+        label: 'Convert',
+        url: 'https://pockly-json.vercel.app/convert',
+        description: 'Convert between CSV, TSV, XML and YAML',
       },
       {
-        label: 'TSV to JSON',
-        url: 'https://pockly-json.vercel.app/convert/tsv-to-json',
-        description: 'Convert TSV tables into JSON arrays',
-      },
-      {
-        label: 'JSON to CSV',
-        url: 'https://pockly-json.vercel.app/convert/json-to-csv',
-        description: 'Export JSON arrays as CSV',
-      },
-      {
-        label: 'JSON to TSV',
-        url: 'https://pockly-json.vercel.app/convert/json-to-tsv',
-        description: 'Export JSON arrays as TSV',
-      },
-      {
-        label: 'JSON to XML',
-        url: 'https://pockly-json.vercel.app/convert/json-to-xml',
-        description: 'Transform JSON into XML markup',
-      },
-      {
-        label: 'JSON to YAML',
-        url: 'https://pockly-json.vercel.app/convert/json-to-yaml',
-        description: 'Transform JSON into YAML documents',
-      },
-      {
-        label: 'Format JSON',
-        url: 'https://pockly-json.vercel.app/utils/format',
-        description: 'Pretty-print and indent JSON',
-      },
-      {
-        label: 'Minify JSON',
-        url: 'https://pockly-json.vercel.app/utils/minify',
-        description: 'Remove whitespace from JSON payloads',
-      },
-      {
-        label: 'Sort JSON',
-        url: 'https://pockly-json.vercel.app/utils/sort',
-        description: 'Sort JSON object keys recursively',
-      },
-      {
-        label: 'Validate JSON',
-        url: 'https://pockly-json.vercel.app/utils/validate',
-        description: 'Validate JSON syntax instantly',
-      },
-      {
-        label: 'Flatten JSON',
-        url: 'https://pockly-json.vercel.app/utils/flatten',
-        description: 'Flatten nested JSON into dotted paths',
-      },
-      {
-        label: 'Unflatten JSON',
-        url: 'https://pockly-json.vercel.app/utils/unflatten',
-        description: 'Rebuild nested JSON from flat keys',
-      },
-      {
-        label: 'Diff JSON',
-        url: 'https://pockly-json.vercel.app/utils/diff',
-        description: 'Compare two JSON documents side by side',
-      },
-      {
-        label: 'Query JSON',
-        url: 'https://pockly-json.vercel.app/utils/query',
-        description: 'Query JSON data with JSONPath',
+        label: 'Utils',
+        url: 'https://pockly-json.vercel.app/utils',
+        description:
+          'Format, minify, sort, validate, flatten, diff and query JSON',
       },
     ],
   },
@@ -179,34 +120,9 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
         description: 'Crop images to a selected region',
       },
       {
-        label: 'PNG Converter',
+        label: 'Format Converter',
         url: 'https://pockly-image.vercel.app/convert-to-png',
-        description: 'Convert images to PNG format',
-      },
-      {
-        label: 'JPEG Converter',
-        url: 'https://pockly-image.vercel.app/convert-to-jpeg',
-        description: 'Convert images to JPEG format',
-      },
-      {
-        label: 'WebP Converter',
-        url: 'https://pockly-image.vercel.app/convert-to-webp',
-        description: 'Convert images to WebP format',
-      },
-      {
-        label: 'BMP Converter',
-        url: 'https://pockly-image.vercel.app/convert-to-bmp',
-        description: 'Convert images to BMP format',
-      },
-      {
-        label: 'SVG Converter',
-        url: 'https://pockly-image.vercel.app/convert-to-svg',
-        description: 'Convert images to SVG format',
-      },
-      {
-        label: 'PDF Converter',
-        url: 'https://pockly-image.vercel.app/convert-to-pdf',
-        description: 'Convert images to PDF format',
+        description: 'Convert between PNG, JPEG, WebP, BMP, SVG and PDF',
       },
     ],
   },

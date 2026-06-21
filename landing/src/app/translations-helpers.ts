@@ -15,20 +15,6 @@ export const LABEL_TO_SUFFIX: Record<string, Record<string, string>> = {
     Templates: 'templates',
     Convert: 'convert',
     Utils: 'utils',
-    'CSV to JSON': 'csvtojson',
-    'TSV to JSON': 'tsvtojson',
-    'JSON to CSV': 'jsontocsv',
-    'JSON to TSV': 'jsontotsv',
-    'JSON to XML': 'jsontoxml',
-    'JSON to YAML': 'jsontoyaml',
-    'Format JSON': 'formatjson',
-    'Minify JSON': 'minifyjson',
-    'Sort JSON': 'sortjson',
-    'Validate JSON': 'validatejson',
-    'Flatten JSON': 'flattenjson',
-    'Unflatten JSON': 'unflattenjson',
-    'Diff JSON': 'diffjson',
-    'Query JSON': 'queryjson',
   },
   text: {
     'Text Case': 'case',
@@ -36,7 +22,7 @@ export const LABEL_TO_SUFFIX: Record<string, Record<string, string>> = {
     'Diff Checker': 'diff',
     'Password Generator': 'password',
     'Quick Notes': 'notes',
-    'Spell Checker': 'spell',
+
   },
   productivity: {
     Board: 'board',
@@ -51,12 +37,6 @@ export const LABEL_TO_SUFFIX: Record<string, Record<string, string>> = {
     Compress: 'compress',
     Crop: 'crop',
     'Format Converter': 'format',
-    'PNG Converter': 'png',
-    'JPEG Converter': 'jpeg',
-    'WebP Converter': 'webp',
-    'BMP Converter': 'bmp',
-    'SVG Converter': 'svg',
-    'PDF Converter': 'pdf',
   },
   calculator: {
     'Percent of Y': 'percentof',
@@ -89,7 +69,7 @@ export function getLinkLabelKey(
   originalLabel: string,
 ): keyof Translations {
   const suffix = LABEL_TO_SUFFIX[categoryKey]?.[originalLabel];
-  if (!suffix) return 'catTitleJson';
+  if (!suffix) return 'catTitleJson'; // safe fallback, shouldn't happen
   return `linkLabel_${categoryKey}_${suffix}` as keyof Translations;
 }
 
@@ -99,6 +79,6 @@ export function getLinkDescriptionKey(
   originalLabel: string,
 ): keyof Translations {
   const suffix = LABEL_TO_SUFFIX[categoryKey]?.[originalLabel];
-  if (!suffix) return 'catTitleJson';
+  if (!suffix) return 'catTitleJson'; // safe fallback
   return `linkDesc_${categoryKey}_${suffix}` as keyof Translations;
 }

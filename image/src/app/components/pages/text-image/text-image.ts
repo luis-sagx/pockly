@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, NgZone, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -22,61 +22,59 @@ import { InputBox } from '@pockly/shared';
 export class TextImage {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
-  constructor(library: FaIconLibrary) {
+  constructor(
+    library: FaIconLibrary,
+    private ngZone: NgZone,
+  ) {
     library.addIcons(faImage, faSpinner, faTrash, faDownload, faCircleExclamation);
   }
 
-  // Two-way bound via user events (safe to keep as plain fields in zoneless).
   base64Input = '';
   outputFormat: 'png' | 'jpeg' | 'webp' | 'bmp' = 'png';
-
-  // Updated after async work → must be signals so the zoneless scheduler
-  // re-renders. Plain fields mutated post-`await` never trigger change
-  // detection and leave the UI stuck on the loading state.
-  resultImageDataUrl = signal('');
-  loading = signal(false);
-  hasError = signal(false);
-  errorMessage = signal('');
+  resultImageDataUrl = '';
+  loading = false;
+  hasError = false;
+  errorMessage = '';
 
   async convert(): Promise<void> {
     if (!this.base64Input.trim()) {
-      this.hasError.set(true);
-      this.errorMessage.set('Pega un Base64 válido.');
+      this.hasError = true;
+      this.errorMessage = 'Pega un Base64 válido.';
       return;
     }
-    this.loading.set(true);
-    this.hasError.set(false);
-    this.errorMessage.set('');
-    this.resultImageDataUrl.set('');
+    this.loading = true;
+    this.hasError = false;
+    this.errorMessage = '';
+    this.resultImageDataUrl = '';
     try {
       const normalized = this.normalizeBase64(this.base64Input);
       const converted = await this.convertDataUrlFormat(
         normalized,
         this.mimeFromFormat(this.outputFormat),
       );
-      this.resultImageDataUrl.set(converted);
+      this.ngZone.run(() => (this.resultImageDataUrl = converted));
     } catch (e) {
-      this.hasError.set(true);
-      this.errorMessage.set('No se pudo convertir. Verifica el Base64.');
+      this.hasError = true;
+      this.errorMessage = 'No se pudo convertir. Verifica el Base64.';
     } finally {
-      this.loading.set(false);
+      this.loading = false;
     }
   }
 
   clear(): void {
     this.base64Input = '';
-    this.resultImageDataUrl.set('');
-    this.hasError.set(false);
-    this.errorMessage.set('');
+    this.resultImageDataUrl = '';
+    this.hasError = false;
+    this.errorMessage = '';
   }
 
   download(): void {
-    const dataUrl = this.resultImageDataUrl();
-    if (!dataUrl) return;
+    if (!this.resultImageDataUrl) return;
     const a = document.createElement('a');
-    a.href = dataUrl;
+    a.href = this.resultImageDataUrl;
     a.download = `image.${this.extensionFromFormat(this.outputFormat)}`;
     a.click();
+    URL.revokeObjectURL(a.href);
   }
 
   private normalizeBase64(value: string): string {

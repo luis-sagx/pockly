@@ -6,6 +6,7 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const calculatorSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly Calculator Tools',
   pageConfigs: {
   '': {
     title: 'Calculator Tools - Free Online Calculators',
@@ -86,6 +87,13 @@ export const calculatorSeoConfig: SeoConfig = {
     keywords: 'speed converter, mph to kmh, speed conversion',
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/speed-converter`,
+  },
+  '404': {
+    title: 'Not Found - Calculator Tools',
+    description: 'Page not found.',
+    noindex: true,
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/404`,
   },
   },
 };

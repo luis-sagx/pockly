@@ -6,12 +6,14 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const textSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly Text Tools',
   pageConfigs: {
     '': {
       title: 'Text Tools - Free Online Text Utilities',
       description:
         'Free online text tools: word counter, text case converter, diff checker, password generator, and quick notes. No installation required.',
-      keywords: 'text tools, word counter, text case, diff checker, password generator, quick notes',
+      keywords:
+        'text tools, word counter, text case, diff checker, password generator, quick notes',
       ogImage: OG_IMAGE,
       canonicalUrl: BASE_URL,
     },
@@ -52,6 +54,7 @@ export const textSeoConfig: SeoConfig = {
       description:
         'Free online notepad. Save notes instantly. No login required. Access from any device. Sync with Supabase.',
       keywords: 'quick notes, online notepad, text notes',
+      noindex: true,
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/quick-notes`,
     },
@@ -61,6 +64,13 @@ export const textSeoConfig: SeoConfig = {
       noindex: true,
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/sign-in`,
+    },
+    '404': {
+      title: 'Not Found - Text Tools',
+      description: 'Page not found.',
+      noindex: true,
+      ogImage: OG_IMAGE,
+      canonicalUrl: `${BASE_URL}/404`,
     },
   },
 };

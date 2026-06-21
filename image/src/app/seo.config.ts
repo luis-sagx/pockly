@@ -6,6 +6,7 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const imageSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly Image Tools',
   pageConfigs: {
   '': {
     title: 'Image Tools - Free Online Image Utilities',
@@ -118,6 +119,13 @@ export const imageSeoConfig: SeoConfig = {
     noindex: true,
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/licenses-attributions`,
+  },
+  '404': {
+    title: 'Not Found - Image Tools',
+    description: 'Page not found.',
+    noindex: true,
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/404`,
   },
   },
 };

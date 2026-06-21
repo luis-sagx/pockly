@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "cd ../packages/shared && pnpm run build && cd - && pnpm run build",
   "outputDirectory": "dist/image/browser",
   "framework": "angular"
 }

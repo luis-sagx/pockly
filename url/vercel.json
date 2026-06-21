@@ -1,5 +1,6 @@
 {
-  "buildCommand": "cd ../packages/shared && pnpm run build && cd - && pnpm run build",
-  "outputDirectory": "dist/url/browser",
-  "framework": "angular"
+  "framework": "angular",
+  "installCommand": "cd .. && pnpm install --frozen-lockfile",
+  "buildCommand": "cd ../packages/shared && pnpm run build && cd ../url && pnpm run build",
+  "outputDirectory": "dist/url/browser"
 }

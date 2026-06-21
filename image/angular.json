@@ -22,11 +22,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "ort-*.{wasm,mjs}",
-                "input": "node_modules/onnxruntime-web/dist/",
-                "output": "ort/"
               }
             ],
             "styles": ["src/styles.css"],

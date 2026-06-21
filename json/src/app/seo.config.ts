@@ -6,45 +6,38 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const jsonSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
-  siteName: 'Pockly JSON Tools',
   pageConfigs: {
     '': {
       title: 'JSON Tools - Free Online JSON Utilities',
-      description:
-        'Free online JSON tools: generator, formatter, validator, converter (CSV, XML, YAML), templates, and utilities. No installation required.',
-      keywords:
-        'json tools, json generator, json formatter, json validator, json converter',
+      description: 'Free online JSON tools: generator, formatter, validator, converter (CSV, XML, YAML), templates, and utilities. No installation required.',
+      keywords: 'json tools, json generator, json formatter, json validator, json converter',
       ogImage: OG_IMAGE,
       canonicalUrl: BASE_URL,
     },
     generator: {
       title: 'JSON Generator - Create and Format JSON Online',
-      description:
-        'Free online JSON generator and formatter. Create, validate, and format JSON structures with smart presets. Export as file or code.',
+      description: 'Free online JSON generator and formatter. Create, validate, and format JSON structures with smart presets. Export as file or code.',
       keywords: 'json generator, json formatter, json validator, create json',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/generator`,
     },
     templates: {
       title: 'JSON Templates - Ready-to-Use JSON Examples',
-      description:
-        'Free JSON templates for common use cases. API templates, configurations, data structures. Copy and customize.',
+      description: 'Free JSON templates for common use cases. API templates, configurations, data structures. Copy and customize.',
       keywords: 'json templates, json examples, json presets',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/templates`,
     },
     convert: {
       title: 'JSON Convert - Convert JSON to CSV XML YAML TSV',
-      description:
-        'Convert JSON to CSV, TSV, XML, YAML and vice versa. Free online JSON converter tool.',
+      description: 'Convert JSON to CSV, TSV, XML, YAML and vice versa. Free online JSON converter tool.',
       keywords: 'json to csv, json to xml, json to yaml, json converter',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/convert`,
     },
     'convert/csv-to-json': {
       title: 'CSV to JSON Converter - Convert CSV to JSON Online',
-      description:
-        'Convert CSV files to JSON online. Free and fast CSV to JSON converter. No installation required.',
+      description: 'Convert CSV files to JSON online. Free and fast CSV to JSON converter. No installation required.',
       keywords: 'csv to json, csv converter, csv to json online',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/convert/csv-to-json`,
@@ -58,8 +51,7 @@ export const jsonSeoConfig: SeoConfig = {
     },
     'convert/json-to-csv': {
       title: 'JSON to CSV Converter - Convert JSON to CSV Online',
-      description:
-        'Convert JSON to CSV format online. Free and fast JSON to CSV converter. Download as CSV file.',
+      description: 'Convert JSON to CSV format online. Free and fast JSON to CSV converter. Download as CSV file.',
       keywords: 'json to csv, json converter, json to csv online',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/convert/json-to-csv`,
@@ -87,16 +79,14 @@ export const jsonSeoConfig: SeoConfig = {
     },
     utils: {
       title: 'JSON Utils - Validate Minify Sort Format',
-      description:
-        'JSON utilities: validate, minify, prettify, sort keys, flatten, unflatten, diff, and query. Free online JSON tools.',
+      description: 'JSON utilities: validate, minify, prettify, sort keys, flatten, unflatten, diff, and query. Free online JSON tools.',
       keywords: 'json validate, json minify, json prettify, json sort',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils`,
     },
     'utils/format': {
       title: 'JSON Format - Prettify JSON Online',
-      description:
-        'Prettify and format JSON online. Indent and beautify JSON structures. Free JSON formatter tool.',
+      description: 'Prettify and format JSON online. Indent and beautify JSON structures. Free JSON formatter tool.',
       keywords: 'json format, json prettify, json beautify',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils/format`,
@@ -110,8 +100,7 @@ export const jsonSeoConfig: SeoConfig = {
     },
     'utils/sort': {
       title: 'JSON Sort - Sort JSON Keys Online',
-      description:
-        'Sort JSON keys alphabetically online. Reorder JSON object keys. Free JSON sort tool.',
+      description: 'Sort JSON keys alphabetically online. Reorder JSON object keys. Free JSON sort tool.',
       keywords: 'json sort, sort json keys, json order',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils/sort`,
@@ -125,8 +114,7 @@ export const jsonSeoConfig: SeoConfig = {
     },
     'utils/flatten': {
       title: 'JSON Flatten - Flatten Nested JSON Online',
-      description:
-        'Flatten nested JSON objects online. Convert deep JSON structures to flat key-value pairs. Free JSON flatten tool.',
+      description: 'Flatten nested JSON objects online. Convert deep JSON structures to flat key-value pairs. Free JSON flatten tool.',
       keywords: 'json flatten, flatten json, nested json',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils/flatten`,
@@ -140,8 +128,7 @@ export const jsonSeoConfig: SeoConfig = {
     },
     'utils/diff': {
       title: 'JSON Diff - Compare JSON Online',
-      description:
-        'Compare two JSON documents side-by-side. Find differences between JSON structures. Free JSON diff tool.',
+      description: 'Compare two JSON documents side-by-side. Find differences between JSON structures. Free JSON diff tool.',
       keywords: 'json diff, json compare, json difference',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils/diff`,
@@ -152,13 +139,6 @@ export const jsonSeoConfig: SeoConfig = {
       keywords: 'json query, jsonpath, json extract',
       ogImage: OG_IMAGE,
       canonicalUrl: `${BASE_URL}/utils/query`,
-    },
-    '404': {
-      title: 'Not Found - JSON Tools',
-      description: 'Page not found.',
-      noindex: true,
-      ogImage: OG_IMAGE,
-      canonicalUrl: `${BASE_URL}/404`,
     },
   },
 };

@@ -6,7 +6,6 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const productivitySeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
-  siteName: 'Pockly Productivity Tools',
   pageConfigs: {
     '': { title: 'Productivity Tools - Organize Your Day', description: 'Local-first day organization tools: task board, habit tracker, and scratchpad.', keywords: 'productivity tools, habit tracker, task board, scratchpad', ogImage: OG_IMAGE, canonicalUrl: BASE_URL },
     board: { title: 'Day Board - Today, This Week, Someday', description: 'A personal task board organized by time horizon instead of generic project status.', keywords: 'task board, today this week someday, personal productivity', ogImage: OG_IMAGE, canonicalUrl: `${BASE_URL}/board` },

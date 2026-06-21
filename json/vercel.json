@@ -1,6 +1,6 @@
 {
   "framework": "angular",
   "installCommand": "cd .. && pnpm install --frozen-lockfile",
-  "buildCommand": "cd ../packages/shared && pnpm run build && cd ../json && pnpm run build",
+  "buildCommand": "cd .. && pnpm --dir packages/shared run build && pnpm --dir json run build",
   "outputDirectory": "dist/json/browser"
 }

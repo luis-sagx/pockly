@@ -82,35 +82,57 @@ export class FormatConverterService {
     return pdf.output('blob') as unknown as Blob;
   }
 
+  // Longest side (px) the raster is downscaled to before tracing. Output SVG
+  // weight scales with the number of traced pixels, so capping resolution is
+  // the single biggest lever for file size. `viewbox` + `scale` keep the SVG
+  // rendering at the original dimensions, so visual size is unchanged.
+  private static readonly SVG_TRACE_MAX_DIMENSION = 700;
+
   static async imageToSvg(image: HTMLImageElement): Promise<string> {
     const ImageTracer = (await import('imagetracerjs')).default;
+
+    const sourceWidth = image.naturalWidth;
+    const sourceHeight = image.naturalHeight;
+    const longestSide = Math.max(sourceWidth, sourceHeight);
+    const downscale =
+      longestSide > this.SVG_TRACE_MAX_DIMENSION
+        ? this.SVG_TRACE_MAX_DIMENSION / longestSide
+        : 1;
+
     const canvas = document.createElement('canvas');
-    canvas.width = image.naturalWidth;
-    canvas.height = image.naturalHeight;
+    canvas.width = Math.max(1, Math.round(sourceWidth * downscale));
+    canvas.height = Math.max(1, Math.round(sourceHeight * downscale));
     const ctx = canvas.getContext('2d')!;
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(image, 0, 0);
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     return ImageTracer.imagedataToSVG(imageData, {
-      ltres: 2,
-      qtres: 2,
-      pathomit: 8,
+      // Higher error thresholds → fewer line/curve nodes per path.
+      ltres: 4,
+      qtres: 4,
+      // Drop more tiny "speckle" paths.
+      pathomit: 16,
       colorsampling: 2,
-      numberofcolors: 24,
+      // Fewer colors → fewer color layers → far fewer paths.
+      numberofcolors: 16,
       mincolorratio: 0.02,
       colorquantcycles: 3,
-      blurradius: 0,
-      blurdelta: 0,
-      scale: 1,
+      // A light blur removes JPEG noise that would otherwise become paths.
+      blurradius: 1,
+      blurdelta: 20,
+      // Render back at original resolution despite tracing the downscaled raster.
+      scale: downscale === 1 ? 1 : 1 / downscale,
       simplifytolerance: 0,
-      roundcoords: 2,
+      // 1 decimal instead of 2 shortens every coordinate string.
+      roundcoords: 1,
       viewbox: true,
       desc: false,
       noorb: false,
       noprogress: true,
-      whitespace: true,
+      // Strip whitespace between SVG tags.
+      whitespace: false,
     });
   }
 

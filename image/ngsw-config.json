@@ -27,12 +27,13 @@
       }
     },
     {
-      "name": "imgly-models",
+      "name": "bg-removal-runtime",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "urls": [
-          "https://staticimgly.com/**"
+        "files": [
+          "/models/**",
+          "/ort/**"
         ]
       }
     }

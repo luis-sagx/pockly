@@ -26,8 +26,8 @@
     </div>
 
     <div class="flex flex-wrap gap-2">
-      <button (click)="convert()" [disabled]="loading" class="btn-primary">
-        @if (loading) {
+      <button (click)="convert()" [disabled]="loading()" class="btn-primary">
+        @if (loading()) {
           <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon>
           {{ t().processing }}
         } @else {
@@ -37,25 +37,25 @@
       <button (click)="clear()" class="btn-ghost">
         <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4\"></fa-icon> {{ t().clear }}
       </button>
-      @if (resultImageDataUrl) {
+      @if (resultImageDataUrl()) {
         <button (click)="download()" class="btn-primary">
           <fa-icon [icon]="['fas', 'download']" class="w-4 h-4"></fa-icon> {{ t().download }}
         </button>
       }
     </div>
 
-    @if (hasError) {
+    @if (hasError()) {
       <p class="error-message">
         <fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon>
-        <span>{{ errorMessage }}</span>
+        <span>{{ errorMessage() }}</span>
       </p>
     }
 
-    @if (resultImageDataUrl) {
+    @if (resultImageDataUrl()) {
       <div class="mt-4">
         <h3 class="label">Preview</h3>
         <div class="preview-container">
-          <img [src]="resultImageDataUrl" alt="result" class="object-contain max-w-full max-h-80" />
+          <img [src]="resultImageDataUrl()" alt="result" class="object-contain max-w-full max-h-80" />
         </div>
       </div>
     }

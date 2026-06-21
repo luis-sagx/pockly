@@ -1,6 +1,6 @@
 {
   "framework": "angular",
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/pockly/browser",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "cd .. && pnpm install --frozen-lockfile",
+  "buildCommand": "cd ../packages/shared && pnpm run build && cd ../landing && pnpm run build",
+  "outputDirectory": "dist/pockly/browser"
 }

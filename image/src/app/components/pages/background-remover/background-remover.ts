@@ -69,11 +69,11 @@ export class BackgroundRemover implements OnDestroy {
     this.resultDataUrl.set('');
     this.progressMessage.set('Loading AI model (first time may take a moment)...');
     try {
-      const { removeBackground } = await import('@imgly/background-removal');
+      const { BackgroundRemovalService } = await import(
+        '../../../services/background-removal.service'
+      );
       this.progressMessage.set('Processing image...');
-      const resultBlob = await removeBackground(this.originalFile, {
-        output: { format: 'image/png', quality: 0.9 },
-      });
+      const resultBlob = await BackgroundRemovalService.removeBackground(this.originalFile);
       this.resultBlob = resultBlob;
       // Revoke previous object URL before creating a new one
       this.revokeObjectUrl();

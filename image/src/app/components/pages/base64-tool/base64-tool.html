@@ -27,20 +27,20 @@
     }
   </div>
 
-  @if (hasError) {
+  @if (hasError()) {
     <p class="error-message">
       <fa-icon [icon]="['fas', 'circle-exclamation']" class="w-4 h-4"></fa-icon>
-      <span>{{ errorMessage }}</span>
+      <span>{{ errorMessage() }}</span>
     </p>
   }
 
   <div class="flex flex-wrap gap-2 mt-3">
     <button
       (click)="convertImageToBase64()"
-      [disabled]="loading"
-      [class]="loading ? 'btn-primary opacity-50 cursor-not-allowed' : 'btn-primary'"
+      [disabled]="loading()"
+      [class]="loading() ? 'btn-primary opacity-50 cursor-not-allowed' : 'btn-primary'"
     >
-      @if (loading) {
+      @if (loading()) {
         <fa-icon [icon]="['fas', 'spinner']" class="w-4 h-4 animate-spin"></fa-icon>
         {{ t().processing }}
       } @else {
@@ -52,14 +52,14 @@
       <fa-icon [icon]="['fas', 'trash']" class="w-4 h-4"></fa-icon> {{ t().clear }}
     </button>
 
-    @if (base64Result) {
+    @if (base64Result()) {
       <div class="ml-auto">
-        <app-copy-button [textToCopy]="base64Result" />
+        <app-copy-button [textToCopy]="base64Result()" />
       </div>
     }
   </div>
 
-  @if (base64Result) {
+  @if (base64Result()) {
     <div class="flex flex-col gap-2 mt-3">
       <h3 class="label">{{ t().base64Output }}</h3>
       <div
@@ -67,7 +67,7 @@
       >
         <div class="flex-1 min-h-0 p-4 overflow-auto">
           <pre class="m-0 text-sm leading-relaxed whitespace-pre-wrap break-all text-olive-deep">{{
-            base64Result
+            base64Result()
           }}</pre>
         </div>
       </div>

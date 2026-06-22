@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "private": true,
-  "packageManager": "pnpm@8.6.0",
+  "packageManager": "pnpm@10.28.0",
   "dependencies": {
     "@angular/cdk": "^21.2.12",
     "@angular/common": "^21.2.0",

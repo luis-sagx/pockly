@@ -40,5 +40,6 @@
     "@fortawesome/free-solid-svg-icons": {
       "optional": true
     }
-  }
+  },
+  "packageManager": "pnpm@10.28.0"
 }

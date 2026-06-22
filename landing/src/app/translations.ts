@@ -39,20 +39,6 @@ export interface Translations {
   linkLabel_json_templates: string;
   linkLabel_json_convert: string;
   linkLabel_json_utils: string;
-  linkLabel_json_csvtojson: string;
-  linkLabel_json_tsvtojson: string;
-  linkLabel_json_jsontocsv: string;
-  linkLabel_json_jsontotsv: string;
-  linkLabel_json_jsontoxml: string;
-  linkLabel_json_jsontoyaml: string;
-  linkLabel_json_formatjson: string;
-  linkLabel_json_minifyjson: string;
-  linkLabel_json_sortjson: string;
-  linkLabel_json_validatejson: string;
-  linkLabel_json_flattenjson: string;
-  linkLabel_json_unflattenjson: string;
-  linkLabel_json_diffjson: string;
-  linkLabel_json_queryjson: string;
 
   // Link labels — Text
   linkLabel_text_case: string;
@@ -75,12 +61,6 @@ export interface Translations {
   linkLabel_image_compress: string;
   linkLabel_image_crop: string;
   linkLabel_image_format: string;
-  linkLabel_image_png: string;
-  linkLabel_image_jpeg: string;
-  linkLabel_image_webp: string;
-  linkLabel_image_bmp: string;
-  linkLabel_image_svg: string;
-  linkLabel_image_pdf: string;
 
   // Link labels — Calculator
   linkLabel_calculator_percentof: string;
@@ -105,20 +85,6 @@ export interface Translations {
   linkDesc_json_templates: string;
   linkDesc_json_convert: string;
   linkDesc_json_utils: string;
-  linkDesc_json_csvtojson: string;
-  linkDesc_json_tsvtojson: string;
-  linkDesc_json_jsontocsv: string;
-  linkDesc_json_jsontotsv: string;
-  linkDesc_json_jsontoxml: string;
-  linkDesc_json_jsontoyaml: string;
-  linkDesc_json_formatjson: string;
-  linkDesc_json_minifyjson: string;
-  linkDesc_json_sortjson: string;
-  linkDesc_json_validatejson: string;
-  linkDesc_json_flattenjson: string;
-  linkDesc_json_unflattenjson: string;
-  linkDesc_json_diffjson: string;
-  linkDesc_json_queryjson: string;
 
   // Link descriptions — Text
   linkDesc_text_case: string;
@@ -141,12 +107,6 @@ export interface Translations {
   linkDesc_image_compress: string;
   linkDesc_image_crop: string;
   linkDesc_image_format: string;
-  linkDesc_image_png: string;
-  linkDesc_image_jpeg: string;
-  linkDesc_image_webp: string;
-  linkDesc_image_bmp: string;
-  linkDesc_image_svg: string;
-  linkDesc_image_pdf: string;
 
   // Link descriptions — Calculator
   linkDesc_calculator_percentof: string;
@@ -189,7 +149,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
 
     seoTitle: 'Pockly - Free Online Tools for Daily Productivity',
     seoDescription:
-      'Free online tools for text, JSON, images, URLs, calculators, and personal productivity.',
+      'Free online productivity tools: word counter, JSON generator, background remover, image resizer, format converter, text case tool, and more.',
 
     // Category titles
     catTitleJson: 'JSON Tools',
@@ -204,20 +164,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_json_templates: 'Templates',
     linkLabel_json_convert: 'Convert',
     linkLabel_json_utils: 'Utils',
-    linkLabel_json_csvtojson: 'CSV to JSON',
-    linkLabel_json_tsvtojson: 'TSV to JSON',
-    linkLabel_json_jsontocsv: 'JSON to CSV',
-    linkLabel_json_jsontotsv: 'JSON to TSV',
-    linkLabel_json_jsontoxml: 'JSON to XML',
-    linkLabel_json_jsontoyaml: 'JSON to YAML',
-    linkLabel_json_formatjson: 'Format JSON',
-    linkLabel_json_minifyjson: 'Minify JSON',
-    linkLabel_json_sortjson: 'Sort JSON',
-    linkLabel_json_validatejson: 'Validate JSON',
-    linkLabel_json_flattenjson: 'Flatten JSON',
-    linkLabel_json_unflattenjson: 'Unflatten JSON',
-    linkLabel_json_diffjson: 'Diff JSON',
-    linkLabel_json_queryjson: 'Query JSON',
 
     // Link labels — Text
     linkLabel_text_case: 'Text Case',
@@ -240,12 +186,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_image_compress: 'Compress',
     linkLabel_image_crop: 'Crop',
     linkLabel_image_format: 'Format Converter',
-    linkLabel_image_png: 'PNG Converter',
-    linkLabel_image_jpeg: 'JPEG Converter',
-    linkLabel_image_webp: 'WebP Converter',
-    linkLabel_image_bmp: 'BMP Converter',
-    linkLabel_image_svg: 'SVG Converter',
-    linkLabel_image_pdf: 'PDF Converter',
 
     // Link labels — Calculator
     linkLabel_calculator_percentof: 'Percent of Y',
@@ -272,20 +212,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_json_convert: 'Convert between CSV, TSV, XML and YAML',
     linkDesc_json_utils:
       'Format, minify, sort, validate, flatten, diff and query JSON',
-    linkDesc_json_csvtojson: 'Convert CSV rows into JSON arrays',
-    linkDesc_json_tsvtojson: 'Convert TSV tables into JSON arrays',
-    linkDesc_json_jsontocsv: 'Export JSON arrays as CSV',
-    linkDesc_json_jsontotsv: 'Export JSON arrays as TSV',
-    linkDesc_json_jsontoxml: 'Transform JSON into XML markup',
-    linkDesc_json_jsontoyaml: 'Transform JSON into YAML documents',
-    linkDesc_json_formatjson: 'Pretty-print and indent JSON',
-    linkDesc_json_minifyjson: 'Remove whitespace from JSON payloads',
-    linkDesc_json_sortjson: 'Sort JSON object keys recursively',
-    linkDesc_json_validatejson: 'Validate JSON syntax instantly',
-    linkDesc_json_flattenjson: 'Flatten nested JSON into dotted paths',
-    linkDesc_json_unflattenjson: 'Rebuild nested JSON from flat keys',
-    linkDesc_json_diffjson: 'Compare two JSON documents side by side',
-    linkDesc_json_queryjson: 'Query JSON data with JSONPath',
 
     // Link descriptions — Text
     linkDesc_text_case:
@@ -298,27 +224,18 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_text_spell: 'Check spelling and grammar in your text',
 
     // Link descriptions — Productivity
-    linkDesc_productivity_board:
-      'Organize tasks by Today, This week and Someday',
+    linkDesc_productivity_board: 'Organize tasks by Today, This week and Someday',
     linkDesc_productivity_habits: 'Track recurring routines and daily streaks',
-    linkDesc_productivity_scratchpad:
-      'Capture loose thoughts in a fast autosaving pad',
+    linkDesc_productivity_scratchpad: 'Capture loose thoughts in a fast autosaving pad',
 
     // Link descriptions — Image
     linkDesc_image_base64to: 'Encode any image to a Base64 data URI',
     linkDesc_image_base64from: 'Decode a Base64 string back to an image',
     linkDesc_image_bgremove: 'Remove image backgrounds automatically',
     linkDesc_image_resize: 'Resize images by exact dimensions or percentage',
-    linkDesc_image_compress:
-      'Reduce file size while preserving visual quality',
+    linkDesc_image_compress: 'Reduce file size while preserving visual quality',
     linkDesc_image_crop: 'Crop images to a selected region',
     linkDesc_image_format: 'Convert between PNG, JPEG, WebP, BMP, SVG and PDF',
-    linkDesc_image_png: 'Convert images to PNG format',
-    linkDesc_image_jpeg: 'Convert images to JPEG format',
-    linkDesc_image_webp: 'Convert images to WebP format',
-    linkDesc_image_bmp: 'Convert images to BMP format',
-    linkDesc_image_svg: 'Convert images to SVG format',
-    linkDesc_image_pdf: 'Convert images to PDF format',
 
     // Link descriptions — Calculator
     linkDesc_calculator_percentof: 'Calculate what is X% of a given number',
@@ -378,20 +295,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_json_templates: 'Plantillas',
     linkLabel_json_convert: 'Convertir',
     linkLabel_json_utils: 'Utilidades',
-    linkLabel_json_csvtojson: 'CSV a JSON',
-    linkLabel_json_tsvtojson: 'TSV a JSON',
-    linkLabel_json_jsontocsv: 'JSON a CSV',
-    linkLabel_json_jsontotsv: 'JSON a TSV',
-    linkLabel_json_jsontoxml: 'JSON a XML',
-    linkLabel_json_jsontoyaml: 'JSON a YAML',
-    linkLabel_json_formatjson: 'Formatear JSON',
-    linkLabel_json_minifyjson: 'Minimizar JSON',
-    linkLabel_json_sortjson: 'Ordenar JSON',
-    linkLabel_json_validatejson: 'Validar JSON',
-    linkLabel_json_flattenjson: 'Aplanar JSON',
-    linkLabel_json_unflattenjson: 'Desaplanar JSON',
-    linkLabel_json_diffjson: 'Comparar JSON',
-    linkLabel_json_queryjson: 'Consultar JSON',
 
     // Link labels — Text
     linkLabel_text_case: 'Conversor de texto',
@@ -414,12 +317,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkLabel_image_compress: 'Comprimir',
     linkLabel_image_crop: 'Recortar',
     linkLabel_image_format: 'Convertidor de formato',
-    linkLabel_image_png: 'Convertidor PNG',
-    linkLabel_image_jpeg: 'Convertidor JPEG',
-    linkLabel_image_webp: 'Convertidor WebP',
-    linkLabel_image_bmp: 'Convertidor BMP',
-    linkLabel_image_svg: 'Convertidor SVG',
-    linkLabel_image_pdf: 'Convertidor PDF',
 
     // Link labels — Calculator
     linkLabel_calculator_percentof: 'Porcentaje de Y',
@@ -446,20 +343,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_json_convert: 'Convierte entre CSV, TSV, XML y YAML',
     linkDesc_json_utils:
       'Formatea, minimiza, ordena, valida, aplana, compara y consulta JSON',
-    linkDesc_json_csvtojson: 'Convierte filas CSV en arreglos JSON',
-    linkDesc_json_tsvtojson: 'Convierte tablas TSV en arreglos JSON',
-    linkDesc_json_jsontocsv: 'Exporta arreglos JSON como CSV',
-    linkDesc_json_jsontotsv: 'Exporta arreglos JSON como TSV',
-    linkDesc_json_jsontoxml: 'Transforma JSON en marcado XML',
-    linkDesc_json_jsontoyaml: 'Transforma JSON en documentos YAML',
-    linkDesc_json_formatjson: 'Da formato e indentación legible a JSON',
-    linkDesc_json_minifyjson: 'Elimina espacios en blanco del payload JSON',
-    linkDesc_json_sortjson: 'Ordena recursivamente las claves de objetos JSON',
-    linkDesc_json_validatejson: 'Valida al instante la sintaxis de JSON',
-    linkDesc_json_flattenjson: 'Aplana JSON anidado en rutas con puntos',
-    linkDesc_json_unflattenjson: 'Reconstruye JSON anidado desde claves planas',
-    linkDesc_json_diffjson: 'Compara dos documentos JSON lado a lado',
-    linkDesc_json_queryjson: 'Consulta datos JSON con JSONPath',
 
     // Link descriptions — Text
     linkDesc_text_case:
@@ -473,12 +356,9 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_text_spell: 'Revisa ortografía y gramática en tu texto',
 
     // Link descriptions — Productivity
-    linkDesc_productivity_board:
-      'Organiza tareas por Hoy, Esta semana y Algún día',
-    linkDesc_productivity_habits:
-      'Registra rutinas recurrentes y rachas diarias',
-    linkDesc_productivity_scratchpad:
-      'Captura ideas sueltas en un bloc rápido con autosave',
+    linkDesc_productivity_board: 'Organiza tareas por Hoy, Esta semana y Algún día',
+    linkDesc_productivity_habits: 'Registra rutinas recurrentes y rachas diarias',
+    linkDesc_productivity_scratchpad: 'Captura ideas sueltas en un bloc rápido con autosave',
 
     // Link descriptions — Image
     linkDesc_image_base64to:
@@ -492,12 +372,6 @@ export const landingTranslations: Record<string, Record<string, string>> = {
       'Reduce el tamaño del archivo conservando la calidad visual',
     linkDesc_image_crop: 'Recorta imágenes a una región seleccionada',
     linkDesc_image_format: 'Convierte entre PNG, JPEG, WebP, BMP, SVG y PDF',
-    linkDesc_image_png: 'Convierte imágenes a formato PNG',
-    linkDesc_image_jpeg: 'Convierte imágenes a formato JPEG',
-    linkDesc_image_webp: 'Convierte imágenes a formato WebP',
-    linkDesc_image_bmp: 'Convierte imágenes a formato BMP',
-    linkDesc_image_svg: 'Convierte imágenes a formato SVG',
-    linkDesc_image_pdf: 'Convierte imágenes a formato PDF',
 
     // Link descriptions — Calculator
     linkDesc_calculator_percentof: 'Calcula cuánto es el X% de un número dado',
@@ -520,3 +394,4 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_url_clean: 'Elimina parámetros de seguimiento y limpia URLs',
   },
 };
+

@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SeoService } from '@pockly/shared';
 import { Nav } from './components/layout/nav/nav';
 import { Footer } from './components/layout/footer/footer';
 
@@ -11,6 +10,5 @@ import { Footer } from './components/layout/footer/footer';
   styleUrl: './app.css',
 })
 export class App {
-  private seo = inject(SeoService);
   protected title = 'Pockly - Tools for daily productivity';
 }

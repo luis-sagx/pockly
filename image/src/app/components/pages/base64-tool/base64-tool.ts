@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, NgZone, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -24,7 +24,10 @@ export class Base64Tool {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
 
-  constructor(library: FaIconLibrary) {
+  constructor(
+    library: FaIconLibrary,
+    private ngZone: NgZone,
+  ) {
     library.addIcons(faImage, faTrash, faSpinner, faCircleExclamation, faCheck);
   }
 
@@ -32,15 +35,11 @@ export class Base64Tool {
   selectedFile: File | null = null;
   selectedImagePreviewUrl = '';
   selectedImageDataUrl = '';
+  base64Result = '';
   outputFormat = 'png';
-
-  // Updated after async work (FileReader / await) → signals so the zoneless
-  // scheduler re-renders. Plain fields set post-`await` never trigger change
-  // detection, leaving the button stuck on "processing".
-  base64Result = signal('');
-  loading = signal(false);
-  hasError = signal(false);
-  errorMessage = signal('');
+  loading = false;
+  hasError = false;
+  errorMessage = '';
 
   // Removed mode switching: this component is Image -> Base64 only
 
@@ -50,8 +49,8 @@ export class Base64Tool {
     this.selectedImagePreviewUrl = '';
     this.selectedImageDataUrl = '';
     this.clearResults();
-    this.hasError.set(false);
-    this.errorMessage.set('');
+    this.hasError = false;
+    this.errorMessage = '';
 
     if (!this.selectedFile) {
       this.selectedImagePreviewUrl = '';
@@ -63,36 +62,40 @@ export class Base64Tool {
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.selectedImageDataUrl = (reader.result as string) ?? '';
+      this.ngZone.run(() => {
+        this.selectedImageDataUrl = (reader.result as string) ?? '';
+      });
     };
     reader.onerror = () => {
-      this.selectedImageDataUrl = '';
-      this.hasError.set(true);
-      this.errorMessage.set('Could not read the selected image.');
+      this.ngZone.run(() => {
+        this.selectedImageDataUrl = '';
+        this.hasError = true;
+        this.errorMessage = 'Could not read the selected image.';
+      });
     };
     reader.readAsDataURL(this.selectedFile);
   }
 
   async convertImageToBase64(): Promise<void> {
     if (!this.selectedFile) {
-      this.hasError.set(true);
-      this.errorMessage.set('Select an image.');
+      this.hasError = true;
+      this.errorMessage = 'Select an image.';
       return;
     }
-    this.loading.set(true);
+    this.loading = true;
     this.clearResults();
     try {
       const dataUrl =
         this.selectedImageDataUrl || (await this.readFileAsDataUrl(this.selectedFile));
       this.selectedImageDataUrl = dataUrl;
       const commaIndex = dataUrl.indexOf(',');
-      this.base64Result.set(commaIndex > -1 ? dataUrl.slice(commaIndex + 1) : dataUrl);
+      this.base64Result = commaIndex > -1 ? dataUrl.slice(commaIndex + 1) : dataUrl;
       // Only base64 result is kept on this page
     } catch {
-      this.hasError.set(true);
-      this.errorMessage.set('Could not convert image to Base64.');
+      this.hasError = true;
+      this.errorMessage = 'Could not convert image to Base64.';
     } finally {
-      this.loading.set(false);
+      this.loading = false;
     }
   }
 
@@ -105,8 +108,8 @@ export class Base64Tool {
     this.selectedImageDataUrl = '';
     this.clearResults();
     this.outputFormat = 'png';
-    this.hasError.set(false);
-    this.errorMessage.set('');
+    this.hasError = false;
+    this.errorMessage = '';
   }
 
   selectAnotherImage(): void {
@@ -114,13 +117,13 @@ export class Base64Tool {
     this.selectedFile = null;
     this.selectedImagePreviewUrl = '';
     this.selectedImageDataUrl = '';
-    this.base64Result.set('');
-    this.errorMessage.set('');
-    this.hasError.set(false);
+    this.base64Result = '';
+    this.errorMessage = '';
+    this.hasError = false;
   }
 
   private clearResults(): void {
-    this.base64Result.set('');
+    this.base64Result = '';
   }
 
   private revokePreviewUrl(): void {

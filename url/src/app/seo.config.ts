@@ -6,7 +6,6 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const urlSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
-  siteName: 'Pockly URL Tools',
   pageConfigs: {
   '': {
     title: 'URL Tools - Free Online URL Utilities',
@@ -55,13 +54,6 @@ export const urlSeoConfig: SeoConfig = {
     keywords: 'url cleaner, clean url, remove tracking, normalize url, url sanitizer',
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/url-cleaner`,
-  },
-  '404': {
-    title: 'Not Found - URL Tools',
-    description: 'Page not found.',
-    noindex: true,
-    ogImage: OG_IMAGE,
-    canonicalUrl: `${BASE_URL}/404`,
   },
   },
 };

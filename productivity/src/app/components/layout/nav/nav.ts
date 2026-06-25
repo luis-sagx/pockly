@@ -4,11 +4,12 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
 import { SupabaseService } from '../../../services/supabase.service';
+import { NotificationBell } from '../../ui/notification-bell/notification-bell';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink, FaIconComponent],
+  imports: [RouterLink, FaIconComponent, NotificationBell],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })

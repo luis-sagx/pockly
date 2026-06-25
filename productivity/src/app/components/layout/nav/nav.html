@@ -19,6 +19,8 @@
       <a routerLink="/scratchpad" class="px-3 py-2 text-sm font-semibold transition-colors rounded text-olive-ink hover:text-posthog-orange font-body hover:bg-olive-cream">
         {{ t().navScratchpad }}
       </a>
+      <app-notification-bell></app-notification-bell>
+
       <div class="ml-3 pl-3 border-l border-olive-light/50">
         @if (isLoggedIn()) {
           <button
@@ -44,6 +46,8 @@
     </div>
 
     <div class="flex md:hidden items-center gap-2">
+      <app-notification-bell></app-notification-bell>
+
       @if (isLoggedIn()) {
         <button
           (click)="signOut()"

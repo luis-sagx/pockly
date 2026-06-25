@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { createClient, SupabaseClient, User, Session } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment';
 import { Task } from '../components/pages/board/task.model';
+import { Habit } from '../components/pages/habits/habit.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,10 @@ export class SupabaseService {
         this.user.set(session?.user ?? null);
       });
     }
+  }
+
+  getClient(): SupabaseClient | null {
+    return this.client;
   }
 
   async signInWithGoogle(): Promise<void> {
@@ -175,5 +180,40 @@ export class SupabaseService {
 
     this.syncError.set('');
     return true;
+  }
+
+  async fetchHabits(): Promise<{ habits: any[]; logs: any[] }> {
+    if (!this.client || !this.user()) return { habits: [], logs: [] };
+    const [habitsRes, logsRes] = await Promise.all([
+      this.client.from('habits').select('*').order('sort_order'),
+      this.client.from('habit_logs').select('*').eq('user_id', this.user()!.id),
+    ]);
+    return { habits: habitsRes.data ?? [], logs: logsRes.data ?? [] };
+  }
+
+  async upsertHabits(habits: Habit[]): Promise<void> {
+    if (!this.client || !this.user()) return;
+    const rows = habits.map((h) => ({
+      id: h.id,
+      user_id: this.user()!.id,
+      name: h.name,
+      color: h.color,
+      archived: h.archived,
+      sort_order: h.sortOrder,
+      created_at: new Date(h.createdAt).toISOString(),
+    }));
+    await this.client.from('habits').upsert(rows, { onConflict: 'id' });
+  }
+
+  async upsertHabitLog(habitId: string, date: string): Promise<void> {
+    if (!this.client || !this.user()) return;
+    await this.client
+      .from('habit_logs')
+      .upsert({ habit_id: habitId, user_id: this.user()!.id, log_date: date }, { onConflict: 'habit_id,log_date' });
+  }
+
+  async deleteHabitLog(habitId: string, date: string): Promise<void> {
+    if (!this.client || !this.user()) return;
+    await this.client.from('habit_logs').delete().eq('habit_id', habitId).eq('log_date', date);
   }
 }

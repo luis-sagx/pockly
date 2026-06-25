@@ -1,0 +1,119 @@
+<div class="max-w-lg mx-auto px-4 py-8">
+  <div class="mb-6">
+    <a routerLink="/" class="text-sm text-olive-ink/60 hover:text-posthog-orange transition">← Back</a>
+    <h1 class="text-2xl font-bold text-olive-ink mt-2">Notifications</h1>
+    <p class="text-sm text-olive-ink/60 mt-1">Choose when and how to be reminded of your goals.</p>
+  </div>
+
+  @if (!isLoggedIn()) {
+    <div class="mb-6 p-4 bg-olive-cream rounded-xl border border-olive-border text-sm text-olive-ink/70">
+      <a routerLink="/sign-in" class="text-posthog-orange font-semibold hover:underline">Sign in</a>
+      to save notification preferences across devices.
+    </div>
+  }
+
+  <div class="space-y-6">
+    <!-- Schedule -->
+    <section class="bg-olive-cream rounded-xl border border-olive-border p-5 space-y-4">
+      <h2 class="text-sm font-semibold text-olive-ink uppercase tracking-wide">Schedule</h2>
+
+      <div class="flex items-center justify-between gap-4">
+        <label class="text-sm text-olive-ink flex-1" for="reminderTime">Daily reminder time</label>
+        <input
+          id="reminderTime"
+          type="time"
+          [(ngModel)]="prefs.reminderTime"
+          class="text-sm border border-olive-border rounded-lg px-2 py-1 bg-olive-parchment text-olive-ink focus:outline-none focus:ring-1 focus:ring-posthog-orange"
+        />
+      </div>
+
+      <div class="flex items-center justify-between gap-4">
+        <label class="text-sm text-olive-ink flex-1" for="timezone">Timezone</label>
+        <select
+          id="timezone"
+          [(ngModel)]="prefs.timezone"
+          class="text-sm border border-olive-border rounded-lg px-2 py-1 bg-olive-parchment text-olive-ink focus:outline-none focus:ring-1 focus:ring-posthog-orange max-w-[200px]"
+        >
+          @for (tz of timezones; track tz) {
+            <option [value]="tz">{{ tz }}</option>
+          }
+        </select>
+      </div>
+    </section>
+
+    <!-- Channels -->
+    <section class="bg-olive-cream rounded-xl border border-olive-border p-5 space-y-4">
+      <h2 class="text-sm font-semibold text-olive-ink uppercase tracking-wide">Channels</h2>
+
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm text-olive-ink font-medium">Push (this device)</p>
+          <p class="text-xs text-olive-ink/50">
+            @if (pushPermission() === 'denied') {
+              Blocked by browser. Enable in browser settings.
+            } @else if (pushPermission() === 'granted') {
+              Active on this device.
+            } @else {
+              Requires your permission.
+            }
+          </p>
+        </div>
+        @if (pushPermission() === 'granted') {
+          <button (click)="disablePush()" class="text-xs text-red-500 hover:underline shrink-0">
+            Disable
+          </button>
+        } @else if (pushPermission() !== 'denied') {
+          <button
+            (click)="enablePush()"
+            class="text-xs px-3 py-1 bg-posthog-orange text-white rounded-lg hover:opacity-90 transition shrink-0"
+          >
+            Enable
+          </button>
+        }
+      </div>
+
+    </section>
+
+    <!-- What to notify -->
+    <section class="bg-olive-cream rounded-xl border border-olive-border p-5 space-y-4">
+      <h2 class="text-sm font-semibold text-olive-ink uppercase tracking-wide">What to notify</h2>
+
+      @for (item of toggleItems; track item.key) {
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm text-olive-ink font-medium">{{ item.label }}</p>
+            <p class="text-xs text-olive-ink/50">{{ item.desc }}</p>
+          </div>
+          <button
+            role="switch"
+            [attr.aria-checked]="prefs[item.key]"
+            (click)="togglePref(item.key)"
+            class="w-10 h-5 rounded-full transition-colors duration-200 relative shrink-0"
+            [class.bg-posthog-orange]="prefs[item.key]"
+            [class.bg-olive-border]="!prefs[item.key]"
+          >
+            <span
+              class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform duration-200"
+              [class.translate-x-5]="prefs[item.key]"
+            ></span>
+          </button>
+        </div>
+      }
+    </section>
+
+    <!-- Save -->
+    <button
+      (click)="save()"
+      [disabled]="isSaving()"
+      class="w-full py-3 bg-posthog-orange text-white font-semibold rounded-xl hover:opacity-90 transition disabled:opacity-50"
+    >
+      @if (isSaving()) {
+        Saving...
+      } @else if (saveSuccess()) {
+        Saved!
+      } @else {
+        Save preferences
+      }
+    </button>
+  </div>
+</div>

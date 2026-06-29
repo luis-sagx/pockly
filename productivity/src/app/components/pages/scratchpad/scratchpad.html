@@ -1,7 +1,7 @@
-<div class="flex flex-col h-[calc(100vh-14rem)] min-h-[520px] gap-4">
+<div class="flex flex-col min-h-[calc(100vh-14rem)] gap-4">
   <header class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
     <div><h1 class="text-3xl font-bold text-olive-deep">{{ t().scratchpad }}</h1><p class="mt-1 text-sm text-olive-ink/70">{{ t().scratchpadDesc }}</p></div>
     <p class="text-xs text-olive-ink/60">{{ t().saved }} · {{ t().lastUpdated }}: {{ lastUpdated() }}</p>
   </header>
-  <textarea class="flex-1 p-4 font-mono text-sm leading-relaxed resize-none field" [placeholder]="t().scratchpadPlaceholder" [ngModel]="content()" (ngModelChange)="setContent($event)" (blur)="saveNow()"></textarea>
+  <textarea #ta rows="12" class="w-full p-4 overflow-hidden font-mono text-sm leading-relaxed resize-none field" [placeholder]="t().scratchpadPlaceholder" [ngModel]="content()" (ngModelChange)="setContent($event)" (blur)="saveNow()"></textarea>
 </div>

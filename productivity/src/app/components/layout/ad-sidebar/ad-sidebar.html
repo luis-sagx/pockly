@@ -1,0 +1,16 @@
+<aside class="flex-shrink-0 hidden w-[300px] lg:block">
+  <div class="sticky top-24">
+    @if (enabled) {
+      <ins
+        class="block adsbygoogle"
+        style="display:block; width:300px; height:600px"
+        [attr.data-ad-client]="adClient"
+        [attr.data-ad-slot]="slot"
+      ></ins>
+    } @else {
+      <div class="flex items-center justify-center w-[300px] h-[600px] text-xs border border-dashed rounded-lg border-olive-border text-olive-ink/40 bg-olive-cream/40">
+        Ad space
+      </div>
+    }
+  </div>
+</aside>

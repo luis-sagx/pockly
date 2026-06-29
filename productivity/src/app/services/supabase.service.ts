@@ -65,6 +65,7 @@ export class SupabaseService {
       password,
       options: {
         data: { username },
+        emailRedirectTo: `${window.location.origin}/board`,
       },
     });
     if (data.session) {

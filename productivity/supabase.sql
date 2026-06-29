@@ -45,3 +45,34 @@ drop policy if exists "own scratchpad" on scratchpad;
 create policy "own habits" on habits for all using (user_id = auth.uid()) with check (user_id = auth.uid());
 create policy "own habit_logs" on habit_logs for all using (user_id = auth.uid()) with check (user_id = auth.uid());
 create policy "own scratchpad" on scratchpad for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+-- Notification preferences
+create table if not exists notification_preferences (
+  user_id              uuid primary key references auth.users(id) on delete cascade,
+  timezone             text not null default 'UTC',
+  reminder_time        time not null default '20:00',
+  habit_reminder_on    boolean not null default true,
+  task_reminder_on     boolean not null default true,
+  streak_alert_on      boolean not null default true,
+  push_enabled         boolean not null default true,
+  updated_at           timestamptz not null default now()
+);
+
+alter table notification_preferences enable row level security;
+drop policy if exists "own notification_preferences" on notification_preferences;
+create policy "own notification_preferences" on notification_preferences for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+-- Push subscriptions (one per device per user)
+create table if not exists push_subscriptions (
+  id          uuid primary key default gen_random_uuid(),
+  user_id     uuid not null references auth.users(id) on delete cascade,
+  endpoint    text not null,
+  p256dh      text not null,
+  auth_key    text not null,
+  created_at  timestamptz not null default now(),
+  unique (user_id, endpoint)
+);
+
+alter table push_subscriptions enable row level security;
+drop policy if exists "own push_subscriptions" on push_subscriptions;
+create policy "own push_subscriptions" on push_subscriptions for all using (user_id = auth.uid()) with check (user_id = auth.uid());

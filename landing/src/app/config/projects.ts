@@ -66,21 +66,21 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
   },
   {
     key: 'productivity',
-    title: 'Productivity Tools',
+    title: 'Flow',
     links: [
       {
         label: 'Board',
-        url: 'https://productivity.pockly.vercel.app/board',
+        url: 'https://pockly-productivity.vercel.app//board',
         description: 'Organize tasks by Today, This week and Someday',
       },
       {
         label: 'Habits',
-        url: 'https://productivity.pockly.vercel.app/habits',
+        url: 'https://pockly-productivity.vercel.app//habits',
         description: 'Track recurring routines and daily streaks',
       },
       {
         label: 'Scratchpad',
-        url: 'https://productivity.pockly.vercel.app/scratchpad',
+        url: 'https://pockly-productivity.vercel.app//scratchpad',
         description: 'Capture loose thoughts in a fast autosaving pad',
       },
     ],

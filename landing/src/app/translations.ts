@@ -157,7 +157,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     catTitleImage: 'Image Tools',
     catTitleUrl: 'URL Tools',
     catTitleCalculator: 'Calculator Tools',
-    catTitleProductivity: 'Productivity Tools',
+    catTitleProductivity: 'Flow',
 
     // Link labels — JSON
     linkLabel_json_generator: 'Generator',
@@ -288,7 +288,7 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     catTitleImage: 'Herramientas de imagen',
     catTitleUrl: 'Herramientas URL',
     catTitleCalculator: 'Herramientas de calculadora',
-    catTitleProductivity: 'Herramientas de productividad',
+    catTitleProductivity: 'Flow',
 
     // Link labels — JSON
     linkLabel_json_generator: 'Generador',

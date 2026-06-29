@@ -2,7 +2,14 @@
   <app-nav />
   <main class="flex-1 pt-16 sm:pt-20">
     <div class="page-shell">
-      <router-outlet />
+      <div class="flex gap-8">
+        <div class="flex-1 min-w-0">
+          <router-outlet />
+        </div>
+        @if (showSidebar()) {
+          <app-ad-sidebar />
+        }
+      </div>
     </div>
   </main>
   <app-footer />

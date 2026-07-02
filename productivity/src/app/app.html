@@ -7,7 +7,11 @@
           <router-outlet />
         </div>
         @if (showSidebar()) {
-          <app-ad-sidebar />
+          <app-ad-sidebar
+            [enabled]="adConfig.enabled"
+            [adClient]="adConfig.adClient"
+            [slot]="adConfig.slots.sidebar"
+          />
         }
       </div>
     </div>

@@ -2,7 +2,18 @@
   <app-nav></app-nav>
   <main class="flex-1 pt-4 sm:pt-10">
     <div class="page-shell">
-      <router-outlet></router-outlet>
+      <div class="flex gap-8">
+        <div class="min-w-0 flex-1">
+          <router-outlet></router-outlet>
+        </div>
+        @if (showSidebar()) {
+          <app-ad-sidebar
+            [enabled]="adConfig.enabled"
+            [adClient]="adConfig.adClient"
+            [slot]="adConfig.slots.sidebar"
+          />
+        }
+      </div>
     </div>
   </main>
   <app-footer></app-footer>

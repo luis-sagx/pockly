@@ -3,5 +3,5 @@
     <div><h1 class="text-3xl font-bold text-olive-deep">{{ t().scratchpad }}</h1><p class="mt-1 text-sm text-olive-ink/70">{{ t().scratchpadDesc }}</p></div>
     <p class="text-xs text-olive-ink/60">{{ t().saved }} · {{ t().lastUpdated }}: {{ lastUpdated() }}</p>
   </header>
-  <textarea #ta rows="12" class="w-full p-4 overflow-hidden font-mono text-sm leading-relaxed resize-none field" [placeholder]="t().scratchpadPlaceholder" [ngModel]="content()" (ngModelChange)="setContent($event)" (blur)="saveNow()"></textarea>
+  <textarea #ta cdkTextareaAutosize [cdkAutosizeMinRows]="12" class="w-full p-4 overflow-hidden font-mono text-sm leading-relaxed resize-none field" [placeholder]="t().scratchpadPlaceholder" [ngModel]="content()" (ngModelChange)="setContent($event)" (blur)="saveNow()"></textarea>
 </div>

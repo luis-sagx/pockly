@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pockly-productivity.vercel.app//</loc></url>
-  <url><loc>https://pockly-productivity.vercel.app//board</loc></url>
-  <url><loc>https://pockly-productivity.vercel.app//habits</loc></url>
-  <url><loc>https://pockly-productivity.vercel.app//scratchpad</loc></url>
+  <url><loc>https://flow.pockly.uk/</loc></url>
+  <url><loc>https://flow.pockly.uk/board</loc></url>
+  <url><loc>https://flow.pockly.uk/habits</loc></url>
+  <url><loc>https://flow.pockly.uk/scratchpad</loc></url>
 </urlset>

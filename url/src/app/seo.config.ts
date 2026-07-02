@@ -1,6 +1,6 @@
 import type { SeoConfig } from '@pockly/shared';
 
-const BASE_URL = 'https://pockly-qr.vercel.app';
+const BASE_URL = 'https://url.pockly.uk';
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export const urlSeoConfig: SeoConfig = {

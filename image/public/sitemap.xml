@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://image.pockly.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://image.pockly.vercel.app/image-to-base64</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/base64-to-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/remove-background</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://image.pockly.vercel.app/resize-dimensions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/compress-by-weight</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/crop-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-png</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-jpeg</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-webp</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-bmp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-svg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://image.pockly.vercel.app/convert-to-pdf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://image.pockly.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://image.pockly.uk/image-to-base64</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/base64-to-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/remove-background</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://image.pockly.uk/resize-dimensions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/compress-by-weight</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/crop-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-png</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-jpeg</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-webp</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-bmp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-svg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://image.pockly.uk/convert-to-pdf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -1,5 +1,5 @@
-# https://calculator.pockly.vercel.app/robots.txt
+# https://calculator.pockly.uk/robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://calculator.pockly.vercel.app/sitemap.xml
+Sitemap: https://calculator.pockly.uk/sitemap.xml

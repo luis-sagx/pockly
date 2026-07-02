@@ -1,5 +1,5 @@
-# https://text.pockly.vercel.app/robots.txt
+# https://text.pockly.uk/robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://text.pockly.vercel.app/sitemap.xml
+Sitemap: https://text.pockly.uk/sitemap.xml

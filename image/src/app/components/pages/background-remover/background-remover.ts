@@ -8,20 +8,23 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
   selector: 'app-background-remover',
   standalone: true,
-  imports: [CommonModule, FaIconComponent, DropZone],
+  imports: [CommonModule, FaIconComponent, DropZone, ToolContent],
   templateUrl: './background-remover.html',
   styleUrl: './background-remover.css',
 })
 export class BackgroundRemover implements OnDestroy {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].backgroundRemover);
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faScissors, faDownload, faImage, faTrash, faSpinner);

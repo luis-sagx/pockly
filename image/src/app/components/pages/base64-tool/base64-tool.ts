@@ -8,7 +8,8 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { CopyButton } from '@pockly/shared';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
@@ -16,13 +17,15 @@ import { DropZone } from '../../ui/drop-zone/drop-zone';
 @Component({
   selector: 'app-base64-tool',
   standalone: true,
-  imports: [FormsModule, FaIconComponent, DropZone, CopyButton],
+  imports: [FormsModule, FaIconComponent, DropZone, CopyButton, ToolContent],
   templateUrl: './base64-tool.html',
   styleUrl: './base64-tool.css',
 })
 export class Base64Tool {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].base64);
 
   constructor(
     library: FaIconLibrary,

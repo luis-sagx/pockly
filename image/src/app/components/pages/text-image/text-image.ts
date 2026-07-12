@@ -8,20 +8,23 @@ import {
   faSpinner,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { InputBox } from '@pockly/shared';
 
 @Component({
   selector: 'app-text-image',
   standalone: true,
-  imports: [FormsModule, FaIconComponent, InputBox],
+  imports: [FormsModule, FaIconComponent, InputBox, ToolContent],
   templateUrl: './text-image.html',
   styleUrl: './text-image.css',
 })
 export class TextImage {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].textImage);
   constructor(
     library: FaIconLibrary,
     private ngZone: NgZone,

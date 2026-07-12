@@ -13,14 +13,15 @@ import {
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCropSimple, faDownload, faImage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Cropper from 'cropperjs';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
   selector: 'app-crop',
   standalone: true,
-  imports: [CommonModule, FaIconComponent, DropZone],
+  imports: [CommonModule, FaIconComponent, DropZone, ToolContent],
   templateUrl: './crop.html',
   styleUrl: './crop.css',
 })
@@ -31,6 +32,8 @@ export class Crop implements AfterViewInit, OnDestroy {
   @ViewChild('image') imageRef!: ElementRef<HTMLImageElement>;
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].crop);
 
   // --- state ---
   originalSrc = signal('');

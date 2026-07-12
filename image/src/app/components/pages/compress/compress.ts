@@ -10,20 +10,23 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import imageCompression from 'browser-image-compression';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { DropZone } from '../../ui/drop-zone/drop-zone';
 
 @Component({
   selector: 'app-compress',
   standalone: true,
-  imports: [CommonModule, FormsModule, FaIconComponent, DropZone],
+  imports: [CommonModule, FormsModule, FaIconComponent, DropZone, ToolContent],
   templateUrl: './compress.html',
   styleUrl: './compress.css',
 })
 export class Compress {
   private languageService = inject(LanguageService);
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].compress);
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faDownload, faImage, faSpinner, faTrash, faCircleExclamation);

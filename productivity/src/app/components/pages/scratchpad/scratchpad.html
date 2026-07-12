@@ -5,3 +5,5 @@
   </header>
   <textarea #ta cdkTextareaAutosize [cdkAutosizeMinRows]="12" class="w-full p-4 overflow-hidden font-mono text-sm leading-relaxed resize-none field" [placeholder]="t().scratchpadPlaceholder" [ngModel]="content()" (ngModelChange)="setContent($event)" (blur)="saveNow()"></textarea>
 </div>
+
+<app-tool-content [content]="seoContent()" />

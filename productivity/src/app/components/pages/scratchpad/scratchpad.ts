@@ -10,13 +10,14 @@ import {
 } from '@angular/core';
 import { CdkTextareaAutosize, TextFieldModule } from '@angular/cdk/text-field';
 import { FormsModule } from '@angular/forms';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import { ScratchpadService } from '../../../services/scratchpad.service';
 import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-scratchpad',
-  imports: [FormsModule, TextFieldModule],
+  imports: [FormsModule, TextFieldModule, ToolContent],
   templateUrl: './scratchpad.html',
   styleUrl: './scratchpad.css',
 })
@@ -25,6 +26,8 @@ export class Scratchpad {
   private languageService = inject(LanguageService);
   private destroyRef = inject(DestroyRef);
   readonly t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+ seoContent = computed(() => TOOL_CONTENT[this.languageService.language()].scratchpad);
   readonly content = this.scratchpad.content;
   readonly updatedAt = this.scratchpad.updatedAt;
   private textarea = viewChild<ElementRef<HTMLTextAreaElement>>('ta');

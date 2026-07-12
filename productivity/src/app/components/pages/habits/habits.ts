@@ -2,14 +2,15 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faBolt } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import { HabitsService } from '../../../services/habits.service';
 import { currentWeekDays, habitStats, weeklyHistory } from './habit.utils';
 import type { Translations } from '../../../translations';
 
 @Component({
   selector: 'app-habits',
-  imports: [FormsModule, FaIconComponent],
+  imports: [FormsModule, FaIconComponent, ToolContent],
   templateUrl: './habits.html',
   styleUrl: './habits.css',
 })
@@ -19,6 +20,8 @@ export class Habits {
   private habitsService = inject(HabitsService);
   private languageService = inject(LanguageService);
   readonly t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+ content = computed(() => TOOL_CONTENT[this.languageService.language()].habits);
   readonly habitName = signal('');
   readonly weekDays = currentWeekDays();
   readonly habits = this.habitsService.activeHabits;

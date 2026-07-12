@@ -13,7 +13,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { SupabaseService } from '../../../services/supabase.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -27,7 +28,7 @@ const DEBOUNCE_MS = 500;
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [FormsModule, DragDropModule, TaskColumn, CreateTaskForm, TaskDetail, FaIconComponent],
+  imports: [FormsModule, DragDropModule, TaskColumn, CreateTaskForm, TaskDetail, FaIconComponent, ToolContent],
   templateUrl: './board.html',
   styleUrl: './board.css',
 })
@@ -38,6 +39,8 @@ export class Board implements OnInit, OnDestroy {
   private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].board);
   syncError = this.supabaseService.syncError;
 
   tasks = signal<Task[]>([]);

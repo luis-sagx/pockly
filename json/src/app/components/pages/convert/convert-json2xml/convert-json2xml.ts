@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '@pockly/shared';
+import { OutputBox, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 import { IconComponent } from '../../../ui/icon/icon';
 import { jsonToXml, getDownloadInfo, downloadFile } from '../convert.service';
@@ -8,7 +9,7 @@ import { LanguageService } from '@pockly/shared';
 @Component({
   selector: 'app-convert-json2xml',
   standalone: true,
-  imports: [OutputBox, IconComponent],
+  imports: [OutputBox, IconComponent, ToolContent],
   templateUrl: './convert-json2xml.html',
 })
 export class ConvertJson2Xml {
@@ -19,6 +20,8 @@ export class ConvertJson2Xml {
   error = signal<string | null>(null);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['json2xml']);
 
   convert() {
     this.error.set(null);

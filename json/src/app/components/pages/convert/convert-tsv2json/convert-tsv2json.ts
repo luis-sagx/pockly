@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '@pockly/shared';
+import { OutputBox, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 import { IconComponent } from '../../../ui/icon/icon';
 import { csvToJson, getDownloadInfo, downloadFile } from '../convert.service';
@@ -8,7 +9,7 @@ import { LanguageService } from '@pockly/shared';
 @Component({
   selector: 'app-convert-tsv2json',
   standalone: true,
-  imports: [OutputBox, IconComponent],
+  imports: [OutputBox, IconComponent, ToolContent],
   templateUrl: './convert-tsv2json.html',
 })
 export class ConvertTsv2Json {
@@ -19,6 +20,8 @@ export class ConvertTsv2Json {
   error = signal<string | null>(null);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['tsv2json']);
 
   convert() {
     this.error.set(null);

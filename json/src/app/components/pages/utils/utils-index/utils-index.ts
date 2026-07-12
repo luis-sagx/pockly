@@ -1,7 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../../ui/icon/icon';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 
 interface UtilTool {
@@ -13,13 +14,15 @@ interface UtilTool {
 @Component({
   selector: 'app-utils-index',
   standalone: true,
-  imports: [RouterLink, IconComponent],
+  imports: [RouterLink, IconComponent, ToolContent],
   templateUrl: './utils-index.html',
 })
 export class UtilsIndex {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].utils);
 
   readonly tools: UtilTool[] = [
     { id: 'format', path: '/utils/format', icon: 'settings' },

@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../ui/icon/icon';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 
 interface JsonTemplate {
@@ -50,7 +51,7 @@ const TEMPLATES: JsonTemplate[] = [
 @Component({
   selector: 'app-json-templates',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, ToolContent],
   templateUrl: './json-templates.html',
 })
 export class JsonTemplates {
@@ -62,6 +63,8 @@ export class JsonTemplates {
   copied = signal(false);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].templates);
 
   get filteredTemplates() {
     const cat = this.activeCategory();

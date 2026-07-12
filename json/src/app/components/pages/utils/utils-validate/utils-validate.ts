@@ -1,12 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../../../ui/icon/icon';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 
 @Component({
   selector: 'app-utils-validate',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, ToolContent],
   templateUrl: './utils-validate.html',
 })
 export class UtilsValidate {
@@ -17,6 +18,8 @@ export class UtilsValidate {
   error = signal<string | null>(null);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['validate']);
 
   apply() {
     this.error.set(null);

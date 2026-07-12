@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '@pockly/shared';
+import { OutputBox, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 import { IconComponent } from '../../../ui/icon/icon';
 import { queryJson } from '../utils.service';
@@ -8,7 +9,7 @@ import { LanguageService } from '@pockly/shared';
 @Component({
   selector: 'app-utils-query',
   standalone: true,
-  imports: [OutputBox, IconComponent],
+  imports: [OutputBox, IconComponent, ToolContent],
   templateUrl: './utils-query.html',
 })
 export class UtilsQuery {
@@ -20,6 +21,8 @@ export class UtilsQuery {
   error = signal<string | null>(null);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['query']);
 
   apply() {
     this.error.set(null);

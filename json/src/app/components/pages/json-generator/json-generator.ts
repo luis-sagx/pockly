@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { OutputBox } from '@pockly/shared';
+import { OutputBox, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import { IconComponent } from '../../ui/icon/icon';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
@@ -14,7 +15,7 @@ interface BuilderField {
 @Component({
   selector: 'app-json-generator',
   standalone: true,
-  imports: [OutputBox, IconComponent],
+  imports: [OutputBox, IconComponent, ToolContent],
   templateUrl: './json-generator.html',
 })
 export class JsonGenerator {
@@ -28,6 +29,8 @@ export class JsonGenerator {
   ]);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].generator);
 
   readonly fieldTypes = [
     { value: 'text', label: 'Text' },

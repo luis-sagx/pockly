@@ -1,0 +1,29 @@
+<section class="flex flex-col gap-8 p-4 mt-4 border-t sm:p-6 border-olive-border">
+  <div>
+    <h2 class="text-2xl font-bold text-olive-deep font-display">{{ content.aboutTitle }}</h2>
+    @for (paragraph of content.about; track $index) {
+      <p class="mt-4 text-base leading-relaxed text-olive-ink/80 font-body">{{ paragraph }}</p>
+    }
+  </div>
+
+  <div>
+    <h2 class="text-2xl font-bold text-olive-deep font-display">{{ content.howTitle }}</h2>
+    <ol class="mt-4 space-y-2 text-base leading-relaxed list-decimal list-inside text-olive-ink/80 font-body">
+      @for (step of content.steps; track $index) {
+        <li>{{ step }}</li>
+      }
+    </ol>
+  </div>
+
+  <div>
+    <h2 class="text-2xl font-bold text-olive-deep font-display">{{ content.faqTitle }}</h2>
+    <div class="grid gap-4 mt-4 sm:grid-cols-2">
+      @for (item of content.faqs; track item.q) {
+        <div class="p-5 border rounded-2xl bg-olive-parchment border-olive-border">
+          <h3 class="text-base font-bold text-olive-deep font-display">{{ item.q }}</h3>
+          <p class="mt-2 text-sm leading-6 text-olive-ink/70 font-body">{{ item.a }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

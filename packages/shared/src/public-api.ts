@@ -3,6 +3,8 @@ export { AdSidebar } from './lib/components/ad-sidebar/ad-sidebar';
 export { CopyButton } from './lib/components/copy-button/copy-button';
 export { InputBox } from './lib/components/input-box/input-box';
 export { OutputBox } from './lib/components/output-box/output-box';
+export { ToolContent } from './lib/components/tool-content/tool-content';
+export type { ToolContentBlock, ToolFaq } from './lib/components/tool-content/tool-content';
 
 // Services
 export { AdService } from './lib/services/ad.service';

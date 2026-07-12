@@ -85,14 +85,34 @@
   </section>
 
   <!-- FAQ section -->
-  <section class="w-full max-w-6xl mx-auto">
+  <section class="w-full max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold text-olive-deep font-display">{{ t().homeFaqTitle }}</h2>
-    <div class="grid gap-4 mt-4 sm:grid-cols-2">
+    <div class="mt-4 space-y-3">
       @for (item of faq(); track item.q) {
-        <div class="p-5 border rounded-2xl bg-olive-parchment border-olive-border">
-          <h3 class="text-base font-bold text-olive-deep font-display">{{ item.q }}</h3>
-          <p class="mt-2 text-sm leading-6 text-olive-ink/70 font-body">{{ item.a }}</p>
-        </div>
+        <details
+          class="overflow-hidden transition-colors border rounded-xl bg-olive-parchment border-olive-border hover:border-olive-ink/25"
+        >
+          <summary
+            class="flex items-center justify-between gap-4 p-4 font-semibold cursor-pointer select-none text-olive-deep font-display sm:p-5"
+          >
+            <span>{{ item.q }}</span>
+            <svg
+              class="flex-shrink-0 w-5 h-5 tc-plus text-posthog-orange"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 -mt-1 text-sm leading-6 text-olive-ink/70 font-body sm:px-5 sm:pb-5">
+            {{ item.a }}
+          </div>
+        </details>
       }
     </div>
   </section>

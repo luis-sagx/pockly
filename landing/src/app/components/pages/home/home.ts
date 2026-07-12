@@ -13,6 +13,22 @@ import type { Translations } from '../../../translations';
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
+  styles: [
+    `
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      .tc-plus {
+        transition: transform 0.2s ease;
+      }
+      details[open] > summary .tc-plus {
+        transform: rotate(45deg);
+      }
+    `,
+  ],
 })
 export class Home implements OnInit {
   private seo = inject(SeoService);

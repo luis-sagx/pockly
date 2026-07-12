@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "fetch:bg-assets": "node scripts/fetch-bg-assets.mjs",
+    "prebuild": "node scripts/fetch-bg-assets.mjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

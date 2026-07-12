@@ -4,6 +4,15 @@ alter table notes
   add column if not exists horizon text not null default 'week'
   check (horizon in ('today', 'week', 'someday'));
 
+-- SECURITY: the `notes` table is shared by the productivity (tasks) and text
+-- (quick-notes) apps, and both read it with select('*') relying entirely on RLS
+-- to isolate rows per user. RLS MUST be enabled with an owner-only policy,
+-- otherwise every user can read every other user's notes and tasks.
+alter table notes enable row level security;
+drop policy if exists "own notes" on notes;
+create policy "own notes" on notes for all
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
 update notes set horizon = case priority
   when 'high' then 'today'
   when 'medium' then 'week'

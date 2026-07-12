@@ -29,6 +29,10 @@ yarn-error.log
 !.vscode/mcp.json
 .history/*
 
+# Self-hosted background-remover assets (large; fetched at build by scripts/fetch-bg-assets.mjs)
+/public/ort/
+/public/models/
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

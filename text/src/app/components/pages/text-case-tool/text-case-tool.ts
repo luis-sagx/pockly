@@ -1,5 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
-import { OutputBox, InputBox, LanguageService } from '@pockly/shared';
+import { OutputBox, InputBox, LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
@@ -13,7 +14,7 @@ import {
 @Component({
   selector: 'app-text-case-tool',
   standalone: true,
-  imports: [OutputBox, InputBox, FaIconComponent],
+  imports: [OutputBox, InputBox, FaIconComponent, ToolContent],
   templateUrl: './text-case-tool.html',
   styleUrl: './text-case-tool.css',
 })
@@ -27,6 +28,8 @@ export class TextCaseTool {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].textCase);
 
   inputText = '';
   outputText = '';

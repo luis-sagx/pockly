@@ -12,7 +12,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { SupabaseService } from '../../../services/supabase.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -34,7 +35,7 @@ const DEBOUNCE_MS = 500;
 @Component({
   selector: 'app-quick-notes',
   standalone: true,
-  imports: [DragDropModule, NoteColumn, CreateNoteForm, NoteDetail, FaIconComponent],
+  imports: [DragDropModule, NoteColumn, CreateNoteForm, NoteDetail, FaIconComponent, ToolContent],
   templateUrl: './quick-notes.html',
   styleUrl: './quick-notes.css',
 })
@@ -45,6 +46,8 @@ export class QuickNotes implements OnInit, OnDestroy {
   private supabaseService = inject(SupabaseService);
   private isBrowser: boolean;
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].quickNotes);
   syncError = this.supabaseService.syncError;
 
   notes = signal<Note[]>([]);

@@ -1,6 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputBox, LanguageService } from '@pockly/shared';
+import { InputBox, LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCodeCompare, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +14,7 @@ interface DiffLine {
 @Component({
   selector: 'app-diff-checker',
   standalone: true,
-  imports: [CommonModule, InputBox, FaIconComponent],
+  imports: [CommonModule, InputBox, FaIconComponent, ToolContent],
   templateUrl: './diff-checker.html',
 })
 export class DiffChecker {
@@ -23,6 +24,8 @@ export class DiffChecker {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].diffChecker);
 
   leftText = signal('');
   rightText = signal('');

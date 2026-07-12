@@ -1,7 +1,8 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faLockOpen, faTrashCan, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { InputBox } from '@pockly/shared';
+import { InputBox, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { OutputBox } from '@pockly/shared';
 import { LanguageService } from '@pockly/shared';
@@ -9,7 +10,7 @@ import { LanguageService } from '@pockly/shared';
 @Component({
   selector: 'app-url-decoder',
   standalone: true,
-  imports: [FaIconComponent, InputBox, OutputBox],
+  imports: [FaIconComponent, InputBox, OutputBox, ToolContent],
   templateUrl: './url-decoder.html',
 })
 export class UrlDecoder {
@@ -17,6 +18,8 @@ export class UrlDecoder {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].decoder);
 
   input = signal('');
   output = signal('');

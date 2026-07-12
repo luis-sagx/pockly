@@ -1,14 +1,15 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBullseye, faTrashCan, faLink, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
-import { CopyButton } from '@pockly/shared';
+import { CopyButton, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 import { LanguageService } from '@pockly/shared';
 
 @Component({
   selector: 'app-utm-builder',
   standalone: true,
-  imports: [FaIconComponent, CopyButton],
+  imports: [FaIconComponent, CopyButton, ToolContent],
   templateUrl: './utm-builder.html',
 })
 export class UtmBuilder {
@@ -16,6 +17,8 @@ export class UtmBuilder {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].utm);
 
   baseUrl = signal('');
   utmSource = signal('');

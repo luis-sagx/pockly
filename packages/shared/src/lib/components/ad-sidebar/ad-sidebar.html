@@ -1,6 +1,6 @@
-<aside class="hidden w-[300px] flex-shrink-0 lg:block">
-  <div class="sticky top-24">
-    @if (enabled && adClient && slot) {
+@if (enabled && adClient && slot) {
+  <aside class="hidden w-[300px] flex-shrink-0 lg:block">
+    <div class="sticky top-24">
       <ins
         class="adsbygoogle block overflow-hidden rounded-lg"
         [style.display]="'block'"
@@ -9,14 +9,6 @@
         [attr.data-ad-client]="adClient"
         [attr.data-ad-slot]="slot"
       ></ins>
-    } @else {
-      <div
-        class="flex items-center justify-center rounded-lg border border-dashed text-xs"
-        [style.width.px]="width"
-        [style.height.px]="height"
-      >
-        {{ placeholderLabel }}
-      </div>
-    }
-  </div>
-</aside>
+    </div>
+  </aside>
+}

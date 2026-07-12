@@ -64,6 +64,16 @@ export class Home implements OnInit {
     return this.translatedCategories().filter((category) => category.key === currentFilter);
   });
 
+  readonly faq = computed(() => {
+    const t = this.t();
+    return [
+      { q: t.homeFaqQ1, a: t.homeFaqA1 },
+      { q: t.homeFaqQ2, a: t.homeFaqA2 },
+      { q: t.homeFaqQ3, a: t.homeFaqA3 },
+      { q: t.homeFaqQ4, a: t.homeFaqA4 },
+    ];
+  });
+
   readonly categoryIcons: Record<string, string> = {
     text: 'fa-font',
     productivity: 'fa-calendar-check',

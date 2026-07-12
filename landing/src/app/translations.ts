@@ -125,6 +125,22 @@ export interface Translations {
   linkDesc_url_decode: string;
   linkDesc_url_utm: string;
   linkDesc_url_clean: string;
+
+  // Home — About section
+  homeAboutTitle: string;
+  homeAboutP1: string;
+  homeAboutP2: string;
+
+  // Home — FAQ section
+  homeFaqTitle: string;
+  homeFaqQ1: string;
+  homeFaqA1: string;
+  homeFaqQ2: string;
+  homeFaqA2: string;
+  homeFaqQ3: string;
+  homeFaqA3: string;
+  homeFaqQ4: string;
+  homeFaqA4: string;
 }
 
 export const landingTranslations: Record<string, Record<string, string>> = {
@@ -257,6 +273,28 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_url_decode: 'Decode percent-encoded URLs back to readable text',
     linkDesc_url_utm: 'Build UTM parameters for campaign tracking',
     linkDesc_url_clean: 'Remove tracking parameters and clean up URLs',
+
+    // Home — About section
+    homeAboutTitle: 'What is Pockly?',
+    homeAboutP1:
+      'Pockly is a free toolkit of over 30 browser-based utilities for everyday tasks: counting words, formatting and converting JSON, resizing and compressing images, generating QR codes and secure passwords, converting units and currencies, and organizing your day with a task board, habit tracker and scratchpad. There is nothing to install and no account required for most tools.',
+    homeAboutP2:
+      'Everything is built for speed and privacy: your text, images and data are processed locally in your browser whenever possible, so they never leave your device. Pick a category above, open a tool, and get the job done.',
+
+    // Home — FAQ section
+    homeFaqTitle: 'Frequently asked questions',
+    homeFaqQ1: 'Are these tools really free?',
+    homeFaqA1:
+      'Yes. Every tool on Pockly is completely free, with no usage limits, trials or premium tiers. The site is supported by unobtrusive advertising, which covers hosting and development.',
+    homeFaqQ2: 'Is my data uploaded anywhere?',
+    homeFaqA2:
+      'Almost never. Tools like the word counter, diff checker, JSON formatter and image resizer run entirely in your browser — your content is processed on your device and is never sent to our servers. Tools that save your work store it in your browser, or in a secure database only if you choose to create an account.',
+    homeFaqQ3: 'Do I need an account?',
+    homeFaqA3:
+      'No. All tools work without signing up. A few productivity tools offer an optional account so you can sync your notes and tasks across devices.',
+    homeFaqQ4: 'Can I request a new tool?',
+    homeFaqA4:
+      'Absolutely. Pockly is actively developed and new tools are added regularly. Use the contact page to suggest a tool or report a bug — we read every message.',
   },
   es: {
     navHome: 'Inicio',
@@ -392,6 +430,28 @@ export const landingTranslations: Record<string, Record<string, string>> = {
     linkDesc_url_decode: 'Decodifica URLs codificadas a texto legible',
     linkDesc_url_utm: 'Construye parámetros UTM para seguimiento de campañas',
     linkDesc_url_clean: 'Elimina parámetros de seguimiento y limpia URLs',
+
+    // Home — About section
+    homeAboutTitle: '¿Qué es Pockly?',
+    homeAboutP1:
+      'Pockly es un kit gratuito de más de 30 utilidades que funcionan en tu navegador para tareas cotidianas: contar palabras, formatear y convertir JSON, redimensionar y comprimir imágenes, generar códigos QR y contraseñas seguras, convertir unidades y divisas, y organizar tu día con un tablero de tareas, un registro de hábitos y un bloc de notas. No hay nada que instalar y la mayoría de herramientas no requieren cuenta.',
+    homeAboutP2:
+      'Todo está pensado para ser rápido y privado: tu texto, imágenes y datos se procesan localmente en tu navegador siempre que es posible, así que nunca salen de tu dispositivo. Elige una categoría arriba, abre una herramienta y termina tu tarea.',
+
+    // Home — FAQ section
+    homeFaqTitle: 'Preguntas frecuentes',
+    homeFaqQ1: '¿Estas herramientas son realmente gratuitas?',
+    homeFaqA1:
+      'Sí. Todas las herramientas de Pockly son completamente gratuitas, sin límites de uso, pruebas ni planes premium. El sitio se mantiene con publicidad no intrusiva, que cubre el hosting y el desarrollo.',
+    homeFaqQ2: '¿Mis datos se suben a algún lado?',
+    homeFaqA2:
+      'Casi nunca. Herramientas como el contador de palabras, el comparador de textos, el formateador JSON y el redimensionador de imágenes funcionan por completo en tu navegador: tu contenido se procesa en tu dispositivo y nunca se envía a nuestros servidores. Las herramientas que guardan tu trabajo lo almacenan en tu navegador, o en una base de datos segura solo si decides crear una cuenta.',
+    homeFaqQ3: '¿Necesito una cuenta?',
+    homeFaqA3:
+      'No. Todas las herramientas funcionan sin registrarse. Algunas herramientas de productividad ofrecen una cuenta opcional para sincronizar tus notas y tareas entre dispositivos.',
+    homeFaqQ4: '¿Puedo pedir una herramienta nueva?',
+    homeFaqA4:
+      'Claro. Pockly está en desarrollo activo y se agregan herramientas nuevas con frecuencia. Usa la página de contacto para sugerir una herramienta o reportar un error: leemos todos los mensajes.',
   },
 };
 

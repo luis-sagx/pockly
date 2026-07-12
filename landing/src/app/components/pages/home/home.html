@@ -76,4 +76,24 @@
       </section>
     }
   </div>
+
+  <!-- About section -->
+  <section class="w-full max-w-6xl mx-auto mt-6">
+    <h2 class="text-2xl font-bold text-olive-deep font-display">{{ t().homeAboutTitle }}</h2>
+    <p class="mt-4 text-base leading-relaxed text-olive-ink/80 font-body">{{ t().homeAboutP1 }}</p>
+    <p class="mt-4 text-base leading-relaxed text-olive-ink/80 font-body">{{ t().homeAboutP2 }}</p>
+  </section>
+
+  <!-- FAQ section -->
+  <section class="w-full max-w-6xl mx-auto">
+    <h2 class="text-2xl font-bold text-olive-deep font-display">{{ t().homeFaqTitle }}</h2>
+    <div class="grid gap-4 mt-4 sm:grid-cols-2">
+      @for (item of faq(); track item.q) {
+        <div class="p-5 border rounded-2xl bg-olive-parchment border-olive-border">
+          <h3 class="text-base font-bold text-olive-deep font-display">{{ item.q }}</h3>
+          <p class="mt-2 text-sm leading-6 text-olive-ink/70 font-body">{{ item.a }}</p>
+        </div>
+      }
+    </div>
+  </section>
 </div>

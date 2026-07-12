@@ -2,7 +2,8 @@ import { Component, signal, computed, OnInit, OnDestroy, inject } from '@angular
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { TOOL_CONTENT } from '../../../config/tool-content';
 import type { Translations } from '../../../translations';
 
 interface Rates { [key: string]: number; }
@@ -34,7 +35,7 @@ const COMMON_CURRENCIES = [
 @Component({
   selector: 'app-currency-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, DecimalPipe, FaIconComponent],
+  imports: [CommonModule, FormsModule, DecimalPipe, FaIconComponent, ToolContent],
   templateUrl: './currency-converter.html',
   styleUrl: './currency-converter.css',
 })
@@ -42,6 +43,8 @@ export class CurrencyConverter implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => TOOL_CONTENT[this.languageService.language()].currency);
 
   currencies = COMMON_CURRENCIES;
   rates = signal<Rates>({});

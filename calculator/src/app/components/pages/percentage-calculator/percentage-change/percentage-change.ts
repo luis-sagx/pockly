@@ -1,12 +1,13 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 
 @Component({
   selector: 'app-percentage-change',
   standalone: true,
-  imports: [CommonModule, DecimalPipe],
+  imports: [CommonModule, DecimalPipe, ToolContent],
   templateUrl: './percentage-change.html',
   styleUrl: './percentage-change.css',
 })
@@ -14,6 +15,8 @@ export class PercentageChange {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['percentageChange']);
 
   x = signal(0);
   y = signal(0);

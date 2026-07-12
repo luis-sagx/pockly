@@ -2,7 +2,8 @@ import { Component, signal, computed, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { LanguageService } from '@pockly/shared';
+import { LanguageService, ToolContent } from '@pockly/shared';
+import { SUB_CONTENT } from '../../../../config/tool-content';
 import type { Translations } from '../../../../translations';
 
 interface UnitDef {
@@ -28,7 +29,7 @@ const unitKeyMap: Record<string, UnitTranslationKey> = {
 @Component({
   selector: 'app-speed-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, DecimalPipe, FaIconComponent],
+  imports: [CommonModule, FormsModule, DecimalPipe, FaIconComponent, ToolContent],
   templateUrl: './speed-converter.html',
   styleUrl: './speed-converter.css',
 })
@@ -36,6 +37,8 @@ export class SpeedConverter implements OnInit {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
+
+  content = computed(() => SUB_CONTENT[this.languageService.language()]['speed']);
 
   fromUnit = signal('kmh');
   toUnit = signal('mph');

@@ -1,14 +1,16 @@
-<section class="flex flex-col max-w-4xl gap-10 px-4 pt-10 mx-auto mt-20 border-t sm:mt-28 sm:px-6 border-olive-border">
+<section class="flex flex-col max-w-4xl gap-14 px-4 pt-14 mx-auto mt-32 border-t sm:mt-44 sm:pt-16 sm:px-6 border-olive-border">
   <div>
     <h2 class="text-2xl font-bold text-olive-deep font-display">{{ content.aboutTitle }}</h2>
-    @for (paragraph of content.about; track $index) {
-      <p class="mt-4 text-base leading-relaxed text-olive-ink/80 font-body">{{ paragraph }}</p>
-    }
+    <div class="mt-5 space-y-4">
+      @for (paragraph of content.about; track $index) {
+        <p class="text-base leading-relaxed text-olive-ink/80 font-body">{{ paragraph }}</p>
+      }
+    </div>
   </div>
 
   <div>
     <h2 class="text-2xl font-bold text-olive-deep font-display">{{ content.howTitle }}</h2>
-    <ol class="mt-4 space-y-2 text-base leading-relaxed list-decimal list-inside text-olive-ink/80 font-body">
+    <ol class="mt-5 space-y-4 text-base leading-relaxed list-decimal list-inside text-olive-ink/80 font-body">
       @for (step of content.steps; track $index) {
         <li>{{ step }}</li>
       }

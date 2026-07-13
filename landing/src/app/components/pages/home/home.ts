@@ -90,17 +90,20 @@ export class Home implements OnInit {
     ];
   });
 
-  readonly categoryIcons: Record<string, string> = {
-    text: 'fa-font',
-    productivity: 'fa-calendar-check',
-    image: 'fa-image',
-    json: 'fa-code',
-    url: 'fa-link',
-    calculator: 'fa-calculator',
+  readonly categoryIconPaths: Record<string, string> = {
+    text: 'M4 7V4h16v3M9 20h6M12 4v16',
+    productivity: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2M8 15l2 2 4-5',
+    image: 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2M8.5 8.5h.01M21 15l-5-5L5 21',
+    json: 'M8 16l-4-4 4-4M16 8l4 4-4 4M14 4l-4 16',
+    url: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
+    calculator: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01',
   };
 
   getCategoryIcon(key: string): string {
-    return this.categoryIcons[key] ?? 'fa-layer-group';
+    return (
+      this.categoryIconPaths[key] ??
+      'M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6M8 8h8M8 12h8M8 16h5'
+    );
   }
 
   ngOnInit() {

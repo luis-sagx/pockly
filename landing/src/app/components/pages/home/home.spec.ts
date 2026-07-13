@@ -38,4 +38,11 @@ describe('Home', () => {
       'calculator',
     ]);
   });
+
+  it('should expose drawable svg paths for category icons', () => {
+    const iconPath = component.getCategoryIcon('text');
+
+    expect(iconPath).toContain('M');
+    expect(iconPath).not.toContain('fa-');
+  });
 });

@@ -39,7 +39,18 @@
         <div class="flex items-center justify-between gap-4 mb-4">
           <div class="flex items-center gap-3">
             <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-olive-lightSage text-posthog-orange">
-              <i [class]="getCategoryIcon(category.key) + ' fas text-lg'"></i>
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path [attr.d]="getCategoryIcon(category.key)" />
+              </svg>
             </div>
             <div>
               <h2 class="text-xl font-bold text-olive-deep font-display">{{ category.title }}</h2>
@@ -58,7 +69,18 @@
             >
               <div class="flex items-start gap-4">
                 <div class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-xl bg-olive-lightSage/80 text-olive-deep group-hover:text-posthog-orange group-hover:bg-posthog-orange/10">
-                  <i [class]="getCategoryIcon(category.key) + ' fas text-base'"></i>
+                  <svg
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path [attr.d]="getCategoryIcon(category.key)" />
+                  </svg>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-base font-bold text-olive-deep font-display">{{ link.label }}</h3>
@@ -68,7 +90,18 @@
 
               <div class="flex items-center justify-between mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-olive-ink/45">
                 <span>{{ category.title }}</span>
-                <i class="transition-transform fas fa-arrow-right group-hover:translate-x-1 text-posthog-orange"></i>
+                <svg
+                  class="w-4 h-4 transition-transform group-hover:translate-x-1 text-posthog-orange"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
               </div>
             </a>
           }

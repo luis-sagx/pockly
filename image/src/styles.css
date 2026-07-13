@@ -85,7 +85,7 @@
   }
 
   .drop-zone {
-    @apply flex flex-col items-center justify-center w-full h-40 transition-all duration-200 border-2 border-dashed rounded cursor-pointer border-olive-border bg-olive-cream hover:bg-olive-lightSage hover:border-posthog-orange;
+    @apply flex flex-col items-center justify-center w-full h-64 transition-all duration-200 border-2 border-dashed rounded cursor-pointer border-olive-border bg-olive-cream hover:bg-olive-lightSage hover:border-posthog-orange;
   }
 
   .drop-zone-hover {

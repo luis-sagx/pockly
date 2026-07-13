@@ -1,0 +1,88 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "logo" [ref=e7]
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Word Counter" [ref=e10] [cursor=pointer]:
+          - /url: /word-count
+        - link "Text Case" [ref=e11] [cursor=pointer]:
+          - /url: /text-case
+        - link "Diff Checker" [ref=e12] [cursor=pointer]:
+          - /url: /diff-checker
+        - link "Password Generator" [ref=e13] [cursor=pointer]:
+          - /url: /password-generator
+  - main [ref=e14]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - heading "Uppercase and Lowercase Converter" [level=2] [ref=e21]
+          - paragraph [ref=e22]: Convert text to uppercase, lowercase or capitalize.
+        - textbox "Enter text here to convert..." [ref=e25]
+        - generic [ref=e26]:
+          - button [ref=e27] [cursor=pointer]
+          - button [ref=e31] [cursor=pointer]
+          - button [ref=e35] [cursor=pointer]
+          - button [ref=e39] [cursor=pointer]
+        - generic [ref=e43]:
+          - heading "Result:" [level=3] [ref=e44]
+          - paragraph [ref=e48]: No results yet
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - heading "About the Text Case Converter" [level=2] [ref=e52]
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: The Text Case Converter transforms any text between UPPERCASE, lowercase, Title Case, Sentence case, and other formats in one click. It saves you from retyping when a document arrives in the wrong case, when a form demands a specific format, or when you need consistent headings across a document or website.
+            - paragraph [ref=e55]: It is a favorite of writers fixing capitalization, developers normalizing strings, and marketers preparing headlines. Like every Pockly tool, the conversion happens locally in your browser — your text is never sent anywhere.
+        - generic [ref=e56]:
+          - heading "How to use it" [level=2] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]: Paste or type your text into the input box.
+            - listitem [ref=e60]: "Click the case you want: UPPERCASE, lowercase, Title Case, Sentence case, and more."
+            - listitem [ref=e61]: The converted text appears immediately.
+            - listitem [ref=e62]: Copy the result and paste it wherever you need it.
+        - generic [ref=e63]:
+          - heading "Frequently asked questions" [level=2] [ref=e64]
+          - generic [ref=e65]:
+            - group [ref=e66]:
+              - generic "What is Title Case?" [ref=e67] [cursor=pointer]
+            - group [ref=e70]:
+              - generic "What is Sentence case?" [ref=e71] [cursor=pointer]
+            - group [ref=e74]:
+              - generic "Does it work with accents and other alphabets?" [ref=e75] [cursor=pointer]
+            - group [ref=e78]:
+              - generic "Is my text uploaded to a server?" [ref=e79] [cursor=pointer]
+  - contentinfo [ref=e83]:
+    - generic [ref=e84]:
+      - img "logo" [ref=e86]
+      - paragraph [ref=e87]: Free online tools to boost your productivity.
+      - generic [ref=e88]:
+        - text: "More Pockly tools:"
+        - link "Home" [ref=e89] [cursor=pointer]:
+          - /url: https://pockly.uk
+        - link "JSON" [ref=e90] [cursor=pointer]:
+          - /url: https://json.pockly.uk
+        - link "Image" [ref=e91] [cursor=pointer]:
+          - /url: https://image.pockly.uk
+        - link "Calculator" [ref=e92] [cursor=pointer]:
+          - /url: https://calculator.pockly.uk
+        - link "URL / QR" [ref=e93] [cursor=pointer]:
+          - /url: https://url.pockly.uk
+        - link "Flow" [ref=e94] [cursor=pointer]:
+          - /url: https://flow.pockly.uk
+      - generic [ref=e95]:
+        - link "About" [ref=e96] [cursor=pointer]:
+          - /url: https://pockly.uk/about
+        - link "Contact" [ref=e97] [cursor=pointer]:
+          - /url: https://pockly.uk/contact
+        - link "Privacy Policy" [ref=e98] [cursor=pointer]:
+          - /url: https://pockly.uk/privacy
+        - link "Terms of Use" [ref=e99] [cursor=pointer]:
+          - /url: https://pockly.uk/terms
+      - generic [ref=e100]:
+        - generic [ref=e101]: "Language:"
+        - combobox "Language:" [ref=e102] [cursor=pointer]:
+          - option "English" [selected]
+          - option "Español"

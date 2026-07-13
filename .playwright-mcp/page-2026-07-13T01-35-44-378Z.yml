@@ -1,0 +1,78 @@
+- generic [ref=f12e3]:
+  - navigation [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - link [ref=f12e6] [cursor=pointer]:
+        - /url: /
+        - img "logo" [ref=f12e7]
+      - button "Toggle menu" [ref=f12e8] [cursor=pointer]
+  - main [ref=f12e11]:
+    - generic [ref=f12e15]:
+      - generic [ref=f12e16]:
+        - generic [ref=f12e17]:
+          - heading "Uppercase and Lowercase Converter" [level=2] [ref=f12e18]
+          - paragraph [ref=f12e19]: Convert text to uppercase, lowercase or capitalize.
+        - textbox "Enter text here to convert..." [ref=f12e22]
+        - generic [ref=f12e23]:
+          - button [ref=f12e24] [cursor=pointer]
+          - button [ref=f12e28] [cursor=pointer]
+          - button [ref=f12e32] [cursor=pointer]
+          - button [ref=f12e36] [cursor=pointer]
+        - generic [ref=f12e40]:
+          - heading "Result:" [level=3] [ref=f12e41]
+          - paragraph [ref=f12e45]: No results yet
+      - generic [ref=f12e47]:
+        - generic [ref=f12e48]:
+          - heading "About the Text Case Converter" [level=2] [ref=f12e49]
+          - generic [ref=f12e50]:
+            - paragraph [ref=f12e51]: The Text Case Converter transforms any text between UPPERCASE, lowercase, Title Case, Sentence case, and other formats in one click. It saves you from retyping when a document arrives in the wrong case, when a form demands a specific format, or when you need consistent headings across a document or website.
+            - paragraph [ref=f12e52]: It is a favorite of writers fixing capitalization, developers normalizing strings, and marketers preparing headlines. Like every Pockly tool, the conversion happens locally in your browser — your text is never sent anywhere.
+        - generic [ref=f12e53]:
+          - heading "How to use it" [level=2] [ref=f12e54]
+          - list [ref=f12e55]:
+            - listitem [ref=f12e56]: Paste or type your text into the input box.
+            - listitem [ref=f12e57]: "Click the case you want: UPPERCASE, lowercase, Title Case, Sentence case, and more."
+            - listitem [ref=f12e58]: The converted text appears immediately.
+            - listitem [ref=f12e59]: Copy the result and paste it wherever you need it.
+        - generic [ref=f12e60]:
+          - heading "Frequently asked questions" [level=2] [ref=f12e61]
+          - generic [ref=f12e62]:
+            - group [ref=f12e63]:
+              - generic "What is Title Case?" [ref=f12e64] [cursor=pointer]
+            - group [ref=f12e67]:
+              - generic "What is Sentence case?" [ref=f12e68] [cursor=pointer]
+            - group [ref=f12e71]:
+              - generic "Does it work with accents and other alphabets?" [ref=f12e72] [cursor=pointer]
+            - group [ref=f12e75]:
+              - generic "Is my text uploaded to a server?" [ref=f12e76] [cursor=pointer]
+  - contentinfo [ref=f12e80]:
+    - generic [ref=f12e81]:
+      - img "logo" [ref=f12e83]
+      - paragraph [ref=f12e84]: Free online tools to boost your productivity.
+      - generic [ref=f12e85]:
+        - text: "More Pockly tools:"
+        - link "Home" [ref=f12e86] [cursor=pointer]:
+          - /url: https://pockly.uk
+        - link "JSON" [ref=f12e87] [cursor=pointer]:
+          - /url: https://json.pockly.uk
+        - link "Image" [ref=f12e88] [cursor=pointer]:
+          - /url: https://image.pockly.uk
+        - link "Calculator" [ref=f12e89] [cursor=pointer]:
+          - /url: https://calculator.pockly.uk
+        - link "URL / QR" [ref=f12e90] [cursor=pointer]:
+          - /url: https://url.pockly.uk
+        - link "Flow" [ref=f12e91] [cursor=pointer]:
+          - /url: https://flow.pockly.uk
+      - generic [ref=f12e92]:
+        - link "About" [ref=f12e93] [cursor=pointer]:
+          - /url: https://pockly.uk/about
+        - link "Contact" [ref=f12e94] [cursor=pointer]:
+          - /url: https://pockly.uk/contact
+        - link "Privacy Policy" [ref=f12e95] [cursor=pointer]:
+          - /url: https://pockly.uk/privacy
+        - link "Terms of Use" [ref=f12e96] [cursor=pointer]:
+          - /url: https://pockly.uk/terms
+      - generic [ref=f12e97]:
+        - generic [ref=f12e98]: "Language:"
+        - combobox "Language:" [ref=f12e99] [cursor=pointer]:
+          - option "English" [selected]
+          - option "Español"

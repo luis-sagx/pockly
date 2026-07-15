@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '@pockly/shared';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,4 +9,5 @@ import { RouterLink } from '@angular/router';
   templateUrl: './privacy.html',
 })
 export class Privacy {
+  readonly lang = inject(LanguageService).language;
 }

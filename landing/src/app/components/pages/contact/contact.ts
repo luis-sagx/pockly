@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '@pockly/shared';
 
 @Component({
   selector: 'app-contact',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './contact.html',
 })
 export class Contact {
+  readonly lang = inject(LanguageService).language;
 }

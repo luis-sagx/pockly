@@ -2,5 +2,20 @@
   "framework": "angular",
   "installCommand": "corepack enable && corepack prepare pnpm@10.28.0 --activate && cd .. && pnpm install --frozen-lockfile",
   "buildCommand": "corepack enable && corepack prepare pnpm@10.28.0 --activate && cd .. && pnpm --dir packages/shared run build && pnpm --dir text run build",
-  "outputDirectory": "dist/text/browser"
+  "outputDirectory": "dist/text/browser",
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/es(/.*)?",
+      "dest": "/es/404/index.html",
+      "status": 404
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/404/index.html",
+      "status": 404
+    }
+  ]
 }

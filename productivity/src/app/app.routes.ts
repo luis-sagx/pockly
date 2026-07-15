@@ -15,6 +15,6 @@ const localizedRoutes: Routes = [
 // indexable URLs. LanguageService derives the active language from the prefix.
 export const routes: Routes = [
   ...localizedRoutes,
-  { path: 'es', children: localizedRoutes },
+  { path: 'es', children: [...localizedRoutes, { path: '**', redirectTo: '/es/404' }] },
   { path: '**', redirectTo: '/404' },
 ];

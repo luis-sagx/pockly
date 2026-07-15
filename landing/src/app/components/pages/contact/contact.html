@@ -1,3 +1,59 @@
+@if (lang() === 'es') {
+<div class="max-w-3xl px-4 pt-24 pb-16 mx-auto">
+  <h1
+    class="text-4xl font-extrabold text-olive-deep font-display"
+    style="letter-spacing: -0.75px"
+  >
+    Contacto
+  </h1>
+
+  <div
+    class="mt-8 space-y-6 text-base leading-relaxed text-olive-ink/80 font-body"
+  >
+    <p>
+      ¿Preguntas, reportes de errores, peticiones de herramientas o sugerencias sobre Pockly? Nos
+      encantará leerte. La forma más rápida de contactarnos es por correo:
+    </p>
+
+    <div class="p-5 border rounded-2xl bg-olive-parchment border-olive-border">
+      <p
+        class="text-sm font-semibold uppercase tracking-[0.16em] text-olive-ink/45"
+      >
+        Correo
+      </p>
+      <a
+        href="mailto:sagxluis@gmail.com"
+        class="text-lg font-bold text-posthog-orange hover:underline font-display"
+        >sagxluis&#64;gmail.com</a
+      >
+    </div>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">
+      Qué incluir
+    </h2>
+    <ul class="pl-5 space-y-2 list-disc">
+      <li>
+        <span class="font-semibold">Reportes de errores:</span> la herramienta que usabas, qué
+        esperabas, qué ocurrió en su lugar y, si es posible, tu navegador.
+      </li>
+      <li>
+        <span class="font-semibold">Peticiones de herramientas:</span> una breve descripción de la
+        tarea que quieres resolver &mdash; cuanto más concreta, mejor.
+      </li>
+      <li>
+        <span class="font-semibold">Sugerencias:</span> cualquier cosa que haga Pockly más útil
+        para ti.
+      </li>
+    </ul>
+
+    <p>
+      Normalmente respondemos en pocos días laborables. Las solicitudes relacionadas con privacidad
+      (por ejemplo, eliminación de datos en herramientas con cuenta) se gestionan en la misma
+      dirección.
+    </p>
+  </div>
+</div>
+} @else {
 <div class="max-w-3xl px-4 pt-24 pb-16 mx-auto">
   <h1
     class="text-4xl font-extrabold text-olive-deep font-display"
@@ -52,3 +108,4 @@
     </p>
   </div>
 </div>
+}

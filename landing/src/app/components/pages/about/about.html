@@ -1,3 +1,63 @@
+@if (lang() === 'es') {
+<div class="max-w-3xl px-4 pt-24 pb-16 mx-auto">
+  <h1 class="text-4xl font-extrabold text-olive-deep font-display" style="letter-spacing: -0.75px">
+    Sobre Pockly
+  </h1>
+
+  <div class="mt-8 space-y-6 text-base leading-relaxed text-olive-ink/80 font-body">
+    <p>
+      Pockly es una colección de herramientas gratuitas, rápidas y basadas en el navegador para
+      tareas cotidianas de desarrollo y productividad. En lugar de instalar software o registrarte
+      en un servicio más, abres la herramienta que necesitas, la usas y sigues con lo tuyo. Contar
+      palabras, formatear JSON, redimensionar imágenes, generar contraseñas, convertir unidades,
+      registrar hábitos &mdash; pequeñas tareas que surgen a diario y merecen una herramienta que
+      simplemente funcione.
+    </p>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">Por qué lo construimos</h2>
+    <p>
+      La mayoría de las utilidades online rápidas están saturadas, son lentas u ocultan funciones
+      básicas tras un muro de pago. Queríamos un kit único y consistente donde cada herramienta
+      cargue al instante, funcione igual y respete tus datos. Pockly empezó como un conjunto
+      personal de utilidades y creció hasta ser un kit público organizado en seis categorías:
+      texto, productividad, imágenes, JSON, URLs y calculadoras.
+    </p>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">Cómo se manejan tus datos</h2>
+    <p>
+      Casi todo en Pockly se ejecuta íntegramente en tu navegador. Cuando redimensionas una imagen,
+      comparas dos textos o formateas un documento JSON, el archivo o texto nunca sale de tu
+      dispositivo &mdash; el procesamiento ocurre localmente con JavaScript. Las herramientas que
+      guardan tu trabajo (como el tablero de tareas, el rastreador de hábitos y el bloc de notas)
+      almacenan los datos en tu navegador o, si decides crear una cuenta, en una base de datos
+      segura para que puedas acceder desde varios dispositivos. Consulta nuestra
+      <a routerLink="/es/privacy" class="font-semibold text-posthog-orange hover:underline">Política de Privacidad</a>
+      para conocer todos los detalles.
+    </p>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">Por qué es gratis</h2>
+    <p>
+      Todas las herramientas de Pockly son de uso gratuito, sin necesidad de cuenta para la mayoría
+      y sin límites de uso. El sitio se financia con publicidad no intrusiva, lo que nos permite
+      mantener las herramientas gratis mientras cubrimos los costes de alojamiento y desarrollo.
+    </p>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">Quién está detrás de Pockly</h2>
+    <p>
+      Pockly está construido y mantenido por Luis Sagnay, desarrollador de software centrado en
+      tecnologías web. El kit está hecho con Angular y Tailwind CSS, y se desarrolla activamente:
+      nuevas herramientas y mejoras se publican con regularidad según lo que piden los usuarios.
+    </p>
+
+    <h2 class="pt-4 text-2xl font-bold text-olive-deep font-display">Contacto</h2>
+    <p>
+      ¿Encontraste un error, quieres una herramienta nueva o tienes sugerencias? Visita la
+      <a routerLink="/es/contact" class="font-semibold text-posthog-orange hover:underline">página de contacto</a>
+      &mdash; leemos todos los mensajes.
+    </p>
+  </div>
+</div>
+} @else {
 <div class="max-w-3xl px-4 pt-24 pb-16 mx-auto">
   <h1 class="text-4xl font-extrabold text-olive-deep font-display" style="letter-spacing: -0.75px">
     About Pockly
@@ -54,3 +114,4 @@
     </p>
   </div>
 </div>
+}

@@ -6,6 +6,7 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const urlSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly URL Tools',
   pageConfigs: {
   '': {
     title: 'URL Tools - Free Online URL Utilities',
@@ -54,6 +55,59 @@ export const urlSeoConfig: SeoConfig = {
     keywords: 'url cleaner, clean url, remove tracking, normalize url, url sanitizer',
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/url-cleaner`,
+  },
+  '404': {
+    title: 'Page Not Found - Pockly URL Tools',
+    description: 'The page you are looking for does not exist.',
+    noindex: true,
+  },
+  // Spanish pages (/es/...)
+  'es': {
+    title: 'Herramientas de URL Online Gratis',
+    description: 'Herramientas de URL online gratis: generador de códigos QR, codificador/decodificador de URL, generador UTM y limpiador de URLs.',
+    keywords: 'herramientas url, generador qr, codificar url, generador utm, limpiar url',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es`,
+  },
+  'es/qr-generator': {
+    title: 'Generador de Códigos QR Gratis Online',
+    description: 'Genera códigos QR online. Colores, tamaño y corrección de errores personalizables. Descarga en PNG. Gratis.',
+    keywords: 'generador de codigos qr, crear qr, codigo qr gratis',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/qr-generator`,
+  },
+  'es/url-encoder': {
+    title: 'Codificador de URL Online - Codificar Texto',
+    description: 'Codifica texto y URLs para usarlas de forma segura en parámetros. Compatible con caracteres especiales. Codificador de URL gratis.',
+    keywords: 'codificar url, url encode, codificador de url',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/url-encoder`,
+  },
+  'es/url-decoder': {
+    title: 'Decodificador de URL Online - Decodificar URLs',
+    description: 'Decodifica URLs y texto codificado por porcentaje a forma legible. Compatible con caracteres internacionales. Gratis.',
+    keywords: 'decodificar url, url decode, decodificador de url',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/url-decoder`,
+  },
+  'es/utm-builder': {
+    title: 'Generador de URLs UTM - Seguimiento de Campañas',
+    description: 'Crea URLs de seguimiento con parámetros UTM para marketing. Añade source, medium, campaign, term y content. Gratis.',
+    keywords: 'generador utm, parametros utm, seguimiento de campañas',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/utm-builder`,
+  },
+  'es/url-cleaner': {
+    title: 'Limpiador de URLs - Eliminar Parámetros de Rastreo',
+    description: 'Limpia URLs eliminando parámetros de rastreo, ordenando la query y normalizando el dominio. Herramienta gratis.',
+    keywords: 'limpiar url, eliminar rastreo, normalizar url',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/url-cleaner`,
+  },
+  'es/404': {
+    title: 'Página No Encontrada - Pockly URL Tools',
+    description: 'La página que buscas no existe.',
+    noindex: true,
   },
   },
 };

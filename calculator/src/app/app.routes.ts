@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './components/pages/home/home';
 
-export const routes: Routes = [
+const localizedRoutes: Routes = [
   { path: '', component: Home },
   { path: 'percent-of-y', loadComponent: () => import('./components/pages/percentage-calculator/percent-of-y/percent-of-y').then(m => m.PercentOfY) },
   { path: 'what-percent', loadComponent: () => import('./components/pages/percentage-calculator/what-percent/what-percent').then(m => m.WhatPercent) },
@@ -17,5 +17,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/pages/not-found/not-found').then((m) => m.NotFound),
   },
+];
+
+// Spanish mirror of every route under /es so both languages get prerendered,
+// indexable URLs. LanguageService derives the active language from the prefix.
+export const routes: Routes = [
+  ...localizedRoutes,
+  { path: 'es', children: localizedRoutes },
   { path: '**', redirectTo: '/404' },
 ];

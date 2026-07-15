@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -18,7 +18,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
-import { SeoService } from '@pockly/shared';
 
 interface Tool {
   id: string;
@@ -36,8 +35,7 @@ interface Tool {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
-  private seo = inject(SeoService);
+export class Home {
   private library = inject(FaIconLibrary);
   private languageService = inject(LanguageService);
   private router = inject(Router);
@@ -182,13 +180,6 @@ export class Home implements OnInit {
     return translatedTools.filter((tool) => tool.category === currentFilter);
   });
 
-  ngOnInit() {
-    this.seo.setMeta({
-      title: 'Image Tools - Free Online Image Utilities',
-      description:
-        'Free online image tools: base64 converter, background remover, resizer, format converter, compress, and crop.',
-    });
-  }
 
   navigate(path: string) {
     this.router.navigate([path]);

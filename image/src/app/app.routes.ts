@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './components/pages/home/home';
 
-export const routes: Routes = [
+const localizedRoutes: Routes = [
   { path: '', component: Home },
   { path: 'image-to-base64', loadComponent: () => import('./components/pages/base64-tool/base64-tool').then(m => m.Base64Tool) },
   { path: 'base64-to-image', loadComponent: () => import('./components/pages/text-image/text-image').then(m => m.TextImage) },
@@ -28,5 +28,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/pages/not-found/not-found').then((m) => m.NotFound),
   },
+];
+
+// Spanish mirror of every route under /es so both languages get prerendered,
+// indexable URLs. LanguageService derives the active language from the prefix.
+export const routes: Routes = [
+  ...localizedRoutes,
+  { path: 'es', children: localizedRoutes },
   { path: '**', redirectTo: '/404' },
 ];

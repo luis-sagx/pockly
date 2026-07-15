@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
+import { SeoService } from '../../services/seo.service';
 
 export interface ToolFaq {
   q: string;
@@ -35,6 +36,12 @@ export interface ToolContentBlock {
     `,
   ],
 })
-export class ToolContent {
+export class ToolContent implements OnChanges {
   @Input({ required: true }) content!: ToolContentBlock;
+
+  private seo = inject(SeoService);
+
+  ngOnChanges() {
+    this.seo.setFaqJsonLd(this.content?.faqs ?? []);
+  }
 }

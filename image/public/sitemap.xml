@@ -1,16 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://image.pockly.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://image.pockly.uk/image-to-base64</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/base64-to-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/remove-background</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://image.pockly.uk/resize-dimensions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/compress-by-weight</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/crop-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-png</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-jpeg</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-webp</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-bmp</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-svg</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://image.pockly.uk/convert-to-pdf</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://image.pockly.uk/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/image-to-base64</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/image-to-base64"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/image-to-base64"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/image-to-base64"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/image-to-base64</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/image-to-base64"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/image-to-base64"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/image-to-base64"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/base64-to-image</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/base64-to-image"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/base64-to-image"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/base64-to-image"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/base64-to-image</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/base64-to-image"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/base64-to-image"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/base64-to-image"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/remove-background</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/remove-background"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/remove-background"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/remove-background"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/remove-background</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/remove-background"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/remove-background"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/remove-background"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/resize-dimensions</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/resize-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/resize-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/resize-dimensions"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/resize-dimensions</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/resize-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/resize-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/resize-dimensions"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/compress-by-weight</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/compress-by-weight"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/compress-by-weight"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/compress-by-weight"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/compress-by-weight</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/compress-by-weight"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/compress-by-weight"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/compress-by-weight"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/crop-image</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/crop-image"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/crop-image"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/crop-image"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/crop-image</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/crop-image"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/crop-image"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/crop-image"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-png</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-png"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-png"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-png</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-png"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-png"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-png"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-jpeg</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-jpeg"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-jpeg"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-jpeg"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-jpeg</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-jpeg"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-jpeg"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-jpeg"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-webp</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-webp"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-webp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-webp"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-webp</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-webp"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-webp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-webp"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-bmp</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-bmp"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-bmp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-bmp"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-bmp</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-bmp"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-bmp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-bmp"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-svg</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-svg"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-svg"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-svg"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-svg</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-svg"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-svg"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-svg"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/convert-to-pdf</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-pdf"/>
+  </url>
+  <url>
+    <loc>https://image.pockly.uk/es/convert-to-pdf</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image.pockly.uk/convert-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://image.pockly.uk/es/convert-to-pdf"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image.pockly.uk/convert-to-pdf"/>
+  </url>
 </urlset>

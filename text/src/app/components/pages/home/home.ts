@@ -1,6 +1,6 @@
-import { Component, OnInit, inject, signal, computed, effect } from '@angular/core';
+import { Component, inject, signal, computed, effect } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService, LanguageService } from '@pockly/shared';
+import { LanguageService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
@@ -26,8 +26,7 @@ interface Tool {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
-  private seo = inject(SeoService);
+export class Home {
   private library = inject(FaIconLibrary);
   private languageService = inject(LanguageService);
   private router = inject(Router);
@@ -101,13 +100,6 @@ export class Home implements OnInit {
       }));
   });
 
-  ngOnInit() {
-    this.seo.setMeta({
-      title: 'Text Tools - Free Online Text Utilities',
-      description:
-        'Free online text tools: text case, word counter, diff checker, password generator, and quick notes.',
-    });
-  }
 
   navigate(path: string) {
     this.router.navigate([path]);

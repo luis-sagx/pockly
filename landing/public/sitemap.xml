@@ -1,28 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pockly.uk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://pockly.uk/es</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/"/>
   </url>
   <url>
     <loc>https://pockly.uk/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/about"/>
+  </url>
+  <url>
+    <loc>https://pockly.uk/es/about</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/about"/>
   </url>
   <url>
     <loc>https://pockly.uk/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/contact"/>
+  </url>
+  <url>
+    <loc>https://pockly.uk/es/contact</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/contact"/>
   </url>
   <url>
     <loc>https://pockly.uk/privacy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/privacy"/>
+  </url>
+  <url>
+    <loc>https://pockly.uk/es/privacy</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/privacy"/>
   </url>
   <url>
     <loc>https://pockly.uk/terms</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/terms"/>
+  </url>
+  <url>
+    <loc>https://pockly.uk/es/terms</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pockly.uk/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pockly.uk/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pockly.uk/terms"/>
   </url>
 </urlset>

@@ -1,6 +1,5 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { PROJECT_CATEGORIES, type ProjectCategory } from '../../../config/projects';
-import { SeoService } from '@pockly/shared';
 import { LanguageService } from '@pockly/shared';
 import {
   getCategoryTitleKey,
@@ -30,8 +29,7 @@ import type { Translations } from '../../../translations';
     `,
   ],
 })
-export class Home implements OnInit {
-  private seo = inject(SeoService);
+export class Home {
   private languageService = inject(LanguageService);
 
   t = computed(() => this.languageService.getTranslations() as unknown as Translations);
@@ -106,11 +104,4 @@ export class Home implements OnInit {
     );
   }
 
-  ngOnInit() {
-    const t = this.languageService.getTranslations() as unknown as Translations;
-    this.seo.setMeta({
-      title: t.seoTitle,
-      description: t.seoDescription,
-    });
-  }
 }

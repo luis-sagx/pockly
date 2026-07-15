@@ -1,6 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
 import { LanguageService } from '@pockly/shared';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -61,8 +60,7 @@ const TOOL_CONFIGS: ToolConfig[] = [
   imports: [FaIconComponent],
   templateUrl: './home.html',
 })
-export class Home implements OnInit {
-  private seo = inject(SeoService);
+export class Home {
   private library = inject(FaIconLibrary);
   private languageService = inject(LanguageService);
   private router = inject(Router);
@@ -107,13 +105,6 @@ export class Home implements OnInit {
     return allTools.filter((tool) => tool.category === currentFilter);
   });
 
-  ngOnInit() {
-    this.seo.setMeta({
-      title: 'URL Tools - Free Online Utilities',
-      description:
-        'Free online URL utilities: QR generator, encoder, decoder, UTM builder, URL cleaner, and more.',
-    });
-  }
 
   navigate(path: string) {
     this.router.navigate([path]);

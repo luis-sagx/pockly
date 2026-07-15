@@ -1,6 +1,5 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeoService } from '@pockly/shared';
 import type { Translations } from '../../../translations';
 import { LanguageService } from '@pockly/shared';
 import { IconComponent } from '../../ui/icon/icon';
@@ -19,8 +18,7 @@ interface Tool {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
-  private seo = inject(SeoService);
+export class Home {
   private languageService = inject(LanguageService);
   private router = inject(Router);
 
@@ -60,13 +58,6 @@ export class Home implements OnInit {
     return this.tools.filter((tool) => tool.category === currentFilter);
   });
 
-  ngOnInit() {
-    this.seo.setMeta({
-      title: 'JSON Tools - Free Online JSON Utilities',
-      description:
-        'Free online JSON tools: generator, templates, converters (CSV, TSV, XML, YAML), and utilities (format, minify, validate, diff, query). No signup required.',
-    });
-  }
 
   navigate(path: string) {
     this.router.navigate([path]);

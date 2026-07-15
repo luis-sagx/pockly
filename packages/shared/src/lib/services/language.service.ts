@@ -1,5 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { effect, Inject, Injectable, InjectionToken, PLATFORM_ID, inject, signal } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export type Language = 'en' | 'es';
 
@@ -24,11 +26,17 @@ const LANGUAGES: LanguageOption[] = [
 
 const STORAGE_KEY = 'pockly-language';
 
+/**
+ * Language is derived from the URL: routes under /es render Spanish, everything
+ * else English. This keeps one indexable URL per language so search engines can
+ * crawl both. localStorage only remembers the user's last explicit choice.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
   private translations = inject(POCKLY_TRANSLATIONS);
+  private router = inject(Router);
   private readonly _language = signal<Language>('en');
   private isBrowser: boolean;
 
@@ -37,9 +45,13 @@ export class LanguageService {
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
 
-    if (this.isBrowser) {
-      this._language.set(this.getInitialLanguage());
-    }
+    this._language.set(this.languageFromUrl(this.router.url));
+
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this._language.set(this.languageFromUrl(event.urlAfterRedirects));
+      });
 
     effect(() => {
       if (this.isBrowser) {
@@ -48,32 +60,28 @@ export class LanguageService {
     });
   }
 
-  private getInitialLanguage(): Language {
-    const stored = localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (stored && this.translations[stored]) {
-      return stored;
-    }
-
-    const browserLang = navigator.language.toLowerCase();
-    for (const lang of Object.keys(this.translations)) {
-      if (browserLang.startsWith(lang)) {
-        return lang as Language;
-      }
-    }
+  private languageFromUrl(url: string): Language {
+    const path = url.split('?')[0];
+    if (path === '/es' || path.startsWith('/es/')) return 'es';
     return 'en';
   }
 
+  /** Returns the current URL translated to the given language. */
+  private counterpartUrl(lang: Language): string {
+    const [path, query] = this.router.url.split('?');
+    const bare = path === '/es' || path.startsWith('/es/') ? path.slice(3) || '/' : path;
+    const target = lang === 'es' ? (bare === '/' ? '/es' : `/es${bare}`) : bare;
+    return query ? `${target}?${query}` : target;
+  }
+
   setLanguage(lang: Language): void {
-    if (this.translations[lang]) {
-      this._language.set(lang);
-    }
+    if (!this.translations[lang] || lang === this._language()) return;
+    this.router.navigateByUrl(this.counterpartUrl(lang));
   }
 
   toggleLanguage(): void {
     const next = this._language() === 'en' ? 'es' : 'en';
-    if (this.translations[next]) {
-      this._language.set(next);
-    }
+    this.setLanguage(next);
   }
 
   getLabel(lang: Language): string {

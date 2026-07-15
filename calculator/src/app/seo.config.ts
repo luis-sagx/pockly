@@ -6,6 +6,7 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const calculatorSeoConfig: SeoConfig = {
   baseUrl: BASE_URL,
   ogImage: OG_IMAGE,
+  siteName: 'Pockly Calculator Tools',
   pageConfigs: {
   '': {
     title: 'Calculator Tools - Free Online Calculators',
@@ -86,6 +87,87 @@ export const calculatorSeoConfig: SeoConfig = {
     keywords: 'speed converter, mph to kmh, speed conversion',
     ogImage: OG_IMAGE,
     canonicalUrl: `${BASE_URL}/speed-converter`,
+  },
+  '404': {
+    title: 'Page Not Found - Pockly Calculator Tools',
+    description: 'The page you are looking for does not exist.',
+    noindex: true,
+  },
+  // Spanish pages (/es/...)
+  'es': {
+    title: 'Calculadoras Online Gratis - Porcentajes, Divisas y Unidades',
+    description: 'Calculadoras online gratis: porcentajes, conversor de divisas y conversores de unidades (longitud, peso, temperatura, volumen, velocidad). Sin instalación.',
+    keywords: 'calculadoras online, calculadora de porcentaje, conversor de divisas, conversor de unidades',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es`,
+  },
+  'es/percent-of-y': {
+    title: 'Calculadora de Porcentaje - Porcentaje de un Número',
+    description: 'Calcula cuánto es un porcentaje de un número. Calculadora de porcentajes online gratis.',
+    keywords: 'calculadora de porcentaje, porcentaje de un numero, calcular porcentaje',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/percent-of-y`,
+  },
+  'es/what-percent': {
+    title: 'Qué Porcentaje es X de Y - Calculadora Online',
+    description: 'Calcula qué porcentaje representa un número respecto a otro. Calculadora online gratis.',
+    keywords: 'que porcentaje es, calculadora de porcentaje, porcentajes',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/what-percent`,
+  },
+  'es/percentage-change': {
+    title: 'Calculadora de Cambio Porcentual - Aumento y Disminución',
+    description: 'Calcula el aumento o disminución porcentual entre dos valores. Calculadora de variación porcentual gratis.',
+    keywords: 'cambio porcentual, variacion porcentual, aumento disminucion',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/percentage-change`,
+  },
+  'es/currency-converter': {
+    title: 'Conversor de Divisas - Tipos de Cambio en Tiempo Real',
+    description: 'Convierte entre monedas con tipos de cambio actualizados. Conversor de divisas online gratis.',
+    keywords: 'conversor de divisas, tipo de cambio, convertir monedas',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/currency-converter`,
+  },
+  'es/length-converter': {
+    title: 'Conversor de Longitud - Convertir Unidades Online',
+    description: 'Convierte entre metros, kilómetros, millas, pies, pulgadas y más. Conversor de longitud online gratis.',
+    keywords: 'conversor de longitud, convertir distancias, conversor de unidades',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/length-converter`,
+  },
+  'es/weight-converter': {
+    title: 'Conversor de Peso - Kilos, Libras, Onzas Online',
+    description: 'Convierte entre kilogramos, libras, onzas, gramos y más. Conversor de peso online gratis.',
+    keywords: 'conversor de peso, kilos a libras, convertir peso',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/weight-converter`,
+  },
+  'es/temperature-converter': {
+    title: 'Conversor de Temperatura - Celsius Fahrenheit Kelvin',
+    description: 'Convierte entre Celsius, Fahrenheit y Kelvin. Conversor de temperatura online gratis.',
+    keywords: 'conversor de temperatura, celsius a fahrenheit, kelvin',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/temperature-converter`,
+  },
+  'es/volume-converter': {
+    title: 'Conversor de Volumen - Litros, Galones, Tazas Online',
+    description: 'Convierte entre litros, galones, mililitros, tazas y más. Conversor de volumen online gratis.',
+    keywords: 'conversor de volumen, litros a galones, convertir volumen',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/volume-converter`,
+  },
+  'es/speed-converter': {
+    title: 'Conversor de Velocidad - km/h, mph, Nudos Online',
+    description: 'Convierte entre km/h, mph, m/s, nudos y más. Conversor de velocidad online gratis.',
+    keywords: 'conversor de velocidad, mph a kmh, convertir velocidad',
+    ogImage: OG_IMAGE,
+    canonicalUrl: `${BASE_URL}/es/speed-converter`,
+  },
+  'es/404': {
+    title: 'Página No Encontrada - Pockly Calculator Tools',
+    description: 'La página que buscas no existe.',
+    noindex: true,
   },
   },
 };

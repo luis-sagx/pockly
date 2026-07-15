@@ -1,33 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://text.pockly.uk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/"/>
   </url>
   <url>
     <loc>https://text.pockly.uk/word-count</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/word-count"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/word-count"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/word-count"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es/word-count</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/word-count"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/word-count"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/word-count"/>
   </url>
   <url>
     <loc>https://text.pockly.uk/text-case</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/text-case"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/text-case"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/text-case"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es/text-case</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/text-case"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/text-case"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/text-case"/>
   </url>
   <url>
     <loc>https://text.pockly.uk/diff-checker</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/diff-checker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/diff-checker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/diff-checker"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es/diff-checker</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/diff-checker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/diff-checker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/diff-checker"/>
   </url>
   <url>
     <loc>https://text.pockly.uk/password-generator</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/password-generator"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es/password-generator</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/password-generator"/>
   </url>
   <url>
     <loc>https://text.pockly.uk/quick-notes</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/quick-notes"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/quick-notes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/quick-notes"/>
+  </url>
+  <url>
+    <loc>https://text.pockly.uk/es/quick-notes</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://text.pockly.uk/quick-notes"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://text.pockly.uk/es/quick-notes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://text.pockly.uk/quick-notes"/>
   </url>
 </urlset>

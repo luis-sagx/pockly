@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AdSidebar } from '@pockly/shared';
+import { AdSidebar, SeoService } from '@pockly/shared';
 import { Nav } from './components/layout/nav/nav';
 import { Footer } from './components/layout/footer/footer';
 import { AD_CONFIG } from './config/ad.config';
@@ -16,6 +16,7 @@ const SIDEBAR_ROUTES = ['/'];
 })
 export class App {
   private readonly router = inject(Router);
+  private readonly seo = inject(SeoService);
 
   protected title = 'Pockly - Tools for daily productivity';
   readonly adConfig = AD_CONFIG;

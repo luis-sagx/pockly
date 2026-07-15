@@ -1,13 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://calculator.pockly.uk/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://calculator.pockly.uk/percent-of-y</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/what-percent</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/percentage-change</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/currency-converter</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://calculator.pockly.uk/length-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/weight-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/temperature-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/volume-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://calculator.pockly.uk/speed-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://calculator.pockly.uk/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/percent-of-y</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/percent-of-y"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/percent-of-y"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/percent-of-y"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/percent-of-y</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/percent-of-y"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/percent-of-y"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/percent-of-y"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/what-percent</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/what-percent"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/what-percent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/what-percent"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/what-percent</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/what-percent"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/what-percent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/what-percent"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/percentage-change</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/percentage-change"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/percentage-change"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/percentage-change"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/percentage-change</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/percentage-change"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/percentage-change"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/percentage-change"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/currency-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/currency-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/currency-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/currency-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/length-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/length-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/length-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/length-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/length-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/length-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/length-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/length-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/weight-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/weight-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/weight-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/weight-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/weight-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/weight-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/weight-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/weight-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/temperature-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/temperature-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/temperature-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/temperature-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/temperature-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/temperature-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/temperature-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/temperature-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/volume-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/volume-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/volume-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/volume-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/volume-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/volume-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/volume-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/volume-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/speed-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/speed-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/speed-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/speed-converter"/>
+  </url>
+  <url>
+    <loc>https://calculator.pockly.uk/es/speed-converter</loc>
+    <lastmod>2026-07-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://calculator.pockly.uk/speed-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://calculator.pockly.uk/es/speed-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://calculator.pockly.uk/speed-converter"/>
+  </url>
 </urlset>

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './components/pages/home/home';
 
-export const routes: Routes = [
+const localizedRoutes: Routes = [
   {
     path: '',
     component: Home,
@@ -31,8 +31,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/pages/not-found/not-found').then((m) => m.NotFound),
   },
-  {
-    path: '**',
-    redirectTo: '/404',
-  },
+];
+
+// Spanish mirror of every route under /es so both languages get prerendered,
+// indexable URLs. LanguageService derives the active language from the prefix.
+export const routes: Routes = [
+  ...localizedRoutes,
+  { path: 'es', children: localizedRoutes },
+  { path: '**', redirectTo: '/404' },
 ];
